@@ -1,0 +1,62 @@
+import type { Metadata } from "next";
+import { NetoBrutoCalc } from "@/components/calculators/NetoBrutoCalc";
+import { AdSlot } from "@/components/AdSlot";
+
+export const metadata: Metadata = {
+  title: "Calculadora neto/bruto autónomo · cuánto te queda al mes 2025",
+  description:
+    "Calcula tu neto anual y mensual como autónomo: tras gastos, cuota Seguridad Social e IRPF. Incluye opción de tarifa plana.",
+  alternates: { canonical: "/neto-bruto" },
+};
+
+export default function Page() {
+  return (
+    <div className="mx-auto max-w-6xl px-4 py-10">
+      <header className="mb-8">
+        <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+          ¿Cuánto me queda como autónomo?
+        </h1>
+        <p className="mt-3 text-gray-600 max-w-3xl">
+          Pasa de bruto a neto: ingresos − gastos − cuota autónomo − IRPF. Estima
+          cuánto tendrás disponible al mes.
+        </p>
+      </header>
+
+      <NetoBrutoCalc />
+
+      <AdSlot format="leaderboard" className="my-10" />
+
+      <article className="prose prose-gray max-w-3xl text-sm text-gray-700 space-y-5">
+        <h2 className="text-xl font-bold text-gray-900">Cómo se calcula tu neto</h2>
+        <p>El cálculo es:</p>
+        <pre className="bg-gray-50 rounded-lg p-4 text-xs">
+{`Ingresos brutos
+− Gastos deducibles
+− Cuota autónomo anual (12 × mensual)
+− IRPF estimado
+= NETO anual`}
+        </pre>
+
+        <h2 className="text-xl font-bold text-gray-900">Qué cuenta como gasto deducible</h2>
+        <ul>
+          <li>Material y suministros relacionados con la actividad</li>
+          <li>Gestoría y servicios profesionales</li>
+          <li>Oficina (si trabajas en casa, parte proporcional de los suministros)</li>
+          <li>Vehículo (solo si es de uso exclusivo profesional)</li>
+          <li>Dietas: hasta 26,67 €/día en España, 48,08 €/día extranjero</li>
+          <li>Cuota de autónomos</li>
+          <li>Seguros relacionados con la actividad</li>
+        </ul>
+
+        <h2 className="text-xl font-bold text-gray-900">Por qué tu neto puede ser menor</h2>
+        <p>
+          Esta calculadora no incluye <strong>la cuota autonómica del IRPF</strong>
+          (varía por CCAA). En la mayoría de regiones añade entre un 3 y un 10% al
+          tipo efectivo. Tampoco incluye deducciones personales (mínimos por
+          descendientes, vivienda habitual, planes de pensiones), que pueden reducir
+          significativamente tu factura final.
+        </p>
+      </article>
+    </div>
+  );
+}
