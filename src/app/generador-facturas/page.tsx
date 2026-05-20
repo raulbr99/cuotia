@@ -1,0 +1,43 @@
+import type { Metadata } from "next";
+import { InvoiceGenerator } from "@/components/InvoiceGenerator";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { FAQ } from "@/components/FAQ";
+
+export const metadata: Metadata = {
+  title: "Generador de facturas gratis para autónomos · descarga PDF",
+  description: "Crea facturas profesionales en 1 minuto: emisor, cliente, líneas, IVA, retención IRPF. Descarga gratis en PDF. Sin registro.",
+  alternates: { canonical: "/generador-facturas" },
+};
+
+export default function Page() {
+  return (
+    <div className="mx-auto max-w-7xl px-4 py-10 print:max-w-none print:py-0">
+      <div className="print:hidden">
+        <Breadcrumbs items={[{ label: "Generador de facturas" }]} />
+        <header className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">Generador de facturas</h1>
+          <p className="mt-3 text-gray-600 max-w-3xl">
+            Rellena los datos a la izquierda, mira la factura en directo y descarga
+            en PDF. Sin registro. Tus datos se quedan en tu navegador (localStorage),
+            no se envían a ningún servidor.
+          </p>
+        </header>
+      </div>
+
+      <InvoiceGenerator />
+
+      <section className="print:hidden mt-16">
+        <FAQ
+          items={[
+            { q: "¿Es legal una factura generada con esta herramienta?", a: "Sí, siempre que incluya los datos obligatorios: número correlativo, fecha, datos completos de emisor y receptor (incluido NIF), descripción de los servicios, base imponible, tipo y cuota de IVA. Esta calculadora incluye todos esos campos." },
+            { q: "¿Tengo que enviarla en papel?", a: "No. La AEAT acepta facturas en PDF enviadas por email como factura electrónica simple. Solo necesitas conservar copia 4 años. Si quieres factura electrónica firmada para AdminPública, necesitas certificado digital + plataforma específica (Face)." },
+            { q: "¿Qué retención IRPF aplico?", a: "Profesionales facturando a empresas españolas: 15% (general) o 7% si eres nuevo autónomo (durante 3 años desde el alta). Facturando a otros autónomos no retienes nada en algunos casos. Facturas a extranjero: sin retención." },
+            { q: "¿Y el IVA?", a: "Regla general: 21%. Servicios formativos, educación, sanidad: exento. Hay tipos reducidos del 10% y 4% para ciertos productos. Si facturas dentro de la UE a empresa con NIF intracomunitario, factura sin IVA con 'inversión del sujeto pasivo'." },
+            { q: "¿Se guardan mis datos en algún sitio?", a: "Solo en tu navegador (localStorage). Si cambias de dispositivo o limpias datos, se pierden. Para conservar facturas, descárgalas en PDF tras crearlas." },
+            { q: "¿Cuánto debo conservar las facturas?", a: "4 años desde el final del periodo de presentación del impuesto. Mejor 6 años por seguridad (plazo prescripción Mercantil). Conservación digital es válida." },
+          ]}
+        />
+      </section>
+    </div>
+  );
+}

@@ -17,6 +17,7 @@ const ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitemap[numb
   { path: "/guias/alta-autonomo", priority: 0.8, freq: "monthly" },
   { path: "/guias/gastos-deducibles", priority: 0.85, freq: "monthly" },
   { path: "/guias/tarifa-plana", priority: 0.85, freq: "monthly" },
+  { path: "/generador-facturas", priority: 0.95, freq: "monthly" },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

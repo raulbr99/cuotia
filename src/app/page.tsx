@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Calculator, Receipt, Wallet, Calendar, ArrowRight, Briefcase, HeartPulse, Coins, Car, BookOpen, Percent } from "lucide-react";
+import { Calculator, Receipt, Wallet, Calendar, ArrowRight, Briefcase, HeartPulse, Coins, Car, BookOpen, Percent, FileText } from "lucide-react";
 import { AdSlot } from "@/components/AdSlot";
 import { Newsletter } from "@/components/Newsletter";
 
@@ -59,6 +59,13 @@ const CALCS = [
     title: "Dietas y kilometraje",
     description: "Dietas exentas y deducción de km vigentes 2025.",
     color: "lime",
+  },
+  {
+    href: "/generador-facturas",
+    icon: FileText,
+    title: "Generador de facturas",
+    description: "Crea facturas en PDF con todos los campos legales en 1 minuto.",
+    color: "violet",
   },
 ];
 

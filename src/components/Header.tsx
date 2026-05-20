@@ -6,13 +6,14 @@ import { useState } from "react";
 
 const CALC_LINKS = [
   { href: "/cuota-autonomo", label: "Cuota autónomo" },
-  { href: "/calculadora-irpf", label: "IRPF y modelo 130" },
+  { href: "/calculadora-irpf", label: "IRPF (17 CCAA) + modelo 130" },
   { href: "/calculadora-iva", label: "IVA y modelo 303" },
   { href: "/neto-bruto", label: "Neto / Bruto" },
   { href: "/calculadora-despido", label: "Despido y finiquito" },
   { href: "/baja-medica", label: "Baja médica" },
   { href: "/jubilacion-autonomo", label: "Jubilación autónomo" },
   { href: "/dietas-kilometraje", label: "Dietas y km" },
+  { href: "/generador-facturas", label: "Generador de facturas" },
 ];
 
 export function Header() {

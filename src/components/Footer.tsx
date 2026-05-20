@@ -23,6 +23,7 @@ export function Footer() {
               <li><Link href="/baja-medica" className="hover:text-emerald-600">Baja médica</Link></li>
               <li><Link href="/jubilacion-autonomo" className="hover:text-emerald-600">Jubilación autónomo</Link></li>
               <li><Link href="/dietas-kilometraje" className="hover:text-emerald-600">Dietas y kilometraje</Link></li>
+              <li><Link href="/generador-facturas" className="hover:text-emerald-600">Generador de facturas</Link></li>
             </ul>
           </div>
           <div>

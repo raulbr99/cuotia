@@ -3,9 +3,9 @@ import { IRPFCalc } from "@/components/calculators/IRPFCalc";
 import { AdSlot } from "@/components/AdSlot";
 
 export const metadata: Metadata = {
-  title: "Calculadora IRPF autónomo 2025 · anual y modelo 130 trimestral",
+  title: "Calculadora IRPF autónomo 2025 · por Comunidad Autónoma + modelo 130",
   description:
-    "Calcula tu IRPF anual con los tramos estatales 2025 y el pago fraccionado trimestral del modelo 130. Tipo efectivo, desglose por tramo.",
+    "Calcula tu IRPF anual con la escala estatal + autonómica de tu CCAA (Madrid, Cataluña, Andalucía, Valencia, las 17 CCAA). Pago fraccionado modelo 130 trimestral incluido.",
   alternates: { canonical: "/calculadora-irpf" },
 };
 
