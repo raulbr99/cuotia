@@ -120,12 +120,12 @@ export default function Page() {
       <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Gastos deducibles" }]} />
       <article className="prose prose-gray max-w-none">
         <h1 className="text-3xl font-bold sm:text-4xl">Gastos deducibles autónomo 2025</h1>
-        <p className="text-xs text-gray-500 flex items-center gap-1.5 my-3 not-prose">
+        <p className="text-xs text-[#606060] flex items-center gap-1.5 my-3 not-prose">
           <Calendar className="h-3 w-3" />
           Publicado <time dateTime={PUBLISHED}>20 de mayo de 2026</time>
           {PUBLISHED !== MODIFIED && <> · Actualizado <time dateTime={MODIFIED}>20 de mayo de 2026</time></>}
         </p>
-        <p className="text-lg text-gray-600">
+        <p className="text-lg text-[#A0A0A0]">
           Lista completa de gastos que puedes deducir como autónomo en IRPF
           (rendimiento neto) y en IVA. Si está relacionado con tu actividad, justificado
           con factura y registrado en tu contabilidad, suele ser deducible.
@@ -146,12 +146,12 @@ export default function Page() {
 
         <div className="not-prose space-y-6 my-8">
           {CATEGORIAS.map((cat) => (
-            <section key={cat.titulo} className="rounded-xl border border-gray-200 bg-white p-5">
-              <h3 className="font-bold text-gray-900 mb-3">{cat.titulo}</h3>
-              <ul className="text-sm space-y-1 text-gray-700">
+            <section key={cat.titulo} className="rounded-xl border border-[#1A1A1A] bg-[#0F0F0F] p-5">
+              <h3 className="font-bold text-white mb-3">{cat.titulo}</h3>
+              <ul className="text-sm space-y-1 text-[#A0A0A0]">
                 {cat.items.map((it, i) => (
                   <li key={i} className="flex gap-2">
-                    <span className="text-emerald-600">•</span>
+                    <span className="text-[#D1FF26]">•</span>
                     <span>{it}</span>
                   </li>
                 ))}
@@ -184,12 +184,12 @@ export default function Page() {
           <li>Gastos sin factura, solo ticket simple, &gt; 400 €</li>
         </ul>
 
-        <div className="mt-12 rounded-xl bg-emerald-50 border border-emerald-200 p-6">
+        <div className="mt-12 rounded-xl bg-[#0F0F0F] border border-[#D1FF26] p-6">
           <h3 className="text-lg font-semibold m-0">Calcula tu neto con gastos deducibles</h3>
           <p className="mt-2 mb-3">
             Ahora que sabes qué deducir, calcula cuánto te queda realmente al año:
           </p>
-          <Link href="/neto-bruto" className="inline-flex items-center gap-2 bg-emerald-600 text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-emerald-700">
+          <Link href="/neto-bruto" className="inline-flex items-center gap-2 bg-[#D1FF26] text-[#0A0A0A] px-4 py-2 rounded-lg font-medium text-sm hover:opacity-90">
             Calculadora neto/bruto
           </Link>
         </div>

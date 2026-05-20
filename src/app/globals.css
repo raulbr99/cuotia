@@ -1,25 +1,81 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f9fafb;
-  --foreground: #111827;
-  color-scheme: light;
+  --background: #0A0A0A;
+  --background-elevated: #0F0F0F;
+  --border-primary: #1A1A1A;
+  --border-secondary: #252525;
+  --foreground: #FFFFFF;
+  --foreground-secondary: #A0A0A0;
+  --foreground-muted: #606060;
+  --foreground-dim: #505050;
+  --accent: #D1FF26;
+  color-scheme: dark;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-elevated: var(--background-elevated);
+  --color-border-primary: var(--border-primary);
+  --color-border-secondary: var(--border-secondary);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-dim: var(--foreground-dim);
+  --color-accent: var(--accent);
+  --font-display: var(--font-archivo-black);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 html, body {
   background: var(--background);
   color: var(--foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-archivo-black), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.font-mono, code, kbd, pre {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+.tech-label {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--foreground-muted);
+}
+
+.scanline {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--accent);
+  transform: translateY(-100%);
+  transition: transform 350ms ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.scanline:hover::before {
+  transform: translateY(100vh);
 }
 
 @media print {
-  body { background: #fff !important; }
+  html, body { background: #fff !important; color: #000 !important; }
   header, footer, nav, .print\:hidden { display: none !important; }
   #invoice-preview { box-shadow: none !important; border: none !important; padding: 0 !important; }
   @page { margin: 1.5cm; }

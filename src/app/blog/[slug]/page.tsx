@@ -59,16 +59,16 @@ function renderContent(md: string): React.ReactElement[] {
   function flushTable() {
     if (tableHeaders.length === 0 && tableRows.length === 0) return;
     blocks.push(
-      <div key={key++} className="my-6 overflow-x-auto rounded-xl border border-gray-200">
+      <div key={key++} className="my-6 overflow-x-auto rounded-xl border border-[#1A1A1A]">
         <table className="w-full text-sm">
-          <thead className="bg-gray-50">
+          <thead className="bg-[#0A0A0A]">
             <tr>
               {tableHeaders.map((h, i) => (
-                <th key={i} className="px-3 py-2 text-left font-semibold text-xs uppercase text-gray-600">{h}</th>
+                <th key={i} className="px-3 py-2 text-left font-semibold text-xs uppercase text-[#A0A0A0]">{h}</th>
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-100">
+          <tbody className="divide-y divide-[#1A1A1A]">
             {tableRows.map((row, i) => (
               <tr key={i}>{row.map((c, j) => <td key={j} className="px-3 py-2" dangerouslySetInnerHTML={{ __html: renderInline(c) }} />)}</tr>
             ))}
@@ -85,11 +85,11 @@ function renderContent(md: string): React.ReactElement[] {
     if (line.startsWith("## ")) {
       flushBuffer();
       flushTable();
-      blocks.push(<h2 key={key++} className="text-2xl font-bold text-gray-900 mt-10 mb-4">{line.slice(3)}</h2>);
+      blocks.push(<h2 key={key++} className="text-2xl font-bold text-white mt-10 mb-4">{line.slice(3)}</h2>);
     } else if (line.startsWith("### ")) {
       flushBuffer();
       flushTable();
-      blocks.push(<h3 key={key++} className="text-xl font-bold text-gray-900 mt-6 mb-3">{line.slice(4)}</h3>);
+      blocks.push(<h3 key={key++} className="text-xl font-bold text-white mt-6 mb-3">{line.slice(4)}</h3>);
     } else if (/^[-*] /.test(line)) {
       flushBuffer();
       flushTable();
@@ -110,7 +110,7 @@ function renderContent(md: string): React.ReactElement[] {
     } else if (line.trim() === "") {
       if (inList) {
         blocks.push(
-          <ul key={key++} className="my-4 space-y-1 list-disc list-inside text-gray-700">
+          <ul key={key++} className="my-4 space-y-1 list-disc list-inside text-[#A0A0A0]">
             {buffer.map((it, i) => <li key={i} dangerouslySetInnerHTML={{ __html: renderInline(it) }} />)}
           </ul>,
         );
@@ -133,7 +133,7 @@ function renderContent(md: string): React.ReactElement[] {
   flushTable();
   if (inList && buffer.length > 0) {
     blocks.push(
-      <ul key={key++} className="my-4 space-y-1 list-disc list-inside text-gray-700">
+      <ul key={key++} className="my-4 space-y-1 list-disc list-inside text-[#A0A0A0]">
         {buffer.map((it, i) => <li key={i} dangerouslySetInnerHTML={{ __html: renderInline(it) }} />)}
       </ul>,
     );
@@ -144,7 +144,7 @@ function renderContent(md: string): React.ReactElement[] {
 function renderInline(text: string): string {
   return text
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-emerald-700 underline hover:text-emerald-800">$1</a>');
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-[#D1FF26] underline hover:text-[#D1FF26]">$1</a>');
 }
 
 export default async function Page({ params }: PageProps) {
@@ -168,44 +168,44 @@ export default async function Page({ params }: PageProps) {
 
       <article>
         <div className="flex items-baseline gap-3 mb-3">
-          <span className="rounded-full bg-emerald-50 text-emerald-700 text-[10px] font-semibold uppercase tracking-wider px-2 py-1">
+          <span className="rounded-full bg-[#0F0F0F] text-[#D1FF26] text-[10px] font-semibold uppercase tracking-wider px-2 py-1">
             {post.tag}
           </span>
-          <span className="text-xs text-gray-500 flex items-center gap-1">
+          <span className="text-xs text-[#606060] flex items-center gap-1">
             <Calendar className="h-3 w-3" />
             <time dateTime={post.datePublished}>{formatBlogDate(post.datePublished)}</time>
           </span>
         </div>
 
-        <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">{post.title}</h1>
-        <p className="text-lg text-gray-600 mb-8">{post.description}</p>
+        <h1 className="text-3xl font-bold text-white sm:text-4xl mb-4">{post.title}</h1>
+        <p className="text-lg text-[#A0A0A0] mb-8">{post.description}</p>
 
-        <div className="speakable text-gray-700">
+        <div className="speakable text-[#A0A0A0]">
           {renderContent(post.content)}
         </div>
 
         <AdSlot format="rectangle" className="my-10" />
 
-        <hr className="my-10 border-gray-200" />
+        <hr className="my-10 border-[#1A1A1A]" />
 
-        <Link href="/blog" className="text-sm text-emerald-700 hover:text-emerald-800 inline-flex items-center gap-1 mb-8">
+        <Link href="/blog" className="text-sm text-[#D1FF26] hover:text-[#D1FF26] inline-flex items-center gap-1 mb-8">
           <ArrowLeft className="h-4 w-4" /> Volver al blog
         </Link>
 
         {otherPosts.length > 0 && (
           <section>
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Otros artículos</h2>
+            <h2 className="text-xl font-bold text-white mb-4">Otros artículos</h2>
             <div className="space-y-3">
               {otherPosts.map((p) => (
                 <Link
                   key={p.slug}
                   href={`/blog/${p.slug}`}
-                  className="group block rounded-lg border border-gray-200 bg-white p-4 hover:shadow-sm hover:border-gray-300 transition-all"
+                  className="group block rounded-lg border border-[#1A1A1A] bg-[#0F0F0F] p-4 hover:bg-[#0A0A0A] hover:border-[#252525] transition-all"
                 >
-                  <p className="font-semibold text-gray-900 group-hover:text-emerald-700 flex items-center gap-2">
+                  <p className="font-semibold text-white group-hover:text-[#D1FF26] flex items-center gap-2">
                     {p.title} <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </p>
-                  <p className="text-sm text-gray-600 mt-1">{p.description}</p>
+                  <p className="text-sm text-[#A0A0A0] mt-1">{p.description}</p>
                 </Link>
               ))}
             </div>

@@ -34,42 +34,46 @@ export function Newsletter({ source = "homepage" }: { source?: string }) {
 
   if (status === "ok") {
     return (
-      <div className="rounded-xl border-2 border-emerald-200 bg-emerald-50 p-6 text-center">
-        <Check className="h-8 w-8 text-emerald-600 mx-auto mb-2" />
-        <p className="text-sm text-emerald-900">{msg}</p>
+      <div className="border border-[#D1FF26] bg-[#0F0F0F] p-8 text-center">
+        <Check className="mx-auto mb-3 h-8 w-8 text-[#D1FF26]" strokeWidth={1.5} />
+        <p className="text-[13px] text-white">{msg}</p>
       </div>
     );
   }
 
   return (
-    <div className="rounded-xl border border-gray-200 bg-white p-6">
-      <div className="flex items-start gap-3 mb-4">
-        <Mail className="h-5 w-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+    <div className="border border-[#1A1A1A] bg-[#0F0F0F] p-8">
+      <p className="tech-label mb-4">SIGNAL // NEWSLETTER</p>
+      <div className="mb-6 flex items-start gap-3">
+        <Mail className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#D1FF26]" strokeWidth={1.5} />
         <div>
-          <h3 className="text-base font-semibold">Avisos fiscales por email</h3>
-          <p className="text-sm text-gray-600">
-            Cambios de tramos, nuevos modelos, fechas clave. Sin spam, te puedes dar de baja con un click.
+          <h3 className="font-display text-2xl uppercase tracking-tight text-white">
+            Avisos fiscales por email
+          </h3>
+          <p className="mt-1 text-[13px] text-[#A0A0A0]">
+            Cambios de tramos, nuevos modelos, fechas clave. Sin spam, te puedes dar de
+            baja con un click.
           </p>
         </div>
       </div>
-      <form onSubmit={submit} className="flex gap-2">
+      <form onSubmit={submit} className="flex flex-col gap-2 sm:flex-row">
         <input
           type="email"
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="tu@email.com"
-          className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          className="flex-1 border border-[#252525] bg-[#0A0A0A] px-4 py-3 text-[13px] text-white placeholder:text-[#505050] focus:border-[#D1FF26] focus:outline-none"
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-700 disabled:opacity-50"
+          className="bg-[#D1FF26] px-6 py-3 text-[13px] font-bold uppercase tracking-[0.1em] text-[#0A0A0A] transition-opacity hover:opacity-90 disabled:opacity-50"
         >
           {status === "loading" ? "..." : "Suscribirme"}
         </button>
       </form>
-      {status === "err" && <p className="text-xs text-red-600 mt-2">{msg}</p>}
+      {status === "err" && <p className="mt-3 text-[12px] text-[#FF6B6B]">{msg}</p>}
     </div>
   );
 }

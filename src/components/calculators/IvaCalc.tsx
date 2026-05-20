@@ -26,7 +26,7 @@ export function IvaCalc() {
             key={m}
             onClick={() => setModo(m)}
             className={`rounded-lg px-4 py-2 text-sm font-medium ${
-              modo === m ? "bg-emerald-600 text-white" : "bg-gray-100 hover:bg-gray-200"
+              modo === m ? "bg-[#D1FF26] text-[#0A0A0A]" : "bg-[#1A1A1A] hover:bg-[#252525]"
             }`}
           >
             {m === "agregar" ? "Añadir IVA" : m === "quitar" ? "Quitar IVA" : "Modelo 303 trimestral"}
@@ -36,7 +36,7 @@ export function IvaCalc() {
 
       {modo !== "303" ? (
         <div className="grid gap-6 md:grid-cols-[1fr_320px]">
-          <div className="rounded-xl border border-gray-200 bg-white p-6 space-y-4">
+          <div className="rounded-xl border border-[#1A1A1A] bg-[#0F0F0F] p-6 space-y-4">
             <div>
               <label className="block text-sm font-medium mb-1">
                 {modo === "agregar" ? "Importe SIN IVA" : "Importe CON IVA"}
@@ -47,9 +47,9 @@ export function IvaCalc() {
                   value={importe}
                   onChange={(e) => setImporte(parseFloat(e.target.value) || 0)}
                   step={1}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 pr-10 text-base focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="w-full rounded-lg border border-[#252525] px-3 py-2 pr-10 text-base focus:outline-none focus:ring-2 focus:ring-[#D1FF26]"
                 />
-                <span className="absolute right-3 top-2 text-gray-400">€</span>
+                <span className="absolute right-3 top-2 text-[#505050]">€</span>
               </div>
             </div>
             <div>
@@ -60,24 +60,24 @@ export function IvaCalc() {
                     key={t}
                     onClick={() => setTipo(t)}
                     className={`rounded-lg border px-3 py-2 text-sm ${
-                      tipo === t ? "border-emerald-500 bg-emerald-50" : "border-gray-200"
+                      tipo === t ? "border-[#D1FF26] bg-[#0F0F0F]" : "border-[#1A1A1A]"
                     }`}
                   >
                     <p className="font-medium capitalize">{t}</p>
-                    <p className="text-xs text-gray-500">{(TIPOS_IVA[t] * 100).toFixed(0)}%</p>
+                    <p className="text-xs text-[#606060]">{(TIPOS_IVA[t] * 100).toFixed(0)}%</p>
                   </button>
                 ))}
               </div>
             </div>
           </div>
-          <div className="rounded-xl border-2 border-emerald-200 bg-emerald-50 p-5 space-y-3">
+          <div className="rounded-xl border-2 border-[#D1FF26] bg-[#0F0F0F] p-5 space-y-3">
             <div>
-              <p className="text-xs uppercase tracking-wider text-emerald-700 font-medium">Total</p>
-              <p className="text-3xl font-bold text-emerald-900">
+              <p className="text-xs uppercase tracking-wider text-[#D1FF26] font-medium">Total</p>
+              <p className="text-3xl font-bold text-[#D1FF26]">
                 {eur(modo === "agregar" ? agregar.total : quitar.total)}
               </p>
             </div>
-            <div className="text-sm space-y-1 pt-3 border-t border-emerald-200">
+            <div className="text-sm space-y-1 pt-3 border-t border-[#D1FF26]">
               <div className="flex justify-between"><span>Base imponible</span><span className="font-semibold">{eur(modo === "agregar" ? agregar.base : quitar.base)}</span></div>
               <div className="flex justify-between"><span>IVA</span><span className="font-semibold">{eur(modo === "agregar" ? agregar.iva : quitar.iva)}</span></div>
             </div>
@@ -85,23 +85,23 @@ export function IvaCalc() {
         </div>
       ) : (
         <div className="grid gap-6 md:grid-cols-[1fr_320px]">
-          <div className="rounded-xl border border-gray-200 bg-white p-6 space-y-4">
+          <div className="rounded-xl border border-[#1A1A1A] bg-[#0F0F0F] p-6 space-y-4">
             <div className="grid sm:grid-cols-2 gap-3">
               <Field label="IVA repercutido (cobrado)" value={ivaRep} setValue={setIvaRep} suffix="€" />
               <Field label="IVA soportado (pagado)" value={ivaSop} setValue={setIvaSop} suffix="€" />
               <Field label="Compensación trimestres anteriores" value={compAnt} setValue={setCompAnt} suffix="€" />
             </div>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-[#606060]">
               IVA repercutido: el que has cobrado a tus clientes en facturas emitidas.<br />
               IVA soportado: el que has pagado en facturas recibidas y es deducible.
             </p>
           </div>
-          <div className="rounded-xl border-2 border-emerald-200 bg-emerald-50 p-5">
-            <p className="text-xs uppercase tracking-wider text-emerald-700 font-medium">
+          <div className="rounded-xl border-2 border-[#D1FF26] bg-[#0F0F0F] p-5">
+            <p className="text-xs uppercase tracking-wider text-[#D1FF26] font-medium">
               {m303.tipo === "ingresar" ? "A ingresar" : "A compensar/devolver"}
             </p>
-            <p className="text-3xl font-bold text-emerald-900 mt-1">{eur(m303.resultado)}</p>
-            <p className="text-sm text-emerald-700 mt-2">
+            <p className="text-3xl font-bold text-[#D1FF26] mt-1">{eur(m303.resultado)}</p>
+            <p className="text-sm text-[#D1FF26] mt-2">
               {m303.tipo === "ingresar"
                 ? "Pago al Estado este trimestre"
                 : "Saldo a favor para el siguiente trimestre"}
@@ -123,9 +123,9 @@ function Field({ label, value, setValue, suffix }: { label: string; value: numbe
           value={value}
           onChange={(e) => setValue(parseFloat(e.target.value) || 0)}
           step={10}
-          className="w-full rounded-lg border border-gray-300 px-3 py-2 pr-10 text-base focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          className="w-full rounded-lg border border-[#252525] px-3 py-2 pr-10 text-base focus:outline-none focus:ring-2 focus:ring-[#D1FF26]"
         />
-        {suffix && <span className="absolute right-3 top-2 text-gray-400">{suffix}</span>}
+        {suffix && <span className="absolute right-3 top-2 text-[#505050]">{suffix}</span>}
       </div>
     </div>
   );

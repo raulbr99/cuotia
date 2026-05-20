@@ -103,10 +103,10 @@ export default async function Page({ params }: PageProps) {
       ]} />
 
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+        <h1 className="text-3xl font-bold text-white sm:text-4xl">
           IRPF en {nombre} 2025
         </h1>
-        <p className="mt-3 text-gray-600 max-w-3xl">
+        <p className="mt-3 text-[#A0A0A0] max-w-3xl">
           Calcula tu IRPF anual combinando la <strong>escala estatal</strong> con la
           <strong> escala autonómica de {nombre}</strong>. Tramos vigentes 2025.
         </p>
@@ -122,11 +122,11 @@ export default async function Page({ params }: PageProps) {
 
       <AdSlot format="leaderboard" className="my-10" />
 
-      <article className="prose prose-gray max-w-3xl text-sm text-gray-700 space-y-5">
-        <h2 className="text-xl font-bold text-gray-900">Tramos autonómicos de {nombre} 2025</h2>
-        <div className="not-prose rounded-xl border border-gray-200 bg-white overflow-hidden my-4">
+      <article className="prose prose-gray max-w-3xl text-sm text-[#A0A0A0] space-y-5">
+        <h2 className="text-xl font-bold text-white">Tramos autonómicos de {nombre} 2025</h2>
+        <div className="not-prose rounded-xl border border-[#1A1A1A] bg-[#0F0F0F] overflow-hidden my-4">
           <table className="w-full text-sm">
-            <thead className="bg-gray-50 text-xs uppercase text-gray-600">
+            <thead className="bg-[#0A0A0A] text-xs uppercase text-[#A0A0A0]">
               <tr>
                 <th className="px-3 py-2 text-left">Desde</th>
                 <th className="px-3 py-2 text-left">Hasta</th>
@@ -135,16 +135,16 @@ export default async function Page({ params }: PageProps) {
                 <th className="px-3 py-2 text-right">= Combinado</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-100">
+            <tbody className="divide-y divide-[#1A1A1A]">
               {tramos.map((t, i) => {
                 const est = ESTATAL_HALF.find((e) => e.hasta === null || (t.desde < (e.hasta ?? Infinity)))?.tipo || 0;
                 return (
                   <tr key={i}>
-                    <td className="px-3 py-2 text-gray-700">{eur(t.desde)}</td>
-                    <td className="px-3 py-2 text-gray-700">{t.hasta ? eur(t.hasta) : "—"}</td>
+                    <td className="px-3 py-2 text-[#A0A0A0]">{eur(t.desde)}</td>
+                    <td className="px-3 py-2 text-[#A0A0A0]">{t.hasta ? eur(t.hasta) : "—"}</td>
                     <td className="px-3 py-2 text-right font-medium">{pct(t.tipo)}</td>
-                    <td className="px-3 py-2 text-right text-gray-500">{pct(est)}</td>
-                    <td className="px-3 py-2 text-right font-semibold text-emerald-700">{pct(t.tipo + est)}</td>
+                    <td className="px-3 py-2 text-right text-[#606060]">{pct(est)}</td>
+                    <td className="px-3 py-2 text-right font-semibold text-[#D1FF26]">{pct(t.tipo + est)}</td>
                   </tr>
                 );
               })}
@@ -152,17 +152,17 @@ export default async function Page({ params }: PageProps) {
           </table>
         </div>
 
-        <h2 className="text-xl font-bold text-gray-900">Comparativa con otras CCAAs</h2>
+        <h2 className="text-xl font-bold text-white">Comparativa con otras CCAAs</h2>
         <p>
           {nombre} es {tipoInicial < 0.09 ? "una de las CCAAs con menor presión fiscal en tramos bajos" : tipoInicial > 0.1 ? "una de las CCAAs con mayor presión fiscal en tramos bajos" : "una CCAA con tributación intermedia"}.
           {especial && ` ${especial}`}
         </p>
         <p>
-          Algunas CCAAs con escalas más bajas son <Link href="/irpf/madrid" className="text-emerald-700 underline">Madrid</Link> y <Link href="/irpf/galicia" className="text-emerald-700 underline">Galicia</Link>.
-          Las que más cobran son <Link href="/irpf/cataluna" className="text-emerald-700 underline">Cataluña</Link> y <Link href="/irpf/asturias" className="text-emerald-700 underline">Asturias</Link>.
+          Algunas CCAAs con escalas más bajas son <Link href="/irpf/madrid" className="text-[#D1FF26] underline">Madrid</Link> y <Link href="/irpf/galicia" className="text-[#D1FF26] underline">Galicia</Link>.
+          Las que más cobran son <Link href="/irpf/cataluna" className="text-[#D1FF26] underline">Cataluña</Link> y <Link href="/irpf/asturias" className="text-[#D1FF26] underline">Asturias</Link>.
         </p>
 
-        <h2 className="text-xl font-bold text-gray-900">Cómo se calcula tu IRPF</h2>
+        <h2 className="text-xl font-bold text-white">Cómo se calcula tu IRPF</h2>
         <p>
           El IRPF español es <strong>progresivo y dual</strong>: la mitad la fija el Estado
           (escala estatal half) y la otra mitad cada Comunidad Autónoma. Tu tipo efectivo
