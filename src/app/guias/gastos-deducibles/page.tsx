@@ -125,7 +125,7 @@ export default function Page() {
           Publicado <time dateTime={PUBLISHED}>20 de mayo de 2026</time>
           {PUBLISHED !== MODIFIED && <> · Actualizado <time dateTime={MODIFIED}>20 de mayo de 2026</time></>}
         </p>
-        <p className="text-lg text-[#A0A0A0]">
+        <p className="text-lg text-[#D0D0D0]">
           Lista completa de gastos que puedes deducir como autónomo en IRPF
           (rendimiento neto) y en IVA. Si está relacionado con tu actividad, justificado
           con factura y registrado en tu contabilidad, suele ser deducible.
@@ -146,9 +146,9 @@ export default function Page() {
 
         <div className="not-prose space-y-6 my-8">
           {CATEGORIAS.map((cat) => (
-            <section key={cat.titulo} className="rounded-xl border border-[#1A1A1A] bg-[#0F0F0F] p-5">
+            <section key={cat.titulo} className=" border border-[#1A1A1A] bg-[#0F0F0F] p-5">
               <h3 className="font-bold text-white mb-3">{cat.titulo}</h3>
-              <ul className="text-sm space-y-1 text-[#A0A0A0]">
+              <ul className="text-sm space-y-1 text-[#D0D0D0]">
                 {cat.items.map((it, i) => (
                   <li key={i} className="flex gap-2">
                     <span className="text-[#D1FF26]">•</span>
@@ -184,12 +184,12 @@ export default function Page() {
           <li>Gastos sin factura, solo ticket simple, &gt; 400 €</li>
         </ul>
 
-        <div className="mt-12 rounded-xl bg-[#0F0F0F] border border-[#D1FF26] p-6">
+        <div className="mt-12  bg-[#0F0F0F] border border-[#D1FF26] p-6">
           <h3 className="text-lg font-semibold m-0">Calcula tu neto con gastos deducibles</h3>
           <p className="mt-2 mb-3">
             Ahora que sabes qué deducir, calcula cuánto te queda realmente al año:
           </p>
-          <Link href="/neto-bruto" className="inline-flex items-center gap-2 bg-[#D1FF26] text-[#0A0A0A] px-4 py-2 rounded-lg font-medium text-sm hover:opacity-90">
+          <Link href="/neto-bruto" className="inline-flex items-center gap-2 bg-[#D1FF26] text-[#0A0A0A] px-4 py-2  font-medium text-sm hover:opacity-90">
             Calculadora neto/bruto
           </Link>
         </div>

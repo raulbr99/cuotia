@@ -26,7 +26,7 @@ export default function Page() {
         <h1 className="text-3xl font-bold text-white sm:text-4xl">
           ¿Cuánto me queda como autónomo?
         </h1>
-        <p className="mt-3 text-[#A0A0A0] max-w-3xl">
+        <p className="mt-3 text-[#D0D0D0] max-w-3xl">
           Pasa de bruto a neto: ingresos − gastos − cuota − IRPF.
         </p>
       </header>
@@ -41,10 +41,10 @@ export default function Page() {
 
       <AdSlot format="leaderboard" className="my-10" />
 
-      <article className="prose prose-gray max-w-3xl text-sm text-[#A0A0A0] space-y-5">
+      <article className="prose prose-gray max-w-3xl text-sm text-[#D0D0D0] space-y-5">
         <h2 className="text-xl font-bold text-white">Cómo se calcula tu neto</h2>
         <p>El cálculo es:</p>
-        <pre className="bg-[#0A0A0A] rounded-lg p-4 text-xs">
+        <pre className="bg-[#0A0A0A]  p-4 text-xs">
 {`Ingresos brutos
 − Gastos deducibles
 − Cuota autónomo anual (12 × mensual)

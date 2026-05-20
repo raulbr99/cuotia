@@ -34,7 +34,7 @@ export default function Page() {
           <Newspaper className="h-7 w-7 text-[#D1FF26]" />
           Blog
         </h1>
-        <p className="mt-3 text-[#A0A0A0] max-w-3xl">
+        <p className="mt-3 text-[#D0D0D0] max-w-3xl">
           Cambios fiscales que afectan a los autónomos, explicados sin jerga. Sin
           publicidad encubierta, sin recomendaciones de gestoría.
         </p>
@@ -45,7 +45,7 @@ export default function Page() {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="group block rounded-xl border border-[#1A1A1A] bg-[#0F0F0F] p-6 hover:bg-[#0A0A0A] hover:border-[#252525] transition-all"
+            className="group block  border border-[#1A1A1A] bg-[#0F0F0F] p-6 hover:bg-[#0A0A0A] hover:border-[#252525] transition-all"
           >
             <div className="flex items-baseline gap-3 mb-2">
               <span className="rounded-full bg-[#0F0F0F] text-[#D1FF26] text-[10px] font-semibold uppercase tracking-wider px-2 py-1">
@@ -60,7 +60,7 @@ export default function Page() {
               {post.title}
               <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
             </h2>
-            <p className="text-sm text-[#A0A0A0] mt-2">{post.description}</p>
+            <p className="text-sm text-[#D0D0D0] mt-2">{post.description}</p>
           </Link>
         ))}
       </div>

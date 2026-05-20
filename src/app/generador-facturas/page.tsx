@@ -28,7 +28,7 @@ export default function Page() {
         <Breadcrumbs items={[{ label: "Generador de facturas" }]} />
         <header className="mb-8">
           <h1 className="text-3xl font-bold text-white sm:text-4xl">Generador de facturas</h1>
-          <p className="mt-3 text-[#A0A0A0] max-w-3xl">
+          <p className="mt-3 text-[#D0D0D0] max-w-3xl">
             Rellena los datos a la izquierda, mira la factura en directo y descarga
             en PDF. Sin registro. Tus datos se quedan en tu navegador (localStorage),
             no se envían a ningún servidor.

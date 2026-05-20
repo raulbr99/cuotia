@@ -106,7 +106,7 @@ export default async function Page({ params }: PageProps) {
         <h1 className="text-3xl font-bold text-white sm:text-4xl">
           IRPF en {nombre} 2025
         </h1>
-        <p className="mt-3 text-[#A0A0A0] max-w-3xl">
+        <p className="mt-3 text-[#D0D0D0] max-w-3xl">
           Calcula tu IRPF anual combinando la <strong>escala estatal</strong> con la
           <strong> escala autonómica de {nombre}</strong>. Tramos vigentes 2025.
         </p>
@@ -122,11 +122,11 @@ export default async function Page({ params }: PageProps) {
 
       <AdSlot format="leaderboard" className="my-10" />
 
-      <article className="prose prose-gray max-w-3xl text-sm text-[#A0A0A0] space-y-5">
+      <article className="prose prose-gray max-w-3xl text-sm text-[#D0D0D0] space-y-5">
         <h2 className="text-xl font-bold text-white">Tramos autonómicos de {nombre} 2025</h2>
-        <div className="not-prose rounded-xl border border-[#1A1A1A] bg-[#0F0F0F] overflow-hidden my-4">
+        <div className="not-prose  border border-[#1A1A1A] bg-[#0F0F0F] overflow-hidden my-4">
           <table className="w-full text-sm">
-            <thead className="bg-[#0A0A0A] text-xs uppercase text-[#A0A0A0]">
+            <thead className="bg-[#0A0A0A] text-xs uppercase text-[#D0D0D0]">
               <tr>
                 <th className="px-3 py-2 text-left">Desde</th>
                 <th className="px-3 py-2 text-left">Hasta</th>
@@ -140,8 +140,8 @@ export default async function Page({ params }: PageProps) {
                 const est = ESTATAL_HALF.find((e) => e.hasta === null || (t.desde < (e.hasta ?? Infinity)))?.tipo || 0;
                 return (
                   <tr key={i}>
-                    <td className="px-3 py-2 text-[#A0A0A0]">{eur(t.desde)}</td>
-                    <td className="px-3 py-2 text-[#A0A0A0]">{t.hasta ? eur(t.hasta) : "—"}</td>
+                    <td className="px-3 py-2 text-[#D0D0D0]">{eur(t.desde)}</td>
+                    <td className="px-3 py-2 text-[#D0D0D0]">{t.hasta ? eur(t.hasta) : "—"}</td>
                     <td className="px-3 py-2 text-right font-medium">{pct(t.tipo)}</td>
                     <td className="px-3 py-2 text-right text-[#606060]">{pct(est)}</td>
                     <td className="px-3 py-2 text-right font-semibold text-[#D1FF26]">{pct(t.tipo + est)}</td>

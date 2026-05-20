@@ -29,7 +29,7 @@ export function Header() {
             <button
               onClick={() => setOpen((s) => !s)}
               onMouseEnter={() => setOpen(true)}
-              className="flex items-center gap-1.5 px-3 py-2 text-[#A0A0A0] transition-colors hover:text-[#D1FF26]"
+              className="flex items-center gap-1.5 px-3 py-2 text-[#D0D0D0] transition-colors hover:text-[#D1FF26]"
             >
               Calculadoras
               <ChevronDown className="h-3 w-3" />
@@ -40,7 +40,7 @@ export function Header() {
                   <Link
                     key={l.href}
                     href={l.href}
-                    className="group flex items-center justify-between px-3 py-2 text-[12px] tracking-[0.1em] text-[#A0A0A0] transition-colors hover:bg-[#1A1A1A] hover:text-white"
+                    className="group flex items-center justify-between px-3 py-2 text-[12px] tracking-[0.1em] text-[#D0D0D0] transition-colors hover:bg-[#1A1A1A] hover:text-white"
                     onClick={() => setOpen(false)}
                   >
                     <span>{l.label}</span>
@@ -54,19 +54,19 @@ export function Header() {
           </div>
           <Link
             href="/calendario-fiscal"
-            className="hidden px-3 py-2 text-[#A0A0A0] transition-colors hover:text-[#D1FF26] sm:inline-block"
+            className="hidden px-3 py-2 text-[#D0D0D0] transition-colors hover:text-[#D1FF26] sm:inline-block"
           >
             Calendario
           </Link>
           <Link
             href="/guias"
-            className="hidden px-3 py-2 text-[#A0A0A0] transition-colors hover:text-[#D1FF26] sm:inline-block"
+            className="hidden px-3 py-2 text-[#D0D0D0] transition-colors hover:text-[#D1FF26] sm:inline-block"
           >
             Guías
           </Link>
           <Link
             href="/blog"
-            className="hidden px-3 py-2 text-[#A0A0A0] transition-colors hover:text-[#D1FF26] sm:inline-block"
+            className="hidden px-3 py-2 text-[#D0D0D0] transition-colors hover:text-[#D1FF26] sm:inline-block"
           >
             Blog
           </Link>

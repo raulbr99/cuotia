@@ -39,7 +39,7 @@ export default function Page() {
           <BookOpen className="h-7 w-7 text-[#D1FF26]" />
           Guías para autónomos
         </h1>
-        <p className="mt-3 text-[#A0A0A0] max-w-3xl">
+        <p className="mt-3 text-[#D0D0D0] max-w-3xl">
           Explicaciones prácticas para no perderte con los modelos, plazos y normativa.
         </p>
       </header>
@@ -50,11 +50,11 @@ export default function Page() {
             <Link
               key={g.href}
               href={g.href}
-              className="group rounded-xl border border-[#1A1A1A] bg-[#0F0F0F] p-6 hover:bg-[#0A0A0A] hover:border-[#252525] transition-all"
+              className="group  border border-[#1A1A1A] bg-[#0F0F0F] p-6 hover:bg-[#0A0A0A] hover:border-[#252525] transition-all"
             >
               <Icon className="h-6 w-6 text-[#D1FF26]" />
               <h2 className="mt-4 text-base font-semibold">{g.title}</h2>
-              <p className="text-sm text-[#A0A0A0] mt-2">{g.description}</p>
+              <p className="text-sm text-[#D0D0D0] mt-2">{g.description}</p>
             </Link>
           );
         })}

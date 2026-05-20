@@ -100,7 +100,7 @@ export default function HomePage() {
           <span className="text-[#D1FF26]">FISCALES</span><br />
           PARA AUTÓNOMOS.
         </h1>
-        <p className="mt-8 max-w-xl text-base leading-relaxed text-[#A0A0A0]">
+        <p className="mt-8 max-w-xl text-base leading-relaxed text-[#D0D0D0]">
           Cuota, IRPF, IVA, despido, jubilación y más. Sin registros, sin emails.
           Datos actualizados a tramos vigentes 2025.
         </p>
@@ -114,7 +114,7 @@ export default function HomePage() {
           </Link>
           <Link
             href="/guias"
-            className="inline-flex items-center gap-2 border border-[#252525] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.1em] text-[#A0A0A0] transition-colors hover:border-[#D1FF26] hover:text-white"
+            className="inline-flex items-center gap-2 border border-[#252525] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.1em] text-[#D0D0D0] transition-colors hover:border-[#D1FF26] hover:text-white"
           >
             Ver guías
           </Link>
@@ -148,7 +148,7 @@ export default function HomePage() {
                 <h3 className="mt-6 font-display text-xl uppercase tracking-tight text-white">
                   {c.title}
                 </h3>
-                <p className="mt-2 text-[13px] leading-relaxed text-[#A0A0A0]">{c.description}</p>
+                <p className="mt-2 text-[13px] leading-relaxed text-[#D0D0D0]">{c.description}</p>
               </Link>
             );
           })}
@@ -164,7 +164,7 @@ export default function HomePage() {
           <h3 className="mt-6 font-display text-2xl uppercase tracking-tight text-white">
             Calendario fiscal
           </h3>
-          <p className="mt-2 text-[13px] leading-relaxed text-[#A0A0A0]">
+          <p className="mt-2 text-[13px] leading-relaxed text-[#D0D0D0]">
             Todas las fechas clave del año: modelos 303, 130, 390, 100, 111, 115, 347.
             No te pases ninguna.
           </p>
@@ -178,7 +178,7 @@ export default function HomePage() {
           <h3 className="mt-6 font-display text-2xl uppercase tracking-tight text-white">
             Guías
           </h3>
-          <p className="mt-2 text-[13px] leading-relaxed text-[#A0A0A0]">
+          <p className="mt-2 text-[13px] leading-relaxed text-[#D0D0D0]">
             Cómo darse de alta, gastos deducibles, tarifa plana. Sin jerga, paso a paso.
           </p>
           <span className="tech-label mt-6 inline-block text-[#D1FF26]">VIEW_GUIDES →</span>

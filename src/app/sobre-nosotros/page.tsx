@@ -39,7 +39,7 @@ export default function Page() {
 
       <article className="prose prose-gray max-w-none">
         <h1 className="text-3xl font-bold sm:text-4xl">Sobre CalcAutónomo</h1>
-        <p className="text-lg text-[#A0A0A0]">
+        <p className="text-lg text-[#D0D0D0]">
           CalcAutónomo es un sitio independiente con calculadoras fiscales gratuitas
           para autónomos en España. Sin registros, sin emails, sin venta de servicios
           de gestoría. Está hecho para que puedas hacer tus números rápido y bien
@@ -73,11 +73,11 @@ export default function Page() {
             { name: "Tesorería General Seguridad Social", url: "https://sede.seg-social.gob.es", what: "Cuotas RETA por tramos, tarifa plana, prestaciones." },
             { name: "Boletines oficiales autonómicos", url: "https://www.boe.es/diario_boa/", what: "Escalas IRPF de cada Comunidad Autónoma." },
           ].map((src) => (
-            <a key={src.url} href={src.url} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 rounded-xl border border-[#1A1A1A] bg-[#0F0F0F] p-4 hover:border-[#D1FF26] hover:bg-[#0A0A0A]">
+            <a key={src.url} href={src.url} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3  border border-[#1A1A1A] bg-[#0F0F0F] p-4 hover:border-[#D1FF26] hover:bg-[#0A0A0A]">
               <ExternalLink className="h-5 w-5 text-[#D1FF26] mt-0.5 flex-shrink-0" />
               <div>
                 <p className="font-semibold text-white m-0">{src.name}</p>
-                <p className="text-sm text-[#A0A0A0] m-0">{src.what}</p>
+                <p className="text-sm text-[#D0D0D0] m-0">{src.what}</p>
               </div>
             </a>
           ))}
@@ -94,7 +94,7 @@ export default function Page() {
         </ul>
 
         <h2 className="text-2xl font-bold mt-10">Limitaciones honestas</h2>
-        <div className="not-prose rounded-xl border-2 border-[#D1FF26] bg-[#0F0F0F] p-5 my-6">
+        <div className="not-prose  border-2 border-[#D1FF26] bg-[#0F0F0F] p-5 my-6">
           <p className="text-sm text-white mb-2 font-semibold flex items-center gap-2">
             <Shield className="h-5 w-5" />
             Las calculadoras NO tienen en cuenta:
@@ -143,7 +143,7 @@ export default function Page() {
           <a href="mailto:hola@cuotia.es" className="text-[#D1FF26]">hola@cuotia.es</a>.
         </p>
 
-        <div className="not-prose mt-12 rounded-xl bg-[#0F0F0F] border border-[#D1FF26] p-6">
+        <div className="not-prose mt-12  bg-[#0F0F0F] border border-[#D1FF26] p-6">
           <p className="font-semibold m-0 mb-3 flex items-center gap-2">
             <Calculator className="h-5 w-5 text-[#D1FF26]" />
             Empieza por las calculadoras más usadas

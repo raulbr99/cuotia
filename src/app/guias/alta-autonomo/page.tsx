@@ -50,7 +50,7 @@ export default function Page() {
           Publicado <time dateTime={PUBLISHED}>20 de mayo de 2026</time>
           {PUBLISHED !== MODIFIED && <> · Actualizado <time dateTime={MODIFIED}>20 de mayo de 2026</time></>}
         </p>
-        <p className="text-lg text-[#A0A0A0]">
+        <p className="text-lg text-[#D0D0D0]">
           Antes de emitir tu primera factura, tienes que registrarte en dos sitios:
           <strong> Hacienda</strong> y <strong>Seguridad Social</strong>. Los dos trámites son online,
           gratuitos y se hacen el mismo día. Te explico cómo, sin gestoría.
@@ -131,12 +131,12 @@ export default function Page() {
           <li><strong>Confundir IRPF con IVA</strong> → son impuestos distintos. Las facturas a empresas llevan retención del 15% (IRPF) y el 21% (IVA). Hablamos de ambos en sus calculadoras.</li>
         </ul>
 
-        <div className="mt-12 rounded-xl bg-[#0F0F0F] border border-[#D1FF26] p-6">
+        <div className="mt-12  bg-[#0F0F0F] border border-[#D1FF26] p-6">
           <h3 className="text-lg font-semibold m-0">Calcula tu cuota antes de darte de alta</h3>
           <p className="mt-2 mb-3">
             Para saber lo que vas a pagar al mes según tus ingresos previstos:
           </p>
-          <Link href="/cuota-autonomo" className="inline-flex items-center gap-2 bg-[#D1FF26] text-[#0A0A0A] px-4 py-2 rounded-lg font-medium text-sm hover:opacity-90">
+          <Link href="/cuota-autonomo" className="inline-flex items-center gap-2 bg-[#D1FF26] text-[#0A0A0A] px-4 py-2  font-medium text-sm hover:opacity-90">
             Calcular cuota autónomo
           </Link>
         </div>

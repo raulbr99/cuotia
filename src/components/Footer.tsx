@@ -13,7 +13,7 @@ export function Footer() {
             </p>
           </div>
           <div>
-            <p className="tech-label mb-4 text-[#A0A0A0]">CATEGORY // CALCULATORS</p>
+            <p className="tech-label mb-4 text-[#D0D0D0]">CATEGORY // CALCULATORS</p>
             <ul className="space-y-2 text-[13px]">
               <li><Link href="/cuota-autonomo" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Cuota autónomo</Link></li>
               <li><Link href="/calculadora-irpf" className="text-[#606060] transition-colors hover:text-[#D1FF26]">IRPF + modelo 130</Link></li>
@@ -27,7 +27,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <p className="tech-label mb-4 text-[#A0A0A0]">CATEGORY // RESOURCES</p>
+            <p className="tech-label mb-4 text-[#D0D0D0]">CATEGORY // RESOURCES</p>
             <ul className="space-y-2 text-[13px]">
               <li><Link href="/calendario-fiscal" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Calendario fiscal</Link></li>
               <li><Link href="/guias" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Guías</Link></li>
@@ -39,7 +39,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <p className="tech-label mb-4 text-[#A0A0A0]">CATEGORY // LEGAL</p>
+            <p className="tech-label mb-4 text-[#D0D0D0]">CATEGORY // LEGAL</p>
             <ul className="space-y-2 text-[13px]">
               <li><Link href="/aviso-legal" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Aviso legal</Link></li>
               <li><Link href="/privacidad" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Privacidad</Link></li>

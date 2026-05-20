@@ -50,7 +50,7 @@ export function Newsletter({ source = "homepage" }: { source?: string }) {
           <h3 className="font-display text-2xl uppercase tracking-tight text-white">
             Avisos fiscales por email
           </h3>
-          <p className="mt-1 text-[13px] text-[#A0A0A0]">
+          <p className="mt-1 text-[13px] text-[#D0D0D0]">
             Cambios de tramos, nuevos modelos, fechas clave. Sin spam, te puedes dar de
             baja con un click.
           </p>

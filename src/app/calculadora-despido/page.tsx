@@ -29,7 +29,7 @@ export default function Page() {
       <Breadcrumbs items={[{ label: "Calculadora despido y finiquito" }]} />
       <header className="mb-8">
         <h1 className="text-3xl font-bold text-white sm:text-4xl">Calculadora despido y finiquito</h1>
-        <p className="mt-3 text-[#A0A0A0] max-w-3xl">
+        <p className="mt-3 text-[#D0D0D0] max-w-3xl">
           Indemnización + finiquito completo en segundos. Despido improcedente, objetivo, colectivo o procedente.
         </p>
       </header>

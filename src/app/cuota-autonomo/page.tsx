@@ -31,7 +31,7 @@ export default function Page() {
         <h1 className="text-3xl font-bold text-white sm:text-4xl">
           Calculadora cuota de autónomo 2025
         </h1>
-        <p className="mt-3 text-[#A0A0A0] max-w-3xl">
+        <p className="mt-3 text-[#D0D0D0] max-w-3xl">
           Sistema de cotización por ingresos reales (RD-ley 13/2022). 15 tramos según
           tu rendimiento neto mensual.
         </p>
@@ -47,7 +47,7 @@ export default function Page() {
 
       <AdSlot format="leaderboard" className="my-10" />
 
-      <article className="prose prose-gray max-w-3xl text-sm text-[#A0A0A0] space-y-5">
+      <article className="prose prose-gray max-w-3xl text-sm text-[#D0D0D0] space-y-5">
         <h2 className="text-xl font-bold text-white">Cómo se calcula tu cuota</h2>
         <p>
           Desde 2023, los autónomos cotizan por <strong>ingresos reales</strong> en

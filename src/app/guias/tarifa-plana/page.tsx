@@ -33,7 +33,7 @@ export default function Page() {
           Publicado <time dateTime={PUBLISHED}>20 de mayo de 2026</time>
           {PUBLISHED !== MODIFIED && <> · Actualizado <time dateTime={MODIFIED}>20 de mayo de 2026</time></>}
         </p>
-        <p className="text-lg text-[#A0A0A0]">
+        <p className="text-lg text-[#D0D0D0]">
           La <strong>tarifa plana de 87 €/mes</strong> es la bonificación más
           interesante para nuevos autónomos. Pagas la cuota simbólica durante 12 meses
           (prorrogables otros 12) en lugar de los 230-590 €/mes que te tocarían según
@@ -49,9 +49,9 @@ export default function Page() {
         </ul>
 
         <h2 className="text-2xl font-bold mt-10">Importes 2025</h2>
-        <div className="not-prose rounded-xl border border-[#1A1A1A] bg-[#0F0F0F] overflow-hidden my-6">
+        <div className="not-prose  border border-[#1A1A1A] bg-[#0F0F0F] overflow-hidden my-6">
           <table className="w-full text-sm">
-            <thead className="bg-[#0A0A0A] text-xs uppercase text-[#A0A0A0]">
+            <thead className="bg-[#0A0A0A] text-xs uppercase text-[#D0D0D0]">
               <tr>
                 <th className="px-4 py-2 text-left">Período</th>
                 <th className="px-4 py-2 text-right">Cuota mensual</th>
@@ -104,9 +104,9 @@ export default function Page() {
 
         <h2 className="text-2xl font-bold mt-10">Cuánto ahorras</h2>
         <p>Ejemplos comparando con la cuota normal:</p>
-        <div className="not-prose rounded-xl border border-[#1A1A1A] bg-[#0F0F0F] overflow-hidden my-6">
+        <div className="not-prose  border border-[#1A1A1A] bg-[#0F0F0F] overflow-hidden my-6">
           <table className="w-full text-sm">
-            <thead className="bg-[#0A0A0A] text-xs uppercase text-[#A0A0A0]">
+            <thead className="bg-[#0A0A0A] text-xs uppercase text-[#D0D0D0]">
               <tr>
                 <th className="px-4 py-2 text-left">Si ganaras...</th>
                 <th className="px-4 py-2 text-right">Cuota normal</th>
@@ -136,12 +136,12 @@ export default function Page() {
           cotizar por una base mayor.
         </p>
 
-        <div className="mt-12 rounded-xl bg-[#0F0F0F] border border-[#D1FF26] p-6">
+        <div className="mt-12  bg-[#0F0F0F] border border-[#D1FF26] p-6">
           <h3 className="text-lg font-semibold m-0">Calcula tu ahorro real</h3>
           <p className="mt-2 mb-3">
             Aplica la tarifa plana en nuestra calculadora y compara con tu tramo normal:
           </p>
-          <Link href="/cuota-autonomo" className="inline-flex items-center gap-2 bg-[#D1FF26] text-[#0A0A0A] px-4 py-2 rounded-lg font-medium text-sm hover:opacity-90">
+          <Link href="/cuota-autonomo" className="inline-flex items-center gap-2 bg-[#D1FF26] text-[#0A0A0A] px-4 py-2  font-medium text-sm hover:opacity-90">
             Calcular cuota con tarifa plana
           </Link>
         </div>

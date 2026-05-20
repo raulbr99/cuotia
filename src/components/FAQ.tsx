@@ -25,7 +25,7 @@ export function FAQ({ items, title = "Preguntas frecuentes" }: { items: FAQItem[
               <span>{it.q}</span>
               <span className="text-xl text-[#D1FF26] transition-transform group-open:rotate-45">+</span>
             </summary>
-            <p className="mt-4 text-[13px] leading-relaxed text-[#A0A0A0]">{it.a}</p>
+            <p className="mt-4 text-[13px] leading-relaxed text-[#D0D0D0]">{it.a}</p>
           </details>
         ))}
       </div>
