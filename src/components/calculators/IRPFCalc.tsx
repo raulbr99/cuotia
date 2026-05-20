@@ -8,20 +8,21 @@ import { eur, pct } from "@/lib/format";
 type Modo = "anual" | "trimestral";
 const STORAGE_KEY = "calc-autonomo:ccaa";
 
-export function IRPFCalc() {
+export function IRPFCalc({ defaultCcaa = "madrid" as CCAA, lockCcaa = false }: { defaultCcaa?: CCAA; lockCcaa?: boolean } = {}) {
   const [modo, setModo] = useState<Modo>("anual");
   const [base, setBase] = useState<number>(30000);
-  const [ccaa, setCcaa] = useState<CCAA>("madrid");
+  const [ccaa, setCcaa] = useState<CCAA>(defaultCcaa);
   const [ingresosTrim, setIngresosTrim] = useState<number>(15000);
   const [gastosTrim, setGastosTrim] = useState<number>(3000);
   const [retenciones, setRetenciones] = useState<number>(0);
 
   useEffect(() => {
+    if (lockCcaa) return;
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved && saved in CCAA_NAMES) setCcaa(saved as CCAA);
     } catch {}
-  }, []);
+  }, [lockCcaa]);
 
   useEffect(() => {
     try { localStorage.setItem(STORAGE_KEY, ccaa); } catch {}

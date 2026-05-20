@@ -41,6 +41,20 @@ export const metadata: Metadata = {
     title: "Calculadoras fiscales para autónomos en España",
     description:
       "Calcula tu cuota, IRPF, modelo 130 y neto en segundos. Tramos 2025 vigentes.",
+    images: [
+      {
+        url: `${SITE_URL}/api/og?title=${encodeURIComponent("Calculadoras fiscales para autónomos")}&subtitle=${encodeURIComponent("Cuota, IRPF, modelo 130, neto/bruto y más. Sin registros, sin emails. Tramos 2025.")}`,
+        width: 1200,
+        height: 630,
+        alt: "CalcAutónomo — Calculadoras fiscales para autónomos en España",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CalcAutónomo · Calculadoras fiscales gratuitas",
+    description: "Cuota, IRPF, modelo 130 y más en segundos.",
+    images: [`${SITE_URL}/api/og?title=${encodeURIComponent("Calculadoras fiscales para autónomos")}`],
   },
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },

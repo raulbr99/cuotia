@@ -5,11 +5,15 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 
+const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://calc-autonomo.vercel.app"}/api/og?title=${encodeURIComponent("Calculadora IRPF 2025")}&subtitle=${encodeURIComponent("Escala estatal + 17 CCAA + modelo 130 trimestral")}&tag=IRPF`;
+
 export const metadata: Metadata = {
   title: "Calculadora IRPF autónomo 2025 · por Comunidad Autónoma + modelo 130",
   description:
     "Calcula tu IRPF anual con la escala estatal + autonómica de tu CCAA (Madrid, Cataluña, Andalucía, Valencia, las 17 CCAA). Pago fraccionado modelo 130 trimestral incluido.",
   alternates: { canonical: "/calculadora-irpf" },
+  openGraph: { title: "IRPF 2025 por Comunidad Autónoma", description: "17 escalas + modelo 130", images: [{ url: ogUrl, width: 1200, height: 630 }] },
+  twitter: { card: "summary_large_image", images: [ogUrl] },
 };
 
 export default function Page() {

@@ -5,11 +5,15 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 
+const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://calc-autonomo.vercel.app"}/api/og?title=${encodeURIComponent("Calculadora cuota autónomo 2025")}&subtitle=${encodeURIComponent("15 tramos por ingresos reales + tarifa plana 87 €/mes")}&tag=Cuota+autónomo`;
+
 export const metadata: Metadata = {
   title: "Calculadora cuota autónomo 2025 · tramos por ingresos reales",
   description:
     "Calcula tu cuota mensual de autónomo según los 15 tramos vigentes 2025 (RD-ley 13/2022). Mínima, máxima o personalizada. Tarifa plana 87 €/mes incluida.",
   alternates: { canonical: "/cuota-autonomo" },
+  openGraph: { title: "Calculadora cuota autónomo 2025", description: "15 tramos + tarifa plana", images: [{ url: ogUrl, width: 1200, height: 630 }] },
+  twitter: { card: "summary_large_image", images: [ogUrl] },
 };
 
 export default function Page() {

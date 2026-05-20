@@ -4,10 +4,14 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 import { FAQ } from "@/components/FAQ";
 
+const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://calc-autonomo.vercel.app"}/api/og?title=${encodeURIComponent("Generador de facturas PDF")}&subtitle=${encodeURIComponent("Crea facturas legalmente válidas en 1 minuto · Sin registro")}&tag=Facturas`;
+
 export const metadata: Metadata = {
   title: "Generador de facturas gratis para autónomos · descarga PDF",
   description: "Crea facturas profesionales en 1 minuto: emisor, cliente, líneas, IVA, retención IRPF. Descarga gratis en PDF. Sin registro.",
   alternates: { canonical: "/generador-facturas" },
+  openGraph: { title: "Generador de facturas PDF gratis", description: "Sin registro, en 1 minuto", images: [{ url: ogUrl, width: 1200, height: 630 }] },
+  twitter: { card: "summary_large_image", images: [ogUrl] },
 };
 
 export default function Page() {

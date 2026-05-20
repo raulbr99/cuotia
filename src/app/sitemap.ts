@@ -1,11 +1,12 @@
 import type { MetadataRoute } from "next";
+import { CCAA_NAMES, type CCAA } from "@/lib/irpf-ccaa";
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://calc-autonomo.vercel.app";
 
 const ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "", priority: 1.0, freq: "weekly" },
   { path: "/cuota-autonomo", priority: 0.95, freq: "monthly" },
-  { path: "/calculadora-irpf", priority: 0.9, freq: "monthly" },
+  { path: "/calculadora-irpf", priority: 0.95, freq: "monthly" },
   { path: "/calculadora-iva", priority: 0.9, freq: "monthly" },
   { path: "/neto-bruto", priority: 0.9, freq: "monthly" },
   { path: "/calculadora-despido", priority: 0.9, freq: "monthly" },
@@ -20,12 +21,24 @@ const ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitemap[numb
   { path: "/generador-facturas", priority: 0.95, freq: "monthly" },
 ];
 
+const CCAA_ROUTES: { path: string; priority: number }[] = (Object.keys(CCAA_NAMES) as CCAA[])
+  .filter((c) => c !== "navarra" && c !== "pais-vasco")
+  .map((c) => ({ path: `/irpf/${c}`, priority: 0.9 }));
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  return ROUTES.map((r) => ({
-    url: `${BASE}${r.path}`,
-    lastModified: now,
-    changeFrequency: r.freq,
-    priority: r.priority,
-  }));
+  return [
+    ...ROUTES.map((r) => ({
+      url: `${BASE}${r.path}`,
+      lastModified: now,
+      changeFrequency: r.freq,
+      priority: r.priority,
+    })),
+    ...CCAA_ROUTES.map((r) => ({
+      url: `${BASE}${r.path}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: r.priority,
+    })),
+  ];
 }
