@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { CuotaAutonomoCalc } from "@/components/calculators/CuotaAutonomoCalc";
 import { AdSlot } from "@/components/AdSlot";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { QuickAnswer } from "@/components/QuickAnswer";
+import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 
 export const metadata: Metadata = {
   title: "Calculadora cuota autónomo 2025 · tramos por ingresos reales",
@@ -12,16 +15,29 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
+      <CalculatorSchema
+        name="Calculadora cuota autónomo 2025"
+        description="Calcula tu cuota mensual de autónomo según los 15 tramos por ingresos reales (RD-ley 13/2022). Incluye tarifa plana 87 €/mes."
+        path="/cuota-autonomo"
+      />
+      <SpeakableSchema />
+      <Breadcrumbs items={[{ label: "Cuota autónomo" }]} />
+
       <header className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">
           Calculadora cuota de autónomo 2025
         </h1>
         <p className="mt-3 text-gray-600 max-w-3xl">
           Sistema de cotización por ingresos reales (RD-ley 13/2022). 15 tramos según
-          tu rendimiento neto mensual. Elige cuota mínima para pagar menos, máxima
-          para cotizar más para la jubilación, o personalizada.
+          tu rendimiento neto mensual.
         </p>
       </header>
+
+      <QuickAnswer
+        question="¿Cuánto paga un autónomo en 2025?"
+        answer="Un autónomo en España paga entre 230 € y 1.085 € mensuales según su rendimiento neto, distribuido en 15 tramos por ingresos reales (RD-ley 13/2022). La cuota mínima general (tramo 1, ingresos ≤670 €/mes) es 230 €. Los nuevos autónomos pueden acogerse a la tarifa plana de 87 €/mes durante 12 meses, prorrogables otros 12 si su rendimiento neto anual queda por debajo del SMI."
+        updatedAt="2026-05-20"
+      />
 
       <CuotaAutonomoCalc />
 

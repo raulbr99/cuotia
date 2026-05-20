@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { JubilacionCalc } from "@/components/calculators/JubilacionCalc";
 import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
+import { QuickAnswer } from "@/components/QuickAnswer";
 import { FAQ } from "@/components/FAQ";
 
 export const metadata: Metadata = {
@@ -13,14 +15,26 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
+      <CalculatorSchema
+        name="Calculadora pensión jubilación autónomo"
+        description="Estima tu pensión de jubilación como autónomo según base media y años cotizados."
+        path="/jubilacion-autonomo"
+      />
+      <SpeakableSchema />
       <Breadcrumbs items={[{ label: "Jubilación autónomo" }]} />
       <header className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">Jubilación autónomo</h1>
         <p className="mt-3 text-gray-600 max-w-3xl">
-          Estima la pensión que cobrarás al jubilarte como autónomo. Depende de tu
-          base de cotización media y los años cotizados.
+          Estima la pensión que cobrarás al jubilarte. Depende de tu base de cotización
+          media y los años cotizados.
         </p>
       </header>
+
+      <QuickAnswer
+        question="¿Cuál es la pensión de un autónomo en España?"
+        answer="La pensión de jubilación de un autónomo se calcula sobre la base reguladora (media de las bases de cotización de los últimos 25 años) multiplicada por un porcentaje según años cotizados: 50% con 15 años, 100% con 36 años y 6 meses. Edad legal: 67 años en 2027 (65 si tienes 38,5+ años cotizados). Cuidado: los autónomos que cotizaron por la base mínima toda su vida tienen pensiones muy bajas (~700-900 €/mes). Subir tu base de cotización ahora mejora la pensión futura."
+        updatedAt="2026-05-20"
+      />
 
       <JubilacionCalc />
 

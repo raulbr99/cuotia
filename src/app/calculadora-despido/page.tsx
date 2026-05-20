@@ -3,6 +3,8 @@ import { DespidoCalc } from "@/components/calculators/DespidoCalc";
 import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FAQ } from "@/components/FAQ";
+import { QuickAnswer } from "@/components/QuickAnswer";
+import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 
 export const metadata: Metadata = {
   title: "Calculadora indemnización despido y finiquito 2025",
@@ -13,14 +15,26 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
+      <CalculatorSchema
+        name="Calculadora indemnización despido y finiquito"
+        description="Calcula tu indemnización por despido improcedente, objetivo o colectivo, más el finiquito (vacaciones, paga extra, salario pendiente)."
+        path="/calculadora-despido"
+        category="Legal Calculator"
+      />
+      <SpeakableSchema />
       <Breadcrumbs items={[{ label: "Calculadora despido y finiquito" }]} />
       <header className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">Calculadora despido y finiquito</h1>
         <p className="mt-3 text-gray-600 max-w-3xl">
-          Calcula tu indemnización por despido (33 días/año improcedente, 20 días objetivo)
-          y el finiquito (vacaciones no disfrutadas, pagas extras prorrateadas, salario pendiente).
+          Indemnización + finiquito completo en segundos. Despido improcedente, objetivo, colectivo o procedente.
         </p>
       </header>
+
+      <QuickAnswer
+        question="¿Cuánto te corresponde por despido en España?"
+        answer="Despido improcedente: 33 días de salario por año trabajado, con un tope de 24 mensualidades. Despido objetivo o colectivo (ERE): 20 días/año, máximo 12 mensualidades. Despido procedente disciplinario: sin indemnización, solo finiquito. La indemnización está exenta de IRPF hasta 180.000 €; el finiquito (vacaciones no disfrutadas + paga extra proporcional + salario pendiente) sí tributa."
+        updatedAt="2026-05-20"
+      />
 
       <DespidoCalc />
 

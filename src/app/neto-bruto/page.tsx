@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { NetoBrutoCalc } from "@/components/calculators/NetoBrutoCalc";
 import { AdSlot } from "@/components/AdSlot";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
+import { QuickAnswer } from "@/components/QuickAnswer";
 
 export const metadata: Metadata = {
   title: "Calculadora neto/bruto autónomo · cuánto te queda al mes 2025",
@@ -12,15 +15,27 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
+      <CalculatorSchema
+        name="Calculadora neto/bruto autónomo"
+        description="Calcula tu neto anual y mensual como autónomo tras gastos, cuota Seguridad Social e IRPF."
+        path="/neto-bruto"
+      />
+      <SpeakableSchema />
+      <Breadcrumbs items={[{ label: "Neto / Bruto" }]} />
       <header className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">
           ¿Cuánto me queda como autónomo?
         </h1>
         <p className="mt-3 text-gray-600 max-w-3xl">
-          Pasa de bruto a neto: ingresos − gastos − cuota autónomo − IRPF. Estima
-          cuánto tendrás disponible al mes.
+          Pasa de bruto a neto: ingresos − gastos − cuota − IRPF.
         </p>
       </header>
+
+      <QuickAnswer
+        question="¿Cuánto le queda neto a un autónomo?"
+        answer="Un autónomo en España conserva aproximadamente el 55-65% de sus ingresos brutos como neto tras descontar cuota de Seguridad Social (entre 230 € y 1.085 €/mes según tramo), IRPF estatal + autonómico (19-47% progresivo) y gastos deducibles. Por cada 40.000 € brutos con 5.000 € de gastos deducibles, el neto orientativo es 24.000-26.000 € anuales (~2.000 €/mes), variando según Comunidad Autónoma."
+        updatedAt="2026-05-20"
+      />
 
       <NetoBrutoCalc />
 

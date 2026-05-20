@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { InvoiceGenerator } from "@/components/InvoiceGenerator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 import { FAQ } from "@/components/FAQ";
 
 export const metadata: Metadata = {
@@ -12,6 +13,13 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 print:max-w-none print:py-0">
+      <CalculatorSchema
+        name="Generador de facturas autónomo"
+        description="Crea facturas profesionales en PDF con todos los campos legales (NIF, IVA, retención IRPF) en 1 minuto."
+        path="/generador-facturas"
+        category="BusinessApplication"
+      />
+      <SpeakableSchema />
       <div className="print:hidden">
         <Breadcrumbs items={[{ label: "Generador de facturas" }]} />
         <header className="mb-8">

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { IRPFCalc } from "@/components/calculators/IRPFCalc";
 import { AdSlot } from "@/components/AdSlot";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { QuickAnswer } from "@/components/QuickAnswer";
+import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 
 export const metadata: Metadata = {
   title: "Calculadora IRPF autónomo 2025 · por Comunidad Autónoma + modelo 130",
@@ -12,15 +15,29 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
+      <CalculatorSchema
+        name="Calculadora IRPF autónomo 2025"
+        description="Calcula tu IRPF anual con la escala estatal + autonómica de tu Comunidad Autónoma. Incluye pago fraccionado modelo 130 trimestral."
+        path="/calculadora-irpf"
+      />
+      <SpeakableSchema />
+      <Breadcrumbs items={[{ label: "Calculadora IRPF" }]} />
+
       <header className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">
           Calculadora IRPF para autónomos
         </h1>
         <p className="mt-3 text-gray-600 max-w-3xl">
-          Calcula tu cuota anual de IRPF o el pago trimestral del modelo 130. Escala
-          estatal 2025 con desglose por tramos.
+          Cuota anual de IRPF con escala estatal + tu Comunidad Autónoma, o pago
+          trimestral del modelo 130.
         </p>
       </header>
+
+      <QuickAnswer
+        question="¿Cuánto paga un autónomo de IRPF en 2025?"
+        answer="Un autónomo paga IRPF de forma progresiva entre el 19% y el 47% según su rendimiento neto anual y Comunidad Autónoma. La mitad la fija el Estado (9,5% a 24,5% según tramo) y la otra mitad la CCAA — Madrid es la más baja (8,5% inicial), Cataluña una de las más altas (10,5%). Si menos del 70% de tus ingresos llevan retención, presentas trimestralmente el modelo 130 (20% sobre rendimiento neto)."
+        updatedAt="2026-05-20"
+      />
 
       <IRPFCalc />
 

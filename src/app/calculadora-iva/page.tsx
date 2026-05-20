@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { IvaCalc } from "@/components/calculators/IvaCalc";
 import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
+import { QuickAnswer } from "@/components/QuickAnswer";
 import { FAQ } from "@/components/FAQ";
 
 export const metadata: Metadata = {
@@ -13,14 +15,25 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
+      <CalculatorSchema
+        name="Calculadora IVA y modelo 303"
+        description="Calcula el IVA de tus facturas (21/10/4%) o el modelo 303 trimestral."
+        path="/calculadora-iva"
+      />
+      <SpeakableSchema />
       <Breadcrumbs items={[{ label: "Calculadora IVA" }]} />
       <header className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">Calculadora IVA y modelo 303</h1>
         <p className="mt-3 text-gray-600 max-w-3xl">
-          Añade IVA a un importe, quítalo de un precio final, o calcula tu modelo 303
-          trimestral. Tipos vigentes: general 21%, reducido 10%, superreducido 4%.
+          Añade IVA, quítalo de un precio final, o calcula tu modelo 303 trimestral.
         </p>
       </header>
+
+      <QuickAnswer
+        question="¿Qué IVA aplico en mis facturas?"
+        answer="El IVA general en España es del 21% y aplica a la mayoría de bienes y servicios. El reducido (10%) cubre hostelería, transporte, alimentación no básica y vivienda nueva. El superreducido (4%) aplica a alimentos básicos, libros y medicinas. Algunos servicios están exentos (educación, sanidad pública). Como autónomo declaras trimestralmente con el modelo 303: IVA cobrado menos IVA soportado. El resumen anual se hace con el modelo 390 entre el 1 y el 30 de enero."
+        updatedAt="2026-05-20"
+      />
 
       <IvaCalc />
 
