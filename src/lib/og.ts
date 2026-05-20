@@ -1,4 +1,4 @@
-const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://calc-autonomo.vercel.app";
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 
 export function ogImage(opts: { title: string; subtitle?: string; tag?: string }): string {
   const params = new URLSearchParams();

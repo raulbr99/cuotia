@@ -81,7 +81,7 @@ const COLOR_MAP: Record<string, string> = {
   violet: "bg-violet-50 text-violet-700 border-violet-100 group-hover:border-violet-300",
 };
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://calc-autonomo.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 
 const websiteJsonLd = {
   "@context": "https://schema.org",

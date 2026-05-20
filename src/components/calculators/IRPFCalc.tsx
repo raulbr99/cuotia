@@ -6,7 +6,7 @@ import { calcularIRPFConCCAA, CCAA_NAMES, TRAMOS_CCAA_2025, type CCAA } from "@/
 import { eur, pct } from "@/lib/format";
 
 type Modo = "anual" | "trimestral";
-const STORAGE_KEY = "calc-autonomo:ccaa";
+const STORAGE_KEY = "cuotia:ccaa";
 
 export function IRPFCalc({ defaultCcaa = "madrid" as CCAA, lockCcaa = false }: { defaultCcaa?: CCAA; lockCcaa?: boolean } = {}) {
   const [modo, setModo] = useState<Modo>("anual");

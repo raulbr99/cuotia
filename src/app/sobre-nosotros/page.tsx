@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Calculator, Shield, BookOpen, Mail, ExternalLink, CheckCircle2 } from "lucide-react";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://calc-autonomo.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 
 const ogUrl = `${SITE_URL}/api/og?title=${encodeURIComponent("Sobre CalcAutónomo")}&subtitle=${encodeURIComponent("Quién operamos el sitio, fuentes oficiales y metodología")}&tag=Sobre+nosotros`;
 
@@ -140,7 +140,7 @@ export default function Page() {
         <p className="flex items-center gap-2">
           <Mail className="h-5 w-5 text-emerald-600" />
           ¿Has detectado un error en un cálculo? ¿Sugerencias de calculadoras? Escríbenos a
-          <a href="mailto:hola@calc-autonomo.es" className="text-emerald-700">hola@calc-autonomo.es</a>.
+          <a href="mailto:hola@cuotia.es" className="text-emerald-700">hola@cuotia.es</a>.
         </p>
 
         <div className="not-prose mt-12 rounded-xl bg-emerald-50 border border-emerald-200 p-6">

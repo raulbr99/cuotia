@@ -4,7 +4,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Newspaper, ArrowRight, Calendar } from "lucide-react";
 import { POSTS, formatBlogDate } from "@/lib/blog";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://calc-autonomo.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 const ogUrl = `${SITE_URL}/api/og?title=${encodeURIComponent("Blog · cambios fiscales para autónomos")}&subtitle=${encodeURIComponent("Verifactu, MEI, tramos, SMI, IRPF · noticias en lenguaje claro")}&tag=Blog`;
 
 export const metadata: Metadata = {

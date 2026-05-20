@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { CCAA_NAMES, type CCAA } from "@/lib/irpf-ccaa";
 import { POSTS } from "@/lib/blog";
 
-const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://calc-autonomo.vercel.app";
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 
 const ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "", priority: 1.0, freq: "weekly" },

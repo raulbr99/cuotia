@@ -5,7 +5,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 
-const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://calc-autonomo.vercel.app"}/api/og?title=${encodeURIComponent("Calculadora IRPF 2025")}&subtitle=${encodeURIComponent("Escala estatal + 17 CCAA + modelo 130 trimestral")}&tag=IRPF`;
+const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es"}/api/og?title=${encodeURIComponent("Calculadora IRPF 2025")}&subtitle=${encodeURIComponent("Escala estatal + 17 CCAA + modelo 130 trimestral")}&tag=IRPF`;
 
 export const metadata: Metadata = {
   title: "Calculadora IRPF autónomo 2025 · por Comunidad Autónoma + modelo 130",

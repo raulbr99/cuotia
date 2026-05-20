@@ -6,8 +6,8 @@ import { calcularInvoice, emptyInvoice, type InvoiceData, type InvoiceItem, type
 import { TIPOS_IVA, type TipoIVA } from "@/lib/iva";
 import { eur } from "@/lib/format";
 
-const STORAGE_KEY = "calc-autonomo:invoice";
-const EMISOR_KEY = "calc-autonomo:emisor";
+const STORAGE_KEY = "cuotia:invoice";
+const EMISOR_KEY = "cuotia:emisor";
 
 export function InvoiceGenerator() {
   const [data, setData] = useState<InvoiceData>(emptyInvoice());

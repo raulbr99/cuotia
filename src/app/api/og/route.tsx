@@ -99,7 +99,7 @@ export async function GET(req: Request) {
             fontSize: 22,
           }}
         >
-          <div style={{ display: "flex" }}>calc-autonomo.vercel.app</div>
+          <div style={{ display: "flex" }}>cuotia.es</div>
           <div style={{ display: "flex", gap: 8 }}>
             <span style={{ color: "#059669", fontWeight: 600 }}>Gratis</span>
             <span>·</span>

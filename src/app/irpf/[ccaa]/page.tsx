@@ -10,7 +10,7 @@ import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 import { CCAA_NAMES, TRAMOS_CCAA_2025, type CCAA } from "@/lib/irpf-ccaa";
 import { eur, pct } from "@/lib/format";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://calc-autonomo.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 
 const VALID_CCAAS: CCAA[] = (Object.keys(CCAA_NAMES) as CCAA[]).filter(
   (c) => c !== "navarra" && c !== "pais-vasco",

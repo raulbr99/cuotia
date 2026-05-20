@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/guias/alta-autonomo" },
 };
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://calc-autonomo.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 
 const howToJsonLd = {
   "@context": "https://schema.org",

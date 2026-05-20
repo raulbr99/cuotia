@@ -7,7 +7,7 @@ import { ArticleSchema } from "@/components/Schemas";
 import { Calendar, ArrowLeft, ArrowRight } from "lucide-react";
 import { POSTS, getPostBySlug, formatBlogDate } from "@/lib/blog";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://calc-autonomo.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 
 export function generateStaticParams() {
   return POSTS.map((p) => ({ slug: p.slug }));

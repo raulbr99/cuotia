@@ -6,7 +6,7 @@ import { FAQ } from "@/components/FAQ";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 
-const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://calc-autonomo.vercel.app"}/api/og?title=${encodeURIComponent("Indemnización despido y finiquito")}&subtitle=${encodeURIComponent("Improcedente 33 d/año · Objetivo 20 d/año · Finiquito completo")}&tag=Despido`;
+const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es"}/api/og?title=${encodeURIComponent("Indemnización despido y finiquito")}&subtitle=${encodeURIComponent("Improcedente 33 d/año · Objetivo 20 d/año · Finiquito completo")}&tag=Despido`;
 
 export const metadata: Metadata = {
   title: "Calculadora indemnización despido y finiquito 2025",

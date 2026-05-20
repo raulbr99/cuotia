@@ -6,7 +6,7 @@ interface Crumb {
   href?: string;
 }
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://calc-autonomo.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 
 export function Breadcrumbs({ items }: { items: Crumb[] }) {
   const jsonLd = {

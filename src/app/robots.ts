@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://calc-autonomo.vercel.app";
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 
 export default function robots(): MetadataRoute.Robots {
   return {

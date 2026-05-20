@@ -5,7 +5,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 
-const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://calc-autonomo.vercel.app"}/api/og?title=${encodeURIComponent("Calculadora cuota autónomo 2025")}&subtitle=${encodeURIComponent("15 tramos por ingresos reales + tarifa plana 87 €/mes")}&tag=Cuota+autónomo`;
+const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es"}/api/og?title=${encodeURIComponent("Calculadora cuota autónomo 2025")}&subtitle=${encodeURIComponent("15 tramos por ingresos reales + tarifa plana 87 €/mes")}&tag=Cuota+autónomo`;
 
 export const metadata: Metadata = {
   title: "Calculadora cuota autónomo 2025 · tramos por ingresos reales",
