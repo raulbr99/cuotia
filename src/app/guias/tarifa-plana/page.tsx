@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { AdSlot } from "@/components/AdSlot";
 import { FAQ } from "@/components/FAQ";
+import { ArticleSchema } from "@/components/Schemas";
 import Link from "next/link";
+import { Calendar } from "lucide-react";
+
+const PUBLISHED = "2026-05-20";
+const MODIFIED = "2026-05-20";
 
 export const metadata: Metadata = {
   title: "Tarifa plana autónomo 2025 · 87 €/mes, requisitos y prórroga",
@@ -13,9 +18,21 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
+      <ArticleSchema
+        headline="Tarifa plana del autónomo 2025"
+        description="87 €/mes durante 12 meses prorrogables. Requisitos, prórroga, errores comunes y tabla de ahorros."
+        path="/guias/tarifa-plana"
+        datePublished={PUBLISHED}
+        dateModified={MODIFIED}
+      />
       <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Tarifa plana" }]} />
       <article className="prose prose-gray max-w-none">
         <h1 className="text-3xl font-bold sm:text-4xl">Tarifa plana del autónomo 2025</h1>
+        <p className="text-xs text-gray-500 flex items-center gap-1.5 my-3 not-prose">
+          <Calendar className="h-3 w-3" />
+          Publicado <time dateTime={PUBLISHED}>20 de mayo de 2026</time>
+          {PUBLISHED !== MODIFIED && <> · Actualizado <time dateTime={MODIFIED}>20 de mayo de 2026</time></>}
+        </p>
         <p className="text-lg text-gray-600">
           La <strong>tarifa plana de 87 €/mes</strong> es la bonificación más
           interesante para nuevos autónomos. Pagas la cuota simbólica durante 12 meses

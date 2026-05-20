@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { CCAA_NAMES, type CCAA } from "@/lib/irpf-ccaa";
+import { POSTS } from "@/lib/blog";
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://calc-autonomo.vercel.app";
 
@@ -19,6 +20,8 @@ const ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitemap[numb
   { path: "/guias/gastos-deducibles", priority: 0.85, freq: "monthly" },
   { path: "/guias/tarifa-plana", priority: 0.85, freq: "monthly" },
   { path: "/generador-facturas", priority: 0.95, freq: "monthly" },
+  { path: "/sobre-nosotros", priority: 0.6, freq: "yearly" },
+  { path: "/blog", priority: 0.8, freq: "weekly" },
 ];
 
 const CCAA_ROUTES: { path: string; priority: number }[] = (Object.keys(CCAA_NAMES) as CCAA[])
@@ -39,6 +42,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: r.priority,
+    })),
+    ...POSTS.map((p) => ({
+      url: `${BASE}/blog/${p.slug}`,
+      lastModified: new Date(p.dateModified || p.datePublished),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     })),
   ];
 }

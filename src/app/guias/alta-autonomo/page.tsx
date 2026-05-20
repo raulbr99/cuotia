@@ -2,8 +2,12 @@ import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { AdSlot } from "@/components/AdSlot";
 import { FAQ } from "@/components/FAQ";
+import { ArticleSchema } from "@/components/Schemas";
 import Link from "next/link";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Calendar } from "lucide-react";
+
+const PUBLISHED = "2026-05-20";
+const MODIFIED = "2026-05-20";
 
 export const metadata: Metadata = {
   title: "Cómo darse de alta como autónomo en 2025 · paso a paso",
@@ -31,9 +35,21 @@ export default function Page() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} />
+      <ArticleSchema
+        headline="Cómo darse de alta como autónomo en 2025"
+        description="Guía paso a paso: modelo 036/037, alta en RETA, tarifa plana, plazos y errores comunes."
+        path="/guias/alta-autonomo"
+        datePublished={PUBLISHED}
+        dateModified={MODIFIED}
+      />
       <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Alta autónomo" }]} />
       <article className="prose prose-gray max-w-none">
         <h1 className="text-3xl font-bold sm:text-4xl">Cómo darse de alta como autónomo en 2025</h1>
+        <p className="text-xs text-gray-500 flex items-center gap-1.5 my-3 not-prose">
+          <Calendar className="h-3 w-3" />
+          Publicado <time dateTime={PUBLISHED}>20 de mayo de 2026</time>
+          {PUBLISHED !== MODIFIED && <> · Actualizado <time dateTime={MODIFIED}>20 de mayo de 2026</time></>}
+        </p>
         <p className="text-lg text-gray-600">
           Antes de emitir tu primera factura, tienes que registrarte en dos sitios:
           <strong> Hacienda</strong> y <strong>Seguridad Social</strong>. Los dos trámites son online,

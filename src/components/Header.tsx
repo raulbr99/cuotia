@@ -56,6 +56,9 @@ export function Header() {
           <Link href="/guias" className="rounded-md px-3 py-1.5 text-gray-600 hover:bg-gray-100 hover:text-gray-900 hidden sm:inline-block">
             Guías
           </Link>
+          <Link href="/blog" className="rounded-md px-3 py-1.5 text-gray-600 hover:bg-gray-100 hover:text-gray-900 hidden sm:inline-block">
+            Blog
+          </Link>
         </nav>
       </div>
     </header>

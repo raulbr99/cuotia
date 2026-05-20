@@ -34,6 +34,8 @@ export function Footer() {
               <li><Link href="/guias/alta-autonomo" className="hover:text-emerald-600">Cómo darse de alta</Link></li>
               <li><Link href="/guias/gastos-deducibles" className="hover:text-emerald-600">Gastos deducibles</Link></li>
               <li><Link href="/guias/tarifa-plana" className="hover:text-emerald-600">Tarifa plana</Link></li>
+              <li><Link href="/blog" className="hover:text-emerald-600">Blog</Link></li>
+              <li><Link href="/sobre-nosotros" className="hover:text-emerald-600">Sobre nosotros</Link></li>
             </ul>
           </div>
           <div>
