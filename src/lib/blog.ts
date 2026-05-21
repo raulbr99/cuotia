@@ -11,6 +11,62 @@ export interface BlogPost {
 
 export const POSTS: BlogPost[] = [
   {
+    slug: "calendario-fiscal-q3-2026",
+    title: "Calendario fiscal Q3 2026: modelos del trimestre julio-septiembre",
+    description: "Todas las fechas clave del 2º y 3er trimestre 2026: modelo 303 (IVA), 130 (IRPF), 111 (retenciones), 115 (alquileres). Antes del 21 de julio.",
+    datePublished: "2026-05-21",
+    category: "Calendario",
+    tag: "Modelos trimestrales",
+    content: `## Antes del 21 de julio de 2026
+
+Los autónomos en estimación directa tienen que presentar **4 modelos** (algunos según situación) en el plazo del segundo trimestre:
+
+### Obligatorios para casi todos
+
+- **Modelo 303 (IVA)** — del 1 al 20 de julio (21 si es festivo)
+  - IVA repercutido del Q2 menos IVA soportado deducible
+  - Domiciliación bancaria: hasta el 15 de julio
+- **Modelo 130 (pago fraccionado IRPF)** — del 1 al 20 de julio
+  - Solo si menos del 70% de tus ingresos llevan retención IRPF
+  - 20% sobre rendimiento neto trimestral – retenciones soportadas
+
+### Según situación
+
+- **Modelo 111 (retenciones IRPF a trabajadores y profesionales)** — del 1 al 20 de julio
+  - Si has tenido empleados o pagado facturas a otros profesionales con retención
+- **Modelo 115 (retenciones por alquiler de inmuebles)** — del 1 al 20 de julio
+  - Si pagas alquiler de oficina/local a empresa propietaria
+
+## Recursos para presentar
+
+1. **Vía telemática AEAT**: con certificado digital o Cl@ve
+2. **A través de tu gestor**: si tienes contratada gestoría
+3. **App AEAT** (limitada para algunos modelos)
+
+## Calculadoras útiles
+
+- [Calcula tu cuota IVA modelo 303](/calculadora-iva)
+- [Calcula tu pago fraccionado modelo 130](/calculadora-irpf)
+- [Calcula retención IRPF en facturas](/retencion-irpf-facturas)
+
+## Atención a Q3 (octubre)
+
+El siguiente plazo es **del 1 al 20 de octubre** (mismos modelos). Si vas a estar de
+vacaciones en agosto, deja preparado el material desde julio.
+
+## Y a final de año
+
+Recuerda los modelos anuales:
+- **Modelo 390** (resumen anual IVA): enero
+- **Modelo 190** (resumen anual 111): enero
+- **Modelo 180** (resumen anual 115): enero
+- **Modelo 347** (operaciones >3.005,06 €): febrero
+- **Modelo 100** (Renta): abril-junio
+
+Más en el [calendario fiscal completo](/calendario-fiscal).
+`,
+  },
+  {
     slug: "verifactu-pospuesto-julio-2027",
     title: "Verifactu para autónomos: pospuesto a julio 2027",
     description: "La obligación del sistema Verifactu y el envío de facturas a Hacienda en tiempo real se aplaza para autónomos hasta el 1 de julio de 2027.",
