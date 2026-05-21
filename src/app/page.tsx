@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { Newsletter } from "@/components/Newsletter";
 
@@ -62,26 +63,34 @@ export default function HomePage() {
 
       {/* HERO */}
       <section className="border-b border-neutral-200">
-        <div className="mx-auto max-w-5xl px-5 py-16 md:py-24">
-          <div className="grid gap-10 md:grid-cols-12 md:items-end">
-            <div className="md:col-span-8">
+        <div className="mx-auto max-w-5xl px-5 py-12 md:py-20">
+          <div className="grid gap-10 md:grid-cols-12 md:items-center">
+            <div className="md:col-span-7">
               <p className="text-[11px] uppercase tracking-[0.18em] text-neutral-500 mb-5">
                 Calculadoras fiscales · 2026
               </p>
-              <h1 className="font-serif text-[2.5rem] leading-[1.05] tracking-tight text-neutral-900 sm:text-6xl md:text-7xl">
+              <h1 className="font-serif text-[2.5rem] leading-[1.05] tracking-tight text-neutral-900 sm:text-6xl md:text-[5rem]">
                 Hacienda no te lo<br />
                 cuenta claro.<br />
                 <span className="italic text-[#B91C1C]">Aquí&nbsp;sí.</span>
               </h1>
-            </div>
-            <div className="md:col-span-4">
-              <p className="text-[15px] leading-relaxed text-neutral-700 max-w-sm">
+              <p className="mt-7 text-[15px] leading-relaxed text-neutral-700 max-w-md">
                 Cuota, IRPF, IVA, despido, jubilación. Calculadoras gratis,
                 sin registro, con los datos oficiales del BOE.
-                <span className="block mt-3 text-neutral-500 italic text-[13px]">
-                  Hechas por autónomos hartos de no saber cuánto deben.
-                </span>
               </p>
+              <p className="mt-3 text-[13px] italic text-neutral-500 max-w-md">
+                Hechas por autónomos hartos de no saber cuánto deben.
+              </p>
+            </div>
+            <div className="md:col-span-5">
+              <Image
+                src="/hero-stamp.jpg"
+                alt="Ilustración editorial de un sello de tinta junto a su impresión en rojo"
+                width={1024}
+                height={576}
+                priority
+                className="w-full h-auto"
+              />
             </div>
           </div>
         </div>
@@ -99,7 +108,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* PRIMARY CALCS (editorial cards) */}
+      {/* PRIMARY CALCS */}
       <section className="border-b border-neutral-200">
         <div className="mx-auto max-w-5xl px-5 py-16">
           <div className="grid gap-10 md:grid-cols-2">
@@ -134,7 +143,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECONDARY CALCS (denser list, magazine-style) */}
+      {/* SECONDARY CALCS */}
       <section className="border-b border-neutral-200">
         <div className="mx-auto max-w-5xl px-5 py-14">
           <h3 className="font-serif text-2xl tracking-tight text-neutral-900 mb-8">
@@ -178,15 +187,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* MANIFESTO */}
+      {/* MANIFESTO with desk image */}
       <section className="border-b border-neutral-200">
         <div className="mx-auto max-w-5xl px-5 py-16">
-          <div className="grid gap-10 md:grid-cols-12">
+          <div className="grid gap-10 md:grid-cols-12 md:items-start">
             <div className="md:col-span-5">
-              <p className="text-[11px] uppercase tracking-[0.18em] text-[#B91C1C] mb-3">
+              <Image
+                src="/manifesto-desk.png"
+                alt="Ilustración editorial cenital de un escritorio con calculadora, formularios fiscales y café"
+                width={1024}
+                height={576}
+                className="w-full h-auto"
+              />
+              <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-[#B91C1C]">
                 Por qué Cuotia
               </p>
-              <h3 className="font-serif text-3xl leading-tight tracking-tight text-neutral-900">
+              <h3 className="mt-2 font-serif text-3xl leading-tight tracking-tight text-neutral-900">
                 Sin registro,<br /> sin pop-ups,<br /> sin trampa.
               </h3>
             </div>
