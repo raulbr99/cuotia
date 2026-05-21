@@ -23,10 +23,10 @@ export default function Page() {
       <SpeakableSchema />
       <Breadcrumbs items={[{ label: "Neto / Bruto" }]} />
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-white sm:text-4xl">
+        <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl">
           ¿Cuánto me queda como autónomo?
         </h1>
-        <p className="mt-3 text-[#D0D0D0] max-w-3xl">
+        <p className="mt-3 text-slate-700 max-w-3xl">
           Pasa de bruto a neto: ingresos − gastos − cuota − IRPF.
         </p>
       </header>
@@ -41,10 +41,10 @@ export default function Page() {
 
       <AdSlot format="leaderboard" className="my-10" />
 
-      <article className="prose prose-gray max-w-3xl text-sm text-[#D0D0D0] space-y-5">
-        <h2 className="text-xl font-bold text-white">Cómo se calcula tu neto</h2>
+      <article className="prose prose-gray max-w-3xl text-sm text-slate-700 space-y-5">
+        <h2 className="text-xl font-bold text-slate-900">Cómo se calcula tu neto</h2>
         <p>El cálculo es:</p>
-        <pre className="bg-[#0A0A0A]  p-4 text-xs">
+        <pre className="bg-white  p-4 text-xs">
 {`Ingresos brutos
 − Gastos deducibles
 − Cuota autónomo anual (12 × mensual)
@@ -52,7 +52,7 @@ export default function Page() {
 = NETO anual`}
         </pre>
 
-        <h2 className="text-xl font-bold text-white">Qué cuenta como gasto deducible</h2>
+        <h2 className="text-xl font-bold text-slate-900">Qué cuenta como gasto deducible</h2>
         <ul>
           <li>Material y suministros relacionados con la actividad</li>
           <li>Gestoría y servicios profesionales</li>
@@ -63,7 +63,7 @@ export default function Page() {
           <li>Seguros relacionados con la actividad</li>
         </ul>
 
-        <h2 className="text-xl font-bold text-white">Por qué tu neto puede ser menor</h2>
+        <h2 className="text-xl font-bold text-slate-900">Por qué tu neto puede ser menor</h2>
         <p>
           Esta calculadora no incluye <strong>la cuota autonómica del IRPF</strong>
           (varía por CCAA). En la mayoría de regiones añade entre un 3 y un 10% al

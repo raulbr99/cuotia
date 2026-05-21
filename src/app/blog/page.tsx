@@ -30,11 +30,11 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
       <Breadcrumbs items={[{ label: "Blog" }]} />
       <header className="mb-10">
-        <h1 className="text-3xl font-bold text-white sm:text-4xl flex items-center gap-3">
-          <Newspaper className="h-7 w-7 text-[#D1FF26]" />
+        <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl flex items-center gap-3">
+          <Newspaper className="h-7 w-7 text-blue-600" />
           Blog
         </h1>
-        <p className="mt-3 text-[#D0D0D0] max-w-3xl">
+        <p className="mt-3 text-slate-700 max-w-3xl">
           Cambios fiscales que afectan a los autónomos, explicados sin jerga. Sin
           publicidad encubierta, sin recomendaciones de gestoría.
         </p>
@@ -45,22 +45,22 @@ export default function Page() {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="group block  border border-[#1A1A1A] bg-[#0F0F0F] p-6 hover:bg-[#0A0A0A] hover:border-[#252525] transition-all"
+            className="group block  rounded-xl border border-slate-200 bg-white p-6 hover:bg-white hover:border-slate-300 transition-all"
           >
             <div className="flex items-baseline gap-3 mb-2">
-              <span className="rounded-full bg-[#0F0F0F] text-[#D1FF26] text-[10px] font-semibold uppercase tracking-wider px-2 py-1">
+              <span className="rounded-full bg-white text-blue-600 text-[10px] font-semibold uppercase tracking-wider px-2 py-1">
                 {post.tag}
               </span>
-              <span className="text-xs text-[#606060] flex items-center gap-1">
+              <span className="text-xs text-slate-500 flex items-center gap-1">
                 <Calendar className="h-3 w-3" />
                 {formatBlogDate(post.datePublished)}
               </span>
             </div>
-            <h2 className="text-xl font-bold text-white group-hover:text-[#D1FF26] transition-colors flex items-center gap-2">
+            <h2 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors flex items-center gap-2">
               {post.title}
               <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
             </h2>
-            <p className="text-sm text-[#D0D0D0] mt-2">{post.description}</p>
+            <p className="text-sm text-slate-700 mt-2">{post.description}</p>
           </Link>
         ))}
       </div>

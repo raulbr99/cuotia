@@ -1,72 +1,69 @@
 import Link from "next/link";
-import { Calculator, Receipt, Wallet, Calendar, ArrowRight, Briefcase, HeartPulse, Coins, Car, BookOpen, Percent, FileText } from "lucide-react";
+import { Calculator, Receipt, Wallet, Calendar, ArrowRight, Briefcase, HeartPulse, Coins, Car, BookOpen, Percent, FileText, ShieldCheck, Zap, Lock } from "lucide-react";
 import { AdSlot } from "@/components/AdSlot";
 import { Newsletter } from "@/components/Newsletter";
 
 const CALCS = [
   {
-    code: "SIF-0001",
     href: "/cuota-autonomo",
     icon: Calculator,
     title: "Cuota autónomo",
     description: "Tu cuota mensual por los 15 tramos vigentes 2025. Tarifa plana incluida.",
   },
   {
-    code: "SIF-0002",
     href: "/calculadora-irpf",
     icon: Receipt,
     title: "IRPF + modelo 130",
     description: "IRPF anual con tramos estatales y pago fraccionado trimestral.",
   },
   {
-    code: "SIF-0003",
     href: "/calculadora-iva",
     icon: Percent,
     title: "IVA + modelo 303",
     description: "Añade, quita IVA o calcula el modelo 303 trimestral.",
   },
   {
-    code: "SIF-0004",
     href: "/neto-bruto",
     icon: Wallet,
     title: "Neto / Bruto",
     description: "Cuánto te queda después de gastos, cuota e IRPF.",
   },
   {
-    code: "SIF-0005",
     href: "/calculadora-despido",
     icon: Briefcase,
     title: "Despido + finiquito",
     description: "Indemnización improcedente, objetivo, colectivo + finiquito.",
   },
   {
-    code: "SIF-0006",
     href: "/baja-medica",
     icon: HeartPulse,
     title: "Baja médica",
     description: "Prestación por enfermedad común o accidente laboral.",
   },
   {
-    code: "SIF-0007",
     href: "/jubilacion-autonomo",
     icon: Coins,
     title: "Jubilación",
     description: "Pensión según base media y años cotizados.",
   },
   {
-    code: "SIF-0008",
     href: "/dietas-kilometraje",
     icon: Car,
     title: "Dietas + km",
     description: "Dietas exentas y deducción de km vigentes 2025.",
   },
   {
-    code: "SIF-0009",
     href: "/generador-facturas",
     icon: FileText,
     title: "Generador facturas",
     description: "Crea facturas en PDF con todos los campos legales en 1 minuto.",
   },
+];
+
+const FEATURES = [
+  { icon: Zap, title: "Sin registro", description: "Calcula al instante. No pedimos email." },
+  { icon: ShieldCheck, title: "Datos oficiales", description: "Tramos BOE, AEAT, Seguridad Social." },
+  { icon: Lock, title: "Privacidad", description: "Todo se calcula en tu navegador." },
 ];
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
@@ -89,115 +86,117 @@ const organizationJsonLd = {
 
 export default function HomePage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-20">
+    <div className="mx-auto max-w-6xl px-4 py-12">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
 
-      <section className="mb-20">
-        <p className="tech-label mb-6">CATALOG // ALL_PRODUCTS · v2026</p>
-        <h1 className="font-display text-5xl leading-[0.95] tracking-tight text-white sm:text-6xl md:text-7xl">
-          CALCULADORAS<br />
-          <span className="text-[#D1FF26]">FISCALES</span><br />
-          PARA AUTÓNOMOS.
+      <section className="text-center mb-12 sm:mb-16">
+        <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl md:text-6xl">
+          Calculadoras fiscales <br className="hidden sm:block" />
+          <span className="text-blue-600">para autónomos</span>
         </h1>
-        <p className="mt-8 max-w-xl text-base leading-relaxed text-[#D0D0D0]">
+        <p className="mt-5 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
           Cuota, IRPF, IVA, despido, jubilación y más. Sin registros, sin emails.
           Datos actualizados a tramos vigentes 2025.
         </p>
-        <div className="mt-8 flex flex-wrap items-center gap-3">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Link
             href="/cuota-autonomo"
-            className="inline-flex items-center gap-2 bg-[#D1FF26] px-8 py-4 text-[13px] font-bold uppercase tracking-[0.1em] text-[#0A0A0A] transition-opacity hover:opacity-90"
+            className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
           >
-            Calcular cuota
+            Calcular mi cuota
             <ArrowRight className="h-4 w-4" />
           </Link>
           <Link
             href="/guias"
-            className="inline-flex items-center gap-2 border border-[#252525] px-8 py-4 text-[13px] font-medium uppercase tracking-[0.1em] text-[#D0D0D0] transition-colors hover:border-[#D1FF26] hover:text-white"
+            className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
           >
             Ver guías
           </Link>
         </div>
       </section>
 
-      <AdSlot format="leaderboard" className="mb-16" />
+      <section className="mb-16 grid gap-4 sm:grid-cols-3">
+        {FEATURES.map((f) => {
+          const Icon = f.icon;
+          return (
+            <div key={f.title} className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-4">
+              <Icon className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" strokeWidth={2} />
+              <div>
+                <p className="font-semibold text-slate-900 text-sm">{f.title}</p>
+                <p className="text-xs text-slate-600 mt-0.5">{f.description}</p>
+              </div>
+            </div>
+          );
+        })}
+      </section>
 
-      <section className="mb-20">
-        <div className="mb-8 flex items-end justify-between border-b border-[#1A1A1A] pb-4">
-          <div>
-            <p className="tech-label mb-2">SECTION // CALCULATORS</p>
-            <h2 className="font-display text-3xl tracking-tight text-white">Todas las herramientas</h2>
-          </div>
-          <p className="tech-label hidden sm:block">{CALCS.length} ITEMS</p>
+      <AdSlot format="leaderboard" className="mb-12" />
+
+      <section className="mb-16">
+        <div className="mb-6">
+          <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">Todas las calculadoras</h2>
+          <p className="mt-1 text-slate-600">Elige la que necesites, todas son gratis y sin registro.</p>
         </div>
-        <div className="grid grid-cols-1 gap-px bg-[#1A1A1A] sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {CALCS.map((c) => {
             const Icon = c.icon;
             return (
               <Link
                 key={c.href}
                 href={c.href}
-                className="scanline group relative bg-[#0F0F0F] p-6 transition-colors hover:bg-[#0A0A0A]"
+                className="group rounded-xl border border-slate-200 bg-white p-6 transition-all hover:border-blue-300 hover:shadow-md"
               >
-                <div className="flex items-start justify-between">
-                  <span className="font-mono text-[9px] tracking-[0.15em] text-[#505050]">{c.code}</span>
-                  <ArrowRight className="h-4 w-4 text-[#404040] transition-all group-hover:translate-x-1 group-hover:text-[#D1FF26]" />
+                <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
+                  <Icon className="h-5 w-5" strokeWidth={2} />
                 </div>
-                <Icon className="mt-6 h-6 w-6 text-[#D1FF26]" strokeWidth={1.5} />
-                <h3 className="mt-6 font-display text-xl uppercase tracking-tight text-white">
+                <h3 className="mt-4 text-base font-semibold text-slate-900 flex items-center gap-2">
                   {c.title}
+                  <ArrowRight className="h-4 w-4 text-slate-400 transition-all group-hover:text-blue-600 group-hover:translate-x-0.5" />
                 </h3>
-                <p className="mt-2 text-[13px] leading-relaxed text-[#D0D0D0]">{c.description}</p>
+                <p className="mt-2 text-sm text-slate-600 leading-relaxed">{c.description}</p>
               </Link>
             );
           })}
         </div>
       </section>
 
-      <section className="mb-20 grid gap-px bg-[#1A1A1A] md:grid-cols-2">
+      <section className="mb-16 grid gap-4 md:grid-cols-2">
         <Link
           href="/calendario-fiscal"
-          className="scanline group bg-[#0F0F0F] p-8 transition-colors hover:bg-[#0A0A0A]"
+          className="group rounded-xl border border-slate-200 bg-white p-6 transition-all hover:border-blue-300 hover:shadow-md"
         >
-          <Calendar className="h-7 w-7 text-[#D1FF26]" strokeWidth={1.5} />
-          <h3 className="mt-6 font-display text-2xl uppercase tracking-tight text-white">
-            Calendario fiscal
-          </h3>
-          <p className="mt-2 text-[13px] leading-relaxed text-[#D0D0D0]">
+          <Calendar className="h-6 w-6 text-blue-600" strokeWidth={2} />
+          <h3 className="mt-4 text-lg font-semibold text-slate-900">Calendario fiscal</h3>
+          <p className="mt-2 text-sm text-slate-600 leading-relaxed">
             Todas las fechas clave del año: modelos 303, 130, 390, 100, 111, 115, 347.
             No te pases ninguna.
           </p>
-          <span className="tech-label mt-6 inline-block text-[#D1FF26]">VIEW_CALENDAR →</span>
         </Link>
         <Link
           href="/guias"
-          className="scanline group bg-[#0F0F0F] p-8 transition-colors hover:bg-[#0A0A0A]"
+          className="group rounded-xl border border-slate-200 bg-white p-6 transition-all hover:border-blue-300 hover:shadow-md"
         >
-          <BookOpen className="h-7 w-7 text-[#D1FF26]" strokeWidth={1.5} />
-          <h3 className="mt-6 font-display text-2xl uppercase tracking-tight text-white">
-            Guías
-          </h3>
-          <p className="mt-2 text-[13px] leading-relaxed text-[#D0D0D0]">
+          <BookOpen className="h-6 w-6 text-blue-600" strokeWidth={2} />
+          <h3 className="mt-4 text-lg font-semibold text-slate-900">Guías</h3>
+          <p className="mt-2 text-sm text-slate-600 leading-relaxed">
             Cómo darse de alta, gastos deducibles, tarifa plana. Sin jerga, paso a paso.
           </p>
-          <span className="tech-label mt-6 inline-block text-[#D1FF26]">VIEW_GUIDES →</span>
         </Link>
       </section>
 
-      <AdSlot format="rectangle" className="mb-20" />
+      <AdSlot format="rectangle" className="mb-16" />
 
-      <section className="mb-20">
+      <section className="mb-16">
         <Newsletter source="homepage" />
       </section>
 
-      <section className="border border-[#1A1A1A] bg-[#0F0F0F] p-8">
-        <p className="tech-label mb-3">DISCLAIMER // ORIENTATIVO</p>
-        <p className="text-[13px] leading-relaxed text-[#606060]">
-          Los cálculos son orientativos. Se basan en los tramos generales 2025 (RD-ley
-          13/2022) y la escala estatal del IRPF. No incluyen escalas autonómicas,
-          deducciones personales ni circunstancias particulares. Para presentar tus
-          modelos, consulta a un gestor.
+      <section className="rounded-xl border border-slate-200 bg-slate-50 p-6 text-center">
+        <p className="text-xs text-slate-500 max-w-3xl mx-auto leading-relaxed">
+          <strong className="text-slate-700">Aviso.</strong> Los cálculos son orientativos.
+          Se basan en los tramos generales 2025 (RD-ley 13/2022) y la escala estatal del
+          IRPF. No incluyen escalas autonómicas, deducciones personales ni circunstancias
+          particulares. Para presentar tus modelos, consulta a un gestor.
         </p>
       </section>
     </div>

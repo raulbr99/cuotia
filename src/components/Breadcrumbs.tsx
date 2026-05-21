@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 
 interface Crumb {
   label: string;
@@ -24,18 +25,15 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <nav
-        className="mb-6 flex items-center font-mono text-[10px] uppercase tracking-[0.15em] text-[#606060]"
-        aria-label="Breadcrumb"
-      >
-        <Link href="/" className="transition-colors hover:text-[#D1FF26]">/</Link>
+      <nav className="mb-4 flex items-center text-xs text-slate-500" aria-label="Breadcrumb">
+        <Link href="/" className="hover:text-blue-700">Inicio</Link>
         {items.map((c, i) => (
           <span key={i} className="flex items-center">
-            <span className="mx-2 text-[#404040]">/</span>
+            <ChevronRight className="mx-1 h-3 w-3 text-slate-300" />
             {c.href ? (
-              <Link href={c.href} className="transition-colors hover:text-[#D1FF26]">{c.label}</Link>
+              <Link href={c.href} className="hover:text-blue-700">{c.label}</Link>
             ) : (
-              <span className="text-white">{c.label}</span>
+              <span className="font-medium text-slate-700">{c.label}</span>
             )}
           </span>
         ))}

@@ -2,57 +2,57 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="mt-20 border-t border-[#1A1A1A] bg-[#0A0A0A]">
-      <div className="mx-auto max-w-6xl px-4 py-16">
-        <div className="grid gap-10 md:grid-cols-4">
+    <footer className="mt-20 border-t border-slate-200 bg-slate-50">
+      <div className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-600">
+        <div className="grid gap-8 md:grid-cols-4">
           <div>
-            <p className="font-display text-2xl tracking-tight text-white">CUOTIA</p>
-            <p className="mt-3 text-[13px] leading-relaxed text-[#606060]">
+            <p className="text-base font-bold text-slate-900 mb-2">Cuotia</p>
+            <p className="text-xs leading-relaxed text-slate-500">
               Calculadoras fiscales gratuitas para autónomos en España. Información
               orientativa, no constituye asesoramiento fiscal.
             </p>
           </div>
           <div>
-            <p className="tech-label mb-4 text-[#D0D0D0]">CATEGORY // CALCULATORS</p>
-            <ul className="space-y-2 text-[13px]">
-              <li><Link href="/cuota-autonomo" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Cuota autónomo</Link></li>
-              <li><Link href="/calculadora-irpf" className="text-[#606060] transition-colors hover:text-[#D1FF26]">IRPF + modelo 130</Link></li>
-              <li><Link href="/calculadora-iva" className="text-[#606060] transition-colors hover:text-[#D1FF26]">IVA + modelo 303</Link></li>
-              <li><Link href="/neto-bruto" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Neto / Bruto</Link></li>
-              <li><Link href="/calculadora-despido" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Despido + finiquito</Link></li>
-              <li><Link href="/baja-medica" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Baja médica</Link></li>
-              <li><Link href="/jubilacion-autonomo" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Jubilación</Link></li>
-              <li><Link href="/dietas-kilometraje" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Dietas + km</Link></li>
-              <li><Link href="/generador-facturas" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Generador facturas</Link></li>
+            <p className="font-semibold text-slate-900 mb-2">Calculadoras</p>
+            <ul className="space-y-1 text-xs">
+              <li><Link href="/cuota-autonomo" className="hover:text-blue-700">Cuota autónomo</Link></li>
+              <li><Link href="/calculadora-irpf" className="hover:text-blue-700">IRPF y modelo 130</Link></li>
+              <li><Link href="/calculadora-iva" className="hover:text-blue-700">IVA y modelo 303</Link></li>
+              <li><Link href="/neto-bruto" className="hover:text-blue-700">Neto / Bruto</Link></li>
+              <li><Link href="/calculadora-despido" className="hover:text-blue-700">Despido y finiquito</Link></li>
+              <li><Link href="/baja-medica" className="hover:text-blue-700">Baja médica</Link></li>
+              <li><Link href="/jubilacion-autonomo" className="hover:text-blue-700">Jubilación autónomo</Link></li>
+              <li><Link href="/dietas-kilometraje" className="hover:text-blue-700">Dietas y kilometraje</Link></li>
+              <li><Link href="/generador-facturas" className="hover:text-blue-700">Generador de facturas</Link></li>
             </ul>
           </div>
           <div>
-            <p className="tech-label mb-4 text-[#D0D0D0]">CATEGORY // RESOURCES</p>
-            <ul className="space-y-2 text-[13px]">
-              <li><Link href="/calendario-fiscal" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Calendario fiscal</Link></li>
-              <li><Link href="/guias" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Guías</Link></li>
-              <li><Link href="/guias/alta-autonomo" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Cómo darse de alta</Link></li>
-              <li><Link href="/guias/gastos-deducibles" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Gastos deducibles</Link></li>
-              <li><Link href="/guias/tarifa-plana" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Tarifa plana</Link></li>
-              <li><Link href="/blog" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Blog</Link></li>
-              <li><Link href="/sobre-nosotros" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Sobre nosotros</Link></li>
+            <p className="font-semibold text-slate-900 mb-2">Recursos</p>
+            <ul className="space-y-1 text-xs">
+              <li><Link href="/calendario-fiscal" className="hover:text-blue-700">Calendario fiscal</Link></li>
+              <li><Link href="/guias" className="hover:text-blue-700">Guías</Link></li>
+              <li><Link href="/guias/alta-autonomo" className="hover:text-blue-700">Cómo darse de alta</Link></li>
+              <li><Link href="/guias/gastos-deducibles" className="hover:text-blue-700">Gastos deducibles</Link></li>
+              <li><Link href="/guias/tarifa-plana" className="hover:text-blue-700">Tarifa plana</Link></li>
+              <li><Link href="/blog" className="hover:text-blue-700">Blog</Link></li>
+              <li><Link href="/sobre-nosotros" className="hover:text-blue-700">Sobre nosotros</Link></li>
             </ul>
           </div>
           <div>
-            <p className="tech-label mb-4 text-[#D0D0D0]">CATEGORY // LEGAL</p>
-            <ul className="space-y-2 text-[13px]">
-              <li><Link href="/aviso-legal" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Aviso legal</Link></li>
-              <li><Link href="/privacidad" className="text-[#606060] transition-colors hover:text-[#D1FF26]">Privacidad</Link></li>
+            <p className="font-semibold text-slate-900 mb-2">Legal</p>
+            <ul className="space-y-1 text-xs">
+              <li><Link href="/aviso-legal" className="hover:text-blue-700">Aviso legal</Link></li>
+              <li><Link href="/privacidad" className="hover:text-blue-700">Privacidad</Link></li>
             </ul>
-            <p className="mt-6 text-[10px] leading-relaxed text-[#404040]">
+            <p className="text-[10px] text-slate-400 mt-4">
               Tramos vigentes 2025 (RD-ley 13/2022). Verifica con tu gestor antes de
               presentar modelos.
             </p>
           </div>
         </div>
-        <div className="mt-12 flex items-center justify-between border-t border-[#1A1A1A] pt-6">
-          <p className="tech-label text-[#404040]">MEME-TECH v2.6 // CUOTIA_OS</p>
-          <p className="tech-label text-[#404040]">© 2026 CUOTIA</p>
+        <div className="mt-10 pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-400">
+          <p>© 2026 Cuotia · Hecho en España</p>
+          <p>Información orientativa · No sustituye asesoría fiscal</p>
         </div>
       </div>
     </footer>

@@ -28,12 +28,12 @@ export default function Page() {
       <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Tarifa plana" }]} />
       <article className="prose prose-gray max-w-none">
         <h1 className="text-3xl font-bold sm:text-4xl">Tarifa plana del autónomo 2025</h1>
-        <p className="text-xs text-[#606060] flex items-center gap-1.5 my-3 not-prose">
+        <p className="text-xs text-slate-500 flex items-center gap-1.5 my-3 not-prose">
           <Calendar className="h-3 w-3" />
           Publicado <time dateTime={PUBLISHED}>20 de mayo de 2026</time>
           {PUBLISHED !== MODIFIED && <> · Actualizado <time dateTime={MODIFIED}>20 de mayo de 2026</time></>}
         </p>
-        <p className="text-lg text-[#D0D0D0]">
+        <p className="text-lg text-slate-700">
           La <strong>tarifa plana de 87 €/mes</strong> es la bonificación más
           interesante para nuevos autónomos. Pagas la cuota simbólica durante 12 meses
           (prorrogables otros 12) en lugar de los 230-590 €/mes que te tocarían según
@@ -49,30 +49,30 @@ export default function Page() {
         </ul>
 
         <h2 className="text-2xl font-bold mt-10">Importes 2025</h2>
-        <div className="not-prose  border border-[#1A1A1A] bg-[#0F0F0F] overflow-hidden my-6">
+        <div className="not-prose  border border-slate-200 bg-white overflow-hidden my-6">
           <table className="w-full text-sm">
-            <thead className="bg-[#0A0A0A] text-xs uppercase text-[#D0D0D0]">
+            <thead className="bg-white text-xs uppercase text-slate-700">
               <tr>
                 <th className="px-4 py-2 text-left">Período</th>
                 <th className="px-4 py-2 text-right">Cuota mensual</th>
                 <th className="px-4 py-2 text-right">Total año</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#1A1A1A]">
+            <tbody className="divide-y divide-slate-100">
               <tr>
                 <td className="px-4 py-3">Meses 1-12 (todos)</td>
                 <td className="px-4 py-3 text-right font-semibold">87 €</td>
                 <td className="px-4 py-3 text-right">1.044 €</td>
               </tr>
-              <tr className="bg-[#0F0F0F]">
+              <tr className="bg-white">
                 <td className="px-4 py-3">Meses 13-24 (si rendimiento &lt; SMI)</td>
                 <td className="px-4 py-3 text-right font-semibold">87 €</td>
                 <td className="px-4 py-3 text-right">1.044 €</td>
               </tr>
               <tr>
                 <td className="px-4 py-3">A partir del mes 25</td>
-                <td className="px-4 py-3 text-right text-[#606060]">Tu tramo normal</td>
-                <td className="px-4 py-3 text-right text-[#606060]">—</td>
+                <td className="px-4 py-3 text-right text-slate-500">Tu tramo normal</td>
+                <td className="px-4 py-3 text-right text-slate-500">—</td>
               </tr>
             </tbody>
           </table>
@@ -104,9 +104,9 @@ export default function Page() {
 
         <h2 className="text-2xl font-bold mt-10">Cuánto ahorras</h2>
         <p>Ejemplos comparando con la cuota normal:</p>
-        <div className="not-prose  border border-[#1A1A1A] bg-[#0F0F0F] overflow-hidden my-6">
+        <div className="not-prose  border border-slate-200 bg-white overflow-hidden my-6">
           <table className="w-full text-sm">
-            <thead className="bg-[#0A0A0A] text-xs uppercase text-[#D0D0D0]">
+            <thead className="bg-white text-xs uppercase text-slate-700">
               <tr>
                 <th className="px-4 py-2 text-left">Si ganaras...</th>
                 <th className="px-4 py-2 text-right">Cuota normal</th>
@@ -114,11 +114,11 @@ export default function Page() {
                 <th className="px-4 py-2 text-right">Ahorro/año</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#1A1A1A] text-sm">
-              <tr><td className="px-4 py-2">1.200 €/mes</td><td className="px-4 py-2 text-right">290 €/mes</td><td className="px-4 py-2 text-right text-[#D1FF26]">87 €/mes</td><td className="px-4 py-2 text-right font-semibold">2.436 €</td></tr>
-              <tr><td className="px-4 py-2">2.000 €/mes</td><td className="px-4 py-2 text-right">370 €/mes</td><td className="px-4 py-2 text-right text-[#D1FF26]">87 €/mes</td><td className="px-4 py-2 text-right font-semibold">3.396 €</td></tr>
-              <tr><td className="px-4 py-2">3.000 €/mes</td><td className="px-4 py-2 text-right">440 €/mes</td><td className="px-4 py-2 text-right text-[#D1FF26]">87 €/mes</td><td className="px-4 py-2 text-right font-semibold">4.236 €</td></tr>
-              <tr><td className="px-4 py-2">5.000 €/mes</td><td className="px-4 py-2 text-right">515 €/mes</td><td className="px-4 py-2 text-right text-[#D1FF26]">87 €/mes</td><td className="px-4 py-2 text-right font-semibold">5.136 €</td></tr>
+            <tbody className="divide-y divide-slate-100 text-sm">
+              <tr><td className="px-4 py-2">1.200 €/mes</td><td className="px-4 py-2 text-right">290 €/mes</td><td className="px-4 py-2 text-right text-blue-600">87 €/mes</td><td className="px-4 py-2 text-right font-semibold">2.436 €</td></tr>
+              <tr><td className="px-4 py-2">2.000 €/mes</td><td className="px-4 py-2 text-right">370 €/mes</td><td className="px-4 py-2 text-right text-blue-600">87 €/mes</td><td className="px-4 py-2 text-right font-semibold">3.396 €</td></tr>
+              <tr><td className="px-4 py-2">3.000 €/mes</td><td className="px-4 py-2 text-right">440 €/mes</td><td className="px-4 py-2 text-right text-blue-600">87 €/mes</td><td className="px-4 py-2 text-right font-semibold">4.236 €</td></tr>
+              <tr><td className="px-4 py-2">5.000 €/mes</td><td className="px-4 py-2 text-right">515 €/mes</td><td className="px-4 py-2 text-right text-blue-600">87 €/mes</td><td className="px-4 py-2 text-right font-semibold">5.136 €</td></tr>
             </tbody>
           </table>
         </div>
@@ -136,12 +136,12 @@ export default function Page() {
           cotizar por una base mayor.
         </p>
 
-        <div className="mt-12  bg-[#0F0F0F] border border-[#D1FF26] p-6">
+        <div className="mt-12  bg-white border border-blue-500 p-6">
           <h3 className="text-lg font-semibold m-0">Calcula tu ahorro real</h3>
           <p className="mt-2 mb-3">
             Aplica la tarifa plana en nuestra calculadora y compara con tu tramo normal:
           </p>
-          <Link href="/cuota-autonomo" className="inline-flex items-center gap-2 bg-[#D1FF26] text-[#0A0A0A] px-4 py-2  font-medium text-sm hover:opacity-90">
+          <Link href="/cuota-autonomo" className="inline-flex items-center gap-2 rounded-md bg-blue-600 text-white px-4 py-2  font-medium text-sm hover:opacity-90">
             Calcular cuota con tarifa plana
           </Link>
         </div>

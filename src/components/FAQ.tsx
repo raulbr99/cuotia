@@ -16,16 +16,15 @@ export function FAQ({ items, title = "Preguntas frecuentes" }: { items: FAQItem[
   return (
     <section className="max-w-3xl">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <p className="tech-label mb-3">SECTION // FAQ</p>
-      <h2 className="mb-6 font-display text-3xl uppercase tracking-tight text-white">{title}</h2>
-      <div className="grid gap-px bg-[#1A1A1A]">
+      <h2 className="mb-5 text-2xl font-bold text-slate-900">{title}</h2>
+      <div className="space-y-3">
         {items.map((it, i) => (
-          <details key={i} className="group bg-[#0F0F0F] p-5 open:bg-[#0A0A0A]">
-            <summary className="flex cursor-pointer list-none items-center justify-between text-[14px] font-semibold text-white">
+          <details key={i} className="group rounded-xl border border-slate-200 bg-white p-4 open:shadow-sm">
+            <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-semibold text-slate-900">
               <span>{it.q}</span>
-              <span className="text-xl text-[#D1FF26] transition-transform group-open:rotate-45">+</span>
+              <span className="text-xl text-blue-600 transition-transform group-open:rotate-45">+</span>
             </summary>
-            <p className="mt-4 text-[13px] leading-relaxed text-[#D0D0D0]">{it.a}</p>
+            <p className="mt-3 text-sm leading-relaxed text-slate-700">{it.a}</p>
           </details>
         ))}
       </div>

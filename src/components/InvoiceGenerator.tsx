@@ -81,15 +81,15 @@ export function InvoiceGenerator() {
     <div className="grid gap-6 lg:grid-cols-2 print:grid-cols-1">
       {/* FORM SIDE — hidden on print */}
       <div className="space-y-5 print:hidden">
-        <div className="border border-[#1A1A1A] bg-[#0F0F0F] p-5">
+        <div className="rounded-xl border border-slate-200 bg-white p-5">
           <div className="flex items-center justify-between mb-3">
-            <h2 className="font-display text-lg uppercase tracking-tight text-white">Datos de la factura</h2>
+            <h2 className="font-bold text-lg text-slate-900">Datos de la factura</h2>
             <button
               onClick={reset}
               type="button"
               aria-label="Nueva factura"
               title="Nueva factura"
-              className="border border-[#252525] p-1.5 text-[#606060] transition-colors hover:border-[#D1FF26] hover:text-[#D1FF26]"
+              className="rounded-md border border-slate-300 p-1.5 text-slate-500 transition-colors hover:border-blue-500 hover:text-blue-600"
             >
               <RotateCcw className="h-3.5 w-3.5" />
             </button>
@@ -102,13 +102,13 @@ export function InvoiceGenerator() {
           </div>
         </div>
 
-        <div className="border border-[#1A1A1A] bg-[#0F0F0F] p-5">
+        <div className="rounded-xl border border-slate-200 bg-white p-5">
           <div className="flex items-center justify-between mb-3">
-            <h2 className="font-display text-lg uppercase tracking-tight text-white">Emisor (tú)</h2>
+            <h2 className="font-bold text-lg text-slate-900">Emisor (tú)</h2>
             <button
               onClick={saveEmisor}
               type="button"
-              className="inline-flex items-center gap-1 text-xs text-[#D1FF26] transition-colors hover:opacity-80"
+              className="inline-flex items-center gap-1 text-xs text-blue-600 transition-colors hover:opacity-80"
             >
               <Save className="h-3 w-3" /> Recordar
             </button>
@@ -116,18 +116,18 @@ export function InvoiceGenerator() {
           <PartyForm party={data.emisor} onChange={(f, v) => updateParty("emisor", f, v)} />
         </div>
 
-        <div className="border border-[#1A1A1A] bg-[#0F0F0F] p-5">
-          <h2 className="mb-3 font-display text-lg uppercase tracking-tight text-white">Cliente</h2>
+        <div className="rounded-xl border border-slate-200 bg-white p-5">
+          <h2 className="mb-3 font-bold text-lg text-slate-900">Cliente</h2>
           <PartyForm party={data.cliente} onChange={(f, v) => updateParty("cliente", f, v)} />
         </div>
 
-        <div className="border border-[#1A1A1A] bg-[#0F0F0F] p-5">
+        <div className="rounded-xl border border-slate-200 bg-white p-5">
           <div className="flex items-center justify-between mb-3">
-            <h2 className="font-display text-lg uppercase tracking-tight text-white">Líneas de factura</h2>
+            <h2 className="font-bold text-lg text-slate-900">Líneas de factura</h2>
             <button
               onClick={addItem}
               type="button"
-              className="inline-flex items-center gap-1 bg-[#D1FF26] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.1em] text-[#0A0A0A] transition-opacity hover:opacity-90"
+              className="inline-flex items-center gap-1 rounded-md bg-blue-600 px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white transition-opacity hover:opacity-90"
             >
               <Plus className="h-3 w-3" /> Añadir línea
             </button>
@@ -146,14 +146,14 @@ export function InvoiceGenerator() {
           </div>
         </div>
 
-        <div className="border border-[#1A1A1A] bg-[#0F0F0F] p-5">
+        <div className="rounded-xl border border-slate-200 bg-white p-5">
           <NotasField value={data.notas || ""} onChange={(v) => setData((d) => ({ ...d, notas: v }))} />
         </div>
 
         <button
           onClick={printInvoice}
           type="button"
-          className="w-full inline-flex items-center justify-center gap-2 bg-[#D1FF26] py-3 font-bold uppercase tracking-[0.1em] text-[#0A0A0A] transition-opacity hover:opacity-90"
+          className="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 py-3 font-bold uppercase tracking-wide text-white transition-opacity hover:opacity-90"
         >
           <Printer className="h-5 w-5" />
           Imprimir o guardar como PDF
@@ -162,19 +162,19 @@ export function InvoiceGenerator() {
 
       {/* PREVIEW — always shown on print */}
       <div className="print:col-span-2">
-        <div id="invoice-preview" className="border border-[#1A1A1A] bg-[#0F0F0F] p-6 print:p-0 print:border-0">
-          <header className="flex items-start justify-between mb-8 pb-6 border-b border-[#1A1A1A]">
+        <div id="invoice-preview" className="rounded-xl border border-slate-200 bg-white p-6 print:p-0 print:border-0">
+          <header className="flex items-start justify-between mb-8 pb-6 border-b border-slate-200">
             <div>
-              <h1 className="font-display text-2xl text-white">FACTURA</h1>
-              <p className="text-sm text-[#606060] mt-1">Nº {data.numero || "—"}</p>
+              <h1 className="font-bold text-2xl text-slate-900">FACTURA</h1>
+              <p className="text-sm text-slate-500 mt-1">Nº {data.numero || "—"}</p>
             </div>
             <div className="text-right text-sm">
-              <p className="text-[#606060]">Fecha emisión</p>
-              <p className="font-semibold text-white">{formatDate(data.fechaEmision)}</p>
+              <p className="text-slate-500">Fecha emisión</p>
+              <p className="font-semibold text-slate-900">{formatDate(data.fechaEmision)}</p>
               {data.fechaVencimiento && (
                 <>
-                  <p className="text-[#606060] mt-2">Vencimiento</p>
-                  <p className="font-semibold text-white">{formatDate(data.fechaVencimiento)}</p>
+                  <p className="text-slate-500 mt-2">Vencimiento</p>
+                  <p className="font-semibold text-slate-900">{formatDate(data.fechaVencimiento)}</p>
                 </>
               )}
             </div>
@@ -182,11 +182,11 @@ export function InvoiceGenerator() {
 
           <div className="grid grid-cols-2 gap-6 mb-8 text-sm">
             <div>
-              <p className="tech-label mb-1 text-[#606060]">DE</p>
+              <p className="text-[10px] uppercase tracking-wider text-slate-500 mb-1">DE</p>
               <PartyView p={data.emisor} />
             </div>
             <div>
-              <p className="tech-label mb-1 text-[#606060]">PARA</p>
+              <p className="text-[10px] uppercase tracking-wider text-slate-500 mb-1">PARA</p>
               <PartyView p={data.cliente} />
             </div>
           </div>
@@ -194,24 +194,24 @@ export function InvoiceGenerator() {
           <table className="w-full text-sm mb-6">
             <caption className="sr-only">Detalle de líneas de factura</caption>
             <thead>
-              <tr className="border-b border-[#1A1A1A]">
-                <th scope="col" className="text-left py-2 font-semibold text-white">Descripción</th>
-                <th scope="col" className="text-right py-2 font-semibold text-white w-20">Cant.</th>
-                <th scope="col" className="text-right py-2 font-semibold text-white w-24">Precio</th>
-                <th scope="col" className="text-right py-2 font-semibold text-white w-16">IVA</th>
-                <th scope="col" className="text-right py-2 font-semibold text-white w-28">Subtotal</th>
+              <tr className="border-b border-slate-200">
+                <th scope="col" className="text-left py-2 font-semibold text-slate-900">Descripción</th>
+                <th scope="col" className="text-right py-2 font-semibold text-slate-900 w-20">Cant.</th>
+                <th scope="col" className="text-right py-2 font-semibold text-slate-900 w-24">Precio</th>
+                <th scope="col" className="text-right py-2 font-semibold text-slate-900 w-16">IVA</th>
+                <th scope="col" className="text-right py-2 font-semibold text-slate-900 w-28">Subtotal</th>
               </tr>
             </thead>
             <tbody>
               {data.items.map((it, i) => {
                 const subtotal = it.cantidad * it.precioUnitario;
                 return (
-                  <tr key={i} className="border-b border-[#1A1A1A]">
-                    <td className="py-2 text-[#D0D0D0]">{it.descripcion || "—"}</td>
-                    <td className="text-right py-2 text-[#D0D0D0]">{it.cantidad}</td>
-                    <td className="text-right py-2 text-[#D0D0D0]">{eur(it.precioUnitario)}</td>
-                    <td className="text-right py-2 text-[#D0D0D0]">{(TIPOS_IVA[it.tipoIVA] * 100).toFixed(0)}%</td>
-                    <td className="text-right py-2 font-medium text-white">{eur(subtotal)}</td>
+                  <tr key={i} className="border-b border-slate-200">
+                    <td className="py-2 text-slate-700">{it.descripcion || "—"}</td>
+                    <td className="text-right py-2 text-slate-700">{it.cantidad}</td>
+                    <td className="text-right py-2 text-slate-700">{eur(it.precioUnitario)}</td>
+                    <td className="text-right py-2 text-slate-700">{(TIPOS_IVA[it.tipoIVA] * 100).toFixed(0)}%</td>
+                    <td className="text-right py-2 font-medium text-slate-900">{eur(subtotal)}</td>
                   </tr>
                 );
               })}
@@ -219,32 +219,32 @@ export function InvoiceGenerator() {
           </table>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="text-xs text-[#D0D0D0]">
+            <div className="text-xs text-slate-700">
               {data.notas && (
                 <>
-                  <p className="font-semibold text-white mb-1">Notas</p>
+                  <p className="font-semibold text-slate-900 mb-1">Notas</p>
                   <p className="whitespace-pre-wrap">{data.notas}</p>
                 </>
               )}
             </div>
             <div className="text-sm space-y-1">
-              <div className="flex justify-between"><span className="text-[#606060]">Base imponible</span><span className="font-medium text-white">{eur(totals.base)}</span></div>
+              <div className="flex justify-between"><span className="text-slate-500">Base imponible</span><span className="font-medium text-slate-900">{eur(totals.base)}</span></div>
               {Object.entries(totals.desgloseIva).map(([k, v]) => (
-                <div key={k} className="flex justify-between text-xs text-[#606060]">
+                <div key={k} className="flex justify-between text-xs text-slate-500">
                   <span>IVA {k} sobre {eur(v.base)}</span>
                   <span>{eur(v.iva)}</span>
                 </div>
               ))}
-              <div className="flex justify-between"><span className="text-[#606060]">Total IVA</span><span className="font-medium text-white">{eur(totals.totalIva)}</span></div>
+              <div className="flex justify-between"><span className="text-slate-500">Total IVA</span><span className="font-medium text-slate-900">{eur(totals.totalIva)}</span></div>
               {data.retencionIRPF > 0 && (
-                <div className="flex justify-between text-[#FF6B6B]">
+                <div className="flex justify-between text-red-600">
                   <span>Retención IRPF ({data.retencionIRPF}%)</span>
                   <span className="font-medium">– {eur(totals.retencion)}</span>
                 </div>
               )}
-              <div className="flex justify-between pt-3 border-t border-[#1A1A1A] text-base font-bold">
-                <span className="text-white">TOTAL</span>
-                <span className="text-[#D1FF26]">{eur(totals.total)}</span>
+              <div className="flex justify-between pt-3 border-t border-slate-200 text-base font-bold">
+                <span className="text-slate-900">TOTAL</span>
+                <span className="text-blue-600">{eur(totals.total)}</span>
               </div>
             </div>
           </div>
@@ -279,7 +279,7 @@ function InvoiceItemRow({
           value={item.descripcion}
           onChange={(e) => onUpdate("descripcion", e.target.value)}
           placeholder="Concepto"
-          className="w-full border border-[#252525] bg-[#0A0A0A] px-2 py-1.5 text-sm text-white focus:border-[#D1FF26] focus:outline-none"
+          className="w-full rounded-md border border-slate-300 bg-white px-2 py-1.5 text-sm text-slate-900 focus:border-blue-500 focus:outline-none"
         />
       </div>
       <div className="col-span-3">
@@ -293,7 +293,7 @@ function InvoiceItemRow({
           step={0.01}
           min={0}
           placeholder="Cant."
-          className="w-full border border-[#252525] bg-[#0A0A0A] px-2 py-1.5 text-sm text-white focus:border-[#D1FF26] focus:outline-none"
+          className="w-full rounded-md border border-slate-300 bg-white px-2 py-1.5 text-sm text-slate-900 focus:border-blue-500 focus:outline-none"
         />
       </div>
       <div className="col-span-4">
@@ -307,7 +307,7 @@ function InvoiceItemRow({
           step={0.01}
           min={0}
           placeholder="€ / unidad"
-          className="w-full border border-[#252525] bg-[#0A0A0A] px-2 py-1.5 text-sm text-white focus:border-[#D1FF26] focus:outline-none"
+          className="w-full rounded-md border border-slate-300 bg-white px-2 py-1.5 text-sm text-slate-900 focus:border-blue-500 focus:outline-none"
         />
       </div>
       <div className="col-span-4">
@@ -316,7 +316,7 @@ function InvoiceItemRow({
           id={ivaId}
           value={item.tipoIVA}
           onChange={(e) => onUpdate("tipoIVA", e.target.value as TipoIVA)}
-          className="w-full border border-[#252525] bg-[#0A0A0A] px-2 py-1.5 text-sm text-white focus:border-[#D1FF26] focus:outline-none"
+          className="w-full rounded-md border border-slate-300 bg-white px-2 py-1.5 text-sm text-slate-900 focus:border-blue-500 focus:outline-none"
         >
           {(Object.keys(TIPOS_IVA) as TipoIVA[]).map((t) => (
             <option key={t} value={t}>{t} ({(TIPOS_IVA[t] * 100).toFixed(0)}%)</option>
@@ -330,7 +330,7 @@ function InvoiceItemRow({
             type="button"
             aria-label={`Eliminar ${lineLabel}`}
             title="Eliminar línea"
-            className="border border-[#252525] p-1.5 text-[#FF6B6B] transition-colors hover:border-[#FF6B6B]"
+            className="rounded-md border border-slate-300 p-1.5 text-red-600 transition-colors hover:border-red-500"
           >
             <Trash2 className="h-4 w-4" />
           </button>
@@ -344,14 +344,14 @@ function NotasField({ value, onChange }: { value: string; onChange: (v: string) 
   const id = useId();
   return (
     <>
-      <label htmlFor={id} className="mb-1 block text-sm font-medium text-[#D0D0D0]">Notas (opcional)</label>
+      <label htmlFor={id} className="mb-1 block text-sm font-medium text-slate-700">Notas (opcional)</label>
       <textarea
         id={id}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         rows={2}
         placeholder="Condiciones de pago, IBAN, etc."
-        className="w-full border border-[#252525] bg-[#0A0A0A] px-3 py-2 text-sm text-white focus:border-[#D1FF26] focus:outline-none"
+        className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus:border-blue-500 focus:outline-none"
       />
     </>
   );
@@ -361,14 +361,14 @@ function Field({ label, value, onChange, type = "text" }: { label: string; value
   const id = useId();
   return (
     <div>
-      <label htmlFor={id} className="mb-1 block text-xs text-[#D0D0D0]">{label}</label>
+      <label htmlFor={id} className="mb-1 block text-xs text-slate-700">{label}</label>
       <input
         id={id}
         type={type}
         inputMode={type === "number" ? "decimal" : undefined}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full border border-[#252525] bg-[#0A0A0A] px-2 py-1.5 text-sm text-white focus:border-[#D1FF26] focus:outline-none"
+        className="w-full rounded-md border border-slate-300 bg-white px-2 py-1.5 text-sm text-slate-900 focus:border-blue-500 focus:outline-none"
       />
     </div>
   );
@@ -393,12 +393,12 @@ function PartyForm({ party, onChange }: { party: InvoiceParty; onChange: (field:
 function PartyView({ p }: { p: InvoiceParty }) {
   return (
     <div className="text-sm">
-      <p className="font-semibold text-white">{p.nombre || "—"}</p>
-      <p className="text-[#D0D0D0]">NIF: {p.nif || "—"}</p>
-      <p className="text-[#D0D0D0]">{p.direccion || "—"}</p>
-      <p className="text-[#D0D0D0]">{[p.cp, p.ciudad].filter(Boolean).join(" ") || "—"}</p>
-      {p.email && <p className="text-[#606060] text-xs mt-1">{p.email}</p>}
-      {p.telefono && <p className="text-[#606060] text-xs">{p.telefono}</p>}
+      <p className="font-semibold text-slate-900">{p.nombre || "—"}</p>
+      <p className="text-slate-700">NIF: {p.nif || "—"}</p>
+      <p className="text-slate-700">{p.direccion || "—"}</p>
+      <p className="text-slate-700">{[p.cp, p.ciudad].filter(Boolean).join(" ") || "—"}</p>
+      {p.email && <p className="text-slate-500 text-xs mt-1">{p.email}</p>}
+      {p.telefono && <p className="text-slate-500 text-xs">{p.telefono}</p>}
     </div>
   );
 }

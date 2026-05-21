@@ -28,10 +28,10 @@ export default function Page() {
       <Breadcrumbs items={[{ label: "Calculadora IRPF" }]} />
 
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-white sm:text-4xl">
+        <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl">
           Calculadora IRPF para autónomos
         </h1>
-        <p className="mt-3 text-[#D0D0D0] max-w-3xl">
+        <p className="mt-3 text-slate-700 max-w-3xl">
           Cuota anual de IRPF con escala estatal + tu Comunidad Autónoma, o pago
           trimestral del modelo 130.
         </p>
@@ -47,8 +47,8 @@ export default function Page() {
 
       <AdSlot format="leaderboard" className="my-10" />
 
-      <article className="prose prose-gray max-w-3xl text-sm text-[#D0D0D0] space-y-5">
-        <h2 className="text-xl font-bold text-white">IRPF anual: tramos 2025</h2>
+      <article className="prose prose-gray max-w-3xl text-sm text-slate-700 space-y-5">
+        <h2 className="text-xl font-bold text-slate-900">IRPF anual: tramos 2025</h2>
         <p>
           El IRPF español es <strong>progresivo</strong>: pagas distinto porcentaje
           por cada tramo. La escala completa suma la <strong>estatal</strong> (esta
@@ -63,7 +63,7 @@ export default function Page() {
           <li>+ 300.000 € → 47%</li>
         </ul>
 
-        <h2 className="text-xl font-bold text-white">Modelo 130 (pago fraccionado)</h2>
+        <h2 className="text-xl font-bold text-slate-900">Modelo 130 (pago fraccionado)</h2>
         <p>
           Se presenta trimestralmente y supone un <strong>20% sobre el rendimiento
           neto</strong> (ingresos − gastos del trimestre). Se descuentan las
@@ -75,7 +75,7 @@ export default function Page() {
           quedar exentos.
         </p>
 
-        <h2 className="text-xl font-bold text-white">Fechas modelo 130</h2>
+        <h2 className="text-xl font-bold text-slate-900">Fechas modelo 130</h2>
         <ul>
           <li>T1: del 1 al 20 de abril</li>
           <li>T2: del 1 al 20 de julio</li>

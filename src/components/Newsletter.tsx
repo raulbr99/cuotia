@@ -34,23 +34,20 @@ export function Newsletter({ source = "homepage" }: { source?: string }) {
 
   if (status === "ok") {
     return (
-      <div className="border border-[#D1FF26] bg-[#0F0F0F] p-8 text-center">
-        <Check className="mx-auto mb-3 h-8 w-8 text-[#D1FF26]" strokeWidth={1.5} />
-        <p className="text-[13px] text-white">{msg}</p>
+      <div className="rounded-xl border border-blue-200 bg-blue-50 p-6 text-center">
+        <Check className="mx-auto mb-2 h-8 w-8 text-blue-600" strokeWidth={2} />
+        <p className="text-sm text-slate-900">{msg}</p>
       </div>
     );
   }
 
   return (
-    <div className="border border-[#1A1A1A] bg-[#0F0F0F] p-8">
-      <p className="tech-label mb-4">SIGNAL // NEWSLETTER</p>
-      <div className="mb-6 flex items-start gap-3">
-        <Mail className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#D1FF26]" strokeWidth={1.5} />
+    <div className="rounded-xl border border-slate-200 bg-white p-6">
+      <div className="mb-4 flex items-start gap-3">
+        <Mail className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600" strokeWidth={2} />
         <div>
-          <h3 className="font-display text-2xl uppercase tracking-tight text-white">
-            Avisos fiscales por email
-          </h3>
-          <p className="mt-1 text-[13px] text-[#D0D0D0]">
+          <h3 className="text-base font-semibold text-slate-900">Avisos fiscales por email</h3>
+          <p className="mt-0.5 text-sm text-slate-600">
             Cambios de tramos, nuevos modelos, fechas clave. Sin spam, te puedes dar de
             baja con un click.
           </p>
@@ -63,17 +60,17 @@ export function Newsletter({ source = "homepage" }: { source?: string }) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="tu@email.com"
-          className="flex-1 border border-[#252525] bg-[#0A0A0A] px-4 py-3 text-[13px] text-white placeholder:text-[#505050] focus:border-[#D1FF26] focus:outline-none"
+          className="flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="bg-[#D1FF26] px-6 py-3 text-[13px] font-bold uppercase tracking-[0.1em] text-[#0A0A0A] transition-opacity hover:opacity-90 disabled:opacity-50"
+          className="rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700 disabled:opacity-50"
         >
           {status === "loading" ? "..." : "Suscribirme"}
         </button>
       </form>
-      {status === "err" && <p className="mt-3 text-[12px] text-[#FF6B6B]">{msg}</p>}
+      {status === "err" && <p className="mt-2 text-xs text-red-600">{msg}</p>}
     </div>
   );
 }

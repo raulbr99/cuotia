@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Archivo_Black, JetBrains_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -7,19 +7,7 @@ import { Footer } from "@/components/Footer";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const archivoBlack = Archivo_Black({
-  variable: "--font-archivo-black",
-  subsets: ["latin"],
-  weight: ["400"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
@@ -70,8 +58,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" className={`${inter.variable} ${archivoBlack.variable} ${jetbrainsMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-[#0A0A0A] text-white">
+    <html lang="es" className={`${inter.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col bg-white text-slate-900">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

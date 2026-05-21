@@ -1,21 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0A0A0A;
-  --background-elevated: #0F0F0F;
-  --border-primary: #1A1A1A;
-  --border-secondary: #252525;
-  --foreground: #FFFFFF;
-  --foreground-secondary: #A0A0A0;
-  --foreground-muted: #606060;
-  --foreground-dim: #505050;
-  --accent: #D1FF26;
-  color-scheme: dark;
+  --background: #FFFFFF;
+  --background-soft: #F8FAFC;
+  --background-elevated: #FFFFFF;
+  --border-primary: #E5E7EB;
+  --border-secondary: #D1D5DB;
+  --foreground: #0F172A;
+  --foreground-secondary: #475569;
+  --foreground-muted: #64748B;
+  --foreground-dim: #94A3B8;
+  --accent: #2563EB;
+  --accent-hover: #1D4ED8;
+  --accent-soft: #EFF6FF;
+  color-scheme: light;
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-background-elevated: var(--background-elevated);
+  --color-background-soft: var(--background-soft);
   --color-border-primary: var(--border-primary);
   --color-border-secondary: var(--border-secondary);
   --color-foreground: var(--foreground);
@@ -23,55 +26,15 @@
   --color-foreground-muted: var(--foreground-muted);
   --color-foreground-dim: var(--foreground-dim);
   --color-accent: var(--accent);
-  --font-display: var(--font-archivo-black);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
   --font-sans: var(--font-inter);
-  --font-mono: var(--font-jetbrains-mono);
 }
 
 html, body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6, .font-display {
-  font-family: var(--font-archivo-black), system-ui, sans-serif;
-  letter-spacing: -0.02em;
-}
-
-.font-mono, code, kbd, pre {
-  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
-}
-
-.tech-label {
-  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--foreground-muted);
-}
-
-.scanline {
-  position: relative;
-  overflow: hidden;
-}
-
-.scanline::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--accent);
-  transform: translateY(-100%);
-  transition: transform 350ms ease;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.scanline:hover::before {
-  transform: translateY(100vh);
 }
 
 @media print {
