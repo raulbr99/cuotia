@@ -33,6 +33,12 @@ export default function Page() {
             en PDF. Sin registro. Tus datos se quedan en tu navegador (localStorage),
             no se envían a ningún servidor.
           </p>
+          <p className="mt-3 text-sm text-neutral-600 max-w-3xl">
+            <strong>Aviso Verifactu:</strong> este generador produce PDFs estándar válidos
+            hasta junio 2027. Desde el 1 de julio de 2027 los autónomos están obligados a
+            usar software de facturación certificado. Más en{" "}
+            <a href="/verifactu" className="text-[#B91C1C] underline">Verifactu para autónomos</a>.
+          </p>
         </header>
       </div>
 

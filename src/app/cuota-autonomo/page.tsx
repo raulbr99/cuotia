@@ -82,6 +82,17 @@ export default function Page() {
           cotizaste por un tramo más bajo que el real → pagas la diferencia. Si
           cotizaste por uno más alto → te devuelven.
         </p>
+
+        <h2 className="text-xl font-bold text-neutral-900">¿Y si eres administrador de SL?</h2>
+        <p>
+          Los <strong>autónomos societarios</strong> (administradores con ≥25% del capital o
+          vínculo familiar con socios mayoritarios) tienen reglas distintas. En 2026 su base
+          mínima sube un 42,4% hasta <strong>1.424,40 €/mes</strong>, con una cuota mínima
+          aproximada de 451 €/mes. Más en{" "}
+          <a href="/cuota-autonomo-societario" className="text-[#B91C1C] underline">
+            cuota autónomo societario 2026
+          </a>.
+        </p>
       </article>
     </div>
   );

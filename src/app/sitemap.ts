@@ -7,6 +7,8 @@ const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 const ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "", priority: 1.0, freq: "weekly" },
   { path: "/cuota-autonomo", priority: 0.95, freq: "monthly" },
+  { path: "/cuota-autonomo-societario", priority: 0.9, freq: "monthly" },
+  { path: "/verifactu", priority: 0.9, freq: "monthly" },
   { path: "/calculadora-irpf", priority: 0.95, freq: "monthly" },
   { path: "/calculadora-iva", priority: 0.9, freq: "monthly" },
   { path: "/neto-bruto", priority: 0.9, freq: "monthly" },
