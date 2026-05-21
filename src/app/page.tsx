@@ -61,36 +61,46 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
 
-      {/* HERO */}
-      <section className="border-b border-neutral-200">
-        <div className="mx-auto max-w-5xl px-5 py-12 md:py-20">
-          <div className="grid gap-10 md:grid-cols-12 md:items-center">
-            <div className="md:col-span-7">
-              <p className="text-[11px] uppercase tracking-[0.18em] text-neutral-500 mb-5">
+      {/* FULL-BLEED BANNER */}
+      <section className="relative w-full overflow-hidden border-b border-neutral-200">
+        <div className="relative h-[55vh] min-h-[400px] max-h-[640px] w-full">
+          <Image
+            src="/banner-coins.jpg"
+            alt="Monedas de euro apiladas sobre lino crema"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#FAFAF7]/95 via-[#FAFAF7]/60 to-transparent" />
+          <div className="absolute inset-0 flex items-center">
+            <div className="mx-auto w-full max-w-5xl px-5">
+              <p className="text-[11px] uppercase tracking-[0.18em] text-neutral-700 mb-4 font-medium">
                 Calculadoras fiscales · 2026
               </p>
-              <h1 className="font-serif text-[2.5rem] leading-[1.05] tracking-tight text-neutral-900 sm:text-6xl md:text-[5rem]">
-                Hacienda no te lo<br />
-                cuenta claro.<br />
+              <h1 className="font-serif text-[2.5rem] leading-[1] tracking-tight text-neutral-900 sm:text-6xl md:text-[5.5rem] max-w-2xl">
+                Hacienda no te lo cuenta claro.{" "}
                 <span className="italic text-[#B91C1C]">Aquí&nbsp;sí.</span>
               </h1>
-              <p className="mt-7 text-[15px] leading-relaxed text-neutral-700 max-w-md">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* LEAD PARAGRAPH */}
+      <section className="border-b border-neutral-200">
+        <div className="mx-auto max-w-5xl px-5 py-12">
+          <div className="grid gap-10 md:grid-cols-12">
+            <div className="md:col-span-7">
+              <p className="font-serif text-2xl leading-snug text-neutral-900 sm:text-3xl">
                 Cuota, IRPF, IVA, despido, jubilación. Calculadoras gratis,
                 sin registro, con los datos oficiales del BOE.
               </p>
-              <p className="mt-3 text-[13px] italic text-neutral-500 max-w-md">
+            </div>
+            <div className="md:col-span-5 md:pt-2">
+              <p className="text-[13px] italic text-neutral-500 leading-relaxed">
                 Hechas por autónomos hartos de no saber cuánto deben.
               </p>
-            </div>
-            <div className="md:col-span-5">
-              <Image
-                src="/hero-stamp.jpg"
-                alt="Ilustración editorial de un sello de tinta junto a su impresión en rojo"
-                width={1024}
-                height={576}
-                priority
-                className="w-full h-auto"
-              />
             </div>
           </div>
         </div>
@@ -187,19 +197,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* MANIFESTO with desk image */}
+      {/* MANIFESTO with calculator photo */}
       <section className="border-b border-neutral-200">
         <div className="mx-auto max-w-5xl px-5 py-16">
           <div className="grid gap-10 md:grid-cols-12 md:items-start">
             <div className="md:col-span-5">
-              <Image
-                src="/manifesto-desk.png"
-                alt="Ilustración editorial cenital de un escritorio con calculadora, formularios fiscales y café"
-                width={1024}
-                height={576}
-                className="w-full h-auto"
-              />
-              <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-[#B91C1C]">
+              <div className="relative aspect-[16/10] w-full overflow-hidden">
+                <Image
+                  src="/manifesto-calculator.jpg"
+                  alt="Calculadora vintage con LCD verde sobre papeles manuscritos"
+                  fill
+                  sizes="(min-width: 768px) 40vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+              <p className="mt-6 text-[11px] uppercase tracking-[0.18em] text-[#B91C1C]">
                 Por qué Cuotia
               </p>
               <h3 className="mt-2 font-serif text-3xl leading-tight tracking-tight text-neutral-900">
