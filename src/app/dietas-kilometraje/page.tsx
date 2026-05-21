@@ -23,8 +23,8 @@ export default function Page() {
       <SpeakableSchema />
       <Breadcrumbs items={[{ label: "Dietas y kilometraje" }]} />
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl">Dietas y kilometraje deducibles</h1>
-        <p className="mt-3 text-slate-700 max-w-3xl">
+        <h1 className="text-3xl font-bold text-neutral-900 sm:text-4xl">Dietas y kilometraje deducibles</h1>
+        <p className="mt-3 text-neutral-700 max-w-3xl">
           Cuánto puedes deducir por desplazamientos y manutención. Límites exentos 2025.
         </p>
       </header>

@@ -9,18 +9,18 @@ interface QuickAnswerProps {
 export function QuickAnswer({ question, answer, updatedAt }: QuickAnswerProps) {
   return (
     <aside
-      className="speakable mb-8 rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 to-white p-6"
+      className="speakable mb-8 rounded-2xl border border-[#FECACA] bg-gradient-to-br from-[#FEF2F2] to-white p-6"
       aria-label="Respuesta rápida"
     >
       <div className="flex items-start gap-3">
-        <Sparkles className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600" strokeWidth={2} />
+        <Sparkles className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#B91C1C]" strokeWidth={2} />
         <div className="flex-1">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-700">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[#B91C1C]">
             Respuesta rápida · {question}
           </p>
-          <p className="text-base leading-relaxed text-slate-900">{answer}</p>
+          <p className="text-base leading-relaxed text-neutral-900">{answer}</p>
           {updatedAt && (
-            <p className="mt-3 text-[11px] text-slate-500">
+            <p className="mt-3 text-[11px] text-neutral-500">
               Datos actualizados el <time dateTime={updatedAt}>{formatDate(updatedAt)}</time> ·
               Fuentes: BOE, AEAT, Seguridad Social
             </p>

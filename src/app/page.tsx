@@ -1,69 +1,39 @@
 import Link from "next/link";
-import { Calculator, Receipt, Wallet, Calendar, ArrowRight, Briefcase, HeartPulse, Coins, Car, BookOpen, Percent, FileText, ShieldCheck, Zap, Lock } from "lucide-react";
-import { AdSlot } from "@/components/AdSlot";
+import { ArrowUpRight } from "lucide-react";
 import { Newsletter } from "@/components/Newsletter";
 
-const CALCS = [
+const PRIMARY = [
   {
     href: "/cuota-autonomo",
-    icon: Calculator,
-    title: "Cuota autónomo",
-    description: "Tu cuota mensual por los 15 tramos vigentes 2025. Tarifa plana incluida.",
+    eyebrow: "Lo que más buscan",
+    title: "Cuota de autónomo 2025",
+    teaser: "Los 15 tramos por ingresos reales. Tarifa plana incluida.",
+    stat: "230 €",
+    statLabel: "cuota mínima/mes",
   },
   {
     href: "/calculadora-irpf",
-    icon: Receipt,
+    eyebrow: "Para la renta",
     title: "IRPF + modelo 130",
-    description: "IRPF anual con tramos estatales y pago fraccionado trimestral.",
-  },
-  {
-    href: "/calculadora-iva",
-    icon: Percent,
-    title: "IVA + modelo 303",
-    description: "Añade, quita IVA o calcula el modelo 303 trimestral.",
-  },
-  {
-    href: "/neto-bruto",
-    icon: Wallet,
-    title: "Neto / Bruto",
-    description: "Cuánto te queda después de gastos, cuota e IRPF.",
-  },
-  {
-    href: "/calculadora-despido",
-    icon: Briefcase,
-    title: "Despido + finiquito",
-    description: "Indemnización improcedente, objetivo, colectivo + finiquito.",
-  },
-  {
-    href: "/baja-medica",
-    icon: HeartPulse,
-    title: "Baja médica",
-    description: "Prestación por enfermedad común o accidente laboral.",
-  },
-  {
-    href: "/jubilacion-autonomo",
-    icon: Coins,
-    title: "Jubilación",
-    description: "Pensión según base media y años cotizados.",
-  },
-  {
-    href: "/dietas-kilometraje",
-    icon: Car,
-    title: "Dietas + km",
-    description: "Dietas exentas y deducción de km vigentes 2025.",
-  },
-  {
-    href: "/generador-facturas",
-    icon: FileText,
-    title: "Generador facturas",
-    description: "Crea facturas en PDF con todos los campos legales en 1 minuto.",
+    teaser: "Escala estatal + 17 escalas autonómicas. Pago fraccionado trimestral.",
+    stat: "17",
+    statLabel: "CCAA cubiertas",
   },
 ];
 
-const FEATURES = [
-  { icon: Zap, title: "Sin registro", description: "Calcula al instante. No pedimos email." },
-  { icon: ShieldCheck, title: "Datos oficiales", description: "Tramos BOE, AEAT, Seguridad Social." },
-  { icon: Lock, title: "Privacidad", description: "Todo se calcula en tu navegador." },
+const SECONDARY = [
+  { href: "/calculadora-iva", title: "IVA + modelo 303", desc: "Añade, quita o calcula el 303 trimestral." },
+  { href: "/neto-bruto", title: "Neto / Bruto", desc: "Lo que te queda después de gastos, cuota e IRPF." },
+  { href: "/calculadora-despido", title: "Despido + finiquito", desc: "Improcedente, objetivo, colectivo. Finiquito completo." },
+  { href: "/baja-medica", title: "Baja médica", desc: "Por enfermedad común o accidente laboral." },
+  { href: "/jubilacion-autonomo", title: "Jubilación", desc: "Pensión según base media y años cotizados." },
+  { href: "/dietas-kilometraje", title: "Dietas + km", desc: "Exentas vigentes 2025. Sin sorpresas." },
+];
+
+const TOOLS = [
+  { href: "/generador-facturas", title: "Generador de facturas", desc: "PDF con todos los campos legales en 1 min." },
+  { href: "/calendario-fiscal", title: "Calendario fiscal", desc: "303, 130, 390, 100, 111, 115, 347. Sin perderte ninguna." },
+  { href: "/guias", title: "Guías", desc: "Alta de autónomo, gastos deducibles, tarifa plana." },
 ];
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
@@ -86,119 +56,187 @@ const organizationJsonLd = {
 
 export default function HomePage() {
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12">
+    <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
 
-      <section className="text-center mb-12 sm:mb-16">
-        <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl md:text-6xl">
-          Calculadoras fiscales <br className="hidden sm:block" />
-          <span className="text-blue-600">para autónomos</span>
-        </h1>
-        <p className="mt-5 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-          Cuota, IRPF, IVA, despido, jubilación y más. Sin registros, sin emails.
-          Datos actualizados a tramos vigentes 2025.
-        </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          <Link
-            href="/cuota-autonomo"
-            className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
-          >
-            Calcular mi cuota
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-          <Link
-            href="/guias"
-            className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50"
-          >
-            Ver guías
-          </Link>
-        </div>
-      </section>
-
-      <section className="mb-16 grid gap-4 sm:grid-cols-3">
-        {FEATURES.map((f) => {
-          const Icon = f.icon;
-          return (
-            <div key={f.title} className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-4">
-              <Icon className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" strokeWidth={2} />
-              <div>
-                <p className="font-semibold text-slate-900 text-sm">{f.title}</p>
-                <p className="text-xs text-slate-600 mt-0.5">{f.description}</p>
-              </div>
+      {/* HERO */}
+      <section className="border-b border-neutral-200">
+        <div className="mx-auto max-w-5xl px-5 py-16 md:py-24">
+          <div className="grid gap-10 md:grid-cols-12 md:items-end">
+            <div className="md:col-span-8">
+              <p className="text-[11px] uppercase tracking-[0.18em] text-neutral-500 mb-5">
+                Calculadoras fiscales · 2026
+              </p>
+              <h1 className="font-serif text-[2.5rem] leading-[1.05] tracking-tight text-neutral-900 sm:text-6xl md:text-7xl">
+                Hacienda no te lo<br />
+                cuenta claro.<br />
+                <span className="italic text-[#B91C1C]">Aquí&nbsp;sí.</span>
+              </h1>
             </div>
-          );
-        })}
+            <div className="md:col-span-4">
+              <p className="text-[15px] leading-relaxed text-neutral-700 max-w-sm">
+                Cuota, IRPF, IVA, despido, jubilación. Calculadoras gratis,
+                sin registro, con los datos oficiales del BOE.
+                <span className="block mt-3 text-neutral-500 italic text-[13px]">
+                  Hechas por autónomos hartos de no saber cuánto deben.
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <AdSlot format="leaderboard" className="mb-12" />
-
-      <section className="mb-16">
-        <div className="mb-6">
-          <h2 className="text-2xl font-bold text-slate-900 sm:text-3xl">Todas las calculadoras</h2>
-          <p className="mt-1 text-slate-600">Elige la que necesites, todas son gratis y sin registro.</p>
+      {/* STATS STRIP */}
+      <section className="border-b border-neutral-200 bg-white">
+        <div className="mx-auto max-w-5xl px-5 py-8">
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+            <Stat value="230 €" label="Cuota mínima mensual 2026" />
+            <Stat value="1.085 €" label="Cuota máxima mensual 2026" />
+            <Stat value="87 €" label="Tarifa plana primer año" />
+            <Stat value="15" label="Tramos por ingresos reales" />
+          </div>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {CALCS.map((c) => {
-            const Icon = c.icon;
-            return (
+      </section>
+
+      {/* PRIMARY CALCS (editorial cards) */}
+      <section className="border-b border-neutral-200">
+        <div className="mx-auto max-w-5xl px-5 py-16">
+          <div className="grid gap-10 md:grid-cols-2">
+            {PRIMARY.map((c) => (
               <Link
                 key={c.href}
                 href={c.href}
-                className="group rounded-xl border border-slate-200 bg-white p-6 transition-all hover:border-blue-300 hover:shadow-md"
+                className="group block border-l-2 border-neutral-900 pl-6 transition-colors hover:border-[#B91C1C]"
               >
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
-                  <Icon className="h-5 w-5" strokeWidth={2} />
-                </div>
-                <h3 className="mt-4 text-base font-semibold text-slate-900 flex items-center gap-2">
+                <p className="text-[11px] uppercase tracking-[0.18em] text-[#B91C1C] mb-2">
+                  {c.eyebrow}
+                </p>
+                <h2 className="font-serif text-3xl leading-tight tracking-tight text-neutral-900 sm:text-4xl">
                   {c.title}
-                  <ArrowRight className="h-4 w-4 text-slate-400 transition-all group-hover:text-blue-600 group-hover:translate-x-0.5" />
-                </h3>
-                <p className="mt-2 text-sm text-slate-600 leading-relaxed">{c.description}</p>
+                </h2>
+                <p className="mt-3 text-[15px] leading-relaxed text-neutral-600">{c.teaser}</p>
+                <div className="mt-6 flex items-end gap-5">
+                  <div>
+                    <p className="font-serif text-4xl text-neutral-900">{c.stat}</p>
+                    <p className="mt-1 text-[11px] uppercase tracking-wider text-neutral-500">
+                      {c.statLabel}
+                    </p>
+                  </div>
+                  <span className="ml-auto mb-1 inline-flex items-center gap-1 text-[13px] text-neutral-700 transition-colors group-hover:text-[#B91C1C]">
+                    Calcular
+                    <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </span>
+                </div>
               </Link>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="mb-16 grid gap-4 md:grid-cols-2">
-        <Link
-          href="/calendario-fiscal"
-          className="group rounded-xl border border-slate-200 bg-white p-6 transition-all hover:border-blue-300 hover:shadow-md"
-        >
-          <Calendar className="h-6 w-6 text-blue-600" strokeWidth={2} />
-          <h3 className="mt-4 text-lg font-semibold text-slate-900">Calendario fiscal</h3>
-          <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-            Todas las fechas clave del año: modelos 303, 130, 390, 100, 111, 115, 347.
-            No te pases ninguna.
+      {/* SECONDARY CALCS (denser list, magazine-style) */}
+      <section className="border-b border-neutral-200">
+        <div className="mx-auto max-w-5xl px-5 py-14">
+          <h3 className="font-serif text-2xl tracking-tight text-neutral-900 mb-8">
+            Y el resto del papeleo.
+          </h3>
+          <div className="grid gap-px bg-neutral-200 border border-neutral-200 sm:grid-cols-2 lg:grid-cols-3">
+            {SECONDARY.map((c) => (
+              <Link
+                key={c.href}
+                href={c.href}
+                className="group block bg-[#FAFAF7] p-6 transition-colors hover:bg-white"
+              >
+                <p className="font-serif text-xl leading-tight text-neutral-900 group-hover:text-[#B91C1C]">
+                  {c.title}
+                </p>
+                <p className="mt-2 text-[13px] leading-relaxed text-neutral-600">{c.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TOOLS */}
+      <section className="border-b border-neutral-200 bg-white">
+        <div className="mx-auto max-w-5xl px-5 py-14">
+          <div className="grid gap-10 md:grid-cols-3">
+            {TOOLS.map((t) => (
+              <Link key={t.href} href={t.href} className="group block">
+                <p className="text-[11px] uppercase tracking-wider text-neutral-400 mb-2">Herramienta</p>
+                <p className="font-serif text-2xl leading-tight text-neutral-900 group-hover:text-[#B91C1C] transition-colors">
+                  {t.title}
+                </p>
+                <p className="mt-2 text-[13px] leading-relaxed text-neutral-600">{t.desc}</p>
+                <span className="mt-3 inline-flex items-center gap-1 text-[12px] text-neutral-500 group-hover:text-[#B91C1C]">
+                  Abrir
+                  <ArrowUpRight className="h-3 w-3" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* MANIFESTO */}
+      <section className="border-b border-neutral-200">
+        <div className="mx-auto max-w-5xl px-5 py-16">
+          <div className="grid gap-10 md:grid-cols-12">
+            <div className="md:col-span-5">
+              <p className="text-[11px] uppercase tracking-[0.18em] text-[#B91C1C] mb-3">
+                Por qué Cuotia
+              </p>
+              <h3 className="font-serif text-3xl leading-tight tracking-tight text-neutral-900">
+                Sin registro,<br /> sin pop-ups,<br /> sin trampa.
+              </h3>
+            </div>
+            <div className="md:col-span-7 space-y-5 text-[15px] leading-relaxed text-neutral-700">
+              <p>
+                Todo se calcula en tu navegador. No subimos tus números a ningún servidor.
+                No pedimos email para enseñarte el resultado.
+              </p>
+              <p>
+                Las cifras vienen del BOE, AEAT y Seguridad Social. Actualizamos cuando
+                cambia la ley, no cuando nos acordamos.
+              </p>
+              <p className="text-neutral-500 italic text-[13px]">
+                ¿Quieres avisos cuando cambien tramos o haya nuevos modelos?
+                Apúntate abajo. Es lo único que pedimos.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NEWSLETTER */}
+      <section>
+        <div className="mx-auto max-w-3xl px-5 py-16">
+          <Newsletter source="homepage" />
+        </div>
+      </section>
+
+      {/* AVISO */}
+      <section className="border-t border-neutral-200 bg-[#F5F5F0]">
+        <div className="mx-auto max-w-3xl px-5 py-8 text-center">
+          <p className="text-[12px] leading-relaxed text-neutral-500">
+            <strong className="text-neutral-700">Aviso.</strong> Los cálculos son orientativos.
+            Se basan en los tramos generales 2025 (RD-ley 13/2022) y la escala estatal del
+            IRPF. No incluyen escalas autonómicas, deducciones personales ni circunstancias
+            particulares. Para presentar tus modelos, consulta a un gestor.
           </p>
-        </Link>
-        <Link
-          href="/guias"
-          className="group rounded-xl border border-slate-200 bg-white p-6 transition-all hover:border-blue-300 hover:shadow-md"
-        >
-          <BookOpen className="h-6 w-6 text-blue-600" strokeWidth={2} />
-          <h3 className="mt-4 text-lg font-semibold text-slate-900">Guías</h3>
-          <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-            Cómo darse de alta, gastos deducibles, tarifa plana. Sin jerga, paso a paso.
-          </p>
-        </Link>
+        </div>
       </section>
+    </>
+  );
+}
 
-      <AdSlot format="rectangle" className="mb-16" />
-
-      <section className="mb-16">
-        <Newsletter source="homepage" />
-      </section>
-
-      <section className="rounded-xl border border-slate-200 bg-slate-50 p-6 text-center">
-        <p className="text-xs text-slate-500 max-w-3xl mx-auto leading-relaxed">
-          <strong className="text-slate-700">Aviso.</strong> Los cálculos son orientativos.
-          Se basan en los tramos generales 2025 (RD-ley 13/2022) y la escala estatal del
-          IRPF. No incluyen escalas autonómicas, deducciones personales ni circunstancias
-          particulares. Para presentar tus modelos, consulta a un gestor.
-        </p>
-      </section>
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div>
+      <p className="font-serif text-3xl text-neutral-900">{value}</p>
+      <p className="mt-1 text-[11px] uppercase tracking-wider text-neutral-500 leading-tight">
+        {label}
+      </p>
     </div>
   );
 }

@@ -81,10 +81,10 @@ export default function Page() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl">
+        <h1 className="text-3xl font-bold text-neutral-900 sm:text-4xl">
           Calendario fiscal autónomos
         </h1>
-        <p className="mt-3 text-slate-700 max-w-3xl">
+        <p className="mt-3 text-neutral-700 max-w-3xl">
           Las fechas clave del año fiscal para autónomos en España. Tip: si domicilias
           el pago, la fecha tope baja 5 días (al 15 en lugar del 20).
         </p>
@@ -94,26 +94,26 @@ export default function Page() {
 
       <div className="space-y-6">
         {EVENTOS.map((m) => (
-          <section key={m.mes} className=" rounded-xl border border-slate-200 bg-white p-6">
-            <h2 className="text-xl font-bold text-slate-900 mb-4">{m.mes}</h2>
+          <section key={m.mes} className=" rounded-xl border border-neutral-200 bg-white p-6">
+            <h2 className="text-xl font-bold text-neutral-900 mb-4">{m.mes}</h2>
             <div className="space-y-4">
               {m.eventos.map((e, i) => (
-                <div key={i} className="border-l-4 border-blue-500 pl-4">
+                <div key={i} className="border-l-4 border-[#B91C1C] pl-4">
                   <div className="flex flex-wrap items-baseline gap-3 mb-1">
-                    <p className="text-sm font-semibold text-blue-600">{e.fecha}</p>
+                    <p className="text-sm font-semibold text-[#B91C1C]">{e.fecha}</p>
                     <div className="flex flex-wrap gap-1">
                       {e.modelos.map((mod) => (
                         <span
                           key={mod}
-                          className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-mono text-slate-700"
+                          className="rounded-full bg-neutral-100 px-2 py-0.5 text-[10px] font-mono text-neutral-700"
                         >
                           {mod}
                         </span>
                       ))}
                     </div>
                   </div>
-                  <p className="text-sm font-semibold text-slate-900">{e.titulo}</p>
-                  <p className="text-xs text-slate-700 mt-0.5">{e.descripcion}</p>
+                  <p className="text-sm font-semibold text-neutral-900">{e.titulo}</p>
+                  <p className="text-xs text-neutral-700 mt-0.5">{e.descripcion}</p>
                 </div>
               ))}
             </div>
@@ -123,8 +123,8 @@ export default function Page() {
 
       <AdSlot format="rectangle" className="my-10" />
 
-      <article className="max-w-3xl text-sm text-slate-700 space-y-4">
-        <h2 className="text-xl font-bold text-slate-900">Guía rápida de modelos</h2>
+      <article className="max-w-3xl text-sm text-neutral-700 space-y-4">
+        <h2 className="text-xl font-bold text-neutral-900">Guía rápida de modelos</h2>
         <ul className="space-y-2">
           <li><strong>Modelo 303</strong> — IVA trimestral. Diferencia entre el IVA que has cobrado y el que has pagado.</li>
           <li><strong>Modelo 130</strong> — Pago fraccionado del IRPF. Solo si menos del 70% de tus ingresos llevan retención.</li>

@@ -34,20 +34,20 @@ export function Newsletter({ source = "homepage" }: { source?: string }) {
 
   if (status === "ok") {
     return (
-      <div className="rounded-xl border border-blue-200 bg-blue-50 p-6 text-center">
-        <Check className="mx-auto mb-2 h-8 w-8 text-blue-600" strokeWidth={2} />
-        <p className="text-sm text-slate-900">{msg}</p>
+      <div className="rounded-xl border border-[#FECACA] bg-[#FEF2F2] p-6 text-center">
+        <Check className="mx-auto mb-2 h-8 w-8 text-[#B91C1C]" strokeWidth={2} />
+        <p className="text-sm text-neutral-900">{msg}</p>
       </div>
     );
   }
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-6">
+    <div className="rounded-xl border border-neutral-200 bg-white p-6">
       <div className="mb-4 flex items-start gap-3">
-        <Mail className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-600" strokeWidth={2} />
+        <Mail className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#B91C1C]" strokeWidth={2} />
         <div>
-          <h3 className="text-base font-semibold text-slate-900">Avisos fiscales por email</h3>
-          <p className="mt-0.5 text-sm text-slate-600">
+          <h3 className="text-base font-semibold text-neutral-900">Avisos fiscales por email</h3>
+          <p className="mt-0.5 text-sm text-neutral-600">
             Cambios de tramos, nuevos modelos, fechas clave. Sin spam, te puedes dar de
             baja con un click.
           </p>
@@ -60,12 +60,12 @@ export function Newsletter({ source = "homepage" }: { source?: string }) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="tu@email.com"
-          className="flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="flex-1 rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 placeholder:text-neutral-400 focus:border-[#B91C1C] focus:outline-none focus:outline-1 focus:outline-[#B91C1C]"
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700 disabled:opacity-50"
+          className="rounded-lg bg-[#B91C1C] px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#991B1B] disabled:opacity-50"
         >
           {status === "loading" ? "..." : "Suscribirme"}
         </button>

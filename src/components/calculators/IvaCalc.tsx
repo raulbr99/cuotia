@@ -45,7 +45,7 @@ export function IvaCalc() {
               role="tab"
               aria-selected={modo === m}
               className={`px-4 py-2 text-sm font-medium transition-colors ${
-                modo === m ? "rounded-md bg-blue-600 text-white" : "rounded-md bg-slate-100 text-slate-700 hover:bg-slate-200"
+                modo === m ? "rounded-md bg-[#B91C1C] text-white" : "rounded-md bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
               }`}
             >
               {m === "agregar" ? "Añadir IVA" : m === "quitar" ? "Quitar IVA" : "Modelo 303 trimestral"}
@@ -53,12 +53,12 @@ export function IvaCalc() {
           ))}
         </div>
         <div className="flex items-center gap-2">
-          {!touched && <span className="text-[10px] font-semibold uppercase tracking-wider text-blue-600">EJEMPLO</span>}
+          {!touched && <span className="text-[10px] font-semibold uppercase tracking-wider text-[#B91C1C]">EJEMPLO</span>}
           <button
             onClick={reset}
             type="button"
             aria-label="Restablecer valores"
-            className="rounded-md border border-slate-300 p-1.5 text-slate-500 transition-colors hover:border-blue-500 hover:text-blue-600"
+            className="rounded-md border border-neutral-300 p-1.5 text-neutral-500 transition-colors hover:border-[#B91C1C] hover:text-[#B91C1C]"
           >
             <RotateCcw className="h-3.5 w-3.5" />
           </button>
@@ -67,9 +67,9 @@ export function IvaCalc() {
 
       {modo !== "303" ? (
         <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-          <div className="rounded-xl border border-slate-200 bg-white p-6 space-y-4">
+          <div className="rounded-xl border border-neutral-200 bg-white p-6 space-y-4">
             <div>
-              <label htmlFor={importeId} className="mb-1 block text-sm font-medium text-slate-700">
+              <label htmlFor={importeId} className="mb-1 block text-sm font-medium text-neutral-700">
                 {modo === "agregar" ? "Importe SIN IVA" : "Importe CON IVA"}
               </label>
               <div className="relative">
@@ -81,13 +81,13 @@ export function IvaCalc() {
                   onChange={(e) => { setImporte(parseFloat(e.target.value) || 0); setTouched(true); }}
                   min={0}
                   step={1}
-                  className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 pr-10 text-base text-slate-900 focus:border-blue-500 focus:outline-none"
+                  className="w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 pr-10 text-base text-neutral-900 focus:border-[#B91C1C] focus:outline-none"
                 />
-                <span aria-hidden="true" className="absolute right-3 top-2 text-slate-400">€</span>
+                <span aria-hidden="true" className="absolute right-3 top-2 text-neutral-400">€</span>
               </div>
             </div>
             <div role="radiogroup" aria-label="Tipo de IVA">
-              <p className="mb-2 block text-sm font-medium text-slate-700">Tipo de IVA</p>
+              <p className="mb-2 block text-sm font-medium text-neutral-700">Tipo de IVA</p>
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                 {(Object.keys(TIPOS_IVA) as TipoIVA[]).map((t) => (
                   <button
@@ -97,48 +97,48 @@ export function IvaCalc() {
                     role="radio"
                     aria-checked={tipo === t}
                     className={`border px-3 py-2 text-sm transition-colors ${
-                      tipo === t ? "border-blue-500 bg-white" : "border-slate-300 hover:border-[#606060]"
+                      tipo === t ? "border-[#B91C1C] bg-white" : "border-neutral-300 hover:border-[#606060]"
                     }`}
                   >
-                    <p className="font-medium capitalize text-slate-900">{t}</p>
-                    <p className="text-xs text-slate-500">{(TIPOS_IVA[t] * 100).toFixed(0)}%</p>
+                    <p className="font-medium capitalize text-neutral-900">{t}</p>
+                    <p className="text-xs text-neutral-500">{(TIPOS_IVA[t] * 100).toFixed(0)}%</p>
                   </button>
                 ))}
               </div>
             </div>
           </div>
-          <div className="rounded-xl border-2 border-blue-200 bg-blue-50 p-5 space-y-3">
+          <div className="rounded-xl border-2 border-[#FECACA] bg-[#FEF2F2] p-5 space-y-3">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-blue-700">TOTAL</p>
-              <p className="font-bold text-3xl text-blue-600">
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#B91C1C]">TOTAL</p>
+              <p className="font-bold text-3xl text-[#B91C1C]">
                 {eur(modo === "agregar" ? agregar.total : quitar.total)}
               </p>
             </div>
-            <div className="text-sm space-y-1 pt-3 border-t border-blue-500">
-              <div className="flex justify-between"><span className="text-slate-700">Base imponible</span><span className="font-semibold text-slate-900">{eur(modo === "agregar" ? agregar.base : quitar.base)}</span></div>
-              <div className="flex justify-between"><span className="text-slate-700">IVA</span><span className="font-semibold text-slate-900">{eur(modo === "agregar" ? agregar.iva : quitar.iva)}</span></div>
+            <div className="text-sm space-y-1 pt-3 border-t border-[#B91C1C]">
+              <div className="flex justify-between"><span className="text-neutral-700">Base imponible</span><span className="font-semibold text-neutral-900">{eur(modo === "agregar" ? agregar.base : quitar.base)}</span></div>
+              <div className="flex justify-between"><span className="text-neutral-700">IVA</span><span className="font-semibold text-neutral-900">{eur(modo === "agregar" ? agregar.iva : quitar.iva)}</span></div>
             </div>
           </div>
         </div>
       ) : (
         <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-          <div className="rounded-xl border border-slate-200 bg-white p-6 space-y-4">
+          <div className="rounded-xl border border-neutral-200 bg-white p-6 space-y-4">
             <div className="grid sm:grid-cols-2 gap-3">
               <Field label="IVA repercutido (cobrado)" value={ivaRep} setValue={(v) => { setIvaRep(v); setTouched(true); }} suffix="€" />
               <Field label="IVA soportado (pagado)" value={ivaSop} setValue={(v) => { setIvaSop(v); setTouched(true); }} suffix="€" />
               <Field label="Compensación trimestres anteriores" value={compAnt} setValue={(v) => { setCompAnt(v); setTouched(true); }} suffix="€" />
             </div>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-neutral-500">
               IVA repercutido: el que has cobrado a tus clientes en facturas emitidas.<br />
               IVA soportado: el que has pagado en facturas recibidas y es deducible.
             </p>
           </div>
-          <div className="rounded-xl border-2 border-blue-200 bg-blue-50 p-5">
-            <p className="text-xs font-semibold uppercase tracking-wider text-blue-700">
+          <div className="rounded-xl border-2 border-[#FECACA] bg-[#FEF2F2] p-5">
+            <p className="text-xs font-semibold uppercase tracking-wider text-[#B91C1C]">
               {m303.tipo === "ingresar" ? "A INGRESAR" : "A COMPENSAR / DEVOLVER"}
             </p>
-            <p className="mt-1 font-bold text-3xl text-blue-600">{eur(m303.resultado)}</p>
-            <p className="mt-2 text-sm text-slate-700">
+            <p className="mt-1 font-bold text-3xl text-[#B91C1C]">{eur(m303.resultado)}</p>
+            <p className="mt-2 text-sm text-neutral-700">
               {m303.tipo === "ingresar"
                 ? "Pago al Estado este trimestre"
                 : "Saldo a favor para el siguiente trimestre"}
@@ -154,7 +154,7 @@ function Field({ label, value, setValue, suffix }: { label: string; value: numbe
   const id = useId();
   return (
     <div>
-      <label htmlFor={id} className="mb-1 block text-sm font-medium text-slate-700">{label}</label>
+      <label htmlFor={id} className="mb-1 block text-sm font-medium text-neutral-700">{label}</label>
       <div className="relative">
         <input
           id={id}
@@ -164,9 +164,9 @@ function Field({ label, value, setValue, suffix }: { label: string; value: numbe
           onChange={(e) => setValue(parseFloat(e.target.value) || 0)}
           min={0}
           step={10}
-          className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 pr-10 text-base text-slate-900 focus:border-blue-500 focus:outline-none"
+          className="w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 pr-10 text-base text-neutral-900 focus:border-[#B91C1C] focus:outline-none"
         />
-        {suffix && <span aria-hidden="true" className="absolute right-3 top-2 text-slate-400">{suffix}</span>}
+        {suffix && <span aria-hidden="true" className="absolute right-3 top-2 text-neutral-400">{suffix}</span>}
       </div>
     </div>
   );

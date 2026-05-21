@@ -45,12 +45,12 @@ export default function Page() {
       <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Alta autónomo" }]} />
       <article className="prose prose-gray max-w-none">
         <h1 className="text-3xl font-bold sm:text-4xl">Cómo darse de alta como autónomo en 2025</h1>
-        <p className="text-xs text-slate-500 flex items-center gap-1.5 my-3 not-prose">
+        <p className="text-xs text-neutral-500 flex items-center gap-1.5 my-3 not-prose">
           <Calendar className="h-3 w-3" />
           Publicado <time dateTime={PUBLISHED}>20 de mayo de 2026</time>
           {PUBLISHED !== MODIFIED && <> · Actualizado <time dateTime={MODIFIED}>20 de mayo de 2026</time></>}
         </p>
-        <p className="text-lg text-slate-700">
+        <p className="text-lg text-neutral-700">
           Antes de emitir tu primera factura, tienes que registrarte en dos sitios:
           <strong> Hacienda</strong> y <strong>Seguridad Social</strong>. Los dos trámites son online,
           gratuitos y se hacen el mismo día. Te explico cómo, sin gestoría.
@@ -72,7 +72,7 @@ export default function Page() {
             "Presenta. Recibes acuse al instante con tu NIF activado para facturar",
           ].map((step, i) => (
             <li key={i} className="flex items-start gap-2">
-              <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+              <CheckCircle2 className="h-5 w-5 text-[#B91C1C] mt-0.5 flex-shrink-0" />
               <span>{step}</span>
             </li>
           ))}
@@ -95,7 +95,7 @@ export default function Page() {
             "Domicilia tu cuenta bancaria para el pago mensual de la cuota",
           ].map((step, i) => (
             <li key={i} className="flex items-start gap-2">
-              <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+              <CheckCircle2 className="h-5 w-5 text-[#B91C1C] mt-0.5 flex-shrink-0" />
               <span>{step}</span>
             </li>
           ))}
@@ -114,7 +114,7 @@ export default function Page() {
         </ul>
         <p>
           Prorrogable otros 12 meses si tu rendimiento neto anual queda por debajo del
-          SMI (15.876 € en 2025). Más en nuestra <Link href="/guias/tarifa-plana" className="text-blue-600 underline">guía de tarifa plana</Link>.
+          SMI (15.876 € en 2025). Más en nuestra <Link href="/guias/tarifa-plana" className="text-[#B91C1C] underline">guía de tarifa plana</Link>.
         </p>
 
         <h2 className="text-2xl font-bold mt-10">Plazos importantes</h2>
@@ -131,12 +131,12 @@ export default function Page() {
           <li><strong>Confundir IRPF con IVA</strong> → son impuestos distintos. Las facturas a empresas llevan retención del 15% (IRPF) y el 21% (IVA). Hablamos de ambos en sus calculadoras.</li>
         </ul>
 
-        <div className="mt-12  bg-white border border-blue-500 p-6">
+        <div className="mt-12  bg-white border border-[#B91C1C] p-6">
           <h3 className="text-lg font-semibold m-0">Calcula tu cuota antes de darte de alta</h3>
           <p className="mt-2 mb-3">
             Para saber lo que vas a pagar al mes según tus ingresos previstos:
           </p>
-          <Link href="/cuota-autonomo" className="inline-flex items-center gap-2 rounded-md bg-blue-600 text-white px-4 py-2  font-medium text-sm hover:opacity-90">
+          <Link href="/cuota-autonomo" className="inline-flex items-center gap-2 rounded-md bg-[#B91C1C] text-white px-4 py-2  font-medium text-sm hover:opacity-90">
             Calcular cuota autónomo
           </Link>
         </div>

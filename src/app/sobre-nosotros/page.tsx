@@ -39,7 +39,7 @@ export default function Page() {
 
       <article className="prose prose-gray max-w-none">
         <h1 className="text-3xl font-bold sm:text-4xl">Sobre CalcAutónomo</h1>
-        <p className="text-lg text-slate-700">
+        <p className="text-lg text-neutral-700">
           CalcAutónomo es un sitio independiente con calculadoras fiscales gratuitas
           para autónomos en España. Sin registros, sin emails, sin venta de servicios
           de gestoría. Está hecho para que puedas hacer tus números rápido y bien
@@ -73,11 +73,11 @@ export default function Page() {
             { name: "Tesorería General Seguridad Social", url: "https://sede.seg-social.gob.es", what: "Cuotas RETA por tramos, tarifa plana, prestaciones." },
             { name: "Boletines oficiales autonómicos", url: "https://www.boe.es/diario_boa/", what: "Escalas IRPF de cada Comunidad Autónoma." },
           ].map((src) => (
-            <a key={src.url} href={src.url} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3  rounded-xl border border-slate-200 bg-white p-4 hover:border-blue-500 hover:bg-white">
-              <ExternalLink className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+            <a key={src.url} href={src.url} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3  rounded-xl border border-neutral-200 bg-white p-4 hover:border-[#B91C1C] hover:bg-white">
+              <ExternalLink className="h-5 w-5 text-[#B91C1C] mt-0.5 flex-shrink-0" />
               <div>
-                <p className="font-semibold text-slate-900 m-0">{src.name}</p>
-                <p className="text-sm text-slate-700 m-0">{src.what}</p>
+                <p className="font-semibold text-neutral-900 m-0">{src.name}</p>
+                <p className="text-sm text-neutral-700 m-0">{src.what}</p>
               </div>
             </a>
           ))}
@@ -94,12 +94,12 @@ export default function Page() {
         </ul>
 
         <h2 className="text-2xl font-bold mt-10">Limitaciones honestas</h2>
-        <div className="not-prose  rounded-xl border-2 border-blue-200 bg-blue-50 p-5 my-6">
-          <p className="text-sm text-slate-900 mb-2 font-semibold flex items-center gap-2">
+        <div className="not-prose  rounded-xl border-2 border-[#FECACA] bg-[#FEF2F2] p-5 my-6">
+          <p className="text-sm text-neutral-900 mb-2 font-semibold flex items-center gap-2">
             <Shield className="h-5 w-5" />
             Las calculadoras NO tienen en cuenta:
           </p>
-          <ul className="text-sm text-slate-900 list-disc list-inside space-y-1">
+          <ul className="text-sm text-neutral-900 list-disc list-inside space-y-1">
             <li>Mínimos personales y familiares (descendientes, mayores 65 años, discapacidad)</li>
             <li>Deducciones autonómicas específicas (vivienda, donativos regionales)</li>
             <li>Reducción por rendimiento del trabajo</li>
@@ -107,7 +107,7 @@ export default function Page() {
             <li>Régimen foral de Navarra y País Vasco (consulta Hacienda Foral)</li>
             <li>Circunstancias personales que afectan al cálculo final</li>
           </ul>
-          <p className="text-sm text-slate-900 mt-3 mb-0">
+          <p className="text-sm text-neutral-900 mt-3 mb-0">
             <strong>Para presentar tus modelos oficiales</strong>: usa el portal de la
             AEAT o consulta a un gestor.
           </p>
@@ -138,14 +138,14 @@ export default function Page() {
 
         <h2 className="text-2xl font-bold mt-10">Contacto</h2>
         <p className="flex items-center gap-2">
-          <Mail className="h-5 w-5 text-blue-600" />
+          <Mail className="h-5 w-5 text-[#B91C1C]" />
           ¿Has detectado un error en un cálculo? ¿Sugerencias de calculadoras? Escríbenos a
-          <a href="mailto:hola@cuotia.es" className="text-blue-600">hola@cuotia.es</a>.
+          <a href="mailto:hola@cuotia.es" className="text-[#B91C1C]">hola@cuotia.es</a>.
         </p>
 
-        <div className="not-prose mt-12  bg-white border border-blue-500 p-6">
+        <div className="not-prose mt-12  bg-white border border-[#B91C1C] p-6">
           <p className="font-semibold m-0 mb-3 flex items-center gap-2">
-            <Calculator className="h-5 w-5 text-blue-600" />
+            <Calculator className="h-5 w-5 text-[#B91C1C]" />
             Empieza por las calculadoras más usadas
           </p>
           <div className="grid sm:grid-cols-2 gap-2">
@@ -155,7 +155,7 @@ export default function Page() {
               { href: "/calculadora-despido", label: "Despido y finiquito" },
               { href: "/generador-facturas", label: "Generador de facturas" },
             ].map((l) => (
-              <Link key={l.href} href={l.href} className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-600">
+              <Link key={l.href} href={l.href} className="flex items-center gap-2 text-sm text-[#B91C1C] hover:text-[#B91C1C]">
                 <CheckCircle2 className="h-4 w-4" /> {l.label}
               </Link>
             ))}

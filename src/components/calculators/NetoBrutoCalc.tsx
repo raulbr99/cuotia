@@ -39,16 +39,16 @@ export function NetoBrutoCalc() {
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-      <div className="rounded-xl border border-slate-200 bg-white p-6">
+      <div className="rounded-xl border border-neutral-200 bg-white p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-bold text-lg text-slate-900">Tus datos</h3>
+          <h3 className="font-bold text-lg text-neutral-900">Tus datos</h3>
           <div className="flex items-center gap-2">
-            {!touched && <span className="text-[10px] font-semibold uppercase tracking-wider text-blue-600">EJEMPLO</span>}
+            {!touched && <span className="text-[10px] font-semibold uppercase tracking-wider text-[#B91C1C]">EJEMPLO</span>}
             <button
               onClick={reset}
               type="button"
               aria-label="Restablecer valores"
-              className="rounded-md border border-slate-300 p-1.5 text-slate-500 transition-colors hover:border-blue-500 hover:text-blue-600"
+              className="rounded-md border border-neutral-300 p-1.5 text-neutral-500 transition-colors hover:border-[#B91C1C] hover:text-[#B91C1C]"
             >
               <RotateCcw className="h-3.5 w-3.5" />
             </button>
@@ -57,7 +57,7 @@ export function NetoBrutoCalc() {
 
         <div className="space-y-4">
           <div>
-            <label htmlFor={ingId} className="mb-1 block text-sm font-medium text-slate-700">
+            <label htmlFor={ingId} className="mb-1 block text-sm font-medium text-neutral-700">
               Ingresos brutos anuales
             </label>
             <div className="relative">
@@ -69,14 +69,14 @@ export function NetoBrutoCalc() {
                 onChange={(e) => { setIngresosBrutosAnuales(parseFloat(e.target.value) || 0); setTouched(true); }}
                 min={0}
                 step={1000}
-                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 pr-10 text-base text-slate-900 focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 pr-10 text-base text-neutral-900 focus:border-[#B91C1C] focus:outline-none"
               />
-              <span aria-hidden="true" className="absolute right-3 top-2 text-slate-400">€</span>
+              <span aria-hidden="true" className="absolute right-3 top-2 text-neutral-400">€</span>
             </div>
           </div>
 
           <div>
-            <label htmlFor={gastosId} className="mb-1 block text-sm font-medium text-slate-700">
+            <label htmlFor={gastosId} className="mb-1 block text-sm font-medium text-neutral-700">
               Gastos deducibles anuales
             </label>
             <div className="relative">
@@ -88,68 +88,68 @@ export function NetoBrutoCalc() {
                 onChange={(e) => { setGastosAnuales(parseFloat(e.target.value) || 0); setTouched(true); }}
                 min={0}
                 step={500}
-                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 pr-10 text-base text-slate-900 focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 pr-10 text-base text-neutral-900 focus:border-[#B91C1C] focus:outline-none"
               />
-              <span aria-hidden="true" className="absolute right-3 top-2 text-slate-400">€</span>
+              <span aria-hidden="true" className="absolute right-3 top-2 text-neutral-400">€</span>
             </div>
-            <p className="mt-1 text-xs text-slate-500">
+            <p className="mt-1 text-xs text-neutral-500">
               Material, oficina, dietas deducibles, gestoría, etc.
             </p>
           </div>
 
-          <label htmlFor={tarifaId} className="flex items-center gap-2 text-sm text-slate-700">
+          <label htmlFor={tarifaId} className="flex items-center gap-2 text-sm text-neutral-700">
             <input
               id={tarifaId}
               type="checkbox"
               checked={usaTarifaPlana}
               onChange={(e) => { setUsaTarifaPlana(e.target.checked); setTouched(true); }}
-              className="h-4 w-4 border-slate-300 text-blue-600 focus:ring-blue-500"
+              className="h-4 w-4 border-neutral-300 text-[#B91C1C] focus:ring-[#B91C1C]"
             />
             Aplicar tarifa plana (87 €/mes el primer año)
           </label>
         </div>
 
         <div className="mt-6 grid grid-cols-2 gap-3 text-sm">
-          <div className="bg-white p-3 border border-slate-200">
-            <p className="text-xs text-slate-500">Ingresos brutos</p>
-            <p className="font-semibold text-slate-900">{eur(ingresosBrutosAnuales)}</p>
+          <div className="bg-white p-3 border border-neutral-200">
+            <p className="text-xs text-neutral-500">Ingresos brutos</p>
+            <p className="font-semibold text-neutral-900">{eur(ingresosBrutosAnuales)}</p>
           </div>
-          <div className="bg-white p-3 border border-slate-200">
-            <p className="text-xs text-slate-500">– Gastos deducibles</p>
-            <p className="font-semibold text-slate-900">– {eur(gastosAnuales)}</p>
+          <div className="bg-white p-3 border border-neutral-200">
+            <p className="text-xs text-neutral-500">– Gastos deducibles</p>
+            <p className="font-semibold text-neutral-900">– {eur(gastosAnuales)}</p>
           </div>
-          <div className="bg-white p-3 border border-slate-200">
-            <p className="text-xs text-slate-500">– Cuota autónomo</p>
-            <p className="font-semibold text-slate-900">– {eur(result.cuotaAnual)}</p>
+          <div className="bg-white p-3 border border-neutral-200">
+            <p className="text-xs text-neutral-500">– Cuota autónomo</p>
+            <p className="font-semibold text-neutral-900">– {eur(result.cuotaAnual)}</p>
           </div>
-          <div className="bg-white p-3 border border-slate-200">
-            <p className="text-xs text-slate-500">– IRPF estimado</p>
-            <p className="font-semibold text-slate-900">– {eur(result.irpf)}</p>
+          <div className="bg-white p-3 border border-neutral-200">
+            <p className="text-xs text-neutral-500">– IRPF estimado</p>
+            <p className="font-semibold text-neutral-900">– {eur(result.irpf)}</p>
           </div>
         </div>
       </div>
 
       <div className="space-y-4">
-        <div className="rounded-xl border-2 border-blue-200 bg-blue-50 p-5">
-          <p className="text-xs font-semibold uppercase tracking-wider text-blue-700">TU NETO ANUAL</p>
-          <p className="mt-1 font-bold text-3xl text-blue-600">{eur(result.neto)}</p>
-          <p className="mt-2 text-sm text-slate-700">
-            <strong className="text-slate-900">{eur(result.netoMensual)}</strong> / mes
+        <div className="rounded-xl border-2 border-[#FECACA] bg-[#FEF2F2] p-5">
+          <p className="text-xs font-semibold uppercase tracking-wider text-[#B91C1C]">TU NETO ANUAL</p>
+          <p className="mt-1 font-bold text-3xl text-[#B91C1C]">{eur(result.neto)}</p>
+          <p className="mt-2 text-sm text-neutral-700">
+            <strong className="text-neutral-900">{eur(result.netoMensual)}</strong> / mes
           </p>
         </div>
 
-        <div className="rounded-xl border border-slate-200 bg-white p-5 text-xs space-y-2">
+        <div className="rounded-xl border border-neutral-200 bg-white p-5 text-xs space-y-2">
           <div className="flex justify-between">
-            <span className="text-slate-500">Tu tramo</span>
-            <span className="font-medium text-slate-900">{result.tramo.label}</span>
+            <span className="text-neutral-500">Tu tramo</span>
+            <span className="font-medium text-neutral-900">{result.tramo.label}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-slate-500">Base imponible IRPF</span>
-            <span className="font-medium text-slate-900">{eur(result.baseImponible)}</span>
+            <span className="text-neutral-500">Base imponible IRPF</span>
+            <span className="font-medium text-neutral-900">{eur(result.baseImponible)}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-slate-500">Tipo efectivo IRPF</span>
-            <span className="font-medium text-slate-900">{pct(result.tipoEfectivo)}</span>
+            <span className="text-neutral-500">Tipo efectivo IRPF</span>
+            <span className="font-medium text-neutral-900">{pct(result.tipoEfectivo)}</span>
           </div>
         </div>
       </div>

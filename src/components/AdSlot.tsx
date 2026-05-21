@@ -15,7 +15,7 @@ export function AdSlot({ format = "leaderboard", className = "" }: AdSlotProps) 
   return (
     <div className={`mx-auto w-full ${size.w} ${className}`}>
       <div
-        className={`${size.h} flex w-full items-center justify-center rounded-lg border border-dashed border-slate-300 bg-slate-50 text-[10px] uppercase tracking-wider text-slate-400`}
+        className={`${size.h} flex w-full items-center justify-center rounded-lg border border-dashed border-neutral-300 bg-[#F5F5F0] text-[10px] uppercase tracking-wider text-neutral-400`}
       >
         Anuncios · {format}
       </div>

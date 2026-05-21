@@ -23,8 +23,8 @@ export default function Page() {
       <SpeakableSchema />
       <Breadcrumbs items={[{ label: "Calculadora IVA" }]} />
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl">Calculadora IVA y modelo 303</h1>
-        <p className="mt-3 text-slate-700 max-w-3xl">
+        <h1 className="text-3xl font-bold text-neutral-900 sm:text-4xl">Calculadora IVA y modelo 303</h1>
+        <p className="mt-3 text-neutral-700 max-w-3xl">
           Añade IVA, quítalo de un precio final, o calcula tu modelo 303 trimestral.
         </p>
       </header>

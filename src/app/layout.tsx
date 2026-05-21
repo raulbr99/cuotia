@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Fraunces } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -7,7 +7,14 @@ import { Footer } from "@/components/Footer";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
@@ -15,11 +22,11 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Cuotia · Calculadoras fiscales gratuitas para autónomos",
+    default: "Cuotia · Calculadoras fiscales para autónomos sin BS",
     template: "%s · Cuotia",
   },
   description:
-    "Calculadoras gratuitas para autónomos en España: cuota mensual, IRPF, modelo 130, neto/bruto y calendario fiscal. Tramos 2025 actualizados.",
+    "Calculadoras fiscales gratis para autónomos en España. Cuota, IRPF, IVA, despido. Sin registros. Datos oficiales 2025.",
   keywords: [
     "calculadora autonomo",
     "cuota autonomo 2025",
@@ -34,9 +41,8 @@ export const metadata: Metadata = {
     locale: "es_ES",
     url: SITE_URL,
     siteName: "Cuotia",
-    title: "Calculadoras fiscales para autónomos en España",
-    description:
-      "Calcula tu cuota, IRPF, modelo 130 y neto en segundos. Tramos 2025 vigentes.",
+    title: "Calculadoras fiscales para autónomos sin BS",
+    description: "Cuota, IRPF, modelo 130 y más en segundos. Sin registros, sin emails.",
     images: [
       {
         url: `${SITE_URL}/api/og?title=${encodeURIComponent("Calculadoras fiscales para autónomos")}&subtitle=${encodeURIComponent("Cuota, IRPF, modelo 130, neto/bruto y más. Sin registros, sin emails. Tramos 2025.")}`,
@@ -48,7 +54,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cuotia · Calculadoras fiscales gratuitas",
+    title: "Cuotia · Calculadoras fiscales para autónomos sin BS",
     description: "Cuota, IRPF, modelo 130 y más en segundos.",
     images: [`${SITE_URL}/api/og?title=${encodeURIComponent("Calculadoras fiscales para autónomos")}`],
   },
@@ -58,8 +64,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-white text-slate-900">
+    <html lang="es" className={`${inter.variable} ${fraunces.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col bg-[#FAFAF7] text-neutral-900">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

@@ -35,11 +35,11 @@ export default function Page() {
     <div className="mx-auto max-w-6xl px-4 py-10">
       <Breadcrumbs items={[{ label: "Guías" }]} />
       <header className="mb-10">
-        <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl flex items-center gap-3">
-          <BookOpen className="h-7 w-7 text-blue-600" />
+        <h1 className="text-3xl font-bold text-neutral-900 sm:text-4xl flex items-center gap-3">
+          <BookOpen className="h-7 w-7 text-[#B91C1C]" />
           Guías para autónomos
         </h1>
-        <p className="mt-3 text-slate-700 max-w-3xl">
+        <p className="mt-3 text-neutral-700 max-w-3xl">
           Explicaciones prácticas para no perderte con los modelos, plazos y normativa.
         </p>
       </header>
@@ -50,11 +50,11 @@ export default function Page() {
             <Link
               key={g.href}
               href={g.href}
-              className="group  rounded-xl border border-slate-200 bg-white p-6 hover:bg-white hover:border-slate-300 transition-all"
+              className="group  rounded-xl border border-neutral-200 bg-white p-6 hover:bg-white hover:border-neutral-300 transition-all"
             >
-              <Icon className="h-6 w-6 text-blue-600" />
+              <Icon className="h-6 w-6 text-[#B91C1C]" />
               <h2 className="mt-4 text-base font-semibold">{g.title}</h2>
-              <p className="text-sm text-slate-700 mt-2">{g.description}</p>
+              <p className="text-sm text-neutral-700 mt-2">{g.description}</p>
             </Link>
           );
         })}

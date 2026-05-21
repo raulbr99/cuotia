@@ -25,15 +25,15 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <nav className="mb-4 flex items-center text-xs text-slate-500" aria-label="Breadcrumb">
-        <Link href="/" className="hover:text-blue-700">Inicio</Link>
+      <nav className="mb-4 flex items-center text-xs text-neutral-500" aria-label="Breadcrumb">
+        <Link href="/" className="hover:text-[#B91C1C]">Inicio</Link>
         {items.map((c, i) => (
           <span key={i} className="flex items-center">
-            <ChevronRight className="mx-1 h-3 w-3 text-slate-300" />
+            <ChevronRight className="mx-1 h-3 w-3 text-neutral-300" />
             {c.href ? (
-              <Link href={c.href} className="hover:text-blue-700">{c.label}</Link>
+              <Link href={c.href} className="hover:text-[#B91C1C]">{c.label}</Link>
             ) : (
-              <span className="font-medium text-slate-700">{c.label}</span>
+              <span className="font-medium text-neutral-700">{c.label}</span>
             )}
           </span>
         ))}

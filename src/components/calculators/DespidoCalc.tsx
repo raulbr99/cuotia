@@ -49,16 +49,16 @@ export function DespidoCalc() {
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
       <div className="space-y-6">
-        <div className="rounded-xl border border-slate-200 bg-white p-6">
+        <div className="rounded-xl border border-neutral-200 bg-white p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-bold text-lg text-slate-900">Tipo de despido</h3>
+            <h3 className="font-bold text-lg text-neutral-900">Tipo de despido</h3>
             <div className="flex items-center gap-2">
-              {!touched && <span className="text-[10px] font-semibold uppercase tracking-wider text-blue-600">EJEMPLO</span>}
+              {!touched && <span className="text-[10px] font-semibold uppercase tracking-wider text-[#B91C1C]">EJEMPLO</span>}
               <button
                 onClick={reset}
                 type="button"
                 aria-label="Restablecer valores"
-                className="rounded-md border border-slate-300 p-1.5 text-slate-500 transition-colors hover:border-blue-500 hover:text-blue-600"
+                className="rounded-md border border-neutral-300 p-1.5 text-neutral-500 transition-colors hover:border-[#B91C1C] hover:text-[#B91C1C]"
               >
                 <RotateCcw className="h-3.5 w-3.5" />
               </button>
@@ -74,27 +74,27 @@ export function DespidoCalc() {
                 aria-checked={tipo === t.id}
                 className={`text-left border p-3 transition-colors ${
                   tipo === t.id
-                    ? "border-blue-500 bg-white"
-                    : "border-slate-300 hover:border-[#606060]"
+                    ? "border-[#B91C1C] bg-white"
+                    : "border-neutral-300 hover:border-[#606060]"
                 }`}
               >
-                <p className="font-medium text-sm text-slate-900">{t.label}</p>
-                <p className="mt-1 text-xs text-slate-500">{t.help}</p>
+                <p className="font-medium text-sm text-neutral-900">{t.label}</p>
+                <p className="mt-1 text-xs text-neutral-500">{t.help}</p>
               </button>
             ))}
           </div>
         </div>
 
-        <div className="rounded-xl border border-slate-200 bg-white p-6 space-y-4">
-          <h3 className="font-bold text-lg text-slate-900">Indemnización por despido</h3>
+        <div className="rounded-xl border border-neutral-200 bg-white p-6 space-y-4">
+          <h3 className="font-bold text-lg text-neutral-900">Indemnización por despido</h3>
           <div className="grid sm:grid-cols-2 gap-3">
             <Field label="Salario bruto anual" value={salarioAnual} setValue={(v) => { setSalarioAnual(v); onTouch(); }} step={500} suffix="€" />
             <Field label="Años trabajados" value={anos} setValue={(v) => { setAnos(v); onTouch(); }} step={0.5} max={45} />
           </div>
         </div>
 
-        <div className="rounded-xl border border-slate-200 bg-white p-6 space-y-4">
-          <h3 className="font-bold text-lg text-slate-900">Finiquito (independiente del despido)</h3>
+        <div className="rounded-xl border border-neutral-200 bg-white p-6 space-y-4">
+          <h3 className="font-bold text-lg text-neutral-900">Finiquito (independiente del despido)</h3>
           <div className="grid sm:grid-cols-2 gap-3">
             <Field label="Días de vacaciones no disfrutadas" value={diasVac} setValue={(v) => { setDiasVac(v); onTouch(); }} step={1} max={365} />
             <Field label="Días pendientes paga extra prorrateada" value={diasExtra} setValue={(v) => { setDiasExtra(v); onTouch(); }} step={1} max={365} help="Si cobras prorrateado, 0" />
@@ -104,38 +104,38 @@ export function DespidoCalc() {
       </div>
 
       <div className="space-y-4">
-        <div className="rounded-xl border-2 border-blue-200 bg-blue-50 p-5">
-          <p className="text-xs font-semibold uppercase tracking-wider text-blue-700">TOTAL A COBRAR (BRUTO)</p>
-          <p className="mt-1 font-bold text-3xl text-blue-600">{eur(total)}</p>
+        <div className="rounded-xl border-2 border-[#FECACA] bg-[#FEF2F2] p-5">
+          <p className="text-xs font-semibold uppercase tracking-wider text-[#B91C1C]">TOTAL A COBRAR (BRUTO)</p>
+          <p className="mt-1 font-bold text-3xl text-[#B91C1C]">{eur(total)}</p>
         </div>
 
-        <div className="rounded-xl border border-slate-200 bg-white p-5 text-sm space-y-2">
+        <div className="rounded-xl border border-neutral-200 bg-white p-5 text-sm space-y-2">
           <div className="flex justify-between">
-            <span className="text-slate-500">Indemnización</span>
-            <span className="font-semibold text-slate-900">{eur(despido.indemnizacion)}</span>
+            <span className="text-neutral-500">Indemnización</span>
+            <span className="font-semibold text-neutral-900">{eur(despido.indemnizacion)}</span>
           </div>
-          <div className="text-xs text-slate-500">
+          <div className="text-xs text-neutral-500">
             {despido.diasIndemnizacion.toFixed(0)} días · ≈ {despido.mensualidades.toFixed(1)} mensualidades
             {despido.topeMensualidades > 0 && ` · tope ${despido.topeMensualidades}`}
           </div>
-          <div className="border-t border-slate-200 pt-2 flex justify-between">
-            <span className="text-slate-500">Vacaciones no disfrutadas</span>
-            <span className="font-semibold text-slate-900">{eur(finiquito.vacaciones)}</span>
+          <div className="border-t border-neutral-200 pt-2 flex justify-between">
+            <span className="text-neutral-500">Vacaciones no disfrutadas</span>
+            <span className="font-semibold text-neutral-900">{eur(finiquito.vacaciones)}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-slate-500">Paga extra prorrateada</span>
-            <span className="font-semibold text-slate-900">{eur(finiquito.extra)}</span>
+            <span className="text-neutral-500">Paga extra prorrateada</span>
+            <span className="font-semibold text-neutral-900">{eur(finiquito.extra)}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-slate-500">Salario pendiente</span>
-            <span className="font-semibold text-slate-900">{eur(finiquito.salarioPendiente)}</span>
+            <span className="text-neutral-500">Salario pendiente</span>
+            <span className="font-semibold text-neutral-900">{eur(finiquito.salarioPendiente)}</span>
           </div>
         </div>
 
-        <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-xs text-slate-700">
+        <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-xs text-neutral-700">
           <p className="text-sm font-semibold text-amber-900 mb-2">IMPORTANTE</p>
           La indemnización por despido improcedente o causas objetivas está
-          <strong className="text-slate-900"> exenta de IRPF</strong> hasta el límite de 180.000 €.
+          <strong className="text-neutral-900"> exenta de IRPF</strong> hasta el límite de 180.000 €.
           El finiquito sí tributa.
         </div>
       </div>
@@ -157,7 +157,7 @@ function Field({
   const id = useId();
   return (
     <div>
-      <label htmlFor={id} className="mb-1 block text-sm font-medium text-slate-700">{label}</label>
+      <label htmlFor={id} className="mb-1 block text-sm font-medium text-neutral-700">{label}</label>
       <div className="relative">
         <input
           id={id}
@@ -168,11 +168,11 @@ function Field({
           min={0}
           max={max}
           step={step}
-          className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 pr-10 text-base text-slate-900 focus:border-blue-500 focus:outline-none"
+          className="w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 pr-10 text-base text-neutral-900 focus:border-[#B91C1C] focus:outline-none"
         />
-        {suffix && <span aria-hidden="true" className="absolute right-3 top-2 text-slate-400">{suffix}</span>}
+        {suffix && <span aria-hidden="true" className="absolute right-3 top-2 text-neutral-400">{suffix}</span>}
       </div>
-      {help && <p className="mt-1 text-xs text-slate-500">{help}</p>}
+      {help && <p className="mt-1 text-xs text-neutral-500">{help}</p>}
     </div>
   );
 }
