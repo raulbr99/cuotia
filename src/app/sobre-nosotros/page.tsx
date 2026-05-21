@@ -5,24 +5,24 @@ import { Calculator, Shield, BookOpen, Mail, ExternalLink, CheckCircle2 } from "
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 
-const ogUrl = `${SITE_URL}/api/og?title=${encodeURIComponent("Sobre CalcAutónomo")}&subtitle=${encodeURIComponent("Quién operamos el sitio, fuentes oficiales y metodología")}&tag=Sobre+nosotros`;
+const ogUrl = `${SITE_URL}/api/og?title=${encodeURIComponent("Sobre Cuotia")}&subtitle=${encodeURIComponent("Quién operamos el sitio, fuentes oficiales y metodología")}&tag=Sobre+nosotros`;
 
 export const metadata: Metadata = {
-  title: "Sobre CalcAutónomo · quién opera el sitio + metodología + fuentes",
-  description: "Quién está detrás de CalcAutónomo, fuentes oficiales (BOE, AEAT, TGSS), metodología de cálculo, política de actualizaciones y limitaciones.",
+  title: "Sobre Cuotia · quién opera el sitio + metodología + fuentes",
+  description: "Quién está detrás de Cuotia, fuentes oficiales (BOE, AEAT, TGSS), metodología de cálculo, política de actualizaciones y limitaciones.",
   alternates: { canonical: "/sobre-nosotros" },
-  openGraph: { title: "Sobre CalcAutónomo", description: "Metodología, fuentes y transparencia.", images: [{ url: ogUrl, width: 1200, height: 630 }] },
+  openGraph: { title: "Sobre Cuotia", description: "Metodología, fuentes y transparencia.", images: [{ url: ogUrl, width: 1200, height: 630 }] },
 };
 
 const aboutSchema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
-  name: "Sobre CalcAutónomo",
+  name: "Sobre Cuotia",
   url: `${SITE_URL}/sobre-nosotros`,
   inLanguage: "es-ES",
   mainEntity: {
     "@type": "Organization",
-    name: "CalcAutónomo",
+    name: "Cuotia",
     url: SITE_URL,
     description: "Calculadoras fiscales gratuitas para autónomos en España. Sin registros, sin emails, sin venta de servicios.",
     foundingDate: "2026-05-20",
@@ -38,12 +38,31 @@ export default function Page() {
       <Breadcrumbs items={[{ label: "Sobre nosotros" }]} />
 
       <article className="prose prose-gray max-w-none">
-        <h1 className="text-3xl font-bold sm:text-4xl">Sobre CalcAutónomo</h1>
+        <h1 className="text-3xl font-bold sm:text-4xl">Sobre Cuotia</h1>
         <p className="text-lg text-neutral-700">
-          CalcAutónomo es un sitio independiente con calculadoras fiscales gratuitas
+          Cuotia es un sitio independiente con calculadoras fiscales gratuitas
           para autónomos en España. Sin registros, sin emails, sin venta de servicios
           de gestoría. Está hecho para que puedas hacer tus números rápido y bien
           informado.
+        </p>
+
+        <h2 className="text-2xl font-bold mt-10">Quién está detrás</h2>
+        <p>
+          Cuotia es un proyecto independiente mantenido por un desarrollador autónomo
+          español. <strong>No somos gestores ni asesores fiscales</strong>. Somos autónomos
+          que nos pusimos a programar las calculadoras que no encontrábamos bien hechas
+          en internet — sin obligarte a registrarte, sin tratar de venderte nada.
+        </p>
+        <p>
+          La información se cita directamente desde el <a href="https://www.boe.es" target="_blank" rel="noopener noreferrer" className="text-[#B91C1C] underline">BOE</a>,
+          la <a href="https://sede.agenciatributaria.gob.es" target="_blank" rel="noopener noreferrer" className="text-[#B91C1C] underline">Agencia Tributaria</a> y
+          la <a href="https://sede.seg-social.gob.es" target="_blank" rel="noopener noreferrer" className="text-[#B91C1C] underline">Tesorería General de la Seguridad Social</a>.
+          Cada calculadora menciona la norma específica que aplica (RD-ley 3/2026, Orden PJC/297/2026, etc.).
+        </p>
+        <p>
+          ¿Eres gestor o abogado fiscal y quieres revisar o aportar al contenido?
+          Escríbenos a <a href="mailto:hola@cuotia.es" className="text-[#B91C1C] underline">hola@cuotia.es</a>.
+          Acreditamos públicamente la revisión.
         </p>
 
         <h2 className="text-2xl font-bold mt-10">Qué hacemos</h2>
@@ -68,7 +87,7 @@ export default function Page() {
 
         <div className="not-prose grid gap-3 my-6">
           {[
-            { name: "BOE (Boletín Oficial del Estado)", url: "https://www.boe.es", what: "Real Decreto-ley 13/2022 y leyes posteriores con tramos vigentes." },
+            { name: "BOE (Boletín Oficial del Estado)", url: "https://www.boe.es", what: "RD-ley 3/2026 (4 feb 2026) y Orden PJC/297/2026 (31 marzo 2026) con tramos vigentes." },
             { name: "Agencia Tributaria (AEAT)", url: "https://sede.agenciatributaria.gob.es", what: "Escalas IRPF estatales, tipos de IVA, modelos tributarios." },
             { name: "Tesorería General Seguridad Social", url: "https://sede.seg-social.gob.es", what: "Cuotas RETA por tramos, tarifa plana, prestaciones." },
             { name: "Boletines oficiales autonómicos", url: "https://www.boe.es/diario_boa/", what: "Escalas IRPF de cada Comunidad Autónoma." },
@@ -85,7 +104,7 @@ export default function Page() {
 
         <h2 className="text-2xl font-bold mt-10">Metodología de cálculo</h2>
         <ul>
-          <li><strong>Cuota autónomo</strong>: aplicamos los 15 tramos del sistema de cotización por ingresos reales (RD-ley 13/2022 + actualizaciones).</li>
+          <li><strong>Cuota autónomo</strong>: aplicamos los 15 tramos del sistema de cotización por ingresos reales (RD-ley 3/2026 + actualizaciones).</li>
           <li><strong>IRPF</strong>: escala estatal half (9,5% a 24,5%) + escala autonómica específica por CCAA. Sumamos tramo a tramo.</li>
           <li><strong>Modelo 130</strong>: 20% sobre rendimiento neto del trimestre menos retenciones soportadas.</li>
           <li><strong>IVA</strong>: tipos vigentes 21% / 10% / 4% / exento.</li>
@@ -130,7 +149,7 @@ export default function Page() {
 
         <h2 className="text-2xl font-bold mt-10">Modelo de negocio</h2>
         <p>
-          CalcAutónomo se sostiene con anuncios contextuales (Google AdSense). No
+          Cuotia se sostiene con anuncios contextuales (Google AdSense). No
           vendemos datos, no hacemos cross-selling de gestorías, no tenemos planes
           premium. Si quieres apoyar el proyecto, comparte el sitio o suscríbete a
           la newsletter para recibir avisos de cambios fiscales.

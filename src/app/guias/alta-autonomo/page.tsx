@@ -10,7 +10,7 @@ const PUBLISHED = "2026-05-20";
 const MODIFIED = "2026-05-20";
 
 export const metadata: Metadata = {
-  title: "Cómo darse de alta como autónomo en 2025 · paso a paso",
+  title: "Cómo darse de alta como autónomo en 2026 · paso a paso",
   description: "Guía completa: modelo 036/037, alta en RETA, tarifa plana, plazos y errores comunes. Sin gestoría.",
   alternates: { canonical: "/guias/alta-autonomo" },
 };
@@ -36,7 +36,7 @@ export default function Page() {
     <div className="mx-auto max-w-3xl px-4 py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} />
       <ArticleSchema
-        headline="Cómo darse de alta como autónomo en 2025"
+        headline="Cómo darse de alta como autónomo en 2026"
         description="Guía paso a paso: modelo 036/037, alta en RETA, tarifa plana, plazos y errores comunes."
         path="/guias/alta-autonomo"
         datePublished={PUBLISHED}
@@ -44,7 +44,7 @@ export default function Page() {
       />
       <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Alta autónomo" }]} />
       <article className="prose prose-gray max-w-none">
-        <h1 className="text-3xl font-bold sm:text-4xl">Cómo darse de alta como autónomo en 2025</h1>
+        <h1 className="text-3xl font-bold sm:text-4xl">Cómo darse de alta como autónomo en 2026</h1>
         <p className="text-xs text-neutral-500 flex items-center gap-1.5 my-3 not-prose">
           <Calendar className="h-3 w-3" />
           Publicado <time dateTime={PUBLISHED}>20 de mayo de 2026</time>
@@ -89,7 +89,7 @@ export default function Page() {
             "Acceso en sede.seg-social.gob.es con cl@ve o certificado",
             "Servicio: 'Alta en trabajo autónomo' (TA.0521)",
             "Datos: identificación, actividad, fecha de inicio",
-            "Elige tu base de cotización (la mínima es 1.166,70 € en 2025)",
+            "Elige tu base de cotización (la mínima es ~1.196,70 € en 2026)",
             "Elige mutua colaboradora (Asepeyo, Fremap, Mutua Universal...)",
             "Marca la casilla 'tarifa plana' si tienes derecho",
             "Domicilia tu cuenta bancaria para el pago mensual de la cuota",
@@ -105,7 +105,7 @@ export default function Page() {
 
         <h2 className="text-2xl font-bold mt-10">¿Tienes derecho a tarifa plana?</h2>
         <p>
-          La <strong>tarifa plana de 87 €/mes durante 12 meses</strong> aplica si:
+          La <strong>tarifa plana de 88,64 €/mes durante 12 meses</strong> aplica si:
         </p>
         <ul>
           <li>Es tu <strong>primer alta</strong> en RETA, o</li>
@@ -114,7 +114,7 @@ export default function Page() {
         </ul>
         <p>
           Prorrogable otros 12 meses si tu rendimiento neto anual queda por debajo del
-          SMI (15.876 € en 2025). Más en nuestra <Link href="/guias/tarifa-plana" className="text-[#B91C1C] underline">guía de tarifa plana</Link>.
+          SMI (~16.576 € en 2026). Más en nuestra <Link href="/guias/tarifa-plana" className="text-[#B91C1C] underline">guía de tarifa plana</Link>.
         </p>
 
         <h2 className="text-2xl font-bold mt-10">Plazos importantes</h2>

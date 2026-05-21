@@ -30,8 +30,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!VALID_CCAAS.includes(ccaa)) return {};
   const nombre = CCAA_NAMES[ccaa];
 
-  const title = `IRPF ${nombre} 2025 · calculadora con tramos autonómicos`;
-  const description = `Calcula tu IRPF en ${nombre} con la escala estatal + autonómica vigente 2025. Tramos, tipo efectivo y desglose por escalón.`;
+  const title = `IRPF ${nombre} 2026 · calculadora con tramos autonómicos`;
+  const description = `Calcula tu IRPF en ${nombre} con la escala estatal + autonómica vigente 2026. Tramos, tipo efectivo y desglose por escalón.`;
 
   return {
     title,
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: `${SITE_URL}/irpf/${ccaa}`,
       type: "website",
       images: [{
-        url: `${SITE_URL}/api/og?title=${encodeURIComponent(`IRPF ${nombre} 2025`)}&subtitle=${encodeURIComponent("Escala estatal + autonómica con calculadora interactiva")}&tag=${encodeURIComponent(nombre)}`,
+        url: `${SITE_URL}/api/og?title=${encodeURIComponent(`IRPF ${nombre} 2026`)}&subtitle=${encodeURIComponent("Escala estatal + autonómica con calculadora interactiva")}&tag=${encodeURIComponent(nombre)}`,
         width: 1200,
         height: 630,
       }],
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       card: "summary_large_image",
       title,
       description,
-      images: [`${SITE_URL}/api/og?title=${encodeURIComponent(`IRPF ${nombre} 2025`)}&tag=${encodeURIComponent(nombre)}`],
+      images: [`${SITE_URL}/api/og?title=${encodeURIComponent(`IRPF ${nombre} 2026`)}&tag=${encodeURIComponent(nombre)}`],
     },
   };
 }
@@ -92,8 +92,8 @@ export default async function Page({ params }: PageProps) {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <CalculatorSchema
-        name={`Calculadora IRPF ${nombre} 2025`}
-        description={`Calcula tu IRPF en ${nombre} con la escala combinada estatal + autonómica vigente 2025.`}
+        name={`Calculadora IRPF ${nombre} 2026`}
+        description={`Calcula tu IRPF en ${nombre} con la escala combinada estatal + autonómica vigente 2026.`}
         path={`/irpf/${ccaa}`}
       />
       <SpeakableSchema />
@@ -104,16 +104,16 @@ export default async function Page({ params }: PageProps) {
 
       <header className="mb-8">
         <h1 className="text-3xl font-bold text-neutral-900 sm:text-4xl">
-          IRPF en {nombre} 2025
+          IRPF en {nombre} 2026
         </h1>
         <p className="mt-3 text-neutral-700 max-w-3xl">
           Calcula tu IRPF anual combinando la <strong>escala estatal</strong> con la
-          <strong> escala autonómica de {nombre}</strong>. Tramos vigentes 2025.
+          <strong> escala autonómica de {nombre}</strong>. Tramos vigentes 2026.
         </p>
       </header>
 
       <QuickAnswer
-        question={`¿Cuánto se paga de IRPF en ${nombre} 2025?`}
+        question={`¿Cuánto se paga de IRPF en ${nombre} 2026?`}
         answer={`En ${nombre}, el IRPF combinado (estatal + autonómico) va del ${pct(combinadoMin)} al ${pct(combinadoMax)} según el rendimiento neto anual. La escala autonómica de ${nombre} aplica tipos del ${pct(tipoInicial)} al ${pct(tipoMaximo)} sobre los mismos tramos. La cuota total se suma a la escala estatal (9,5% – 24,5% por tramo). ${especial || "Es una escala progresiva."}`}
         updatedAt="2026-05-20"
       />
@@ -123,7 +123,7 @@ export default async function Page({ params }: PageProps) {
       <AdSlot format="leaderboard" className="my-10" />
 
       <article className="prose prose-gray max-w-3xl text-sm text-neutral-700 space-y-5">
-        <h2 className="text-xl font-bold text-neutral-900">Tramos autonómicos de {nombre} 2025</h2>
+        <h2 className="text-xl font-bold text-neutral-900">Tramos autonómicos de {nombre} 2026</h2>
         <div className="not-prose  border border-neutral-200 bg-white overflow-hidden my-4">
           <table className="w-full text-sm">
             <thead className="bg-white text-xs uppercase text-neutral-700">

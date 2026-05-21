@@ -26,10 +26,10 @@ export const metadata: Metadata = {
     template: "%s · Cuotia",
   },
   description:
-    "Calculadoras fiscales gratis para autónomos en España. Cuota, IRPF, IVA, despido. Sin registros. Datos oficiales 2025.",
+    "Calculadoras fiscales gratis para autónomos en España. Cuota, IRPF, IVA, despido. Sin registros. Datos oficiales 2026.",
   keywords: [
     "calculadora autonomo",
-    "cuota autonomo 2025",
+    "cuota autonomo 2026",
     "calculadora IRPF autonomo",
     "modelo 130 autonomo",
     "neto bruto autonomo",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     description: "Cuota, IRPF, modelo 130 y más en segundos. Sin registros, sin emails.",
     images: [
       {
-        url: `${SITE_URL}/api/og?title=${encodeURIComponent("Calculadoras fiscales para autónomos")}&subtitle=${encodeURIComponent("Cuota, IRPF, modelo 130, neto/bruto y más. Sin registros, sin emails. Tramos 2025.")}`,
+        url: `${SITE_URL}/api/og?title=${encodeURIComponent("Calculadoras fiscales para autónomos")}&subtitle=${encodeURIComponent("Cuota, IRPF, modelo 130, neto/bruto y más. Sin registros, sin emails. Tramos 2026.")}`,
         width: 1200,
         height: 630,
         alt: "Cuotia — Calculadoras fiscales para autónomos en España",

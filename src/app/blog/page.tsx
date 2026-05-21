@@ -11,16 +11,16 @@ export const metadata: Metadata = {
   title: "Blog · noticias fiscales para autónomos en España",
   description: "Análisis claros de los cambios fiscales que afectan a los autónomos: tramos de cotización, IRPF, Verifactu, MEI, SMI y modelos AEAT.",
   alternates: { canonical: "/blog" },
-  openGraph: { title: "Blog CalcAutónomo", description: "Cambios fiscales explicados en claro", images: [{ url: ogUrl, width: 1200, height: 630 }] },
+  openGraph: { title: "Blog Cuotia", description: "Cambios fiscales explicados en claro", images: [{ url: ogUrl, width: 1200, height: 630 }] },
 };
 
 const blogSchema = {
   "@context": "https://schema.org",
   "@type": "Blog",
-  name: "Blog CalcAutónomo",
+  name: "Blog Cuotia",
   url: `${SITE_URL}/blog`,
   inLanguage: "es-ES",
-  publisher: { "@type": "Organization", name: "CalcAutónomo", url: SITE_URL },
+  publisher: { "@type": "Organization", name: "Cuotia", url: SITE_URL },
 };
 
 export default function Page() {

@@ -19,13 +19,13 @@ const GUIAS = [
   {
     href: "/guias/gastos-deducibles",
     title: "Gastos deducibles para autónomos",
-    description: "Qué gastos puedes desgravar en IRPF y deducir en IVA. Lista actualizada 2025.",
+    description: "Qué gastos puedes desgravar en IRPF y deducir en IVA. Lista actualizada 2026.",
     icon: Receipt,
   },
   {
     href: "/guias/tarifa-plana",
     title: "Tarifa plana del autónomo",
-    description: "87 €/mes durante 12 meses prorrogables. Requisitos, cuándo se puede pedir y cuánto ahorras.",
+    description: "88,64 €/mes durante 12 meses prorrogables. Requisitos, cuándo se puede pedir y cuánto ahorras.",
     icon: Sparkles,
   },
 ];

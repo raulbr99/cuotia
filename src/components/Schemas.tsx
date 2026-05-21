@@ -22,7 +22,7 @@ export function CalculatorSchema({ name, description, path, category = "Tax Calc
     offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
     publisher: {
       "@type": "Organization",
-      name: "CalcAutónomo",
+      name: "Cuotia",
       url: SITE_URL,
     },
   };
@@ -51,12 +51,12 @@ export function ArticleSchema({ headline, description, path, datePublished, date
     image: imageUrl || `${SITE_URL}/og-image.png`,
     author: {
       "@type": "Organization",
-      name: "CalcAutónomo",
+      name: "Cuotia",
       url: SITE_URL,
     },
     publisher: {
       "@type": "Organization",
-      name: "CalcAutónomo",
+      name: "Cuotia",
       url: SITE_URL,
       logo: { "@type": "ImageObject", url: `${SITE_URL}/icon.svg` },
     },

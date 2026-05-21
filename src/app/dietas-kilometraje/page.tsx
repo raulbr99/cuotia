@@ -7,7 +7,7 @@ import { QuickAnswer } from "@/components/QuickAnswer";
 import { FAQ } from "@/components/FAQ";
 
 export const metadata: Metadata = {
-  title: "Calculadora dietas y kilometraje deducibles 2025",
+  title: "Calculadora dietas y kilometraje deducibles 2026",
   description: "Calcula tus dietas exentas de IRPF (26,67 €/día España, 48,08 €/día extranjero) y kilometraje (0,26 €/km). Para autónomos y trabajadores.",
   alternates: { canonical: "/dietas-kilometraje" },
 };
@@ -17,7 +17,7 @@ export default function Page() {
     <div className="mx-auto max-w-6xl px-4 py-10">
       <CalculatorSchema
         name="Calculadora dietas y kilometraje deducibles"
-        description="Calcula las dietas exentas de IRPF y la deducción por kilometraje (0,26 €/km) en 2025."
+        description="Calcula las dietas exentas de IRPF y la deducción por kilometraje (0,26 €/km) en 2026."
         path="/dietas-kilometraje"
       />
       <SpeakableSchema />
@@ -25,12 +25,12 @@ export default function Page() {
       <header className="mb-8">
         <h1 className="text-3xl font-bold text-neutral-900 sm:text-4xl">Dietas y kilometraje deducibles</h1>
         <p className="mt-3 text-neutral-700 max-w-3xl">
-          Cuánto puedes deducir por desplazamientos y manutención. Límites exentos 2025.
+          Cuánto puedes deducir por desplazamientos y manutención. Límites exentos 2026.
         </p>
       </header>
 
       <QuickAnswer
-        question="¿Cuánto puedo deducir por dietas y km en 2025?"
+        question="¿Cuánto puedo deducir por dietas y km en 2026?"
         answer="Kilometraje: 0,26 €/km en vehículo propio. Dietas exentas de IRPF: España sin pernocta 26,67 €/día, con pernocta 53,34 €/día. Extranjero sin pernocta 48,08 €/día, con pernocta 91,35 €/día. El exceso tributa como rendimiento. Necesitas justificantes (tickets, facturas) y los pagos deben ser por medios telemáticos (no efectivo) en horario laboral, en establecimientos de hostelería."
         updatedAt="2026-05-20"
       />

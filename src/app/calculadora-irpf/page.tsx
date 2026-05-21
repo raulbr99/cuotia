@@ -5,14 +5,14 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 
-const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es"}/api/og?title=${encodeURIComponent("Calculadora IRPF 2025")}&subtitle=${encodeURIComponent("Escala estatal + 17 CCAA + modelo 130 trimestral")}&tag=IRPF`;
+const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es"}/api/og?title=${encodeURIComponent("Calculadora IRPF 2026")}&subtitle=${encodeURIComponent("Escala estatal + 17 CCAA + modelo 130 trimestral")}&tag=IRPF`;
 
 export const metadata: Metadata = {
-  title: "Calculadora IRPF autónomo 2025 · por Comunidad Autónoma + modelo 130",
+  title: "Calculadora IRPF autónomo 2026 · por Comunidad Autónoma + modelo 130",
   description:
     "Calcula tu IRPF anual con la escala estatal + autonómica de tu CCAA (Madrid, Cataluña, Andalucía, Valencia, las 17 CCAA). Pago fraccionado modelo 130 trimestral incluido.",
   alternates: { canonical: "/calculadora-irpf" },
-  openGraph: { title: "IRPF 2025 por Comunidad Autónoma", description: "17 escalas + modelo 130", images: [{ url: ogUrl, width: 1200, height: 630 }] },
+  openGraph: { title: "IRPF 2026 por Comunidad Autónoma", description: "17 escalas + modelo 130", images: [{ url: ogUrl, width: 1200, height: 630 }] },
   twitter: { card: "summary_large_image", images: [ogUrl] },
 };
 
@@ -20,7 +20,7 @@ export default function Page() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <CalculatorSchema
-        name="Calculadora IRPF autónomo 2025"
+        name="Calculadora IRPF autónomo 2026"
         description="Calcula tu IRPF anual con la escala estatal + autonómica de tu Comunidad Autónoma. Incluye pago fraccionado modelo 130 trimestral."
         path="/calculadora-irpf"
       />
@@ -38,7 +38,7 @@ export default function Page() {
       </header>
 
       <QuickAnswer
-        question="¿Cuánto paga un autónomo de IRPF en 2025?"
+        question="¿Cuánto paga un autónomo de IRPF en 2026?"
         answer="Un autónomo paga IRPF de forma progresiva entre el 19% y el 47% según su rendimiento neto anual y Comunidad Autónoma. La mitad la fija el Estado (9,5% a 24,5% según tramo) y la otra mitad la CCAA — Madrid es la más baja (8,5% inicial), Cataluña una de las más altas (10,5%). Si menos del 70% de tus ingresos llevan retención, presentas trimestralmente el modelo 130 (20% sobre rendimiento neto)."
         updatedAt="2026-05-20"
       />
@@ -48,7 +48,7 @@ export default function Page() {
       <AdSlot format="leaderboard" className="my-10" />
 
       <article className="prose prose-gray max-w-3xl text-sm text-neutral-700 space-y-5">
-        <h2 className="text-xl font-bold text-neutral-900">IRPF anual: tramos 2025</h2>
+        <h2 className="text-xl font-bold text-neutral-900">IRPF anual: tramos 2026</h2>
         <p>
           El IRPF español es <strong>progresivo</strong>: pagas distinto porcentaje
           por cada tramo. La escala completa suma la <strong>estatal</strong> (esta

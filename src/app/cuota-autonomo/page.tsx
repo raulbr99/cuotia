@@ -5,14 +5,14 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 
-const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es"}/api/og?title=${encodeURIComponent("Calculadora cuota autónomo 2025")}&subtitle=${encodeURIComponent("15 tramos por ingresos reales + tarifa plana 87 €/mes")}&tag=Cuota+autónomo`;
+const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es"}/api/og?title=${encodeURIComponent("Calculadora cuota autónomo 2026")}&subtitle=${encodeURIComponent("15 tramos por ingresos reales + tarifa plana 88,64 €/mes")}&tag=Cuota+autónomo`;
 
 export const metadata: Metadata = {
-  title: "Calculadora cuota autónomo 2025 · tramos por ingresos reales",
+  title: "Calculadora cuota autónomo 2026 · tramos por ingresos reales",
   description:
-    "Calcula tu cuota mensual de autónomo según los 15 tramos vigentes 2025 (RD-ley 13/2022). Mínima, máxima o personalizada. Tarifa plana 87 €/mes incluida.",
+    "Calcula tu cuota mensual de autónomo según los 15 tramos vigentes 2026 (RD-ley 3/2026). Mínima, máxima o personalizada. Tarifa plana 88,64 €/mes incluida.",
   alternates: { canonical: "/cuota-autonomo" },
-  openGraph: { title: "Calculadora cuota autónomo 2025", description: "15 tramos + tarifa plana", images: [{ url: ogUrl, width: 1200, height: 630 }] },
+  openGraph: { title: "Calculadora cuota autónomo 2026", description: "15 tramos + tarifa plana", images: [{ url: ogUrl, width: 1200, height: 630 }] },
   twitter: { card: "summary_large_image", images: [ogUrl] },
 };
 
@@ -20,8 +20,8 @@ export default function Page() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <CalculatorSchema
-        name="Calculadora cuota autónomo 2025"
-        description="Calcula tu cuota mensual de autónomo según los 15 tramos por ingresos reales (RD-ley 13/2022). Incluye tarifa plana 87 €/mes."
+        name="Calculadora cuota autónomo 2026"
+        description="Calcula tu cuota mensual de autónomo según los 15 tramos por ingresos reales (RD-ley 3/2026). Incluye tarifa plana 88,64 €/mes."
         path="/cuota-autonomo"
       />
       <SpeakableSchema />
@@ -29,17 +29,17 @@ export default function Page() {
 
       <header className="mb-8">
         <h1 className="text-3xl font-bold text-neutral-900 sm:text-4xl">
-          Calculadora cuota de autónomo 2025
+          Calculadora cuota de autónomo 2026
         </h1>
         <p className="mt-3 text-neutral-700 max-w-3xl">
-          Sistema de cotización por ingresos reales (RD-ley 13/2022). 15 tramos según
+          Sistema de cotización por ingresos reales (RD-ley 3/2026). 15 tramos según
           tu rendimiento neto mensual.
         </p>
       </header>
 
       <QuickAnswer
-        question="¿Cuánto paga un autónomo en 2025?"
-        answer="Un autónomo en España paga entre 230 € y 1.085 € mensuales según su rendimiento neto, distribuido en 15 tramos por ingresos reales (RD-ley 13/2022). La cuota mínima general (tramo 1, ingresos ≤670 €/mes) es 230 €. Los nuevos autónomos pueden acogerse a la tarifa plana de 87 €/mes durante 12 meses, prorrogables otros 12 si su rendimiento neto anual queda por debajo del SMI."
+        question="¿Cuánto paga un autónomo en 2026?"
+        answer="Un autónomo en España paga entre 200 € y 590 € mensuales (cuota mínima por tramo) según su rendimiento neto, distribuido en 15 tramos por ingresos reales (RD-ley 3/2026, BOE 4 feb 2026). La cuota mínima del tramo 1 (ingresos ≤670 €/mes) es 200 €. La cuota incluye el MEI del 0,9% sobre la base. Los nuevos autónomos pueden acogerse a la tarifa plana de 88,64 €/mes (80 € + MEI) durante 12 meses, prorrogables otros 12 si su rendimiento neto anual queda por debajo del SMI."
         updatedAt="2026-05-20"
       />
 
@@ -61,9 +61,9 @@ export default function Page() {
           (30.000 − 5.000) / 12 ≈ 2.083 € → tramo 9.
         </p>
 
-        <h2 className="text-xl font-bold text-neutral-900">Tarifa plana 2025</h2>
+        <h2 className="text-xl font-bold text-neutral-900">Tarifa plana 2026</h2>
         <p>
-          <strong>87 €/mes</strong> los primeros 12 meses si te das de alta por
+          <strong>88,64 €/mes</strong> los primeros 12 meses si te das de alta por
           primera vez (o no has cotizado en los últimos 2 años). Prorrogable otros 12
           meses si tu rendimiento neto anual queda por debajo del SMI.
         </p>

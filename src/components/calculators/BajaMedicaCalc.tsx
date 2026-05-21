@@ -74,7 +74,7 @@ export function BajaMedicaCalc() {
             <span aria-hidden="true" className="absolute right-3 top-2 text-neutral-400">€</span>
           </div>
           <p className="mt-1 text-xs text-neutral-500">
-            La que figura en tu RETA. Mínima 2025: 1.166,70 €. Máxima: 4.909,50 €.
+            La que figura en tu RETA. Mínima 2026: 1.196,70 € (estimada). Máxima: 4.909,50 €.
           </p>
         </div>
 

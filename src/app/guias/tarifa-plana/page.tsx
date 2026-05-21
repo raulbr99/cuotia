@@ -10,8 +10,8 @@ const PUBLISHED = "2026-05-20";
 const MODIFIED = "2026-05-20";
 
 export const metadata: Metadata = {
-  title: "Tarifa plana autónomo 2025 · 87 €/mes, requisitos y prórroga",
-  description: "Todo sobre la tarifa plana del autónomo en 2025: 87 €/mes durante 12 meses, prorrogable. Quién tiene derecho, cómo solicitarla y cuánto ahorras.",
+  title: "Tarifa plana autónomo 2026 · 88,64 €/mes, requisitos y prórroga",
+  description: "Todo sobre la tarifa plana del autónomo en 2026: 88,64 €/mes durante 12 meses, prorrogable. Quién tiene derecho, cómo solicitarla y cuánto ahorras.",
   alternates: { canonical: "/guias/tarifa-plana" },
 };
 
@@ -19,22 +19,22 @@ export default function Page() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
       <ArticleSchema
-        headline="Tarifa plana del autónomo 2025"
-        description="87 €/mes durante 12 meses prorrogables. Requisitos, prórroga, errores comunes y tabla de ahorros."
+        headline="Tarifa plana del autónomo 2026"
+        description="88,64 €/mes durante 12 meses prorrogables. Requisitos, prórroga, errores comunes y tabla de ahorros."
         path="/guias/tarifa-plana"
         datePublished={PUBLISHED}
         dateModified={MODIFIED}
       />
       <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Tarifa plana" }]} />
       <article className="prose prose-gray max-w-none">
-        <h1 className="text-3xl font-bold sm:text-4xl">Tarifa plana del autónomo 2025</h1>
+        <h1 className="text-3xl font-bold sm:text-4xl">Tarifa plana del autónomo 2026</h1>
         <p className="text-xs text-neutral-500 flex items-center gap-1.5 my-3 not-prose">
           <Calendar className="h-3 w-3" />
           Publicado <time dateTime={PUBLISHED}>20 de mayo de 2026</time>
           {PUBLISHED !== MODIFIED && <> · Actualizado <time dateTime={MODIFIED}>20 de mayo de 2026</time></>}
         </p>
         <p className="text-lg text-neutral-700">
-          La <strong>tarifa plana de 87 €/mes</strong> es la bonificación más
+          La <strong>tarifa plana de 88,64 €/mes</strong> es la bonificación más
           interesante para nuevos autónomos. Pagas la cuota simbólica durante 12 meses
           (prorrogables otros 12) en lugar de los 230-590 €/mes que te tocarían según
           tu tramo.
@@ -48,7 +48,7 @@ export default function Page() {
           <li>Si ya disfrutaste la tarifa plana anteriormente, debes esperar <strong>3 años</strong> sin estar dado de alta para volver a tenerla</li>
         </ul>
 
-        <h2 className="text-2xl font-bold mt-10">Importes 2025</h2>
+        <h2 className="text-2xl font-bold mt-10">Importes 2026</h2>
         <div className="not-prose  border border-neutral-200 bg-white overflow-hidden my-6">
           <table className="w-full text-sm">
             <thead className="bg-white text-xs uppercase text-neutral-700">
@@ -82,7 +82,7 @@ export default function Page() {
         <p>
           Se pide en el momento del alta en RETA, marcando la casilla específica en
           el <strong>modelo TA.0521</strong>. Es automática: si cumples los requisitos
-          y la marcas, te aplican los 87 €/mes desde el primer día.
+          y la marcas, te aplican los 88,64 €/mes desde el primer día.
         </p>
 
         <AdSlot format="rectangle" className="my-8" />
@@ -95,7 +95,7 @@ export default function Page() {
         </p>
         <ul>
           <li>SMI 2024: 15.876 €/año (1.134 €/mes en 14 pagas)</li>
-          <li>SMI 2025: ~16.576 €/año (estimado, pendiente publicación BOE)</li>
+          <li>SMI 2026: ~16.576 €/año (estimado, pendiente publicación BOE)</li>
         </ul>
         <p>
           Si tu rendimiento neto supera ese límite, automáticamente pasas a la cuota
@@ -115,10 +115,10 @@ export default function Page() {
               </tr>
             </thead>
             <tbody className="divide-y divide-neutral-100 text-sm">
-              <tr><td className="px-4 py-2">1.200 €/mes</td><td className="px-4 py-2 text-right">290 €/mes</td><td className="px-4 py-2 text-right text-[#B91C1C]">87 €/mes</td><td className="px-4 py-2 text-right font-semibold">2.436 €</td></tr>
-              <tr><td className="px-4 py-2">2.000 €/mes</td><td className="px-4 py-2 text-right">370 €/mes</td><td className="px-4 py-2 text-right text-[#B91C1C]">87 €/mes</td><td className="px-4 py-2 text-right font-semibold">3.396 €</td></tr>
-              <tr><td className="px-4 py-2">3.000 €/mes</td><td className="px-4 py-2 text-right">440 €/mes</td><td className="px-4 py-2 text-right text-[#B91C1C]">87 €/mes</td><td className="px-4 py-2 text-right font-semibold">4.236 €</td></tr>
-              <tr><td className="px-4 py-2">5.000 €/mes</td><td className="px-4 py-2 text-right">515 €/mes</td><td className="px-4 py-2 text-right text-[#B91C1C]">87 €/mes</td><td className="px-4 py-2 text-right font-semibold">5.136 €</td></tr>
+              <tr><td className="px-4 py-2">1.200 €/mes</td><td className="px-4 py-2 text-right">290 €/mes</td><td className="px-4 py-2 text-right text-[#B91C1C]">88,64 €/mes</td><td className="px-4 py-2 text-right font-semibold">2.436 €</td></tr>
+              <tr><td className="px-4 py-2">2.000 €/mes</td><td className="px-4 py-2 text-right">370 €/mes</td><td className="px-4 py-2 text-right text-[#B91C1C]">88,64 €/mes</td><td className="px-4 py-2 text-right font-semibold">3.396 €</td></tr>
+              <tr><td className="px-4 py-2">3.000 €/mes</td><td className="px-4 py-2 text-right">440 €/mes</td><td className="px-4 py-2 text-right text-[#B91C1C]">88,64 €/mes</td><td className="px-4 py-2 text-right font-semibold">4.236 €</td></tr>
+              <tr><td className="px-4 py-2">5.000 €/mes</td><td className="px-4 py-2 text-right">515 €/mes</td><td className="px-4 py-2 text-right text-[#B91C1C]">88,64 €/mes</td><td className="px-4 py-2 text-right font-semibold">5.136 €</td></tr>
             </tbody>
           </table>
         </div>
@@ -150,7 +150,7 @@ export default function Page() {
       <FAQ
         items={[
           { q: "¿Si genero más del SMI el primer año, pierdo la prórroga?", a: "Solo pierdes la prórroga (meses 13-24), no la tarifa plana inicial. Los primeros 12 meses son fijos sin importar lo que ingreses." },
-          { q: "¿Puedo elegir cuota máxima con tarifa plana?", a: "No. La tarifa plana fija una cuota de 87 € que corresponde a la base mínima. Para cotizar más, debes renunciar a la tarifa plana y pasar a tu tramo." },
+          { q: "¿Puedo elegir cuota máxima con tarifa plana?", a: "No. La tarifa plana fija una cuota de 88,64 € que corresponde a la base mínima. Para cotizar más, debes renunciar a la tarifa plana y pasar a tu tramo." },
           { q: "¿Aplica si soy autónomo societario?", a: "Sí, desde 2023 los socios trabajadores también tienen derecho a tarifa plana si cumplen requisitos." },
           { q: "¿Cobro paga extra con tarifa plana?", a: "Igual que cualquier autónomo: no hay pagas extra en RETA. La cuota es mensual y constante." },
           { q: "¿La tarifa plana incluye contingencias?", a: "Sí, da derecho a las mismas prestaciones que la cuota mínima: baja médica, maternidad/paternidad, cese de actividad, jubilación." },

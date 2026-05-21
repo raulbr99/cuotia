@@ -7,10 +7,10 @@ const PRIMARY = [
   {
     href: "/cuota-autonomo",
     eyebrow: "Lo que más buscan",
-    title: "Cuota de autónomo 2025",
+    title: "Cuota de autónomo 2026",
     teaser: "Los 15 tramos por ingresos reales. Tarifa plana incluida.",
-    stat: "230 €",
-    statLabel: "cuota mínima/mes",
+    stat: "200 €",
+    statLabel: "cuota mínima/mes 2026",
   },
   {
     href: "/calculadora-irpf",
@@ -28,7 +28,7 @@ const SECONDARY = [
   { href: "/calculadora-despido", title: "Despido + finiquito", desc: "Improcedente, objetivo, colectivo. Finiquito completo." },
   { href: "/baja-medica", title: "Baja médica", desc: "Por enfermedad común o accidente laboral." },
   { href: "/jubilacion-autonomo", title: "Jubilación", desc: "Pensión según base media y años cotizados." },
-  { href: "/dietas-kilometraje", title: "Dietas + km", desc: "Exentas vigentes 2025. Sin sorpresas." },
+  { href: "/dietas-kilometraje", title: "Dietas + km", desc: "Exentas vigentes 2026. Sin sorpresas." },
 ];
 
 const TOOLS = [
@@ -110,9 +110,9 @@ export default function HomePage() {
       <section className="border-b border-neutral-200 bg-white">
         <div className="mx-auto max-w-5xl px-5 py-8">
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
-            <Stat value="230 €" label="Cuota mínima mensual 2026" />
-            <Stat value="1.085 €" label="Cuota máxima mensual 2026" />
-            <Stat value="87 €" label="Tarifa plana primer año" />
+            <Stat value="200 €" label="Cuota mínima mensual 2026" />
+            <Stat value="590 €" label="Cuota mínima tramo 15 (>6.000 €/mes)" />
+            <Stat value="88,64 €" label="Tarifa plana 2026 (80 € + MEI)" />
             <Stat value="15" label="Tramos por ingresos reales" />
           </div>
         </div>
@@ -248,7 +248,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-3xl px-5 py-8 text-center">
           <p className="text-[12px] leading-relaxed text-neutral-500">
             <strong className="text-neutral-700">Aviso.</strong> Los cálculos son orientativos.
-            Se basan en los tramos generales 2025 (RD-ley 13/2022) y la escala estatal del
+            Se basan en los tramos generales 2026 (RD-ley 3/2026) y la escala estatal del
             IRPF. No incluyen escalas autonómicas, deducciones personales ni circunstancias
             particulares. Para presentar tus modelos, consulta a un gestor.
           </p>

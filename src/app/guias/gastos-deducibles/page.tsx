@@ -10,7 +10,7 @@ const PUBLISHED = "2026-05-20";
 const MODIFIED = "2026-05-20";
 
 export const metadata: Metadata = {
-  title: "Gastos deducibles autónomo 2025 · qué puedes desgravar",
+  title: "Gastos deducibles autónomo 2026 · qué puedes desgravar",
   description: "Lista completa de gastos deducibles para autónomos: oficina, vehículo, dietas, suministros, gestoría, formación. Cómo justificarlos en IRPF e IVA.",
   alternates: { canonical: "/guias/gastos-deducibles" },
 };
@@ -111,7 +111,7 @@ export default function Page() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
       <ArticleSchema
-        headline="Gastos deducibles autónomo 2025"
+        headline="Gastos deducibles autónomo 2026"
         description="Lista completa de gastos que puedes deducir como autónomo en IRPF e IVA, con condiciones y ejemplos."
         path="/guias/gastos-deducibles"
         datePublished={PUBLISHED}
@@ -119,7 +119,7 @@ export default function Page() {
       />
       <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Gastos deducibles" }]} />
       <article className="prose prose-gray max-w-none">
-        <h1 className="text-3xl font-bold sm:text-4xl">Gastos deducibles autónomo 2025</h1>
+        <h1 className="text-3xl font-bold sm:text-4xl">Gastos deducibles autónomo 2026</h1>
         <p className="text-xs text-neutral-500 flex items-center gap-1.5 my-3 not-prose">
           <Calendar className="h-3 w-3" />
           Publicado <time dateTime={PUBLISHED}>20 de mayo de 2026</time>

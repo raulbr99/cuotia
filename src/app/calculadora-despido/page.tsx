@@ -9,10 +9,10 @@ import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es"}/api/og?title=${encodeURIComponent("Indemnización despido y finiquito")}&subtitle=${encodeURIComponent("Improcedente 33 d/año · Objetivo 20 d/año · Finiquito completo")}&tag=Despido`;
 
 export const metadata: Metadata = {
-  title: "Calculadora indemnización despido y finiquito 2025",
-  description: "Calcula tu indemnización por despido improcedente, objetivo o colectivo + finiquito (vacaciones, paga extra, salario pendiente). Tipos vigentes 2025.",
+  title: "Calculadora indemnización despido y finiquito 2026",
+  description: "Calcula tu indemnización por despido improcedente, objetivo o colectivo + finiquito (vacaciones, paga extra, salario pendiente). Tipos vigentes 2026.",
   alternates: { canonical: "/calculadora-despido" },
-  openGraph: { title: "Indemnización despido y finiquito 2025", description: "Improcedente 33 d/año + finiquito", images: [{ url: ogUrl, width: 1200, height: 630 }] },
+  openGraph: { title: "Indemnización despido y finiquito 2026", description: "Improcedente 33 d/año + finiquito", images: [{ url: ogUrl, width: 1200, height: 630 }] },
   twitter: { card: "summary_large_image", images: [ogUrl] },
 };
 

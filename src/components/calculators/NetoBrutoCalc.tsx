@@ -105,7 +105,7 @@ export function NetoBrutoCalc() {
               onChange={(e) => { setUsaTarifaPlana(e.target.checked); setTouched(true); }}
               className="h-4 w-4 border-neutral-300 text-[#B91C1C] focus:ring-[#B91C1C]"
             />
-            Aplicar tarifa plana (87 €/mes el primer año)
+            Aplicar tarifa plana (88,64 €/mes el primer año)
           </label>
         </div>
 

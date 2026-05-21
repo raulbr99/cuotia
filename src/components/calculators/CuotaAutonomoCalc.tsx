@@ -88,7 +88,7 @@ export function CuotaAutonomoCalc() {
               onChange={(e) => { setTarifaPlana(e.target.checked); onTouch(); }}
               className="h-4 w-4 border-neutral-300 text-[#B91C1C] focus:ring-[#B91C1C]"
             />
-            Soy nuevo autónomo (aplicar tarifa plana 87 €/mes)
+            Soy nuevo autónomo (aplicar tarifa plana 88,64 €/mes)
           </label>
         </div>
 
@@ -177,7 +177,7 @@ export function CuotaAutonomoCalc() {
 
       <div className="lg:col-span-2 mt-2 overflow-x-auto border border-neutral-200 bg-white">
         <table className="w-full text-sm">
-          <caption className="sr-only">Tabla de los 15 tramos de cotización de autónomo 2025</caption>
+          <caption className="sr-only">Tabla de los 15 tramos de cotización de autónomo 2026</caption>
           <thead className="bg-white text-xs uppercase text-neutral-700">
             <tr>
               <th scope="col" className="px-3 py-2 text-left">Tramo</th>

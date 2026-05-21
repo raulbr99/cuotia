@@ -57,7 +57,7 @@ export function Footer() {
             © {new Date().getFullYear()} Cuotia · Hecho en Madrid
             <span className="hidden sm:inline"> · </span>
             <br className="sm:hidden" />
-            Tramos vigentes 2025 (RD-ley 13/2022)
+            Tramos vigentes 2026 (RD-ley 3/2026)
           </p>
           <p className="italic">No es asesoría fiscal. Para tus modelos, busca un gestor de verdad.</p>
         </div>

@@ -37,7 +37,7 @@ El objetivo es luchar contra el fraude del software de doble uso (un mismo progr
 
 1. **Si facturas con software**: comprueba que tu programa esté homologado para Verifactu antes de julio 2027.
 2. **Si facturas con Excel/Word**: empieza a buscar un software adaptado. La AEAT publicará un listado oficial.
-3. **El generador de facturas de CalcAutónomo**: genera PDFs estándar válidos hasta junio 2027. Para Verifactu necesitarás migrar a un software certificado.
+3. **El generador de facturas de Cuotia**: genera PDFs estándar válidos hasta junio 2027. Para Verifactu necesitarás migrar a un software certificado.
 
 ## Por qué se pospuso
 
@@ -60,7 +60,7 @@ Vigila los comunicados de la AEAT en los próximos meses para conocer:
     tag: "SMI",
     content: `## La regla de la prórroga
 
-La **tarifa plana de 87 €/mes** se puede prorrogar 12 meses adicionales (meses 13-24) si tu **rendimiento neto anual del primer año** queda por debajo del Salario Mínimo Interprofesional.
+La **tarifa plana de 88,64 €/mes** se puede prorrogar 12 meses adicionales (meses 13-24) si tu **rendimiento neto anual del primer año** queda por debajo del Salario Mínimo Interprofesional.
 
 ## Cifras 2024 vs 2025
 
@@ -216,13 +216,13 @@ Usa nuestra [calculadora IRPF por CCAA](/calculadora-irpf) para hacer la cuenta 
   {
     slug: "tramos-cuota-autonomo-2026",
     title: "Cuota de autónomo 2026: tramos congelados, MEI al 0,9%",
-    description: "El RDL 16/2025 congela los tramos de cotización del autónomo a niveles de 2025. La única subida real viene por el MEI.",
+    description: "El RD-ley 3/2026 congela los tramos de cotización del autónomo a niveles de 2025. La única subida real viene por el MEI.",
     datePublished: "2026-05-10",
     category: "Cuota",
     tag: "Tramos 2026",
     content: `## La noticia
 
-El Real Decreto-Ley 16/2025 **congela los tramos de cotización del autónomo en 2026** a los mismos niveles que regían en 2025. No habrá actualización general como sí ocurrió de 2023 a 2024 y de 2024 a 2025.
+El Real Decreto-Ley 3/2026 (BOE 4 feb 2026) **congela los tramos de cotización del autónomo en 2026** a los mismos niveles que regían en 2025. No habrá actualización general como sí ocurrió de 2023 a 2024 y de 2024 a 2025.
 
 ## Por qué se congelan
 
@@ -245,18 +245,19 @@ Aunque los **tramos están congelados**, hay dos cambios:
 
 | Rendimiento neto | Tramo | Cuota mín. | Cuota máx. |
 |---|---|---|---|
-| ≤670 €/mes | 1 | 230 € | 590 € |
-| 670-1.166 €/mes | 2-3 | 260-280 € | 590 € |
-| 1.166-1.500 €/mes | 4-5 | 290-294 € | 590 € |
-| 1.700-2.030 €/mes | 7-8 | 350-370 € | 770 € |
-| 2.030-2.760 €/mes | 9-10 | 390-415 € | 815-860 € |
-| 2.760-4.050 €/mes | 11-13 | 440-490 € | 905-995 € |
-| 4.050-6.000 €/mes | 14 | 515 € | 1.040 € |
-| >6.000 €/mes | 15 | 530 € | 1.085 € |
+| ≤670 €/mes | 1 | 200 € | 590 € |
+| 670-1.166 €/mes | 2-3 | 220-260 € | 590 € |
+| 1.166-1.500 €/mes | 4-5 | 291-294 € | 590 € |
+| 1.500-1.850 €/mes | 6-7 | 302-350 € | 590-770 € |
+| 1.850-2.330 €/mes | 8-9 | 370-390 € | 770-815 € |
+| 2.330-3.190 €/mes | 10-11 | 423-451 € | 860-905 € |
+| 3.190-4.050 €/mes | 12-13 | 468-504 € | 950-995 € |
+| 4.050-6.000 €/mes | 14 | 530 € | 1.040 € |
+| >6.000 €/mes | 15 | 590 € | 1.085 € |
 
 ## Qué hacer ahora
 
-1. **Si eres nuevo autónomo**: aprovecha la **tarifa plana 87 €/mes**
+1. **Si eres nuevo autónomo**: aprovecha la **tarifa plana 88,64 €/mes**
 2. **Si llevas tiempo**: revisa que tu tramo actual coincide con tus ingresos. La SS regulariza tras tu declaración de la Renta.
 3. **Si cotizas por la mínima**: piensa en subir la base si quieres mejor pensión futura (cada 100 € de base adicional = ~30 €/mes más de cotización pero mayor jubilación).
 

@@ -4,7 +4,7 @@ export const runtime = "edge";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const title = searchParams.get("title")?.slice(0, 80) ?? "CalcAutónomo";
+  const title = searchParams.get("title")?.slice(0, 80) ?? "Cuotia";
   const subtitle = searchParams.get("subtitle")?.slice(0, 120) ?? "Calculadoras fiscales gratuitas para autónomos en España";
   const tag = searchParams.get("tag")?.slice(0, 30);
 
@@ -40,7 +40,7 @@ export async function GET(req: Request) {
             €
           </div>
           <div style={{ fontSize: 28, fontWeight: 800, color: "#065f46", letterSpacing: -0.5 }}>
-            CalcAutónomo
+            Cuotia
           </div>
         </div>
 
@@ -105,7 +105,7 @@ export async function GET(req: Request) {
             <span>·</span>
             <span style={{ color: "#059669", fontWeight: 600 }}>Sin registro</span>
             <span>·</span>
-            <span style={{ color: "#059669", fontWeight: 600 }}>2025</span>
+            <span style={{ color: "#059669", fontWeight: 600 }}>2026</span>
           </div>
         </div>
       </div>

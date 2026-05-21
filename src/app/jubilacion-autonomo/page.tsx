@@ -45,7 +45,7 @@ export default function Page() {
           { q: "¿A qué edad me jubilo si soy autónomo?", a: "Mismas reglas que el régimen general: 67 años en 2027 si tienes menos de 38,5 años cotizados, 65 si tienes 38,5 o más. Puedes jubilarte anticipadamente a los 63-65 con coeficientes reductores." },
           { q: "¿Cuántos años necesito cotizar para tener pensión?", a: "Mínimo 15 años cotizados, de los cuales 2 dentro de los 15 años anteriores a la jubilación. Con 15 años cobras el 50% de la base reguladora. Para el 100% necesitas 36 años y 6 meses en 2027." },
           { q: "¿Cómo se calcula la base reguladora?", a: "En 2027 se toma la media de las bases de cotización de los últimos 25 años cotizados. Por eso muchos autónomos suben su base en los últimos 25 años antes de jubilarse, no solo el último." },
-          { q: "¿Si he cotizado por la mínima toda mi vida?", a: "Tendrás pensión mínima. En 2025 la pensión mínima de jubilación con cónyuge a cargo es ~966 €/mes (14 pagas). Sin cónyuge: ~783 €/mes. Es ridícula comparada con la del régimen general." },
+          { q: "¿Si he cotizado por la mínima toda mi vida?", a: "Tendrás pensión mínima. En 2026 la pensión mínima de jubilación con cónyuge a cargo es ~966 €/mes (14 pagas). Sin cónyuge: ~783 €/mes. Es ridícula comparada con la del régimen general." },
           { q: "¿Puedo seguir trabajando cobrando pensión?", a: "Sí: la jubilación activa permite compatibilizar pensión y actividad si has llegado a la edad legal con el 100% de la base. Cobras el 50% de la pensión (100% si tienes contratado al menos un trabajador)." },
         ]}
       />
