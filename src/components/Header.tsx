@@ -21,7 +21,7 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="border-b border-neutral-200 bg-[#FAFAF7]">
+    <header className="sticky top-0 z-50 border-b border-neutral-200 bg-[#FAFAF7]/95 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-5">
         <Link href="/" className="font-serif text-xl font-medium tracking-tight text-neutral-900">
           Cuotia<span className="text-[#B91C1C]">.</span>
@@ -38,7 +38,7 @@ export function Header() {
               <ChevronDown className="h-3 w-3" />
             </button>
             {open && (
-              <div className="absolute right-0 top-full mt-1 w-60 border border-neutral-200 bg-white p-1 shadow-sm">
+              <div className="absolute right-0 top-full z-50 mt-1 w-60 border border-neutral-200 bg-white p-1 shadow-sm">
                 {CALC_LINKS.map((l) => (
                   <Link
                     key={l.href}
