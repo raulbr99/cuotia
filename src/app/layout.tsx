@@ -1,10 +1,18 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Fraunces } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FAFAF7" },
+    { media: "(prefers-color-scheme: dark)", color: "#0A0A0A" },
+  ],
+  colorScheme: "light",
+};
 
 const inter = Inter({
   variable: "--font-inter",
