@@ -32,6 +32,7 @@ const ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitemap[numb
   { path: "/guias/tarifa-plana", priority: 0.85, freq: "monthly" },
   { path: "/generador-facturas", priority: 0.95, freq: "monthly" },
   { path: "/glosario", priority: 0.7, freq: "monthly" },
+  { path: "/preguntas-frecuentes-autonomos", priority: 0.85, freq: "monthly" },
   { path: "/sobre-nosotros", priority: 0.6, freq: "yearly" },
   { path: "/aviso-legal", priority: 0.3, freq: "yearly" },
   { path: "/privacidad", priority: 0.3, freq: "yearly" },

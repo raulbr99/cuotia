@@ -5,6 +5,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 import { RelatedCalcs } from "@/components/RelatedCalcs";
+import { HowToSchema } from "@/components/HowToSchema";
 
 const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es"}/api/og?title=${encodeURIComponent("Calculadora cuota autónomo 2026")}&subtitle=${encodeURIComponent("15 tramos por ingresos reales + tarifa plana 88,64 €/mes")}&tag=Cuota+autónomo`;
 
@@ -26,6 +27,34 @@ export default function Page() {
         path="/cuota-autonomo"
       />
       <SpeakableSchema />
+      <HowToSchema
+        name="Cómo calcular tu cuota de autónomo 2026"
+        description="Pasos para calcular tu cuota mensual del RETA en función de tu rendimiento neto"
+        totalTime="PT1M"
+        estimatedCost={{ currency: "EUR", value: "0" }}
+        steps={[
+          {
+            name: "Estima tu rendimiento neto mensual",
+            text: "Calcula tus ingresos brutos menos gastos deducibles, dividido entre 12. Por ejemplo, 30.000 € − 5.000 € = 25.000 € / 12 ≈ 2.083 €/mes.",
+          },
+          {
+            name: "Identifica tu tramo",
+            text: "Localiza el tramo correspondiente en la tabla de 15 tramos del RD-ley 3/2026. Por ejemplo, 2.083 €/mes está en el tramo 9 (2.030-2.330 €).",
+          },
+          {
+            name: "Lee la cuota mínima del tramo",
+            text: "Cada tramo tiene una cuota mínima (200-590 €/mes) y máxima. La mínima es lo que pagas por defecto.",
+          },
+          {
+            name: "Aplica tarifa plana si eres nuevo",
+            text: "Si te das de alta por primera vez, puedes pagar 88,64 €/mes (80 € + MEI 0,9%) durante 12 meses, prorrogables 12 más si tu rendimiento queda bajo SMI.",
+          },
+          {
+            name: "Suma el MEI 2026 (0,9%)",
+            text: "Sobre la base de cotización se aplica el Mecanismo de Equidad Intergeneracional. Ya viene incluido en la cuota mínima del tramo.",
+          },
+        ]}
+      />
       <Breadcrumbs items={[{ label: "Cuota autónomo" }]} />
 
       <header className="mb-8">
