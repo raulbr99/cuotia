@@ -4,6 +4,8 @@ import { POSTS } from "@/lib/blog";
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 
+const CUOTA_INGRESOS_TARGETS = [1000, 1200, 1500, 1700, 2000, 2500, 3000, 4000, 5000, 6000, 8000, 10000];
+
 const ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "", priority: 1.0, freq: "weekly" },
   { path: "/cuota-autonomo", priority: 0.95, freq: "monthly" },
@@ -56,6 +58,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(p.dateModified || p.datePublished),
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    })),
+    ...CUOTA_INGRESOS_TARGETS.map((n) => ({
+      url: `${BASE}/cuota-autonomo/${n}-euros-mes`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
     })),
   ];
 }

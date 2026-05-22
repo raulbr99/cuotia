@@ -11,6 +11,375 @@ export interface BlogPost {
 
 export const POSTS: BlogPost[] = [
   {
+    slug: "preparar-verifactu-2027",
+    title: "Cómo prepararte para Verifactu antes de julio 2027",
+    description: "Tienes 14 meses para migrar a software certificado. Plan paso a paso: revisar tu software actual, elegir proveedor homologado, transición sin perder facturas.",
+    datePublished: "2026-05-22",
+    category: "Verifactu",
+    tag: "Preparación",
+    content: `## El reloj corre
+
+Desde el **1 de julio de 2027** todos los autónomos persona física tienen que emitir
+facturas con software certificado Verifactu. Aún no es obligatorio, pero el plazo es
+firme y conviene no dejarlo para junio 2027.
+
+## Paso 1: Diagnóstico de tu situación actual
+
+Identifica cómo facturas hoy:
+
+- **Excel, Word, PDF manual** → necesitas cambiar. Verifactu no admite documentos
+  sin firma digital y QR.
+- **Software de facturación (Quipu, Holded, Anfix, Billin, Contasimple, etc.)** →
+  comprueba con tu proveedor si ya están homologados o lo estarán antes de julio 2027.
+- **Generador de facturas de Cuotia** → válido hasta junio 2027. Migra a software
+  certificado antes.
+- **Tu gestor te emite las facturas** → habla con él para confirmar que su sistema
+  cumple. Si no, busca alternativa.
+
+## Paso 2: Elegir software certificado
+
+La AEAT publicará un listado oficial de SIFs (Sistemas Informáticos de Facturación)
+homologados. Mientras tanto, asegúrate de que tu proveedor:
+
+- Emite facturas con firma digital
+- Genera código QR verificable
+- Encadena facturas criptográficamente
+- Permite envío automático a AEAT
+- Tiene plan de actualización confirmado para Verifactu
+
+## Paso 3: Migración sin sustos
+
+- **Mantén numeración**: el sistema nuevo debe continuar la serie de facturas del
+  antiguo. No reinicies en 1.
+- **Exporta datos antiguos**: descarga todas tus facturas previas en PDF antes de
+  cambiar. Conservación obligatoria 4 años.
+- **Periodo de prueba**: empieza a usar el nuevo software 1-2 meses antes del 1 julio
+  2027 para detectar problemas.
+
+## Paso 4: Después de julio 2027
+
+- Todas tus facturas nuevas llevan QR y firma
+- Conservas registros encadenados
+- Posibilidad de enviar automáticamente a AEAT (recomendado)
+
+## Sanciones por no cumplir
+
+Hasta **50.000 €/año** por usar software no certificado o que permita alterar
+registros (Ley Antifraude 11/2021, art. 201 bis).
+
+## Más información
+
+- [Página completa Verifactu](/verifactu) con FAQs detalladas
+- [Generador de facturas Cuotia](/generador-facturas) — válido hasta junio 2027
+- [Calendario fiscal](/calendario-fiscal) con todos los plazos
+`,
+  },
+  {
+    slug: "modelos-octubre-2026-q3",
+    title: "Modelos del 3er trimestre 2026: plazos del 1 al 20 de octubre",
+    description: "Modelos 303, 130, 111 y 115 del Q3 2026 (julio-septiembre): plazo del 1 al 20 de octubre, domiciliación hasta el 15. Lo que cambia desde el Q2.",
+    datePublished: "2026-09-15",
+    category: "Calendario",
+    tag: "Modelos trimestrales",
+    content: `## Del 1 al 20 de octubre de 2026
+
+Los autónomos en estimación directa presentan los modelos del 3er trimestre
+(julio-septiembre 2026) en este plazo.
+
+### Modelos obligatorios para casi todos
+
+- **Modelo 303 (IVA)** — del 1 al 20 de octubre (domiciliación hasta el 15)
+- **Modelo 130 (pago fraccionado IRPF)** — del 1 al 20 de octubre
+  - Solo si menos del 70% de tus ingresos llevan retención
+
+### Modelos condicionales
+
+- **Modelo 111** — si has retenido IRPF a trabajadores o profesionales que facturaron contigo
+- **Modelo 115** — si pagas alquiler de inmueble urbano a empresa
+
+## ¿Qué ha cambiado respecto al Q2?
+
+Para 2026 no hay cambios estructurales respecto al Q2: mismos modelos, mismo plazo
+(1-20 del mes siguiente al cierre del trimestre).
+
+## Errores comunes en Q3
+
+1. **No imputar facturas de agosto**: el periodo vacacional hace que muchos olviden
+   facturas emitidas/recibidas en agosto.
+2. **Doble cómputo de gastos**: revisa que no estés contando facturas duplicadas.
+3. **Olvidar el MEI**: tu cuota de Seguridad Social incluye el 0,9% MEI 2026 — no es
+   gasto deducible adicional.
+
+## Calculadoras útiles
+
+- [Calculadora modelo 303 (IVA)](/calculadora-iva)
+- [Calculadora modelo 130 (IRPF fraccionado)](/calculadora-irpf)
+- [Retención IRPF en facturas](/retencion-irpf-facturas)
+
+## Siguiente plazo
+
+**Modelo del Q4 2026**: del 1 al 30 de enero de 2027 (plazo más largo por incluir el
+modelo 390 anual del IVA).
+`,
+  },
+  {
+    slug: "novedades-fiscales-autonomos-2027",
+    title: "Lo que cambia para autónomos en 2027: Verifactu, MEI 1%, jubilación",
+    description: "Avance de los cambios que afectan al autónomo en 2027: Verifactu obligatorio julio 1, MEI sube al 1%, ajustes en base reguladora de jubilación, y posibles novedades pendientes BOE.",
+    datePublished: "2026-11-01",
+    category: "Normativa",
+    tag: "2027",
+    content: `## Lo que ya está confirmado para 2027
+
+### Verifactu obligatorio (1 julio 2027)
+
+A partir del 1 de julio de 2027 todos los autónomos persona física deben usar
+software de facturación certificado. Más en nuestra [página dedicada a Verifactu](/verifactu).
+
+**Sanciones**: hasta 50.000 €/año por software no homologado.
+
+### MEI sube al 1,0%
+
+El Mecanismo de Equidad Intergeneracional sube del 0,9% (2026) al 1,0% en 2027.
+Es 0,1 punto adicional sobre tu base de cotización. Sigue siendo coste íntegro
+para el autónomo.
+
+### Base reguladora de jubilación: media 25 años
+
+En 2027 entra en vigor el periodo de cálculo de 25 años para la base reguladora
+de la jubilación (antes 24). Cotizar por base baja durante muchos años seguirá
+penalizando la pensión.
+
+## Lo que está pendiente / por confirmar
+
+- **Cuota autónomos persona física 2027**: a priori se mantiene el sistema de 15
+  tramos por ingresos reales. Pendiente publicación BOE de actualización.
+- **Cuota societarios 2027**: tras la subida de 42,4% en 2026, ¿habrá nuevo
+  ajuste? Pendiente confirmación.
+- **SMI 2027**: la negociación del SMI suele cerrarse a finales de año o
+  principios del siguiente. Afecta a la prórroga de tarifa plana.
+- **Factura electrónica B2B**: el desarrollo reglamentario de la Ley Crea y Crece
+  podría activarse en 2027.
+
+## Cómo prepararte
+
+1. **Antes de junio 2027**: migra a software certificado Verifactu.
+2. **Revisa tu base**: si has venido cotizando por la mínima, valora subir para
+   mejorar tu jubilación.
+3. **Actualiza presupuestos**: el MEI al 1% son +1-4 €/mes según base.
+4. **Mantente al día**: novedades publicadas en el BOE durante diciembre 2026 -
+   enero 2027.
+
+## Recursos
+
+- [Página Verifactu actualizada](/verifactu)
+- [Calculadora cuota autónomo 2026](/cuota-autonomo)
+- [Glosario fiscal](/glosario)
+`,
+  },
+  {
+    slug: "modelo-347-enero-febrero-2027",
+    title: "Modelo 347: la declaración de operaciones con terceros (plazo febrero 2027)",
+    description: "Cómo y cuándo presentar el modelo 347 sobre operaciones superiores a 3.005,06 € con un mismo proveedor o cliente. Plazo 1-28 febrero 2027 para el ejercicio 2026.",
+    datePublished: "2027-01-15",
+    category: "Modelos",
+    tag: "Modelo 347",
+    content: `## Qué es el modelo 347
+
+El modelo 347 es una **declaración informativa anual** en la que comunicas a la
+AEAT las operaciones con terceros que han superado los **3.005,06 €** en el
+ejercicio (IVA incluido).
+
+No genera pago ni devolución. Su función es que Hacienda **cruce datos** entre
+quien declara una factura y quien la recibe.
+
+## Plazo de presentación
+
+Del **1 al 28 de febrero de 2027** para operaciones del año 2026.
+
+## Quién debe presentarlo
+
+- Autónomos persona física con operaciones >3.005,06 € con un mismo tercero
+- Sociedades mercantiles en el mismo supuesto
+- Comunidades de bienes que superen el límite
+
+**Excepciones**: si solo facturas a particulares, o si todas tus operaciones
+ya están declaradas en otros modelos (303, 390), no necesitas presentar el 347.
+
+## Cómo se calcula
+
+Suma todas las operaciones (facturas emitidas + facturas recibidas) con un mismo
+tercero (NIF) durante el año natural. Si supera 3.005,06 € (IVA incluido), lo
+declaras en el modelo.
+
+Para cada cliente o proveedor incluido:
+
+- Su NIF y nombre/razón social
+- Importe total facturado en el año (IVA incluido)
+- Desglose trimestral
+
+## Errores típicos
+
+1. **Olvidar arrendamientos** con empresas: el alquiler de oficina/local con
+   factura suma para el cómputo.
+2. **No cruzar con tus 303s**: las cifras del 347 deben cuadrar con las del IVA
+   trimestral.
+3. **Confundir 3.005 € por operación vs 3.005 € total con tercero**: es el total
+   anual con un mismo NIF, no por factura.
+
+## Sanciones
+
+Por no presentar a tiempo o presentar con errores: multa proporcional al importe
+no declarado (hasta el 2% del importe). Mínimo 300 €.
+
+## Recursos
+
+- [Calendario fiscal completo](/calendario-fiscal)
+- [Generador de facturas](/generador-facturas) — incluye campos requeridos
+`,
+  },
+  {
+    slug: "cierre-fiscal-2026-autonomo",
+    title: "Cierre fiscal 2026: checklist del autónomo antes del 31 de diciembre",
+    description: "Lo que debes revisar y hacer antes de cerrar el ejercicio fiscal 2026: facturas pendientes, gastos deducibles olvidados, planes de pensiones, base cotización.",
+    datePublished: "2026-12-01",
+    category: "Cierre fiscal",
+    tag: "Fin de año",
+    content: `## Por qué importa diciembre
+
+Cerrar bien el año fiscal ahorra dinero en la Renta y evita sustos. Aquí va el
+checklist para el autónomo.
+
+## 1. Repasa facturas emitidas
+
+- ¿Hay facturas pendientes de cobro que deberían estar emitidas ya?
+- ¿Algún cliente que aún no te ha confirmado importe? Pídeselo antes del 31.
+- **Truco**: una factura emitida el 31 de diciembre cuenta en el ejercicio 2026;
+  emitida el 1 de enero cuenta en 2027.
+
+## 2. Repasa facturas recibidas
+
+- ¿Has guardado todas las facturas de tus gastos profesionales del año?
+- Suministros, gestoría, software, formación, dietas, kilometraje (con justificante)
+- Revisa el banco: ¿cargos que no tengas factura? Pídela ahora.
+
+## 3. Gastos olvidados típicos
+
+- **Suministros home office**: 30% deducible si tienes un % de vivienda afectado al alta
+- **Material de oficina** comprado online sin pensar
+- **Formación profesional** (cursos online, conferencias)
+- **Cuotas profesionales** (colegios, asociaciones)
+- **Seguros relacionados con la actividad**
+- **Comisiones bancarias** de la cuenta profesional
+
+Más en [gastos deducibles autónomo](/guias/gastos-deducibles).
+
+## 4. Aportaciones a planes de pensiones
+
+Las aportaciones reducen base imponible IRPF. Límite 2026: **1.500 €/año** en
+planes individuales (8.000 € en planes de empleo del autónomo si tienes uno).
+
+Si vas a hacerlo, debe ser antes del **31 de diciembre**.
+
+## 5. Revisa tu base de cotización
+
+¿Te toca regularización tras la próxima Renta? Si tu rendimiento neto real ha
+sido superior al estimado, la TGSS te cobrará la diferencia. Conviene revisar
+ahora para no llevarte sorpresas.
+
+[Calcula tu cuota actualizada](/cuota-autonomo).
+
+## 6. Modelo 130 del Q4 (1-30 enero 2027)
+
+Plazo extendido por incluir resumen anual IVA. No es modelo de cierre técnico
+pero suele coincidir con el cierre.
+
+## 7. Preparativos Verifactu
+
+Si aún no has migrado a software certificado, **diciembre 2026 es buen momento
+para investigar opciones**. Tienes hasta junio 2027.
+
+## Tarifa plana: ojo con la prórroga
+
+Si terminaste tu primer año con tarifa plana entre julio y diciembre 2026, en
+los primeros meses de 2027 sabrás si te conceden la prórroga (depende de que
+tu rendimiento neto haya quedado por debajo del SMI 2026, ~16.576 €).
+
+## Cheklist final
+
+- [ ] Todas las facturas emitidas
+- [ ] Todas las facturas recibidas archivadas
+- [ ] Gastos deducibles revisados
+- [ ] Aportación a planes de pensiones (si aplica)
+- [ ] Revisión de base de cotización
+- [ ] Software preparado para 130 + 303 del Q4
+- [ ] Plan de migración Verifactu en marcha
+`,
+  },
+  {
+    slug: "irpf-comparativa-ccaa-2026",
+    title: "IRPF 2026 por Comunidad Autónoma: Madrid vs Cataluña vs Valencia (comparativa)",
+    description: "Cuánto IRPF paga un autónomo con 30.000 € en Madrid, Cataluña, Valencia, Andalucía. Tablas comparativas, diferencia anual y por qué tu CCAA importa.",
+    datePublished: "2026-10-10",
+    category: "IRPF",
+    tag: "Comparativa CCAA",
+    content: `## Por qué tu CCAA cambia tu IRPF
+
+El IRPF tiene dos mitades: **estatal** (igual para todos) + **autonómica** (cada
+Comunidad fija la suya). La diferencia entre la más barata (Madrid) y las más
+caras (Cataluña, Valencia, Asturias) puede ser de **2.000-3.000 €/año** para
+ingresos medios-altos.
+
+## Comparativa: autónomo con 30.000 € de rendimiento neto
+
+| CCAA | Tipo efectivo aprox. | IRPF anual aprox. |
+|---|---|---|
+| Madrid | ~17,3% | ~5.200 € |
+| Andalucía | ~18,1% | ~5.430 € |
+| Valencia | ~19,5% | ~5.850 € |
+| Cataluña | ~19,2% | ~5.760 € |
+| Asturias | ~19,8% | ~5.940 € |
+
+**Diferencia Madrid vs Asturias**: ~740 €/año.
+
+## Comparativa: autónomo con 60.000 € de rendimiento neto
+
+| CCAA | Tipo efectivo aprox. | IRPF anual aprox. |
+|---|---|---|
+| Madrid | ~25,1% | ~15.060 € |
+| Andalucía | ~25,9% | ~15.540 € |
+| Valencia | ~27,8% | ~16.680 € |
+| Cataluña | ~28,2% | ~16.920 € |
+| Asturias | ~28,5% | ~17.100 € |
+
+**Diferencia Madrid vs Cataluña**: ~1.860 €/año.
+
+## Por qué Madrid es más barata
+
+Madrid lleva años bajando sus tipos autonómicos. En el tramo más alto
+autonómico (>120k) cobra ~20,5%, vs Cataluña 25,5%, Valencia 29,5%.
+
+## ¿Compensa cambiar de CCAA?
+
+Solo si tu cambio es **real** (residencia habitual >183 días/año, padrón,
+sanidad). La AEAT vigila los "cambios de papel" para evadir IRPF, sobre todo
+cuando vienen de CCAA con IRPF alto a Madrid.
+
+**Riesgo**: si Hacienda detecta que sigues viviendo en tu CCAA original, te
+imputa el IRPF de tu CCAA real + sanción + intereses.
+
+## Régimen foral: Navarra y País Vasco
+
+Tienen su propia Hacienda y escala. **No** se rigen por el IRPF estatal +
+autonómico. Si vives allí, consulta tu Hacienda Foral.
+
+## Calcula tu caso
+
+- [Calculadora IRPF por CCAA](/calculadora-irpf)
+- Páginas dedicadas por CCAA: [/irpf/madrid](/irpf/madrid), [/irpf/cataluna](/irpf/cataluna), etc.
+`,
+  },
+  {
     slug: "calendario-fiscal-q3-2026",
     title: "Calendario fiscal Q3 2026: modelos del trimestre julio-septiembre",
     description: "Todas las fechas clave del 2º y 3er trimestre 2026: modelo 303 (IVA), 130 (IRPF), 111 (retenciones), 115 (alquileres). Antes del 21 de julio.",
