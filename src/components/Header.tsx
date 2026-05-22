@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 const CALC_LINKS = [
   { href: "/cuota-autonomo", label: "Cuota autónomo" },
@@ -16,9 +16,51 @@ const CALC_LINKS = [
   { href: "/generador-facturas", label: "Generador facturas" },
 ];
 
+const CLOSE_DELAY_MS = 180;
+
 export function Header() {
   const [open, setOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const menuId = useId();
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+
+  function cancelClose() {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  }
+  function scheduleClose() {
+    cancelClose();
+    closeTimer.current = setTimeout(() => setOpen(false), CLOSE_DELAY_MS);
+  }
+  function openNow() {
+    cancelClose();
+    setOpen(true);
+  }
+
+  // Cleanup timer en desmonte
+  useEffect(() => () => cancelClose(), []);
+
+  // Escape para cerrar + clic fuera
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    const onClick = (e: MouseEvent) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("mousedown", onClick);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("mousedown", onClick);
+    };
+  }, [open]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-200 bg-[#FAFAF7]/95 backdrop-blur">
@@ -28,27 +70,56 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-5 text-[13px] sm:flex">
-          <div className="relative" onMouseLeave={() => setOpen(false)}>
+          <div
+            ref={wrapperRef}
+            className="relative"
+            onMouseEnter={openNow}
+            onMouseLeave={scheduleClose}
+            onFocus={openNow}
+            onBlur={(e) => {
+              // Si el foco salta a un elemento dentro del menú no cerramos
+              if (!wrapperRef.current?.contains(e.relatedTarget as Node)) {
+                scheduleClose();
+              }
+            }}
+          >
             <button
+              type="button"
               onClick={() => setOpen((s) => !s)}
-              onMouseEnter={() => setOpen(true)}
-              className="flex items-center gap-1 text-neutral-700 transition-colors hover:text-neutral-900"
+              className="flex items-center gap-1 py-2 text-neutral-700 transition-colors hover:text-neutral-900"
+              aria-haspopup="menu"
+              aria-expanded={open}
+              aria-controls={menuId}
             >
               Calculadoras
-              <ChevronDown className="h-3 w-3" />
+              <ChevronDown
+                className={`h-3 w-3 transition-transform ${open ? "rotate-180" : ""}`}
+              />
             </button>
             {open && (
-              <div className="absolute right-0 top-full z-50 mt-1 w-60 border border-neutral-200 bg-white p-1 shadow-sm">
-                {CALC_LINKS.map((l) => (
-                  <Link
-                    key={l.href}
-                    href={l.href}
-                    className="block px-3 py-1.5 text-[13px] text-neutral-700 transition-colors hover:bg-neutral-50 hover:text-[#B91C1C]"
-                    onClick={() => setOpen(false)}
-                  >
-                    {l.label}
-                  </Link>
-                ))}
+              // Wrapper que cubre todo el área desde justo debajo del trigger.
+              // `pt-2` actúa como puente invisible para evitar el gap del mouse.
+              <div
+                id={menuId}
+                role="menu"
+                aria-label="Calculadoras"
+                className="absolute right-0 top-full z-50 w-60 pt-2"
+                onMouseEnter={openNow}
+                onMouseLeave={scheduleClose}
+              >
+                <div className="border border-neutral-200 bg-white p-1 shadow-md">
+                  {CALC_LINKS.map((l) => (
+                    <Link
+                      key={l.href}
+                      href={l.href}
+                      role="menuitem"
+                      className="block px-3 py-1.5 text-[13px] text-neutral-700 transition-colors hover:bg-neutral-50 hover:text-[#B91C1C]"
+                      onClick={() => setOpen(false)}
+                    >
+                      {l.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -67,6 +138,7 @@ export function Header() {
           onClick={() => setMobileOpen((s) => !s)}
           className="sm:hidden inline-flex items-center justify-center p-1.5 text-neutral-700"
           aria-label="Abrir menú"
+          aria-expanded={mobileOpen}
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
