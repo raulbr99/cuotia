@@ -11,6 +11,107 @@ export interface BlogPost {
 
 export const POSTS: BlogPost[] = [
   {
+    slug: "comparativa-software-autonomos-2026",
+    title: "Comparativa de software y calculadoras para autónomos 2026",
+    description: "Panorama honesto del software fiscal para autónomos en España: gestorías online (Declarando, TaxDown, Infoautónomos), software facturación (Quipu, Holded, Anfix), y calculadoras gratuitas (Cuotia). Qué elegir y cuándo.",
+    datePublished: "2026-05-22",
+    category: "Comparativas",
+    tag: "Software",
+    content: `## Tres tipos de herramientas
+
+El mercado fiscal para autónomos tiene tres tipos de productos. Saber cuál
+necesitas evita pagar de más o quedarte corto.
+
+### 1. Gestorías online
+
+Te llevan la fiscalidad a cambio de cuota mensual. Presentan tus modelos,
+asesoran y resuelven dudas. Típicamente 30-80 €/mes.
+
+- **Declarando** — gestoría online popular, incluye 100 facturas/mes y modelo 130/303
+- **TaxDown** — más enfocada a renta (modelo 100) y particulares
+- **Infoautónomos** (Infojobs) — pack incluye alta + asesoría
+- **Crear Empresa Hoy / Anfix** — combinan gestoría + software
+
+**Cuándo conviene**: si facturas >20.000 €/año o tu actividad es compleja
+(IVA intracomunitario, varios países, empleados).
+
+### 2. Software de facturación
+
+Emites facturas, llevas tus libros y exportas datos para tu gestor.
+Típicamente 10-30 €/mes. Algunos serán Verifactu-ready en 2027.
+
+- **Quipu** — popular entre profesionales digitales, factura recurrente buena
+- **Holded** — más enterprise, también CRM y proyectos
+- **Anfix** — clásico español, integra bien con gestorías
+- **Billin** — sencillo, gratis hasta 5 facturas/mes
+- **Contasimple** — gratuito básico, integra contabilidad
+
+**Cuándo conviene**: si emites >10 facturas/mes o necesitas
+factura recurrente, ofertas, etc.
+
+### 3. Calculadoras y herramientas puntuales
+
+Para preguntas específicas o estimaciones rápidas. Gratuitas, sin registro.
+
+- **[Cuotia](/)** (nosotros) — 9 calculadoras + 12 blog posts + 27 términos del glosario
+- **Calculadora-sueldo.es** — sueldo neto/bruto principal
+- **Bcc.es / Bizneo** — soporte fiscal en sus tools
+- Apps oficiales de gestorías (la mayoría requieren cuenta)
+
+**Cuándo conviene**: para estimaciones rápidas antes de decidir, dudas
+puntuales, o si llevas tu gestión solo con Excel + un gestor anual.
+
+## Tabla resumen por necesidad
+
+| Necesitas... | Mejor opción |
+|---|---|
+| Calcular cuota antes de decidirme | [Cuotia](/cuota-autonomo) (gratis) |
+| Emitir facturas profesionales | Quipu, Holded, Anfix |
+| Tener gestoría completa | Declarando, TaxDown |
+| Solo darte de alta | Infoautónomos (pack alta) |
+| Comparar IRPF entre CCAA | [Cuotia](/calculadora-irpf) |
+| Preparar Verifactu 2027 | Quipu, Holded (los que actualizan más rápido) |
+| Software gratis básico | Billin, Contasimple |
+
+## Lo que diferencia a Cuotia
+
+- **Sin registro**. Calculas y te vas. No vendemos servicios.
+- **Sin pop-ups ni emails forzados**. Newsletter es 100% opt-in.
+- **Open source en filosofía**: las fórmulas son verificables, los datos son
+  del BOE y AEAT, los enlaces a fuentes están visibles.
+- **Hecho por autónomos** que se cansaron de calculadoras que metían 5 pop-ups
+  antes de enseñar el resultado.
+
+No competimos con gestorías. Si necesitas asesoramiento personalizado,
+contrátalas. Cuotia es para que llegues a esas conversaciones sabiendo
+**qué preguntar y cuánto deberías pagar**.
+
+## Cuándo NO uses Cuotia
+
+- Si necesitas presentar modelos en tu nombre → contrata gestoría
+- Si tu situación tiene matices (sociedades, internacional, herencia) →
+  consulta gestor cualificado
+- Si te van a sancionar por no presentar → consulta abogado fiscal, no una calc
+
+## Herramientas oficiales que también funcionan
+
+- **Sede Electrónica AEAT** — para presentar modelos tú mismo (gratis pero técnica)
+- **Sede Electrónica Seguridad Social** — cambiar tramo, gestionar prestaciones
+- **Cl@ve PIN** — acceso simplificado a ambos (no requiere certificado digital)
+
+## Resumen práctico
+
+1. **Calcular**: usa [Cuotia](/) y otras calcs gratis
+2. **Emitir facturas**: software (Quipu, Holded, Anfix, Billin)
+3. **Presentar modelos**: gestoría (si no quieres líos) o sede electrónica (si te sientes cómodo)
+4. **Asesoramiento**: gestor humano cuando haya dudas serias
+
+No hay una herramienta única. La combinación más común para un autónomo
+medio: software de facturación + Cuotia para calcular + presentación trimestral
+con gestor o solo.
+`,
+  },
+  {
     slug: "preparar-verifactu-2027",
     title: "Cómo prepararte para Verifactu antes de julio 2027",
     description: "Tienes 14 meses para migrar a software certificado. Plan paso a paso: revisar tu software actual, elegir proveedor homologado, transición sin perder facturas.",
