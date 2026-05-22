@@ -4,6 +4,7 @@ import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
+import { RelatedCalcs } from "@/components/RelatedCalcs";
 
 const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es"}/api/og?title=${encodeURIComponent("Calculadora IRPF 2026")}&subtitle=${encodeURIComponent("Escala estatal + 17 CCAA + modelo 130 trimestral")}&tag=IRPF`;
 
@@ -83,6 +84,8 @@ export default function Page() {
           <li>T4: del 1 al 30 de enero</li>
         </ul>
       </article>
+
+      <RelatedCalcs current="irpf" related={["cuota", "iva", "neto", "retencion"]} />
     </div>
   );
 }

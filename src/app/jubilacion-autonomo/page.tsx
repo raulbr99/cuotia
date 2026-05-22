@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JubilacionCalc } from "@/components/calculators/JubilacionCalc";
 import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { RelatedCalcs } from "@/components/RelatedCalcs";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { FAQ } from "@/components/FAQ";
@@ -49,6 +50,7 @@ export default function Page() {
           { q: "¿Puedo seguir trabajando cobrando pensión?", a: "Sí: la jubilación activa permite compatibilizar pensión y actividad si has llegado a la edad legal con el 100% de la base. Cobras el 50% de la pensión (100% si tienes contratado al menos un trabajador)." },
         ]}
       />
+      <RelatedCalcs current="jubilacion" related={["cuota", "societario", "baja", "neto"]} />
     </div>
   );
 }

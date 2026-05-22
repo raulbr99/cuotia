@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { InvoiceGenerator } from "@/components/InvoiceGenerator";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { RelatedCalcs } from "@/components/RelatedCalcs";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 import { FAQ } from "@/components/FAQ";
 
@@ -56,6 +57,7 @@ export default function Page() {
           ]}
         />
       </section>
+      <RelatedCalcs current="facturas" related={["retencion", "iva", "verifactu", "irpf"]} />
     </div>
   );
 }

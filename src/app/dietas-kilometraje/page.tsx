@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DietasCalc } from "@/components/calculators/DietasCalc";
 import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { RelatedCalcs } from "@/components/RelatedCalcs";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { FAQ } from "@/components/FAQ";
@@ -48,6 +49,7 @@ export default function Page() {
           { q: "¿Y si el cliente me reembolsa?", a: "Si te reembolsan los gastos, no son deducibles para ti (no son tu gasto). Factura los desplazamientos como suplido o aparte. Los suplidos no llevan IVA y no son ingreso." },
         ]}
       />
+      <RelatedCalcs current="dietas" related={["neto", "facturas", "irpf", "cuota"]} />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { HeroQuickCalc } from "@/components/HeroQuickCalc";
 
 const PRIMARY = [
   {
@@ -62,7 +63,7 @@ export default function HomePage() {
 
       {/* FULL-BLEED BANNER */}
       <section className="relative w-full overflow-hidden border-b border-neutral-200">
-        <div className="relative h-[55vh] min-h-[400px] max-h-[640px] w-full">
+        <div className="relative h-[40vh] min-h-[260px] max-h-[640px] w-full sm:h-[55vh] sm:min-h-[400px]">
           <Image
             src="/banner-coins.jpg"
             alt="Monedas de euro apiladas sobre lino crema"
@@ -86,20 +87,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* LEAD PARAGRAPH */}
+      {/* LEAD + MINI-CALC HERO */}
       <section className="border-b border-neutral-200">
         <div className="mx-auto max-w-5xl px-5 py-12">
-          <div className="grid gap-10 md:grid-cols-12">
-            <div className="md:col-span-7">
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-5">
               <p className="font-serif text-2xl leading-snug text-neutral-900 sm:text-3xl">
                 Cuota, IRPF, IVA, despido, jubilación. Calculadoras gratis,
                 sin registro, con los datos oficiales del BOE.
               </p>
-            </div>
-            <div className="md:col-span-5 md:pt-2">
-              <p className="text-[13px] italic text-neutral-500 leading-relaxed">
+              <p className="mt-4 text-[13px] italic text-neutral-500 leading-relaxed">
                 Hechas por autónomos hartos de no saber cuánto deben.
               </p>
+            </div>
+            <div className="lg:col-span-7">
+              <HeroQuickCalc />
             </div>
           </div>
         </div>

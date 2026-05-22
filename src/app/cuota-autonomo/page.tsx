@@ -4,6 +4,7 @@ import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
+import { RelatedCalcs } from "@/components/RelatedCalcs";
 
 const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es"}/api/og?title=${encodeURIComponent("Calculadora cuota autónomo 2026")}&subtitle=${encodeURIComponent("15 tramos por ingresos reales + tarifa plana 88,64 €/mes")}&tag=Cuota+autónomo`;
 
@@ -94,6 +95,8 @@ export default function Page() {
           </a>.
         </p>
       </article>
+
+      <RelatedCalcs current="cuota" related={["irpf", "iva", "neto", "societario", "slvsauto"]} />
     </div>
   );
 }

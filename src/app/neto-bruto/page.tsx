@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { NetoBrutoCalc } from "@/components/calculators/NetoBrutoCalc";
 import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { RelatedCalcs } from "@/components/RelatedCalcs";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 import { QuickAnswer } from "@/components/QuickAnswer";
 

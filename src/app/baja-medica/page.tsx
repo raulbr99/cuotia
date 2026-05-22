@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { BajaMedicaCalc } from "@/components/calculators/BajaMedicaCalc";
 import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { RelatedCalcs } from "@/components/RelatedCalcs";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { FAQ } from "@/components/FAQ";
@@ -48,6 +49,7 @@ export default function Page() {
           { q: "¿Cobro 100% en algún caso?", a: "Sí: maternidad/paternidad, embarazo de riesgo, lactancia y riesgo durante el embarazo. Estas prestaciones pagan el 100% de la base de cotización." },
         ]}
       />
+      <RelatedCalcs current="baja" related={["cuota", "despido", "jubilacion", "facturas"]} />
     </div>
   );
 }

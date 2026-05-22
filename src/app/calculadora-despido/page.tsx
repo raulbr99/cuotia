@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DespidoCalc } from "@/components/calculators/DespidoCalc";
 import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { RelatedCalcs } from "@/components/RelatedCalcs";
 import { FAQ } from "@/components/FAQ";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
@@ -53,6 +54,7 @@ export default function Page() {
           { q: "¿Cuánto tiempo tengo para reclamar?", a: "20 días hábiles desde el despido para presentar papeleta de conciliación y demanda. Pasado ese plazo, pierdes el derecho a reclamar." },
         ]}
       />
+      <RelatedCalcs current="despido" related={["baja", "jubilacion", "neto", "cuota"]} />
     </div>
   );
 }

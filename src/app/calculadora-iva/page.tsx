@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IvaCalc } from "@/components/calculators/IvaCalc";
 import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { RelatedCalcs } from "@/components/RelatedCalcs";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { FAQ } from "@/components/FAQ";
@@ -48,6 +49,7 @@ export default function Page() {
           { q: "¿Qué es el modelo 390?", a: "El resumen anual del IVA: suma de los 4 trimestres del año. Se presenta entre el 1 y el 30 de enero junto con el 303 del T4. Solo es obligatorio si tributas en régimen general." },
         ]}
       />
+      <RelatedCalcs current="iva" related={["irpf", "cuota", "facturas", "calendario"]} />
     </div>
   );
 }
