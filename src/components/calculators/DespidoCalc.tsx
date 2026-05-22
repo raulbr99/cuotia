@@ -103,7 +103,7 @@ export function DespidoCalc() {
         </div>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-4 lg:sticky lg:top-20 lg:self-start">
         <div className="rounded-xl border-2 border-[#FECACA] bg-[#FEF2F2] p-5">
           <p className="text-xs font-semibold uppercase tracking-wider text-[#B91C1C]">TOTAL A COBRAR (BRUTO)</p>
           <p className="mt-1 font-bold text-3xl text-[#B91C1C]">{eur(total)}</p>

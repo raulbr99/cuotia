@@ -4,6 +4,7 @@ import { useId, useMemo, useState } from "react";
 import { RotateCcw } from "lucide-react";
 import { findTramo, TARIFA_PLANA_MENSUAL, TRAMOS_2025 } from "@/lib/cuota-autonomo";
 import { eur } from "@/lib/format";
+import { HelpTooltip } from "@/components/HelpTooltip";
 
 type ModoCuota = "minima" | "maxima" | "personalizada";
 
@@ -61,6 +62,10 @@ export function CuotaAutonomoCalc() {
 
         <label htmlFor={ingresosId} className="mb-1 block text-sm font-medium text-neutral-700">
           Rendimiento neto mensual previsto
+          <HelpTooltip label="¿Qué es rendimiento neto?">
+            Ingresos brutos − gastos deducibles − 7% genérico (5% societarios). Es la
+            cifra que determina tu tramo. Ejemplo: 30.000 € − 5.000 € gastos = 25.000 € / 12 = 2.083 €/mes.
+          </HelpTooltip>
         </label>
         <div className="relative">
           <input
@@ -94,7 +99,12 @@ export function CuotaAutonomoCalc() {
 
         {!tarifaPlana && (
           <div className="mt-5">
-            <p className="mb-2 block text-sm font-medium text-neutral-700">¿Qué base de cotización quieres?</p>
+            <p className="mb-2 block text-sm font-medium text-neutral-700">
+              ¿Qué base de cotización quieres?
+              <HelpTooltip label="Base de cotización">
+                Mínima = pagas lo justo de tu tramo (cuota más baja). Máxima = subes tu base, pagas más cada mes pero aumentas tu pensión futura y prestaciones por baja.
+              </HelpTooltip>
+            </p>
             <div role="radiogroup" aria-label="Base de cotización" className="flex flex-wrap gap-2">
               {(["minima", "maxima", "personalizada"] as ModoCuota[]).map((m) => (
                 <button
@@ -135,7 +145,7 @@ export function CuotaAutonomoCalc() {
         )}
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-4 lg:sticky lg:top-20 lg:self-start">
         <div className="rounded-xl border-2 border-[#FECACA] bg-[#FEF2F2] p-5">
           <p className="text-xs font-semibold uppercase tracking-wider text-[#B91C1C]">CUOTA MENSUAL</p>
           <p className="mt-1 font-bold text-3xl text-[#B91C1C]">{eur(cuotaCalculada)}</p>

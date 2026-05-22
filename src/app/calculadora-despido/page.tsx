@@ -42,7 +42,7 @@ export default function Page() {
 
       <DespidoCalc />
 
-      <AdSlot format="leaderboard" className="my-10" />
+      <AdSlot className="my-10" />
 
       <FAQ
         items={[

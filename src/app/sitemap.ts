@@ -4,7 +4,11 @@ import { POSTS } from "@/lib/blog";
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 
-const CUOTA_INGRESOS_TARGETS = [1000, 1200, 1500, 1700, 2000, 2500, 3000, 4000, 5000, 6000, 8000, 10000];
+const CUOTA_INGRESOS_TARGETS = [
+  500, 800, 1000, 1200, 1300, 1500, 1700, 1800, 2000, 2200, 2500,
+  2800, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 7000, 8000, 9000,
+  10000, 12000, 15000,
+];
 
 const ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "", priority: 1.0, freq: "weekly" },

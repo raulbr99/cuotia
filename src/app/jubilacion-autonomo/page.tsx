@@ -38,7 +38,7 @@ export default function Page() {
 
       <JubilacionCalc />
 
-      <AdSlot format="leaderboard" className="my-10" />
+      <AdSlot className="my-10" />
 
       <FAQ
         items={[

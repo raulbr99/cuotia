@@ -37,7 +37,7 @@ export default function Page() {
 
       <IvaCalc />
 
-      <AdSlot format="leaderboard" className="my-10" />
+      <AdSlot className="my-10" />
 
       <FAQ
         items={[

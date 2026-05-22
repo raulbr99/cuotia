@@ -39,7 +39,7 @@ export default function Page() {
 
       <NetoBrutoCalc />
 
-      <AdSlot format="leaderboard" className="my-10" />
+      <AdSlot className="my-10" />
 
       <article className="prose prose-gray max-w-3xl text-sm text-neutral-700 space-y-5">
         <h2 className="text-xl font-bold text-neutral-900">Cómo se calcula tu neto</h2>

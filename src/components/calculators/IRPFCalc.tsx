@@ -5,6 +5,7 @@ import { RotateCcw } from "lucide-react";
 import { calcularPagoFraccionado130 } from "@/lib/irpf";
 import { calcularIRPFConCCAA, CCAA_NAMES, TRAMOS_CCAA_2025, type CCAA } from "@/lib/irpf-ccaa";
 import { eur, pct } from "@/lib/format";
+import { HelpTooltip } from "@/components/HelpTooltip";
 
 type Modo = "anual" | "trimestral";
 const STORAGE_KEY = "cuotia:ccaa";
@@ -97,6 +98,9 @@ export function IRPFCalc({ defaultCcaa = "madrid" as CCAA, lockCcaa = false }: {
               <div>
                 <label htmlFor={baseId} className="mb-1 block text-sm font-medium text-neutral-700">
                   Base imponible anual
+                  <HelpTooltip label="Base imponible IRPF">
+                    Rendimiento neto anual = ingresos − gastos deducibles − cuota autónomo. No incluye mínimos personales ni deducciones autonómicas (varían por circunstancia).
+                  </HelpTooltip>
                 </label>
                 <div className="relative">
                   <input
@@ -212,7 +216,12 @@ export function IRPFCalc({ defaultCcaa = "madrid" as CCAA, lockCcaa = false }: {
               />
             </div>
             <div className="sm:col-span-2">
-              <label htmlFor={retId} className="mb-1 block text-sm font-medium text-neutral-700">Retenciones soportadas</label>
+              <label htmlFor={retId} className="mb-1 block text-sm font-medium text-neutral-700">
+                Retenciones soportadas
+                <HelpTooltip label="Retenciones IRPF en facturas">
+                  Lo que tus clientes ya te han retenido en facturas (15% general, 7% nuevos autónomos). Suma el total del trimestre. Es un anticipo del IRPF.
+                </HelpTooltip>
+              </label>
               <input
                 id={retId}
                 type="number"
@@ -229,7 +238,7 @@ export function IRPFCalc({ defaultCcaa = "madrid" as CCAA, lockCcaa = false }: {
         )}
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-4 lg:sticky lg:top-20 lg:self-start">
         {modo === "anual" ? (
           resultado.esRegimenForal ? (
             <div className="rounded-xl border-2 border-[#FECACA] bg-[#FEF2F2] p-5">

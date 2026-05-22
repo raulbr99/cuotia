@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import { Newsletter } from "@/components/Newsletter";
 
 const PRIMARY = [
   {
@@ -233,13 +232,6 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* NEWSLETTER */}
-      <section>
-        <div className="mx-auto max-w-3xl px-5 py-16">
-          <Newsletter source="homepage" />
         </div>
       </section>
 

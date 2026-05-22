@@ -11,7 +11,11 @@ import { eur } from "@/lib/format";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 
 // Ingresos comunes que se buscan (long-tail SEO)
-const INGRESOS_TARGETS = [1000, 1200, 1500, 1700, 2000, 2500, 3000, 4000, 5000, 6000, 8000, 10000];
+const INGRESOS_TARGETS = [
+  500, 800, 1000, 1200, 1300, 1500, 1700, 1800, 2000, 2200, 2500,
+  2800, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 7000, 8000, 9000,
+  10000, 12000, 15000,
+];
 
 function slugFromIngresos(n: number): string {
   return `${n}-euros-mes`;

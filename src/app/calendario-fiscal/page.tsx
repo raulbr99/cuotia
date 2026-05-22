@@ -90,7 +90,7 @@ export default function Page() {
         </p>
       </header>
 
-      <AdSlot format="leaderboard" className="mb-8" />
+      <AdSlot className="mb-8" />
 
       <div className="space-y-6">
         {EVENTOS.map((m) => (

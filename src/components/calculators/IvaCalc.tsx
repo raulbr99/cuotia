@@ -107,7 +107,7 @@ export function IvaCalc() {
               </div>
             </div>
           </div>
-          <div className="rounded-xl border-2 border-[#FECACA] bg-[#FEF2F2] p-5 space-y-3">
+          <div className="rounded-xl border-2 border-[#FECACA] bg-[#FEF2F2] p-5 space-y-3 lg:sticky lg:top-20 lg:self-start">
             <div>
               <p className="text-xs font-semibold uppercase tracking-wider text-[#B91C1C]">TOTAL</p>
               <p className="font-bold text-3xl text-[#B91C1C]">
@@ -133,7 +133,7 @@ export function IvaCalc() {
               IVA soportado: el que has pagado en facturas recibidas y es deducible.
             </p>
           </div>
-          <div className="rounded-xl border-2 border-[#FECACA] bg-[#FEF2F2] p-5">
+          <div className="rounded-xl border-2 border-[#FECACA] bg-[#FEF2F2] p-5 lg:sticky lg:top-20 lg:self-start">
             <p className="text-xs font-semibold uppercase tracking-wider text-[#B91C1C]">
               {m303.tipo === "ingresar" ? "A INGRESAR" : "A COMPENSAR / DEVOLVER"}
             </p>
