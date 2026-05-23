@@ -36,11 +36,17 @@ export const CCAA_NAMES: Record<CCAA, string> = {
 };
 
 // Escalas autonómicas IRPF vigentes para declaración Renta 2025 (presentada en 2026).
-// Última verificación: 23 mayo 2026 contra TaxDown + guiafiscal + Decret-llei
-// Cataluña 5/2025. CCAA verificadas: Andalucía, Aragón, Asturias, Baleares,
-// Canarias, Cantabria, Castilla y León, Castilla-La Mancha, Cataluña (post-5/2025),
-// Madrid. Pendientes verificación contra BOE autonómico: Extremadura, Galicia,
-// La Rioja, Murcia, Valencia.
+// Última verificación: 23 mayo 2026 contra TaxDown + guiafiscal + DOGC/BORM/BOR + Decretos-Ley.
+// LAS 15 CCAA de régimen común están verificadas individualmente.
+// Régimen foral (Navarra, País Vasco) NO se incluye — consultar Hacienda Foral.
+// Normas de referencia por CCAA:
+// - Cataluña: Decret-llei 5/2025 (DOGC 25 marzo 2025)
+// - Madrid: Ley 13/2023 (deflactación)
+// - La Rioja: Ley 13/2023 (BOR 22 dic 2023)
+// - Murcia: Ley 11/2023 (BORM 28 dic 2023) + Ley 9/2025 (deflactación automática IPC >3%)
+// - Extremadura: Decreto-Ley 4/2023
+// - Valencia: Ley 13/1997 mod. Ley 9/2022 (efectos 1 enero 2023)
+// - Galicia: Decreto Legislativo 1/2011
 export const TRAMOS_CCAA_2025: Record<CCAA, IRPFTramo[]> = {
   // Andalucía 2026 (TaxDown verified): añade tramo 50k-60k al 22,5%
   // que antes estaba consolidado en 35,2k-60k al 18,5%.
@@ -133,12 +139,14 @@ export const TRAMOS_CCAA_2025: Record<CCAA, IRPFTramo[]> = {
     { desde: 120000, hasta: 175000, tipo: 0.245 },
     { desde: 175000, hasta: null, tipo: 0.255 },
   ],
+  // Extremadura 2026 (Decreto-Ley 4/2023, sin cambios para 2026):
+  // fix tramo 35.200-60.000 al 21% (era 21,5%, error histórico).
   "extremadura": [
     { desde: 0, hasta: 12450, tipo: 0.08 },
     { desde: 12450, hasta: 20200, tipo: 0.10 },
     { desde: 20200, hasta: 24200, tipo: 0.16 },
     { desde: 24200, hasta: 35200, tipo: 0.175 },
-    { desde: 35200, hasta: 60000, tipo: 0.215 },
+    { desde: 35200, hasta: 60000, tipo: 0.21 },
     { desde: 60000, hasta: 80200, tipo: 0.235 },
     { desde: 80200, hasta: 99200, tipo: 0.24 },
     { desde: 99200, hasta: 120200, tipo: 0.245 },
@@ -151,13 +159,18 @@ export const TRAMOS_CCAA_2025: Record<CCAA, IRPFTramo[]> = {
     { desde: 35200, hasta: 60000, tipo: 0.184 },
     { desde: 60000, hasta: null, tipo: 0.225 },
   ],
+  // La Rioja 2026 (Ley 13/2023, BOR 22 dic 2023): rebaja de tipos.
+  // Antes: 9 / 11,6 / 14,6 / 18,8 / 19,5 / 25 / 27
+  // Ahora: 8 / 10,6 / 13,6 / 17,8 / 18,3 / 19 / 24,5 / 27
+  // 8 tramos en lugar de 7 (nuevo tramo 35.200-40.000 al 17,8% y 40.000-50.000 al 18,3%).
   "rioja": [
-    { desde: 0, hasta: 12450, tipo: 0.09 },
-    { desde: 12450, hasta: 20200, tipo: 0.116 },
-    { desde: 20200, hasta: 35200, tipo: 0.146 },
-    { desde: 35200, hasta: 50000, tipo: 0.188 },
-    { desde: 50000, hasta: 60000, tipo: 0.195 },
-    { desde: 60000, hasta: 120000, tipo: 0.25 },
+    { desde: 0, hasta: 12450, tipo: 0.08 },
+    { desde: 12450, hasta: 20200, tipo: 0.106 },
+    { desde: 20200, hasta: 35200, tipo: 0.136 },
+    { desde: 35200, hasta: 40000, tipo: 0.178 },
+    { desde: 40000, hasta: 50000, tipo: 0.183 },
+    { desde: 50000, hasta: 60000, tipo: 0.19 },
+    { desde: 60000, hasta: 120000, tipo: 0.245 },
     { desde: 120000, hasta: null, tipo: 0.27 },
   ],
   "madrid": [
@@ -167,23 +180,32 @@ export const TRAMOS_CCAA_2025: Record<CCAA, IRPFTramo[]> = {
     { desde: 35425, hasta: 57320, tipo: 0.174 },
     { desde: 57320, hasta: null, tipo: 0.205 },
   ],
+  // Murcia 2026 (Ley 11/2023, BORM 28 dic 2023): ajustes menores en tipos
+  // intermedios. La escala se actualizó tras la reforma autonómica.
+  // Nueva Ley 9/2025 introduce mecanismo automático de deflactación si IPC >3%.
   "murcia": [
     { desde: 0, hasta: 12450, tipo: 0.095 },
-    { desde: 12450, hasta: 20200, tipo: 0.1132 },
-    { desde: 20200, hasta: 34000, tipo: 0.1406 },
-    { desde: 34000, hasta: 60000, tipo: 0.1762 },
+    { desde: 12450, hasta: 20200, tipo: 0.112 },
+    { desde: 20200, hasta: 34000, tipo: 0.133 },
+    { desde: 34000, hasta: 60000, tipo: 0.179 },
     { desde: 60000, hasta: null, tipo: 0.225 },
   ],
+  // Valencia 2026 (Ley 13/1997 mod. Ley 9/2022, vigente desde 1 enero 2023):
+  // escala completa de 11 tramos (no 9 como teníamos antes).
+  // Cambios en tramos altos: 62k-72k al 25%, 72k-100k al 26,5%, 100k-150k al
+  // 27,5%, 150k-200k al 28,5%, >200k al 29,5%.
   "valencia": [
     { desde: 0, hasta: 12000, tipo: 0.09 },
     { desde: 12000, hasta: 22000, tipo: 0.12 },
     { desde: 22000, hasta: 32000, tipo: 0.15 },
     { desde: 32000, hasta: 42000, tipo: 0.175 },
     { desde: 42000, hasta: 52000, tipo: 0.20 },
-    { desde: 52000, hasta: 65000, tipo: 0.225 },
-    { desde: 65000, hasta: 72000, tipo: 0.24 },
-    { desde: 72000, hasta: 150000, tipo: 0.25 },
-    { desde: 150000, hasta: null, tipo: 0.295 },
+    { desde: 52000, hasta: 62000, tipo: 0.225 },
+    { desde: 62000, hasta: 72000, tipo: 0.25 },
+    { desde: 72000, hasta: 100000, tipo: 0.265 },
+    { desde: 100000, hasta: 150000, tipo: 0.275 },
+    { desde: 150000, hasta: 200000, tipo: 0.285 },
+    { desde: 200000, hasta: null, tipo: 0.295 },
   ],
   "navarra": [],
   "pais-vasco": [],
