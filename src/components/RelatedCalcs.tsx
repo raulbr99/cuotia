@@ -19,6 +19,7 @@ const ALL: Record<string, CalcLink> = {
   facturas: { href: "/generador-facturas", title: "Generador facturas", desc: "PDF legalmente válido 1 min" },
   retencion: { href: "/retencion-irpf-facturas", title: "Retención IRPF facturas", desc: "15% / 7% / 19% / 2% / 0%" },
   ivaplataformas: { href: "/iva-plataformas-internacionales", title: "IVA plataformas internacionales", desc: "Stripe, Airbnb, Upwork, App Store + 9 más" },
+  tarifahora: { href: "/tarifa-hora-vs-proyecto", title: "Tarifa hora vs proyecto", desc: "Compara modelos de facturación freelance" },
   societario: { href: "/cuota-autonomo-societario", title: "Cuota autónomo societario", desc: "Base 1.424,40 €/mes (+42,4% 2026)" },
   pluriactividad: { href: "/pluriactividad", title: "Pluriactividad", desc: "Bonificación 50%/75% en cuota" },
   slvsauto: { href: "/sl-vs-autonomo", title: "SL vs Autónomo", desc: "Comparativa por nivel de ingresos" },
