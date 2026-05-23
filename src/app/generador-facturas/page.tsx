@@ -6,6 +6,7 @@ import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 import { FAQ } from "@/components/FAQ";
 import { AffiliateCard } from "@/components/AffiliateCard";
 import { AFFILIATES_BY_PAGE } from "@/lib/affiliates";
+import { VerifactuBanner } from "@/components/VerifactuBanner";
 
 const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es"}/api/og?title=${encodeURIComponent("Generador de facturas PDF")}&subtitle=${encodeURIComponent("Crea facturas legalmente válidas en 1 minuto · Sin registro")}&tag=Facturas`;
 
@@ -36,13 +37,8 @@ export default function Page() {
             en PDF. Sin registro. Tus datos se quedan en tu navegador (localStorage),
             no se envían a ningún servidor.
           </p>
-          <p className="mt-3 text-sm text-neutral-600 max-w-3xl">
-            <strong>Aviso Verifactu:</strong> este generador produce PDFs estándar válidos
-            hasta junio 2027. Desde el 1 de julio de 2027 los autónomos están obligados a
-            usar software de facturación certificado. Más en{" "}
-            <a href="/verifactu" className="text-[#B91C1C] underline">Verifactu para autónomos</a>.
-          </p>
         </header>
+        <VerifactuBanner urgent />
       </div>
 
       <InvoiceGenerator />

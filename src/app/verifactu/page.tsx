@@ -6,6 +6,7 @@ import { FAQ } from "@/components/FAQ";
 import { LastUpdated } from "@/components/LastUpdated";
 import { AffiliateCard } from "@/components/AffiliateCard";
 import { AFFILIATES_BY_PAGE } from "@/lib/affiliates";
+import { VerifactuBanner } from "@/components/VerifactuBanner";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 
@@ -89,6 +90,8 @@ export default function Page() {
         answer="Verifactu es obligatorio para autónomos persona física desde el 1 de julio de 2027 (aplazado desde julio 2026). Las sociedades mercantiles (SL, SA) están obligadas desde el 1 de enero de 2026. Requiere usar software de facturación certificado que firme digitalmente, incluya QR y permita envío a AEAT. Sanciones por software no certificado: hasta 50.000 €/año."
         updatedAt="2026-05-20"
       />
+
+      <VerifactuBanner urgent={false} />
 
       <article className="prose prose-neutral max-w-3xl mt-8 space-y-5">
         <h2 className="text-xl font-bold text-neutral-900">Calendario actualizado</h2>
