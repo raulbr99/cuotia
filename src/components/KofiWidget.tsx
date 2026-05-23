@@ -32,21 +32,39 @@ export function KofiWidget() {
           }
         }}
       />
-      {/* CSS override para mover Ko-fi a bottom-left y evitar colisión con ChatWidget.
-          Selectores amplios para cubrir varias versiones del widget que Ko-fi pueda inyectar. */}
+      {/* CSS override:
+          - Mover Ko-fi de bottom-right (default) a bottom-left para no chocar con ChatWidget.
+          - Escalar el botón al 75% (default es enorme, comparado con nuestro chat button).
+          - Selectores amplios para cubrir cualquier estructura que Ko-fi inyecte. */}
       <style jsx global>{`
-        div[id*="kofi"],
+        /* Posicionar bottom-left + escala compacta */
+        div[id*="kofi-widget-overlay"],
+        div[id*="kofi"][style*="position: fixed"],
         iframe[id*="kofi"],
         iframe[src*="ko-fi.com"] {
           right: auto !important;
           left: 16px !important;
+          bottom: 16px !important;
+          transform: scale(0.75) !important;
+          transform-origin: bottom left !important;
+        }
+        /* El widget también tiene un wrapper interno que controla width */
+        .floatingchat-container-wrap,
+        .floatingchat-donatebutton-wrap {
+          right: auto !important;
+          left: 16px !important;
+          bottom: 16px !important;
+          transform: scale(0.75) !important;
+          transform-origin: bottom left !important;
         }
         @media (max-width: 640px) {
-          /* En móvil bajamos un poco para no tapar contenido vital */
-          div[id*="kofi"],
-          iframe[id*="kofi"],
-          iframe[src*="ko-fi.com"] {
+          /* En móvil aún más pequeño para no tapar contenido */
+          div[id*="kofi-widget-overlay"],
+          .floatingchat-container-wrap,
+          .floatingchat-donatebutton-wrap {
+            transform: scale(0.65) !important;
             bottom: 12px !important;
+            left: 8px !important;
           }
         }
       `}</style>
