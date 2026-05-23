@@ -7,7 +7,6 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Newsletter } from "@/components/Newsletter";
 import { ChatWidget } from "@/components/ChatWidget";
-import { KofiWidget } from "@/components/KofiWidget";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -88,7 +87,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </section>
         <Footer />
         <ChatWidget />
-        <KofiWidget />
         <Analytics />
         <SpeedInsights />
       </body>
