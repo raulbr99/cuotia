@@ -132,11 +132,22 @@ export function DespidoCalc() {
           </div>
         </div>
 
-        <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-xs text-neutral-700">
-          <p className="text-sm font-semibold text-amber-900 mb-2">IMPORTANTE</p>
-          La indemnización por despido improcedente o causas objetivas está
-          <strong className="text-neutral-900"> exenta de IRPF</strong> hasta el límite de 180.000 €.
-          El finiquito sí tributa.
+        <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-xs text-neutral-700 space-y-2">
+          <p className="text-sm font-semibold text-amber-900">IMPORTANTE</p>
+          <p>
+            La indemnización por despido improcedente o causas objetivas está{" "}
+            <strong className="text-neutral-900">exenta de IRPF</strong> hasta el límite de 180.000 €.
+            El finiquito sí tributa.
+          </p>
+          {anos > 13 && (
+            <p className="border-t border-amber-200 pt-2">
+              <strong className="text-amber-900">¿Contrato anterior al 12 feb 2012?</strong>{" "}
+              Esta calculadora aplica el régimen post-2012 (33 días/año, tope 24 mens). Si tu
+              contrato es anterior, el cálculo es dual: 45 días/año hasta 11 feb 2012 + 33 días/año
+              desde 12 feb 2012, con tope global 720 días salario (42 mensualidades). Consulta un
+              abogado laboralista.
+            </p>
+          )}
         </div>
       </div>
     </div>

@@ -81,6 +81,17 @@ export default function Page() {
           <li>T3: del 1 al 20 de octubre</li>
           <li>T4: del 1 al 30 de enero</li>
         </ul>
+
+        <h2 className="text-xl font-bold text-neutral-900">Sobre las escalas autonómicas</h2>
+        <p>
+          Las escalas autonómicas se basan en la normativa vigente en 2025-2026.
+          Algunas CCAA actualizan su escala anualmente (Cataluña: Decret-llei 5/2025;
+          Madrid: deflactación Ley 13/2023; etc.). <strong>Verifica con la Hacienda
+          autonómica de tu CCAA antes de presentar el modelo 100 oficial</strong>.
+          Esta calculadora no incluye mínimo personal ni deducciones autonómicas
+          específicas (vivienda, donativos, planes pensiones), por lo que tu IRPF
+          real será inferior al calculado.
+        </p>
       </article>
 
       <RelatedCalcs current="irpf" related={["cuota", "iva", "neto", "retencion"]} />

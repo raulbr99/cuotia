@@ -234,7 +234,7 @@ export default async function Page({ params }: { params: Promise<{ ingresos: str
           <li><strong>MEI 2026</strong>: 0,9% (Mecanismo Equidad Intergeneracional)</li>
         </ul>
         <p>
-          Total aproximado: <strong>~31,4%</strong> sobre la base de cotización del tramo {tramo.numero}.
+          Total: <strong>31,50%</strong> sobre la base de cotización del tramo {tramo.numero}.
         </p>
 
         <h2 className="text-xl font-bold text-neutral-900">¿Qué pasa si cambian tus ingresos?</h2>

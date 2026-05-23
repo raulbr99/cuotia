@@ -50,7 +50,7 @@ export default function Page() {
           },
           {
             name: "Suma el MEI 2026 (0,9%)",
-            text: "Sobre la base de cotización se aplica el Mecanismo de Equidad Intergeneracional. Ya viene incluido en la cuota mínima del tramo.",
+            text: "Sobre la base de cotización se aplica el Mecanismo de Equidad Intergeneracional. Ya viene incluido en la cuota mínima del tramo. El tipo total cotización RETA 2026 es 31,50% (28,30% contingencias comunes + 1,30% profesionales + 0,90% cese actividad + 0,10% formación + 0,90% MEI).",
           },
         ]}
       />

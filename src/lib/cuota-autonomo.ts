@@ -41,12 +41,21 @@ export function findTramo(ingresosMensuales: number): Tramo {
   );
 }
 
-// Tarifa plana 2026: 80 €/mes base + MEI 0,9% = ~88,64 €/mes
+// Tarifa plana 2026: 80 €/mes cuota base + MEI 8,64 €/mes = 88,64 €/mes total.
+// El MEI 0,9% NO se aplica sobre los 80 € (eso daría 0,72 €).
+// Se aplica sobre la base mínima de cotización (~960 €/mes en 2026) → 8,64 €.
+// Total: 80 + 8,64 = 88,64 €/mes durante los primeros 12 meses.
 export const TARIFA_PLANA_MENSUAL = 88.64;
 export const TARIFA_PLANA_BASE_SIN_MEI = 80;
+export const TARIFA_PLANA_MEI_IMPORTE = 8.64;
 export const TARIFA_PLANA_MESES_BASE = 12;
 export const TARIFA_PLANA_PRORROGABLE = 12;
+// MEI 2026 = 0,9% sobre base cotización. Sube cada año hasta 1,2% en 2029.
 export const MEI_PORCENTAJE_2026 = 0.009;
+// Tipo total cotización RETA 2026:
+// 28,30% contingencias comunes + 1,30% profesionales + 0,90% cese actividad
+// + 0,10% formación + 0,90% MEI = 31,50% sobre base cotización
+export const TIPO_TOTAL_COTIZACION_RETA_2026 = 0.315;
 
 // Autónomos societarios y colaboradores familiares 2026:
 // base mínima sube de 1.000 € a 1.424,40 €/mes (+42,4%).

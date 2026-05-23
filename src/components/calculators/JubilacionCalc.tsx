@@ -107,10 +107,18 @@ export function JubilacionCalc() {
           <div className="flex justify-between"><span className="text-neutral-500">Edad jubilación</span><span className="font-medium text-neutral-900">{result.edadJubilacion} años</span></div>
         </div>
 
-        <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-xs text-neutral-700">
-          <p className="text-sm font-semibold text-amber-900 mb-2">IMPORTANTE</p>
-          Los autónomos que cotizaron por la base mínima durante toda su carrera tienen
-          pensiones bajas. Aumentar tu base de cotización ahora mejora tu pensión futura.
+        <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-xs text-neutral-700 space-y-2">
+          <p className="text-sm font-semibold text-amber-900">IMPORTANTE</p>
+          <p>
+            Los autónomos que cotizaron por la base mínima durante toda su carrera tienen
+            pensiones bajas. Aumentar tu base de cotización ahora mejora tu pensión futura.
+          </p>
+          <p className="border-t border-amber-200 pt-2">
+            <strong className="text-amber-900">Régimen aplicable:</strong> coeficientes y periodo
+            de cálculo (25 años) vigentes desde 2027. Para jubilaciones en 2026, la edad ordinaria
+            es 66 años 10 meses (con &lt;38,25 años cotizados) o 65 años (con ≥38,25). La base
+            reguladora se calcula con los últimos 24 años en 2026, pasando a 25 años en 2027.
+          </p>
         </div>
       </div>
     </div>
