@@ -56,8 +56,12 @@ const faqs = [
     a: "Stripe es solo procesador de pagos, no tu cliente. Tu cliente real es quien te pagó (puede ser España, UE, fuera UE). Aplicas las reglas según ese cliente. Por otro lado, Stripe te factura su comisión desde Irlanda (B2B intracomunitario con reverse charge) — esa comisión va en tus gastos deducibles.",
   },
   {
-    q: "¿Cómo facturo a Airbnb si soy host?",
-    a: "Airbnb actúa como marketplace fiscal: le facturas tú a Airbnb (sede en Irlanda) la cantidad neta que te paga. Operación intracomunitaria con reverse charge. Necesitas ROI/VIES. Declaras en modelo 349. Airbnb se encarga del IVA al huésped final según legislación local.",
+    q: "¿Cómo facturo si soy host de Airbnb o Booking?",
+    a: "Airbnb y Booking NO son tus clientes fiscales — son intermediarios. Tres casos: (1) Alquiler turístico SIN servicios hoteleros: EXENTO de IVA, no facturas al huésped (declaras como rendimiento de capital inmobiliario en IRPF, no como actividad económica). (2) Alquiler turístico CON servicios hoteleros (limpieza durante estancia, desayuno, recepción): facturas al huésped con IVA 10% como actividad económica de hostelería. (3) La COMISIÓN que Airbnb/Booking te cobra es B2B intracomunitario con reverse charge: la pagas tú y va como gasto deducible. Desde junio 2024, Booking aplica IVA 21% a la comisión si no le has facilitado NIF intracomunitario válido (modelo 036 casilla 582).",
+  },
+  {
+    q: "¿Y si soy guía turístico vendiendo en Viator o GetYourGuide?",
+    a: "Le facturas al cliente final (turista), no a la plataforma. Para servicios de guía turístico el IVA se devenga donde se presta el servicio: si el tour es en España, aplicas IVA 21% incluso si el cliente es turista extranjero particular. Si el cliente final es empresa UE con NIF: reverse charge. Si es empresa fuera UE: no sujeto. La comisión de Viator/GetYourGuide es gasto deducible con reverse charge.",
   },
   {
     q: "¿Y Upwork o Fiverr?",
@@ -105,7 +109,7 @@ export default function Page() {
 
       <QuickAnswer
         question="¿Cómo facturo cuando cobro a través de Stripe, Airbnb, Upwork u otras plataformas?"
-        answer="Depende. Si la plataforma actúa como marketplace fiscal (Airbnb, Booking, App Store, Google Play, Patreon, Twitch, AdSense), le facturas directamente a la plataforma (la mayoría B2B intracomunitario con reverse charge, requiere ROI/VIES + modelo 349). Si la plataforma es solo procesador de pagos (Stripe, PayPal) o intermediario (Upwork, Fiverr), facturas a tu cliente final aplicando las reglas según su país: España (IVA 21%), UE empresa (reverse charge), UE particular (IVA español o OSS si servicios digitales >10.000 €), fuera UE (no sujeto a IVA español)."
+        answer="Hay dos grupos. Marketplaces fiscales (App Store, Google Play, Patreon, Twitch, AdSense) actúan COMO TU CLIENTE: les facturas a ellos directamente — B2B intracomunitario con reverse charge si son UE (requiere ROI/VIES + modelo 349) o no sujeto si son fuera UE. Plataformas intermediarias (Stripe, PayPal, Upwork, Fiverr, Amazon Seller, Airbnb, Booking, Viator) son solo procesadores: tu cliente fiscal es el usuario final. Aplicas IVA 21% si tu cliente es España particular, reverse charge si es empresa UE con NIF, IVA del país (vía OSS si >10K€) si es particular UE con servicios digitales, no sujeto si es fuera UE. CASO ESPECIAL Airbnb/Booking: si alquilas vivienda sin servicios hoteleros, está EXENTO de IVA (no facturas)."
         updatedAt="2026-05-23"
       />
 
