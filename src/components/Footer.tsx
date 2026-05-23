@@ -13,6 +13,15 @@ export function Footer() {
               Calculadoras fiscales hechas por y para autónomos. Sin login. Sin upsells.
               Datos oficiales del BOE.
             </p>
+            <a
+              href="https://ko-fi.com/cuotia"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center gap-2 rounded-md border border-neutral-300 bg-white px-3 py-1.5 text-[12px] text-neutral-700 transition-colors hover:border-[#B91C1C] hover:text-[#B91C1C]"
+              title="Apoya el proyecto"
+            >
+              ☕ Invítame a un café
+            </a>
           </div>
 
           <div className="md:col-span-3">

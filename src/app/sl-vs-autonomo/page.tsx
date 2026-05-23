@@ -4,6 +4,8 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { FAQ } from "@/components/FAQ";
 import { LastUpdated } from "@/components/LastUpdated";
+import { AffiliateCard } from "@/components/AffiliateCard";
+import { AFFILIATES_BY_PAGE } from "@/lib/affiliates";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 
@@ -179,6 +181,8 @@ export default function Page() {
           <li><strong>Patrimonio personal alto</strong> que quieres proteger</li>
         </ul>
       </article>
+
+      <AffiliateCard {...AFFILIATES_BY_PAGE.sl} />
 
       <section className="mt-10">
         <FAQ items={faqs} />

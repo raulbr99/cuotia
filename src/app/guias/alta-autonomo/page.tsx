@@ -4,6 +4,8 @@ import { FAQ } from "@/components/FAQ";
 import { ArticleSchema } from "@/components/Schemas";
 import Link from "next/link";
 import { CheckCircle2, Calendar } from "lucide-react";
+import { AffiliateCard } from "@/components/AffiliateCard";
+import { AFFILIATES_BY_PAGE } from "@/lib/affiliates";
 
 const PUBLISHED = "2026-05-20";
 const MODIFIED = "2026-05-20";
@@ -148,6 +150,8 @@ export default function Page() {
           { q: "¿Y si trabajo por cuenta ajena además?", a: "Es la pluriactividad. Te puedes dar de alta en RETA además de seguir cotizando por tu trabajo. Hay bonificaciones específicas para pluriactividad." },
         ]}
       />
-    </div>
+
+      <AffiliateCard {...AFFILIATES_BY_PAGE.alta} />
+        </div>
   );
 }

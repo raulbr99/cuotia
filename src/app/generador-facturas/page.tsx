@@ -4,6 +4,8 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalcs } from "@/components/RelatedCalcs";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 import { FAQ } from "@/components/FAQ";
+import { AffiliateCard } from "@/components/AffiliateCard";
+import { AFFILIATES_BY_PAGE } from "@/lib/affiliates";
 
 const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es"}/api/og?title=${encodeURIComponent("Generador de facturas PDF")}&subtitle=${encodeURIComponent("Crea facturas legalmente válidas en 1 minuto · Sin registro")}&tag=Facturas`;
 
@@ -58,6 +60,8 @@ export default function Page() {
         />
       </section>
       <RelatedCalcs current="facturas" related={["retencion", "iva", "verifactu", "irpf"]} />
-    </div>
+
+      <AffiliateCard {...AFFILIATES_BY_PAGE.generadorFacturas} />
+        </div>
   );
 }
