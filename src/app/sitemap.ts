@@ -22,6 +22,7 @@ const ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitemap[numb
   { path: "/sl-vs-autonomo", priority: 0.9, freq: "monthly" },
   { path: "/pluriactividad", priority: 0.85, freq: "monthly" },
   { path: "/retencion-irpf-facturas", priority: 0.85, freq: "monthly" },
+  { path: "/iva-plataformas-internacionales", priority: 0.9, freq: "monthly" },
   { path: "/calculadora-irpf", priority: 0.95, freq: "monthly" },
   { path: "/calculadora-iva", priority: 0.9, freq: "monthly" },
   { path: "/neto-bruto", priority: 0.9, freq: "monthly" },
