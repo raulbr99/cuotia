@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { JubilacionCalc } from "@/components/calculators/JubilacionCalc";
-import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalcs } from "@/components/RelatedCalcs";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
@@ -39,7 +38,6 @@ export default function Page() {
 
       <JubilacionCalc />
 
-      <AdSlot className="my-10" />
 
       <FAQ
         items={[

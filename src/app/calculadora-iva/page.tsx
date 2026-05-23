@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { IvaCalc } from "@/components/calculators/IvaCalc";
-import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalcs } from "@/components/RelatedCalcs";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
@@ -38,7 +37,6 @@ export default function Page() {
 
       <IvaCalc />
 
-      <AdSlot className="my-10" />
 
       <FAQ
         items={[

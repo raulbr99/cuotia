@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { AdSlot } from "@/components/AdSlot";
 import { FAQ } from "@/components/FAQ";
 import { ArticleSchema } from "@/components/Schemas";
 import Link from "next/link";
@@ -101,7 +100,6 @@ export default function Page() {
           ))}
         </ul>
 
-        <AdSlot format="rectangle" className="my-8" />
 
         <h2 className="text-2xl font-bold mt-10">¿Tienes derecho a tarifa plana?</h2>
         <p>

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { NetoBrutoCalc } from "@/components/calculators/NetoBrutoCalc";
-import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalcs } from "@/components/RelatedCalcs";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
@@ -40,7 +39,6 @@ export default function Page() {
 
       <NetoBrutoCalc />
 
-      <AdSlot className="my-10" />
 
       <article className="prose prose-gray max-w-3xl text-sm text-neutral-700 space-y-5">
         <h2 className="text-xl font-bold text-neutral-900">Cómo se calcula tu neto</h2>

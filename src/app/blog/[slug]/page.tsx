@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { AdSlot } from "@/components/AdSlot";
 import { ArticleSchema } from "@/components/Schemas";
 import { Calendar, ArrowLeft, ArrowRight } from "lucide-react";
 import { POSTS, getPostBySlug, formatBlogDate } from "@/lib/blog";
@@ -184,7 +183,6 @@ export default async function Page({ params }: PageProps) {
           {renderContent(post.content)}
         </div>
 
-        <AdSlot format="rectangle" className="my-10" />
 
         <hr className="my-10 border-neutral-200" />
 

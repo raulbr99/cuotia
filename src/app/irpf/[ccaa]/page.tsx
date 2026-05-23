@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { IRPFCalc } from "@/components/calculators/IRPFCalc";
-import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { FAQ } from "@/components/FAQ";
@@ -120,7 +119,6 @@ export default async function Page({ params }: PageProps) {
 
       <IRPFCalc defaultCcaa={ccaa} lockCcaa />
 
-      <AdSlot className="my-10" />
 
       <article className="prose prose-gray max-w-3xl text-sm text-neutral-700 space-y-5">
         <h2 className="text-xl font-bold text-neutral-900">Tramos autonómicos de {nombre} 2026</h2>
@@ -176,7 +174,6 @@ export default async function Page({ params }: PageProps) {
         </p>
       </article>
 
-      <AdSlot format="rectangle" className="my-10" />
 
       <FAQ
         items={[

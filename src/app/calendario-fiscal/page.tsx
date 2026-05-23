@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { AdSlot } from "@/components/AdSlot";
 
 export const metadata: Metadata = {
   title: "Calendario fiscal autónomos 2026 · modelos 303, 130, 390, 100",
@@ -90,7 +89,6 @@ export default function Page() {
         </p>
       </header>
 
-      <AdSlot className="mb-8" />
 
       <div className="space-y-6">
         {EVENTOS.map((m) => (
@@ -121,7 +119,6 @@ export default function Page() {
         ))}
       </div>
 
-      <AdSlot format="rectangle" className="my-10" />
 
       <article className="max-w-3xl text-sm text-neutral-700 space-y-4">
         <h2 className="text-xl font-bold text-neutral-900">Guía rápida de modelos</h2>

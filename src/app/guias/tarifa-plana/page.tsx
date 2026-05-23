@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { AdSlot } from "@/components/AdSlot";
 import { FAQ } from "@/components/FAQ";
 import { ArticleSchema } from "@/components/Schemas";
 import Link from "next/link";
@@ -85,7 +84,6 @@ export default function Page() {
           y la marcas, te aplican los 88,64 €/mes desde el primer día.
         </p>
 
-        <AdSlot format="rectangle" className="my-8" />
 
         <h2 className="text-2xl font-bold mt-10">Prórroga al 2º año</h2>
         <p>

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { CuotaAutonomoCalc } from "@/components/calculators/CuotaAutonomoCalc";
-import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
@@ -75,7 +74,6 @@ export default function Page() {
 
       <CuotaAutonomoCalc />
 
-      <AdSlot className="my-10" />
 
       <article className="prose prose-gray max-w-3xl text-sm text-neutral-700 space-y-5">
         <h2 className="text-xl font-bold text-neutral-900">Cómo se calcula tu cuota</h2>

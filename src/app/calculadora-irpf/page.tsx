@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { IRPFCalc } from "@/components/calculators/IRPFCalc";
-import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
@@ -46,7 +45,6 @@ export default function Page() {
 
       <IRPFCalc />
 
-      <AdSlot className="my-10" />
 
       <article className="prose prose-gray max-w-3xl text-sm text-neutral-700 space-y-5">
         <h2 className="text-xl font-bold text-neutral-900">IRPF anual: tramos 2026</h2>

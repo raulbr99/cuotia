@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { DespidoCalc } from "@/components/calculators/DespidoCalc";
-import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalcs } from "@/components/RelatedCalcs";
 import { FAQ } from "@/components/FAQ";
@@ -43,7 +42,6 @@ export default function Page() {
 
       <DespidoCalc />
 
-      <AdSlot className="my-10" />
 
       <FAQ
         items={[
