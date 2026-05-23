@@ -35,22 +35,35 @@ export const CCAA_NAMES: Record<CCAA, string> = {
   "pais-vasco": "País Vasco",
 };
 
+// Escalas autonómicas IRPF vigentes para declaración Renta 2025 (presentada en 2026).
+// Última verificación: 23 mayo 2026 contra TaxDown + guiafiscal + Decret-llei
+// Cataluña 5/2025. CCAA verificadas: Andalucía, Aragón, Asturias, Baleares,
+// Canarias, Cantabria, Castilla y León, Castilla-La Mancha, Cataluña (post-5/2025),
+// Madrid. Pendientes verificación contra BOE autonómico: Extremadura, Galicia,
+// La Rioja, Murcia, Valencia.
 export const TRAMOS_CCAA_2025: Record<CCAA, IRPFTramo[]> = {
+  // Andalucía 2026 (TaxDown verified): añade tramo 50k-60k al 22,5%
+  // que antes estaba consolidado en 35,2k-60k al 18,5%.
   "andalucia": [
     { desde: 0, hasta: 13000, tipo: 0.095 },
     { desde: 13000, hasta: 21000, tipo: 0.12 },
     { desde: 21000, hasta: 35200, tipo: 0.15 },
-    { desde: 35200, hasta: 60000, tipo: 0.185 },
-    { desde: 60000, hasta: null, tipo: 0.225 },
+    { desde: 35200, hasta: 50000, tipo: 0.185 },
+    { desde: 50000, hasta: null, tipo: 0.225 },
   ],
+  // Aragón 2026 (TaxDown verified): escala completa nueva con 9 tramos
+  // (umbrales superiores 13.972,5 / 21.210 / 36.960 / 52.500 / 80.000 / 90.000 / 130.000),
+  // marginal máximo 25,5% por encima de 130.000 €.
   "aragon": [
-    { desde: 0, hasta: 12450, tipo: 0.095 },
-    { desde: 12450, hasta: 20200, tipo: 0.12 },
-    { desde: 20200, hasta: 34000, tipo: 0.15 },
-    { desde: 34000, hasta: 50000, tipo: 0.185 },
-    { desde: 50000, hasta: 60000, tipo: 0.21 },
-    { desde: 60000, hasta: 80000, tipo: 0.22 },
-    { desde: 80000, hasta: null, tipo: 0.25 },
+    { desde: 0, hasta: 13972.5, tipo: 0.095 },
+    { desde: 13972.5, hasta: 21210, tipo: 0.12 },
+    { desde: 21210, hasta: 36960, tipo: 0.15 },
+    { desde: 36960, hasta: 52500, tipo: 0.185 },
+    { desde: 52500, hasta: 60000, tipo: 0.205 },
+    { desde: 60000, hasta: 80000, tipo: 0.23 },
+    { desde: 80000, hasta: 90000, tipo: 0.24 },
+    { desde: 90000, hasta: 130000, tipo: 0.25 },
+    { desde: 130000, hasta: null, tipo: 0.255 },
   ],
   "asturias": [
     { desde: 0, hasta: 12450, tipo: 0.10 },
@@ -62,6 +75,8 @@ export const TRAMOS_CCAA_2025: Record<CCAA, IRPFTramo[]> = {
     { desde: 90000, hasta: 175000, tipo: 0.25 },
     { desde: 175000, hasta: null, tipo: 0.255 },
   ],
+  // Baleares 2026 (TaxDown verified): reducción aplicada a partir 90k:
+  // 22,75% (era 23%), 23,75% (era 24,5%), 24,75% (era 25%).
   "baleares": [
     { desde: 0, hasta: 10000, tipo: 0.09 },
     { desde: 10000, hasta: 18000, tipo: 0.1125 },
@@ -69,9 +84,9 @@ export const TRAMOS_CCAA_2025: Record<CCAA, IRPFTramo[]> = {
     { desde: 30000, hasta: 48000, tipo: 0.175 },
     { desde: 48000, hasta: 70000, tipo: 0.19 },
     { desde: 70000, hasta: 90000, tipo: 0.2175 },
-    { desde: 90000, hasta: 120000, tipo: 0.23 },
-    { desde: 120000, hasta: 175000, tipo: 0.245 },
-    { desde: 175000, hasta: null, tipo: 0.25 },
+    { desde: 90000, hasta: 120000, tipo: 0.2275 },
+    { desde: 120000, hasta: 175000, tipo: 0.2375 },
+    { desde: 175000, hasta: null, tipo: 0.2475 },
   ],
   "canarias": [
     { desde: 0, hasta: 12450, tipo: 0.09 },
@@ -104,15 +119,18 @@ export const TRAMOS_CCAA_2025: Record<CCAA, IRPFTramo[]> = {
     { desde: 35200, hasta: 60000, tipo: 0.185 },
     { desde: 60000, hasta: null, tipo: 0.225 },
   ],
+  // Cataluña 2025/2026 — escala completamente nueva tras Decret-llei 5/2025
+  // (DOGC 25 marzo 2025, efectos 1 enero 2025).
+  // 8 tramos (antes 9). Tipo inicial bajado del 10,5% al 9,5%.
+  // Umbrales redondeados (12.500 / 22.000 / 33.000 / 53.000).
   "cataluna": [
-    { desde: 0, hasta: 12450, tipo: 0.105 },
-    { desde: 12450, hasta: 17707, tipo: 0.12 },
-    { desde: 17707, hasta: 21000, tipo: 0.14 },
-    { desde: 21000, hasta: 33007, tipo: 0.185 },
-    { desde: 33007, hasta: 53407, tipo: 0.215 },
-    { desde: 53407, hasta: 90000, tipo: 0.235 },
-    { desde: 90000, hasta: 120000, tipo: 0.245 },
-    { desde: 120000, hasta: 175000, tipo: 0.255 },
+    { desde: 0, hasta: 12500, tipo: 0.095 },
+    { desde: 12500, hasta: 22000, tipo: 0.125 },
+    { desde: 22000, hasta: 33000, tipo: 0.16 },
+    { desde: 33000, hasta: 53000, tipo: 0.19 },
+    { desde: 53000, hasta: 90000, tipo: 0.215 },
+    { desde: 90000, hasta: 120000, tipo: 0.235 },
+    { desde: 120000, hasta: 175000, tipo: 0.245 },
     { desde: 175000, hasta: null, tipo: 0.255 },
   ],
   "extremadura": [
