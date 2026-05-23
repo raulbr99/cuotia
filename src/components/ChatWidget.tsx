@@ -127,7 +127,7 @@ export function ChatWidget() {
                 className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-[85%] rounded-lg px-3 py-2 text-sm whitespace-pre-wrap ${
+                  className={`max-w-[85%] rounded-lg px-3 py-2 text-sm ${
                     m.role === "user"
                       ? "bg-[#B91C1C] text-white"
                       : "bg-[#FAFAF7] text-neutral-900"
@@ -135,11 +135,7 @@ export function ChatWidget() {
                 >
                   {m.parts.map((p, i) => {
                     if (p.type === "text") {
-                      return (
-                        <span key={i} className="prose-chat">
-                          {renderMarkdownInline(p.text)}
-                        </span>
-                      );
+                      return <MarkdownText key={i} text={p.text} />;
                     }
                     // Tool calls / results — mostrar simple
                     if (p.type.startsWith("tool-")) {
@@ -211,11 +207,145 @@ export function ChatWidget() {
 }
 
 /**
- * Render markdown inline minimalista: bold (**...**), links ([texto](url)).
- * Sin parser pesado, suficiente para el output del asistente.
+ * Render markdown ligero soportando: párrafos, listas (* / -), bullets numerados,
+ * **bold**, [link](url), `inline code`, ## títulos, > citas.
+ * Sin dependencias externas.
  */
-function renderMarkdownInline(text: string): React.ReactNode {
-  // Split por links primero
+function MarkdownText({ text }: { text: string }) {
+  const blocks = parseMarkdownBlocks(text);
+  return (
+    <div className="space-y-2 leading-relaxed">
+      {blocks.map((block, i) => {
+        switch (block.type) {
+          case "heading":
+            return (
+              <p
+                key={i}
+                className={`font-semibold ${
+                  block.level === 2 ? "text-base" : "text-sm"
+                }`}
+              >
+                {renderInline(block.text)}
+              </p>
+            );
+          case "list":
+            return (
+              <ul key={i} className="ml-4 list-disc space-y-1">
+                {block.items.map((it, j) => (
+                  <li key={j}>{renderInline(it)}</li>
+                ))}
+              </ul>
+            );
+          case "ordered":
+            return (
+              <ol key={i} className="ml-4 list-decimal space-y-1">
+                {block.items.map((it, j) => (
+                  <li key={j}>{renderInline(it)}</li>
+                ))}
+              </ol>
+            );
+          case "quote":
+            return (
+              <blockquote
+                key={i}
+                className="border-l-2 border-neutral-300 pl-3 italic text-neutral-600"
+              >
+                {renderInline(block.text)}
+              </blockquote>
+            );
+          case "paragraph":
+            return <p key={i}>{renderInline(block.text)}</p>;
+        }
+      })}
+    </div>
+  );
+}
+
+type Block =
+  | { type: "heading"; level: 2 | 3; text: string }
+  | { type: "list"; items: string[] }
+  | { type: "ordered"; items: string[] }
+  | { type: "quote"; text: string }
+  | { type: "paragraph"; text: string };
+
+function parseMarkdownBlocks(text: string): Block[] {
+  const lines = text.split(/\r?\n/);
+  const blocks: Block[] = [];
+  let i = 0;
+
+  while (i < lines.length) {
+    const line = lines[i];
+
+    // Línea vacía → skip
+    if (line.trim() === "") {
+      i++;
+      continue;
+    }
+
+    // Headings ## o ###
+    const headingMatch = line.match(/^(#{2,3})\s+(.+)/);
+    if (headingMatch) {
+      blocks.push({
+        type: "heading",
+        level: headingMatch[1].length === 2 ? 2 : 3,
+        text: headingMatch[2].trim(),
+      });
+      i++;
+      continue;
+    }
+
+    // Lista bullet (* o -)
+    if (/^\s*[*-]\s+/.test(line)) {
+      const items: string[] = [];
+      while (i < lines.length && /^\s*[*-]\s+/.test(lines[i])) {
+        items.push(lines[i].replace(/^\s*[*-]\s+/, "").trim());
+        i++;
+      }
+      blocks.push({ type: "list", items });
+      continue;
+    }
+
+    // Lista numerada
+    if (/^\s*\d+\.\s+/.test(line)) {
+      const items: string[] = [];
+      while (i < lines.length && /^\s*\d+\.\s+/.test(lines[i])) {
+        items.push(lines[i].replace(/^\s*\d+\.\s+/, "").trim());
+        i++;
+      }
+      blocks.push({ type: "ordered", items });
+      continue;
+    }
+
+    // Cita
+    if (line.startsWith(">")) {
+      const buf: string[] = [];
+      while (i < lines.length && lines[i].startsWith(">")) {
+        buf.push(lines[i].replace(/^>\s?/, ""));
+        i++;
+      }
+      blocks.push({ type: "quote", text: buf.join(" ") });
+      continue;
+    }
+
+    // Párrafo: consume líneas hasta blank o nueva estructura
+    const buf: string[] = [line];
+    i++;
+    while (
+      i < lines.length &&
+      lines[i].trim() !== "" &&
+      !/^(#{2,3}\s|\s*[*-]\s|\s*\d+\.\s|>)/.test(lines[i])
+    ) {
+      buf.push(lines[i]);
+      i++;
+    }
+    blocks.push({ type: "paragraph", text: buf.join(" ") });
+  }
+
+  return blocks;
+}
+
+function renderInline(text: string): React.ReactNode {
+  // Orden: links → bold → code → texto plano
   const parts: React.ReactNode[] = [];
   const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
   let lastIndex = 0;
@@ -224,15 +354,16 @@ function renderMarkdownInline(text: string): React.ReactNode {
 
   while ((match = linkRegex.exec(text)) !== null) {
     if (match.index > lastIndex) {
-      parts.push(renderBold(text.slice(lastIndex, match.index), key++));
+      parts.push(renderBoldCode(text.slice(lastIndex, match.index), key++));
     }
+    const href = match[2];
     parts.push(
       <a
         key={`link-${key++}`}
-        href={match[2]}
+        href={href}
         className="underline hover:text-[#B91C1C]"
-        target={match[2].startsWith("http") ? "_blank" : undefined}
-        rel={match[2].startsWith("http") ? "noopener noreferrer" : undefined}
+        target={href.startsWith("http") ? "_blank" : undefined}
+        rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
       >
         {match[1]}
       </a>,
@@ -240,23 +371,38 @@ function renderMarkdownInline(text: string): React.ReactNode {
     lastIndex = match.index + match[0].length;
   }
   if (lastIndex < text.length) {
-    parts.push(renderBold(text.slice(lastIndex), key++));
+    parts.push(renderBoldCode(text.slice(lastIndex), key++));
   }
   return <>{parts}</>;
 }
 
-function renderBold(text: string, key: number): React.ReactNode {
-  const boldRegex = /\*\*([^*]+)\*\*/g;
+function renderBoldCode(text: string, key: number): React.ReactNode {
+  // Tokenize: **bold** y `code` (no anidados)
+  const regex = /(\*\*[^*]+\*\*|`[^`]+`)/g;
   const parts: React.ReactNode[] = [];
   let lastIndex = 0;
   let match: RegExpExecArray | null;
   let i = 0;
 
-  while ((match = boldRegex.exec(text)) !== null) {
+  while ((match = regex.exec(text)) !== null) {
     if (match.index > lastIndex) {
       parts.push(text.slice(lastIndex, match.index));
     }
-    parts.push(<strong key={`b-${key}-${i++}`}>{match[1]}</strong>);
+    const token = match[0];
+    if (token.startsWith("**")) {
+      parts.push(
+        <strong key={`b-${key}-${i++}`}>{token.slice(2, -2)}</strong>,
+      );
+    } else {
+      parts.push(
+        <code
+          key={`c-${key}-${i++}`}
+          className="rounded bg-neutral-200 px-1 py-0.5 text-[12px] font-mono"
+        >
+          {token.slice(1, -1)}
+        </code>,
+      );
+    }
     lastIndex = match.index + match[0].length;
   }
   if (lastIndex < text.length) {
@@ -264,3 +410,4 @@ function renderBold(text: string, key: number): React.ReactNode {
   }
   return <span key={`s-${key}`}>{parts}</span>;
 }
+
