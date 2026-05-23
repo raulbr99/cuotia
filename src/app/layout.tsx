@@ -6,6 +6,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Newsletter } from "@/components/Newsletter";
+import { ChatWidget } from "@/components/ChatWidget";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -85,6 +86,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           </div>
         </section>
         <Footer />
+        <ChatWidget />
         <Analytics />
         <SpeedInsights />
       </body>
