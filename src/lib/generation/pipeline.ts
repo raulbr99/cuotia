@@ -127,7 +127,9 @@ export async function runGenerationPipeline(
     remainingTopics,
     reason:
       status === "draft"
-        ? `Guardado como borrador (QA ${score} < ${threshold}); requiere revisión manual`
+        ? score < threshold
+          ? `Borrador: QA ${score} por debajo del umbral ${threshold}; requiere revisión manual`
+          : `Borrador: el revisor lo marcó NO publicable (QA ${score}); revisar los issues antes de publicar`
         : remainingTopics > 0 && remainingTopics <= 5
           ? `Publicado. Quedan ${remainingTopics} temas en el backlog — conviene ampliarlo pronto.`
           : undefined,
