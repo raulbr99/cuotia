@@ -1,9 +1,10 @@
-// Pipeline de generación de un post: noticias → redacción → gate de QA → portada → insert.
-// Lo invocan el cron semanal (/api/cron/generate-post) y el botón manual (/api/blog/generate).
+// Pipeline de generación de un post: tema (backlog) → redacción → gate de QA → portada → insert.
+// Lo invocan el cron diario (/api/cron/generate-post) y el botón manual (/api/blog/generate).
 import { fetchLatestFiscalNews, type NewsResult } from "@/lib/news/perplexity";
-import { writePost, reviewPost, WRITER_MODEL } from "@/lib/generation/write-post";
+import { writePost, reviewPost, WRITER_MODEL, type TopicInput } from "@/lib/generation/write-post";
 import { generateAndStoreCover } from "@/lib/generation/cover-image";
 import { dbSlugExists, insertDbPost } from "@/lib/blog-db";
+import { getNextTopic, markTopicUsed, pendingTopicCount } from "@/lib/generation/blog-topics-db";
 import { getPostBySlug } from "@/lib/blog";
 
 export interface PipelineResult {
@@ -11,8 +12,10 @@ export interface PipelineResult {
   status: "published" | "draft" | "skipped";
   slug?: string;
   title?: string;
+  topic?: string;
   qaScore?: number;
   issues?: string[];
+  remainingTopics?: number;
   reason?: string;
 }
 
@@ -39,25 +42,41 @@ async function uniqueSlug(base: string): Promise<string> {
   return slug;
 }
 
-export async function runGenerationPipeline(injectedNews?: NewsResult): Promise<PipelineResult> {
-  // 1. Noticias (sonar vía OpenRouter, o inyectadas para pruebas)
-  const news = injectedNews ?? (await fetchLatestFiscalNews());
-  if (!news || news.summary.trim().length < 200) {
-    return {
-      ok: false,
-      status: "skipped",
-      reason: "Sin contenido de noticias suficiente (¿OPENROUTER_API_KEY o búsqueda vacía?)",
+export async function runGenerationPipeline(
+  injectedNews?: NewsResult | null,
+  injectedTopic?: TopicInput,
+): Promise<PipelineResult> {
+  // 1. Tema: del backlog planificado (garantiza diversidad). Si se agota, se
+  //    deriva de las noticias recientes como respaldo. injectedTopic permite probar.
+  const topic = injectedTopic ? null : await getNextTopic();
+  let news: NewsResult | null = injectedNews ?? null;
+  let effectiveTopic: TopicInput;
+
+  if (injectedTopic) {
+    effectiveTopic = injectedTopic;
+  } else if (topic) {
+    effectiveTopic = topic;
+  } else {
+    news = news ?? (await fetchLatestFiscalNews());
+    if (!news || news.summary.trim().length < 200) {
+      return { ok: false, status: "skipped", reason: "Backlog de temas vacío y sin noticias suficientes" };
+    }
+    effectiveTopic = {
+      title: "Novedades fiscales recientes para autónomos",
+      angle: "Explica las novedades fiscales más relevantes de las últimas semanas para el autónomo",
+      internalLink: "/calendario-fiscal",
+      category: "Novedades",
     };
   }
 
-  // 2. Redacción
-  const draft = await writePost(news);
+  // 2. Redacción sobre el tema (news como contexto opcional)
+  const draft = await writePost(effectiveTopic, news);
   if (!draft) {
     return { ok: false, status: "skipped", reason: "Fallo al redactar (¿falta OPENROUTER_API_KEY?)" };
   }
 
   // 3. Gate de QA automático (sin revisión humana, pero no publicamos basura)
-  const review = await reviewPost(draft, news);
+  const review = await reviewPost(draft, news?.summary ?? effectiveTopic.angle);
   const threshold = Number(process.env.BLOG_QA_THRESHOLD || 60);
   const score = review?.confidence ?? 0;
   const publishable = (review?.publishable ?? false) && score >= threshold;
@@ -73,10 +92,10 @@ export async function runGenerationPipeline(injectedNews?: NewsResult): Promise<
     title: draft.title,
     description: draft.description,
     content: draft.content,
-    category: draft.category || "Novedades",
-    tag: draft.tag || "Actualidad",
+    category: draft.category || effectiveTopic.category || "Guía",
+    tag: draft.tag || "Autónomos",
     imageUrl,
-    sourceUrls: news.citations,
+    sourceUrls: news?.citations ?? [],
     model: WRITER_MODEL,
     qaScore: score,
     status,
@@ -85,16 +104,24 @@ export async function runGenerationPipeline(injectedNews?: NewsResult): Promise<
     return { ok: false, status: "skipped", reason: `Error al guardar en Supabase: ${ins.error}` };
   }
 
+  // 6. Marcar el tema como usado para no repetirlo
+  if (topic) await markTopicUsed(topic.id, slug);
+  const remainingTopics = await pendingTopicCount();
+
   return {
     ok: true,
     status,
     slug,
     title: draft.title,
+    topic: effectiveTopic.title,
     qaScore: score,
     issues: review?.issues,
+    remainingTopics,
     reason:
       status === "draft"
-        ? `Guardado como borrador (QA ${score} < ${threshold}); requiere revisión manual antes de publicar`
-        : undefined,
+        ? `Guardado como borrador (QA ${score} < ${threshold}); requiere revisión manual`
+        : remainingTopics > 0 && remainingTopics <= 5
+          ? `Publicado. Quedan ${remainingTopics} temas en el backlog — conviene ampliarlo pronto.`
+          : undefined,
   };
 }

@@ -58,27 +58,46 @@ async function withRetry<T>(fn: () => Promise<T>, attempts = 3): Promise<T> {
   throw lastErr;
 }
 
-export async function writePost(news: NewsResult): Promise<GeneratedPost | null> {
+// Tema a desarrollar, elegido por el planificador (backlog) o derivado de noticias.
+export interface TopicInput {
+  title: string;
+  targetKeyword?: string;
+  angle?: string;
+  internalLink?: string;
+  category?: string;
+}
+
+export async function writePost(topic: TopicInput, news?: NewsResult | null): Promise<GeneratedPost | null> {
   if (!process.env.OPENROUTER_API_KEY) return null;
 
-  const prompt = `Eres redactor de Cuotia (cuotia.es), web de calculadoras fiscales para autónomos en España. Escribe UN artículo de blog en español a partir de estas novedades reales.
-
-## NOVEDADES (de Perplexity, recientes)
+  const newsBlock =
+    news && news.summary.trim()
+      ? `## NOVEDADES RECIENTES (contexto; úsalas SOLO si son relevantes para este tema)
 ${news.summary}
+${news.citations.length ? `Fuentes: ${news.citations.slice(0, 6).join(", ")}` : ""}`
+      : "";
 
-${news.citations.length ? `Fuentes: ${news.citations.slice(0, 8).join(", ")}` : ""}
+  const prompt = `Eres redactor de Cuotia (cuotia.es), web de calculadoras fiscales para autónomos en España. Escribe UN artículo de blog en español sobre el tema indicado.
+
+## TEMA A DESARROLLAR
+Título orientativo: ${topic.title}
+${topic.targetKeyword ? `Keyword objetivo: ${topic.targetKeyword}` : ""}
+${topic.angle ? `Ángulo/enfoque: ${topic.angle}` : ""}
+${topic.internalLink ? `Enlaza de forma natural a esta página de Cuotia: ${topic.internalLink}` : ""}
+
+${newsBlock}
 
 ## ${CUOTIA_FACTS}
 
 ## ${CUOTIA_PAGES}
 
 ## REGLAS INNEGOCIABLES
-1. NO inventes cifras. Usa SOLO los datos verificados de arriba o cifras explícitas de las novedades. Si una novedad contradice los datos verificados, menciona ambas y di que hay que confirmar en el BOE/AEAT.
-2. Tono Cuotia: directo, claro, sin jerga ni paternalismo. Nada de relleno.
-3. Estructura markdown: 4-6 secciones con ##, al menos UNA tabla útil, y enlaces internos markdown a las calculadoras relevantes (mínimo 2).
-4. Termina SIEMPRE con un párrafo breve: "Esta información es orientativa y no sustituye el asesoramiento de un gestor."
-5. El slug debe ser kebab-case y describir el tema (incluye el año si aplica).
-6. La description: 110-155 caracteres, con la keyword principal.
+1. Cíñete al TEMA indicado y resuélvelo de forma completa y útil (responde la intención de búsqueda del lector).
+2. NO inventes cifras. Usa SOLO los datos verificados de arriba o cifras de las novedades. Si no puedes confirmar una cifra, dilo en vez de inventarla.
+3. Tono Cuotia: directo, claro, sin jerga ni paternalismo. Nada de relleno.
+4. Estructura markdown: 4-6 secciones con ##, al menos UNA tabla útil, y enlaces internos markdown a las calculadoras relevantes (mínimo 2, incluyendo el enlace sugerido).
+5. Termina SIEMPRE con un párrafo breve: "Esta información es orientativa y no sustituye el asesoramiento de un gestor."
+6. El slug en kebab-case describe el tema (incluye el año si aplica). La description: 110-155 caracteres con la keyword.
 
 Devuelve el objeto estructurado.`;
 
@@ -93,16 +112,14 @@ Devuelve el objeto estructurado.`;
   }
 }
 
-export async function reviewPost(post: GeneratedPost, news: NewsResult): Promise<PostReview | null> {
+export async function reviewPost(post: GeneratedPost, referenceText?: string): Promise<PostReview | null> {
   if (!process.env.OPENROUTER_API_KEY) return null;
 
   const prompt = `Eres editor fiscal senior. Revisa este borrador para Cuotia y decide si es publicable SIN revisión humana.
 
 ## DATOS VERIFICADOS DE REFERENCIA
 ${CUOTIA_FACTS}
-
-## NOVEDADES ORIGINALES
-${news.summary}
+${referenceText ? `\n## CONTEXTO ADICIONAL\n${referenceText}` : ""}
 
 ## BORRADOR
 Título: ${post.title}
