@@ -896,3 +896,10 @@ export function getAllTags(posts: BlogPost[]): TagInfo[] {
 export function getPostsByTagSlug(slug: string, posts: BlogPost[]): BlogPost[] {
   return posts.filter((p) => p.tag && tagSlug(p.tag) === slug);
 }
+
+// Imagen de previsualización para las tarjetas: la portada generada si existe,
+// o la imagen OG dinámica (/api/og, siempre disponible) como respaldo uniforme.
+export function postPreviewImage(post: BlogPost): string {
+  if (post.imageUrl) return post.imageUrl;
+  return `/api/og?title=${encodeURIComponent(post.title)}&tag=${encodeURIComponent(post.tag || "Blog")}`;
+}

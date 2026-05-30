@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Newspaper, ArrowRight, Calendar } from "lucide-react";
-import { formatBlogDate, getAllTags } from "@/lib/blog";
+import { formatBlogDate, getAllTags, postPreviewImage } from "@/lib/blog";
 import { getAllPublishedPosts } from "@/lib/blog-all";
 
 // ISR: revalida cada hora para recoger los posts auto-generados (Supabase) sin redeploy.
@@ -64,22 +65,34 @@ export default async function Page() {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="group block  rounded-xl border border-neutral-200 bg-white p-6 hover:bg-white hover:border-neutral-300 transition-all"
+            className="group flex flex-col gap-5 rounded-xl border border-neutral-200 bg-white p-4 hover:border-neutral-300 transition-all sm:flex-row"
           >
-            <div className="flex items-baseline gap-3 mb-2">
-              <span className="rounded-full bg-white text-[#B91C1C] text-[10px] font-semibold uppercase tracking-wider px-2 py-1">
-                {post.tag}
-              </span>
-              <span className="text-xs text-neutral-500 flex items-center gap-1">
-                <Calendar className="h-3 w-3" />
-                {formatBlogDate(post.datePublished)}
-              </span>
+            <div className="relative aspect-[16/9] w-full shrink-0 overflow-hidden rounded-lg sm:aspect-[4/3] sm:w-52">
+              <Image
+                src={postPreviewImage(post)}
+                alt={post.title}
+                fill
+                unoptimized={!post.imageUrl}
+                sizes="(min-width: 640px) 208px, 100vw"
+                className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+              />
             </div>
-            <h2 className="text-xl font-bold text-neutral-900 group-hover:text-[#B91C1C] transition-colors flex items-center gap-2">
-              {post.title}
-              <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-            </h2>
-            <p className="text-sm text-neutral-700 mt-2">{post.description}</p>
+            <div className="min-w-0 flex-1">
+              <div className="flex items-baseline gap-3 mb-2">
+                <span className="rounded-full bg-white text-[#B91C1C] text-[10px] font-semibold uppercase tracking-wider px-2 py-1">
+                  {post.tag}
+                </span>
+                <span className="text-xs text-neutral-500 flex items-center gap-1">
+                  <Calendar className="h-3 w-3" />
+                  {formatBlogDate(post.datePublished)}
+                </span>
+              </div>
+              <h2 className="text-xl font-bold text-neutral-900 group-hover:text-[#B91C1C] transition-colors flex items-center gap-2">
+                {post.title}
+                <ArrowRight className="h-4 w-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+              </h2>
+              <p className="text-sm text-neutral-700 mt-2">{post.description}</p>
+            </div>
           </Link>
         ))}
       </div>

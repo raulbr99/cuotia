@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { HeroQuickCalc } from "@/components/HeroQuickCalc";
-import { formatBlogDate } from "@/lib/blog";
+import { formatBlogDate, postPreviewImage } from "@/lib/blog";
 import { getAllPublishedPosts } from "@/lib/blog-all";
 
 // ISR: refresca para mostrar los últimos posts del blog (incl. auto-generados).
@@ -242,13 +242,25 @@ export default async function HomePage() {
                 <Link
                   key={p.slug}
                   href={`/blog/${p.slug}`}
-                  className="group block bg-[#FAFAF7] p-6 transition-colors hover:bg-white"
+                  className="group block bg-[#FAFAF7] transition-colors hover:bg-white"
                 >
-                  <p className="mb-2 text-[11px] uppercase tracking-wider text-[#B91C1C]">{p.tag}</p>
-                  <p className="font-serif text-lg leading-tight text-neutral-900 group-hover:text-[#B91C1C]">
-                    {p.title}
-                  </p>
-                  <p className="mt-2 text-[12px] text-neutral-500">{formatBlogDate(p.datePublished)}</p>
+                  <div className="relative aspect-[16/9] w-full overflow-hidden">
+                    <Image
+                      src={postPreviewImage(p)}
+                      alt={p.title}
+                      fill
+                      unoptimized={!p.imageUrl}
+                      sizes="(min-width: 640px) 33vw, 100vw"
+                      className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <p className="mb-2 text-[11px] uppercase tracking-wider text-[#B91C1C]">{p.tag}</p>
+                    <p className="font-serif text-lg leading-tight text-neutral-900 group-hover:text-[#B91C1C]">
+                      {p.title}
+                    </p>
+                    <p className="mt-2 text-[12px] text-neutral-500">{formatBlogDate(p.datePublished)}</p>
+                  </div>
                 </Link>
               ))}
             </div>
