@@ -28,6 +28,16 @@ export async function seedTopicsIfEmpty(): Promise<void> {
 
 const SELECT_COLS = "id,title,target_keyword,angle,internal_link,category";
 
+// Categorías con cálculos numéricos precisos (tablas en euros, ejemplos casilla a
+// casilla): el redactor comete errores de cifras y el revisor las manda a borrador.
+// El cron las EVITA para poder publicar de forma autónoma; quedan reservadas para
+// generación manual con revisión (o hasta que se agoten las categorías seguras).
+const RISKY_CATEGORIES = new Set([
+  "comparativas-decisiones",
+  "como-rellenar-modelos",
+  "cuota-cotizacion",
+]);
+
 interface TopicRow {
   id: string;
   title: string;
@@ -64,7 +74,7 @@ export async function getNextTopic(): Promise<DbTopic | null> {
     .eq("status", "pending")
     .in("season_month", [month, 0])
     .order("priority", { ascending: false })
-    .limit(12);
+    .limit(40);
   rows = (seasonal.data as TopicRow[]) ?? [];
 
   if (rows.length === 0) {
@@ -73,12 +83,17 @@ export async function getNextTopic(): Promise<DbTopic | null> {
       .select(SELECT_COLS)
       .eq("status", "pending")
       .order("priority", { ascending: false })
-      .limit(12);
+      .limit(40);
     rows = (any.data as TopicRow[]) ?? [];
   }
 
   if (rows.length === 0) return null;
-  const pick = rows[Math.floor(Math.random() * rows.length)];
+
+  // Prefiere categorías seguras (auto-publicables). Solo cae a las de cálculo si
+  // ya no quedan seguras pendientes.
+  const safe = rows.filter((r) => !RISKY_CATEGORIES.has(r.category ?? ""));
+  const pool = safe.length > 0 ? safe : rows;
+  const pick = pool[Math.floor(Math.random() * pool.length)];
   return rowToTopic(pick);
 }
 
