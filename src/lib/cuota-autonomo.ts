@@ -57,6 +57,18 @@ export const MEI_PORCENTAJE_2026 = 0.009;
 // + 0,10% formación + 0,90% MEI = 31,50% sobre base cotización
 export const TIPO_TOTAL_COTIZACION_RETA_2026 = 0.315;
 
+// Desglose oficial del tipo de cotización RETA 2026 (suma 31,50%).
+// FUENTE ÚNICA: cualquier página que muestre el desglose debe leer de aquí
+// para evitar cifras contradictorias entre páginas (mala señal de citabilidad AEO).
+export const DESGLOSE_RETA_2026 = [
+  { concepto: "Contingencias comunes", pct: "28,30%", nota: "de la base" },
+  { concepto: "Contingencias profesionales", pct: "1,30%", nota: "variable según actividad" },
+  { concepto: "Cese de actividad", pct: "0,90%", nota: "" },
+  { concepto: "Formación profesional", pct: "0,10%", nota: "" },
+  { concepto: "MEI 2026", pct: "0,90%", nota: "Mecanismo de Equidad Intergeneracional" },
+] as const;
+export const TIPO_TOTAL_COTIZACION_RETA_2026_PCT = "31,50%";
+
 // Autónomos societarios y colaboradores familiares 2026:
 // base mínima sube de 1.000 € a 1.424,40 €/mes (+42,4%).
 export const BASE_MINIMA_SOCIETARIO_2026 = 1424.4;

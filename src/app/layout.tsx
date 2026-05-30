@@ -31,6 +31,47 @@ const fraunces = Fraunces({
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 
+// Entidad de sitio única (Organization + WebSite) con @id, emitida en todas las
+// páginas. El resto de schemas (Article, WebApplication, Breadcrumb...) referencian
+// `${SITE_URL}/#org` por @id, de modo que Google y los LLMs consolidan "Cuotia"
+// como una sola entidad en lugar de varias Organization sueltas.
+const siteGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#org`,
+      name: "Cuotia",
+      url: SITE_URL,
+      foundingDate: "2026-05-20",
+      description:
+        "Calculadoras fiscales gratuitas para autónomos en España. Sin registros, sin emails, sin venta de servicios.",
+      knowsAbout: [
+        "IRPF", "IVA", "Cuota de autónomo", "RETA", "Tarifa plana", "Modelo 130",
+        "Modelo 303", "Despido y finiquito", "Baja médica autónomo", "Jubilación autónomo", "Verifactu",
+      ],
+      areaServed: { "@type": "Country", name: "España" },
+      logo: {
+        "@type": "ImageObject",
+        "@id": `${SITE_URL}/#logo`,
+        url: `${SITE_URL}/icon-512.png`,
+        width: 512,
+        height: 512,
+      },
+      email: "hola@cuotia.es",
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "Cuotia",
+      description: "Calculadoras fiscales gratuitas para autónomos en España",
+      inLanguage: "es-ES",
+      publisher: { "@id": `${SITE_URL}/#org` },
+    },
+  ],
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -78,6 +119,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="es" className={`${inter.variable} ${fraunces.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-[#FAFAF7] text-neutral-900">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteGraph) }}
+        />
         <Header />
         <main className="flex-1">{children}</main>
         <section className="border-t border-neutral-200 bg-white">

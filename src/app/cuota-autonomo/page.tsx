@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { CuotaAutonomoCalc } from "@/components/calculators/CuotaAutonomoCalc";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 import { RelatedCalcs } from "@/components/RelatedCalcs";
 import { HowToSchema } from "@/components/HowToSchema";
+import { CUOTA_INGRESOS_TARGETS, cuotaSlug } from "@/lib/seo-targets";
 
 const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es"}/api/og?title=${encodeURIComponent("Calculadora cuota autónomo 2026")}&subtitle=${encodeURIComponent("15 tramos por ingresos reales + tarifa plana 88,64 €/mes")}&tag=Cuota+autónomo`;
 
@@ -122,6 +124,23 @@ export default function Page() {
           </a>.
         </p>
       </article>
+
+      <section className="mt-10 rounded-lg border border-neutral-200 bg-white p-5">
+        <p className="text-[11px] uppercase tracking-wider text-neutral-500 font-semibold mb-3">
+          Cuota según tu nivel de ingresos
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {CUOTA_INGRESOS_TARGETS.map((n) => (
+            <Link
+              key={n}
+              href={`/cuota-autonomo/${cuotaSlug(n)}`}
+              className="rounded-md border border-neutral-300 px-3 py-1.5 text-sm text-neutral-700 hover:border-[#B91C1C] hover:text-[#B91C1C]"
+            >
+              {n.toLocaleString("es-ES")} €/mes
+            </Link>
+          ))}
+        </div>
+      </section>
 
       <RelatedCalcs current="cuota" related={["irpf", "iva", "neto", "societario", "slvsauto"]} />
     </div>

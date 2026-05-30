@@ -37,29 +37,10 @@ const TOOLS = [
   { href: "/guias", title: "Guías", desc: "Alta de autónomo, gastos deducibles, tarifa plana." },
 ];
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
-
-const websiteJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "Cuotia",
-  url: SITE_URL,
-  description: "Calculadoras fiscales gratuitas para autónomos en España",
-  inLanguage: "es-ES",
-};
-
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Cuotia",
-  url: SITE_URL,
-};
-
 export default function HomePage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
+      {/* WebSite + Organization se emiten globalmente en layout.tsx (@graph con @id) */}
 
       {/* FULL-BLEED BANNER */}
       <section className="relative w-full overflow-hidden border-b border-neutral-200">

@@ -20,11 +20,7 @@ export function CalculatorSchema({ name, description, path, category = "Tax Calc
     isAccessibleForFree: true,
     inLanguage: "es-ES",
     offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
-    publisher: {
-      "@type": "Organization",
-      name: "Cuotia",
-      url: SITE_URL,
-    },
+    publisher: { "@id": `${SITE_URL}/#org` },
   };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
@@ -48,18 +44,10 @@ export function ArticleSchema({ headline, description, path, datePublished, date
     datePublished,
     dateModified: dateModified || datePublished,
     inLanguage: "es-ES",
-    image: imageUrl || `${SITE_URL}/og-image.png`,
-    author: {
-      "@type": "Organization",
-      name: "Cuotia",
-      url: SITE_URL,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Cuotia",
-      url: SITE_URL,
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/icon.svg` },
-    },
+    // Fallback a la imagen OG dinámica (existe); /og-image.png NO existe en /public.
+    image: imageUrl || `${SITE_URL}/api/og`,
+    author: { "@id": `${SITE_URL}/#org` },
+    publisher: { "@id": `${SITE_URL}/#org` },
     mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}${path}` },
   };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;

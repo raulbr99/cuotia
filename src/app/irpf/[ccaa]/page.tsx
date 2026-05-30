@@ -7,6 +7,7 @@ import { QuickAnswer } from "@/components/QuickAnswer";
 import { FAQ } from "@/components/FAQ";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 import { CCAA_NAMES, TRAMOS_CCAA_2025, type CCAA } from "@/lib/irpf-ccaa";
+import { IRPF_INGRESOS_TARGETS, irpfSlug } from "@/lib/seo-targets";
 import { eur, pct } from "@/lib/format";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
@@ -174,6 +175,22 @@ export default async function Page({ params }: PageProps) {
         </p>
       </article>
 
+      <section className="mt-10 rounded-lg border border-neutral-200 bg-white p-5">
+        <p className="text-[11px] uppercase tracking-wider text-neutral-500 font-semibold mb-3">
+          IRPF en {nombre} por nivel de ingresos
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {IRPF_INGRESOS_TARGETS.map((n) => (
+            <Link
+              key={n}
+              href={`/irpf/${ccaa}/${irpfSlug(n)}`}
+              className="rounded-md border border-neutral-300 px-3 py-1.5 text-sm text-neutral-700 hover:border-[#B91C1C] hover:text-[#B91C1C]"
+            >
+              {n.toLocaleString("es-ES")} €
+            </Link>
+          ))}
+        </div>
+      </section>
 
       <FAQ
         items={[

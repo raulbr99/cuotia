@@ -7,6 +7,7 @@ export interface BlogPost {
   category: string;
   tag: string;
   content: string;
+  imageUrl?: string;
 }
 
 export const POSTS: BlogPost[] = [
@@ -792,8 +793,18 @@ Aunque los **tramos están congelados**, hay dos cambios:
   },
 ];
 
+// Posts ya publicados: excluye los del calendario editorial con fecha futura
+// (no afirmar publicación en el futuro → mala señal E-E-A-T y schema con fecha imposible).
+// Nota: la visibilidad se evalúa en build/render, así que un post futuro aparece
+// en el primer despliegue posterior a su datePublished.
+export function getPublishedPosts(): BlogPost[] {
+  const today = new Date().toISOString().slice(0, 10);
+  return POSTS.filter((p) => p.datePublished <= today);
+}
+
 export function getPostBySlug(slug: string): BlogPost | null {
-  return POSTS.find((p) => p.slug === slug) || null;
+  const today = new Date().toISOString().slice(0, 10);
+  return POSTS.find((p) => p.slug === slug && p.datePublished <= today) || null;
 }
 
 export function formatBlogDate(iso: string): string {

@@ -5,21 +5,15 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { QuickAnswer } from "@/components/QuickAnswer";
 import { FAQ } from "@/components/FAQ";
 import { LastUpdated } from "@/components/LastUpdated";
-import { findTramo, TRAMOS_2026, TARIFA_PLANA_MENSUAL } from "@/lib/cuota-autonomo";
+import { findTramo, TRAMOS_2026, TARIFA_PLANA_MENSUAL, DESGLOSE_RETA_2026, TIPO_TOTAL_COTIZACION_RETA_2026_PCT } from "@/lib/cuota-autonomo";
+import { CUOTA_INGRESOS_TARGETS as INGRESOS_TARGETS, cuotaSlug as slugFromIngresos } from "@/lib/seo-targets";
 import { eur } from "@/lib/format";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 
-// Ingresos comunes que se buscan (long-tail SEO)
-const INGRESOS_TARGETS = [
-  500, 800, 1000, 1200, 1300, 1500, 1700, 1800, 2000, 2200, 2500,
-  2800, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 7000, 8000, 9000,
-  10000, 12000, 15000,
-];
-
-function slugFromIngresos(n: number): string {
-  return `${n}-euros-mes`;
-}
+// Solo se sirven las URLs prerenderizadas en generateStaticParams;
+// cierra el espacio ilimitado de URLs indexables (crawl budget / index bloat).
+export const dynamicParams = false;
 
 function ingresosFromSlug(slug: string): number | null {
   const match = slug.match(/^(\d+)-euros?-mes$/);
@@ -227,14 +221,14 @@ export default async function Page({ params }: { params: Promise<{ ingresos: str
           La cuota mensual incluye varios conceptos sobre tu base de cotización:
         </p>
         <ul>
-          <li><strong>Contingencias comunes</strong>: 28,30% de la base</li>
-          <li><strong>Contingencias profesionales</strong>: 1,3% (variable según actividad)</li>
-          <li><strong>Cese de actividad</strong>: 0,8%</li>
-          <li><strong>Formación profesional</strong>: 0,1%</li>
-          <li><strong>MEI 2026</strong>: 0,9% (Mecanismo Equidad Intergeneracional)</li>
+          {DESGLOSE_RETA_2026.map((d) => (
+            <li key={d.concepto}>
+              <strong>{d.concepto}</strong>: {d.pct}{d.nota ? ` (${d.nota})` : ""}
+            </li>
+          ))}
         </ul>
         <p>
-          Total: <strong>31,50%</strong> sobre la base de cotización del tramo {tramo.numero}.
+          Total: <strong>{TIPO_TOTAL_COTIZACION_RETA_2026_PCT}</strong> sobre la base de cotización del tramo {tramo.numero}.
         </p>
 
         <h2 className="text-xl font-bold text-neutral-900">¿Qué pasa si cambian tus ingresos?</h2>

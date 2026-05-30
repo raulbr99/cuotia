@@ -22,6 +22,7 @@ const aboutSchema = {
   inLanguage: "es-ES",
   mainEntity: {
     "@type": "Organization",
+    "@id": `${SITE_URL}/#org`,
     name: "Cuotia",
     url: SITE_URL,
     description: "Calculadoras fiscales gratuitas para autónomos en España. Sin registros, sin emails, sin venta de servicios.",

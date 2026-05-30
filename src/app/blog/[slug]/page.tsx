@@ -1,15 +1,21 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArticleSchema } from "@/components/Schemas";
 import { Calendar, ArrowLeft, ArrowRight } from "lucide-react";
-import { POSTS, getPostBySlug, formatBlogDate } from "@/lib/blog";
+import { formatBlogDate } from "@/lib/blog";
+import { getPublishedPostBySlug, getAllPublishedPosts, getAllPublishedSlugs } from "@/lib/blog-all";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 
-export function generateStaticParams() {
-  return POSTS.map((p) => ({ slug: p.slug }));
+// ISR: los posts auto-generados (Supabase) que no estén en el build se renderizan
+// on-demand y se cachean; revalidate refresca el contenido.
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+  return (await getAllPublishedSlugs()).map((slug) => ({ slug }));
 }
 
 interface PageProps {
@@ -18,9 +24,10 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPublishedPostBySlug(slug);
   if (!post) return {};
   const ogUrl = `${SITE_URL}/api/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.description.slice(0, 100))}&tag=${encodeURIComponent(post.tag)}`;
+  const ogImage = post.imageUrl || ogUrl;
   return {
     title: post.title,
     description: post.description,
@@ -32,9 +39,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: `${SITE_URL}/blog/${post.slug}`,
       publishedTime: post.datePublished,
       modifiedTime: post.dateModified || post.datePublished,
-      images: [{ url: ogUrl, width: 1200, height: 630 }],
+      images: [{ url: ogImage, width: 1200, height: 630 }],
     },
-    twitter: { card: "summary_large_image", images: [ogUrl] },
+    twitter: { card: "summary_large_image", images: [ogImage] },
   };
 }
 
@@ -148,11 +155,12 @@ function renderInline(text: string): string {
 
 export default async function Page({ params }: PageProps) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = await getPublishedPostBySlug(slug);
   if (!post) notFound();
 
-  const sortedPosts = [...POSTS].sort((a, b) => b.datePublished.localeCompare(a.datePublished));
+  const sortedPosts = await getAllPublishedPosts();
   const otherPosts = sortedPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
+  const ogUrl = `${SITE_URL}/api/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.description.slice(0, 100))}&tag=${encodeURIComponent(post.tag)}`;
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
@@ -162,6 +170,7 @@ export default async function Page({ params }: PageProps) {
         path={`/blog/${post.slug}`}
         datePublished={post.datePublished}
         dateModified={post.dateModified || post.datePublished}
+        imageUrl={post.imageUrl || ogUrl}
       />
       <Breadcrumbs items={[{ label: "Blog", href: "/blog" }, { label: post.tag }]} />
 
@@ -178,6 +187,19 @@ export default async function Page({ params }: PageProps) {
 
         <h1 className="text-3xl font-bold text-neutral-900 sm:text-4xl mb-4">{post.title}</h1>
         <p className="text-lg text-neutral-700 mb-8">{post.description}</p>
+
+        {post.imageUrl && (
+          <div className="relative mb-8 aspect-[16/9] w-full overflow-hidden border border-neutral-200">
+            <Image
+              src={post.imageUrl}
+              alt={post.title}
+              fill
+              sizes="(min-width: 768px) 768px, 100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
+        )}
 
         <div className="speakable text-neutral-700">
           {renderContent(post.content)}

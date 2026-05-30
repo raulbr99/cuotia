@@ -47,7 +47,7 @@ const faqs = [
   },
   {
     q: "¿Cuál es la cuota mínima del autónomo societario 2026?",
-    a: "Aproximadamente 451 €/mes (base mínima 1.424,40 × ~31,67% tipo total contingencias + MEI). La cifra exacta depende de las coberturas elegidas (contingencias profesionales, cese de actividad).",
+    a: "Aproximadamente 449-451 €/mes (base mínima 1.424,40 × 31,50% tipo total RETA, MEI incluido). La cifra exacta depende de las coberturas elegidas (contingencias profesionales, cese de actividad).",
   },
   {
     q: "¿Por qué sube tanto la base mínima societaria?",
@@ -86,7 +86,7 @@ export default function Page() {
 
       <QuickAnswer
         question="¿Cuál es la cuota del autónomo societario en 2026?"
-        answer="La base mínima del autónomo societario en 2026 es 1.424,40 €/mes (sube un 42,4% desde los 1.000 € de 2025). La cuota mínima mensual a pagar es aproximadamente 451 €/mes (~31,67% sobre la base mínima + MEI 0,9%). Aplica a administradores de sociedades mercantiles con ≥25% del capital y a colaboradores familiares."
+        answer="La base mínima del autónomo societario en 2026 es 1.424,40 €/mes (sube un 42,4% desde los 1.000 € de 2025). La cuota mínima mensual a pagar es aproximadamente 449-451 €/mes (31,50% sobre la base mínima, con el MEI 0,9% incluido). Aplica a administradores de sociedades mercantiles con ≥25% del capital y a colaboradores familiares."
         updatedAt="2026-05-20"
       />
 

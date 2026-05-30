@@ -48,7 +48,7 @@ const TERMS: Term[] = [
   {
     term: "Cuota mensual",
     short: "Lo que pagas cada mes a la Seguridad Social como autónomo.",
-    long: "Calculada como base de cotización × tipo (~31,67% en 2026 + MEI 0,9%). Por defecto se aplica la cuota mínima del tramo que te corresponde según rendimiento neto.",
+    long: "Calculada como base de cotización × tipo total (31,50% en 2026, con el MEI 0,9% ya incluido). Por defecto se aplica la cuota mínima del tramo que te corresponde según rendimiento neto.",
     related: [{ href: "/cuota-autonomo", label: "Calcular" }],
   },
   {
@@ -165,7 +165,7 @@ const TERMS: Term[] = [
   {
     term: "TPC (Tipo de Cotización)",
     short: "Porcentaje aplicado a la base de cotización para calcular la cuota mensual.",
-    long: "En 2026: ~28,30% contingencias comunes + 1,3% profesionales + 0,9% MEI + 0,7% formación + cese actividad (~0,8%) = ~31,67% total aplicado sobre la base.",
+    long: "En 2026: 28,30% contingencias comunes + 1,30% profesionales + 0,90% cese de actividad + 0,10% formación + 0,90% MEI = 31,50% total aplicado sobre la base.",
   },
   {
     term: "Verifactu (Sistema VeriFactu)",

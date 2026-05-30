@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { IRPFCalc } from "@/components/calculators/IRPFCalc";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { QuickAnswer } from "@/components/QuickAnswer";
@@ -6,6 +7,11 @@ import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 import { RelatedCalcs } from "@/components/RelatedCalcs";
 import { AffiliateCard } from "@/components/AffiliateCard";
 import { AFFILIATES_BY_PAGE } from "@/lib/affiliates";
+import { CCAA_NAMES, type CCAA } from "@/lib/irpf-ccaa";
+
+const CCAA_LINKS = (Object.keys(CCAA_NAMES) as CCAA[])
+  .filter((c) => c !== "navarra" && c !== "pais-vasco")
+  .map((c) => ({ slug: c, nombre: CCAA_NAMES[c] }));
 
 const ogUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es"}/api/og?title=${encodeURIComponent("Calculadora IRPF 2026")}&subtitle=${encodeURIComponent("Escala estatal + 17 CCAA + modelo 130 trimestral")}&tag=IRPF`;
 
@@ -95,6 +101,23 @@ export default function Page() {
           real será inferior al calculado.
         </p>
       </article>
+
+      <section className="mt-10 rounded-lg border border-neutral-200 bg-white p-5">
+        <p className="text-[11px] uppercase tracking-wider text-neutral-500 font-semibold mb-3">
+          IRPF por Comunidad Autónoma
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {CCAA_LINKS.map((c) => (
+            <Link
+              key={c.slug}
+              href={`/irpf/${c.slug}`}
+              className="rounded-md border border-neutral-300 px-3 py-1.5 text-sm text-neutral-700 hover:border-[#B91C1C] hover:text-[#B91C1C]"
+            >
+              {c.nombre}
+            </Link>
+          ))}
+        </div>
+      </section>
 
       <RelatedCalcs current="irpf" related={["cuota", "iva", "neto", "retencion"]} />
 

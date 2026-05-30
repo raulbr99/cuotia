@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { NetoBrutoCalc } from "@/components/calculators/NetoBrutoCalc";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { RelatedCalcs } from "@/components/RelatedCalcs";
 import { CalculatorSchema, SpeakableSchema } from "@/components/Schemas";
 import { QuickAnswer } from "@/components/QuickAnswer";
+import { NETO_BRUTO_TARGETS, netoBrutoSlug } from "@/lib/seo-targets";
 
 export const metadata: Metadata = {
   title: "Calculadora neto/bruto autónomo · cuánto te queda al mes 2026",
@@ -71,6 +73,25 @@ export default function Page() {
           significativamente tu factura final.
         </p>
       </article>
+
+      <section className="mt-10 rounded-lg border border-neutral-200 bg-white p-5">
+        <p className="text-[11px] uppercase tracking-wider text-neutral-500 font-semibold mb-3">
+          Neto según tus ingresos brutos
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {NETO_BRUTO_TARGETS.map((n) => (
+            <Link
+              key={n}
+              href={`/neto-bruto/${netoBrutoSlug(n)}`}
+              className="rounded-md border border-neutral-300 px-3 py-1.5 text-sm text-neutral-700 hover:border-[#B91C1C] hover:text-[#B91C1C]"
+            >
+              {n.toLocaleString("es-ES")} € brutos
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <RelatedCalcs current="neto" related={["cuota", "irpf", "slvsauto", "facturas"]} />
     </div>
   );
 }

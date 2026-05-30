@@ -8,15 +8,14 @@ import { LastUpdated } from "@/components/LastUpdated";
 import { RelatedCalcs } from "@/components/RelatedCalcs";
 import { findTramo } from "@/lib/cuota-autonomo";
 import { calcularIRPFAnual } from "@/lib/irpf";
+import { NETO_BRUTO_TARGETS as BRUTO_TARGETS, netoBrutoSlug as slugFromIngresos } from "@/lib/seo-targets";
 import { eur, pct } from "@/lib/format";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 
-const BRUTO_TARGETS = [15000, 20000, 25000, 30000, 35000, 40000, 45000, 50000, 60000, 70000, 80000, 100000];
-
-function slugFromIngresos(n: number): string {
-  return `${n}-euros-brutos`;
-}
+// Solo se sirven las URLs prerenderizadas en generateStaticParams;
+// cierra el espacio ilimitado de URLs indexables (crawl budget / index bloat).
+export const dynamicParams = false;
 
 function ingresosFromSlug(slug: string): number | null {
   const m = slug.match(/^(\d+)-euros?-brutos?$/);

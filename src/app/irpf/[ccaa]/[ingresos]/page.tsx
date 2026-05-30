@@ -7,15 +7,15 @@ import { FAQ } from "@/components/FAQ";
 import { LastUpdated } from "@/components/LastUpdated";
 import { RelatedCalcs } from "@/components/RelatedCalcs";
 import { calcularIRPFConCCAA, CCAA_NAMES, type CCAA } from "@/lib/irpf-ccaa";
+import { IRPF_INGRESOS_TARGETS as INGRESOS_TARGETS, irpfSlug as slugFromIngresos } from "@/lib/seo-targets";
 import { eur, pct } from "@/lib/format";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
 
-const INGRESOS_TARGETS = [15000, 20000, 25000, 30000, 40000, 50000, 60000, 80000, 100000];
-
-function slugFromIngresos(n: number): string {
-  return `${n}-euros`;
-}
+// Solo se sirven las URLs prerenderizadas en generateStaticParams (15 CCAA × 9 ingresos).
+// Cierra el espacio ilimitado de URLs y, de paso, evita que las CCAA forales
+// (navarra/pais-vasco, excluidas de generateStaticParams) generen páginas finas.
+export const dynamicParams = false;
 
 function ingresosFromSlug(slug: string): number | null {
   const m = slug.match(/^(\d+)-euros?$/);
