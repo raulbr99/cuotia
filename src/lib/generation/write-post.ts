@@ -67,7 +67,11 @@ export interface TopicInput {
   category?: string;
 }
 
-export async function writePost(topic: TopicInput, news?: NewsResult | null): Promise<GeneratedPost | null> {
+export async function writePost(
+  topic: TopicInput,
+  news?: NewsResult | null,
+  relatedPosts?: { title: string; slug: string }[],
+): Promise<GeneratedPost | null> {
   if (!process.env.OPENROUTER_API_KEY) return null;
 
   const newsBlock =
@@ -75,6 +79,12 @@ export async function writePost(topic: TopicInput, news?: NewsResult | null): Pr
       ? `## NOVEDADES RECIENTES (contexto; úsalas SOLO si son relevantes para este tema)
 ${news.summary}
 ${news.citations.length ? `Fuentes: ${news.citations.slice(0, 6).join(", ")}` : ""}`
+      : "";
+
+  const relatedBlock =
+    relatedPosts && relatedPosts.length
+      ? `## POSTS DEL BLOG YA PUBLICADOS (enlaza a 1-2 SOLO si encajan de forma natural)
+${relatedPosts.map((p) => `- "${p.title}" → /blog/${p.slug}`).join("\n")}`
       : "";
 
   const prompt = `Eres redactor de Cuotia (cuotia.es), web de calculadoras fiscales para autónomos en España. Escribe UN artículo de blog en español sobre el tema indicado.
@@ -91,13 +101,16 @@ ${newsBlock}
 
 ## ${CUOTIA_PAGES}
 
+${relatedBlock}
+
 ## REGLAS INNEGOCIABLES
 1. Cíñete al TEMA indicado y resuélvelo de forma completa y útil (responde la intención de búsqueda del lector).
 2. NO inventes cifras. Usa SOLO los datos verificados de arriba o cifras de las novedades. Si no puedes confirmar una cifra, dilo en vez de inventarla.
 3. Tono Cuotia: directo, claro, sin jerga ni paternalismo. Nada de relleno.
 4. Estructura markdown: 4-6 secciones con ##, al menos UNA tabla útil, y enlaces internos markdown a las calculadoras relevantes (mínimo 2, incluyendo el enlace sugerido).
-5. Termina SIEMPRE con un párrafo breve: "Esta información es orientativa y no sustituye el asesoramiento de un gestor."
-6. El slug en kebab-case describe el tema (incluye el año si aplica). La description: 110-155 caracteres con la keyword.
+5. Si arriba hay "POSTS DEL BLOG YA PUBLICADOS" que encajen con el tema, enlaza a 1-2 de forma natural con [texto](/blog/slug). NO inventes URLs de /blog: usa SOLO los slugs de esa lista.
+6. Termina SIEMPRE con un párrafo breve: "Esta información es orientativa y no sustituye el asesoramiento de un gestor."
+7. El slug en kebab-case describe el tema (incluye el año si aplica). La description: 110-155 caracteres con la keyword.
 
 Devuelve el objeto estructurado.`;
 

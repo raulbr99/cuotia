@@ -5,7 +5,8 @@ import { writePost, reviewPost, WRITER_MODEL, type TopicInput } from "@/lib/gene
 import { generateAndStoreCover } from "@/lib/generation/cover-image";
 import { dbSlugExists, insertDbPost } from "@/lib/blog-db";
 import { getNextTopic, markTopicUsed, pendingTopicCount } from "@/lib/generation/blog-topics-db";
-import { getPostBySlug } from "@/lib/blog";
+import { getPostBySlug, relatedToText } from "@/lib/blog";
+import { getAllPublishedPosts } from "@/lib/blog-all";
 
 export interface PipelineResult {
   ok: boolean;
@@ -69,8 +70,15 @@ export async function runGenerationPipeline(
     };
   }
 
-  // 2. Redacción sobre el tema (news como contexto opcional)
-  const draft = await writePost(effectiveTopic, news);
+  // 2. Redacción sobre el tema (news como contexto opcional + posts afines para
+  //    enlazado interno entre artículos → clusters temáticos).
+  const allPosts = await getAllPublishedPosts();
+  const relatedPosts = relatedToText(
+    `${effectiveTopic.title} ${effectiveTopic.targetKeyword ?? ""} ${effectiveTopic.category ?? ""}`,
+    allPosts,
+    6,
+  ).map((p) => ({ title: p.title, slug: p.slug }));
+  const draft = await writePost(effectiveTopic, news, relatedPosts);
   if (!draft) {
     return { ok: false, status: "skipped", reason: "Fallo al redactar (¿falta OPENROUTER_API_KEY?)" };
   }

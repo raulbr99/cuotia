@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArticleSchema } from "@/components/Schemas";
 import { Calendar, ArrowLeft, ArrowRight } from "lucide-react";
-import { formatBlogDate } from "@/lib/blog";
+import { formatBlogDate, getRelatedPosts } from "@/lib/blog";
 import { getPublishedPostBySlug, getAllPublishedPosts, getAllPublishedSlugs } from "@/lib/blog-all";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
@@ -158,8 +158,8 @@ export default async function Page({ params }: PageProps) {
   const post = await getPublishedPostBySlug(slug);
   if (!post) notFound();
 
-  const sortedPosts = await getAllPublishedPosts();
-  const otherPosts = sortedPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
+  const allPosts = await getAllPublishedPosts();
+  const otherPosts = getRelatedPosts(post, allPosts, 3);
   const ogUrl = `${SITE_URL}/api/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.description.slice(0, 100))}&tag=${encodeURIComponent(post.tag)}`;
 
   return (
@@ -214,7 +214,7 @@ export default async function Page({ params }: PageProps) {
 
         {otherPosts.length > 0 && (
           <section>
-            <h2 className="text-xl font-bold text-neutral-900 mb-4">Otros artículos</h2>
+            <h2 className="text-xl font-bold text-neutral-900 mb-4">Artículos relacionados</h2>
             <div className="space-y-3">
               {otherPosts.map((p) => (
                 <Link

@@ -810,3 +810,53 @@ export function getPostBySlug(slug: string): BlogPost | null {
 export function formatBlogDate(iso: string): string {
   return new Date(iso).toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" });
 }
+
+// --- Enlazado interno por relación temática (clusters) ---
+
+const STOPWORDS = new Set([
+  "para", "como", "cuando", "donde", "desde", "hasta", "sobre", "entre", "tras", "según", "porque",
+  "autonomo", "autonomos", "autónomo", "autónomos", "2025", "2026", "2027", "paso",
+]);
+
+function tokenize(text: string): Set<string> {
+  const norm = text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "");
+  const words = norm.match(/[a-z0-9]{4,}/g) || [];
+  return new Set(words.filter((w) => !STOPWORDS.has(w)));
+}
+
+function overlap(a: Set<string>, b: Set<string>): number {
+  let n = 0;
+  for (const w of a) if (b.has(w)) n++;
+  return n;
+}
+
+// Posts relacionados con `target` por tag (peso alto), categoría y solape de
+// títulos. Devuelve siempre `n` (si no hay afinidad, completa con los recientes).
+export function getRelatedPosts(target: BlogPost, all: BlogPost[], n = 3): BlogPost[] {
+  const tTok = tokenize(`${target.title} ${target.tag} ${target.category}`);
+  const scored = all
+    .filter((p) => p.slug !== target.slug)
+    .map((p) => {
+      let s = overlap(tTok, tokenize(`${p.title} ${p.tag} ${p.category}`));
+      if (p.tag && target.tag && p.tag.toLowerCase() === target.tag.toLowerCase()) s += 3;
+      if (p.category && target.category && p.category.toLowerCase() === target.category.toLowerCase()) s += 2;
+      return { p, s };
+    })
+    .sort((a, b) => b.s - a.s || b.p.datePublished.localeCompare(a.p.datePublished));
+  return scored.slice(0, n).map((x) => x.p);
+}
+
+// Posts afines a un texto libre (p.ej. el tema que se va a redactar). Solo
+// devuelve los que tienen algún solape real (puede ser lista vacía).
+export function relatedToText(text: string, all: BlogPost[], n: number): BlogPost[] {
+  const tok = tokenize(text);
+  return all
+    .map((p) => ({ p, s: overlap(tok, tokenize(`${p.title} ${p.tag} ${p.category}`)) }))
+    .filter((x) => x.s > 0)
+    .sort((a, b) => b.s - a.s)
+    .slice(0, n)
+    .map((x) => x.p);
+}
