@@ -1,3 +1,5 @@
+import { CURATED_COVERS } from "@/lib/generation/curated-covers";
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -797,14 +799,23 @@ Aunque los **tramos están congelados**, hay dos cambios:
 // (no afirmar publicación en el futuro → mala señal E-E-A-T y schema con fecha imposible).
 // Nota: la visibilidad se evalúa en build/render, así que un post futuro aparece
 // en el primer despliegue posterior a su datePublished.
+// Adjunta la portada generada (CURATED_COVERS) a los posts curados que no
+// definan una imageUrl propia.
+function withCover(p: BlogPost): BlogPost {
+  if (p.imageUrl) return p;
+  const cover = CURATED_COVERS[p.slug];
+  return cover ? { ...p, imageUrl: cover } : p;
+}
+
 export function getPublishedPosts(): BlogPost[] {
   const today = new Date().toISOString().slice(0, 10);
-  return POSTS.filter((p) => p.datePublished <= today);
+  return POSTS.filter((p) => p.datePublished <= today).map(withCover);
 }
 
 export function getPostBySlug(slug: string): BlogPost | null {
   const today = new Date().toISOString().slice(0, 10);
-  return POSTS.find((p) => p.slug === slug && p.datePublished <= today) || null;
+  const p = POSTS.find((x) => x.slug === slug && x.datePublished <= today);
+  return p ? withCover(p) : null;
 }
 
 export function formatBlogDate(iso: string): string {

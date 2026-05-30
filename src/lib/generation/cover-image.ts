@@ -4,11 +4,33 @@ import { getSupabase } from "@/lib/supabase";
 
 const IMAGE_MODEL = process.env.BLOG_IMAGE_MODEL || "google/gemini-3.1-flash-image-preview";
 
-export async function generateAndStoreCover(imagePrompt: string, slug: string): Promise<string | null> {
+// Direcciones de arte rotativas: dan variedad de estilo entre portadas sin
+// perder la coherencia de marca (que se fija en buildCoverPrompt).
+const ART_DIRECTIONS = [
+  "editorial magazine photography, shallow depth of field, soft natural light",
+  "minimalist 3D render, soft studio lighting, smooth matte clay materials",
+  "clean flat vector illustration, simple geometric shapes, subtle paper grain",
+  "isometric illustration, neat tidy composition, soft long shadows",
+  "conceptual still-life photography, props arranged on a surface, gentle top light",
+  "modern paper-cut collage, layered cut shapes, soft drop shadows",
+];
+
+function pickDirection(seed: string): string {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
+  return ART_DIRECTIONS[h % ART_DIRECTIONS.length];
+}
+
+// Compone el prompt final: concepto único por post + dirección de arte rotativa
+// (por slug) + marco de marca FIJO. Así varían tema y estilo, pero todas se
+// reconocen como del mismo sitio.
+export function buildCoverPrompt(concept: string, seed: string): string {
+  return `${concept}. Visual style: ${pickDirection(seed)}. Brand frame (keep consistent across all images): warm off-white / cream background (#FAFAF7) with a single editorial red (#B91C1C) accent, premium, tasteful, minimal. Absolutely NO text, no letters, no numbers, no words, no logos, no charts. Landscape 16:9, high quality.`;
+}
+
+export async function generateAndStoreCover(prompt: string, slug: string): Promise<string | null> {
   const key = process.env.OPENROUTER_API_KEY;
   if (!key) return null;
-
-  const styled = `${imagePrompt}. Editorial premium magazine cover, abstract, clean composition, cream/off-white background (#FAFAF7) with a single editorial red accent (#B91C1C), minimalist, no text, no letters, no words, landscape 16:9, soft natural light, high quality.`;
 
   let res: Response;
   try {
@@ -22,7 +44,7 @@ export async function generateAndStoreCover(imagePrompt: string, slug: string): 
       body: JSON.stringify({
         model: IMAGE_MODEL,
         modalities: ["text", "image"],
-        messages: [{ role: "user", content: styled }],
+        messages: [{ role: "user", content: prompt }],
       }),
     });
   } catch {

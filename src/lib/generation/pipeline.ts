@@ -2,7 +2,7 @@
 // Lo invocan el cron diario (/api/cron/generate-post) y el botón manual (/api/blog/generate).
 import { fetchLatestFiscalNews, type NewsResult } from "@/lib/news/perplexity";
 import { writePost, reviewPost, WRITER_MODEL, type TopicInput } from "@/lib/generation/write-post";
-import { generateAndStoreCover } from "@/lib/generation/cover-image";
+import { generateAndStoreCover, buildCoverPrompt } from "@/lib/generation/cover-image";
 import { dbSlugExists, insertDbPost } from "@/lib/blog-db";
 import { getNextTopic, markTopicUsed, pendingTopicCount } from "@/lib/generation/blog-topics-db";
 import { getPostBySlug, relatedToText } from "@/lib/blog";
@@ -92,7 +92,7 @@ export async function runGenerationPipeline(
 
   // 4. Slug único + portada (no bloqueante: si falla, post sin imagen)
   const slug = await uniqueSlug(draft.slug || draft.title);
-  const imageUrl = await generateAndStoreCover(draft.imagePrompt, slug);
+  const imageUrl = await generateAndStoreCover(buildCoverPrompt(draft.imagePrompt, slug), slug);
 
   // 5. Insert
   const ins = await insertDbPost({
