@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ArticleSchema } from "@/components/Schemas";
 import { Calendar, ArrowLeft, ArrowRight } from "lucide-react";
-import { formatBlogDate, getRelatedPosts } from "@/lib/blog";
+import { formatBlogDate, getRelatedPosts, tagSlug } from "@/lib/blog";
 import { getPublishedPostBySlug, getAllPublishedPosts, getAllPublishedSlugs } from "@/lib/blog-all";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://cuotia.es";
@@ -172,13 +172,16 @@ export default async function Page({ params }: PageProps) {
         dateModified={post.dateModified || post.datePublished}
         imageUrl={post.imageUrl || ogUrl}
       />
-      <Breadcrumbs items={[{ label: "Blog", href: "/blog" }, { label: post.tag }]} />
+      <Breadcrumbs items={[{ label: "Blog", href: "/blog" }, { label: post.tag, href: `/blog/tema/${tagSlug(post.tag)}` }]} />
 
       <article>
         <div className="flex items-baseline gap-3 mb-3">
-          <span className="rounded-full bg-white text-[#B91C1C] text-[10px] font-semibold uppercase tracking-wider px-2 py-1">
+          <Link
+            href={`/blog/tema/${tagSlug(post.tag)}`}
+            className="rounded-full bg-white text-[#B91C1C] text-[10px] font-semibold uppercase tracking-wider px-2 py-1 hover:underline"
+          >
             {post.tag}
-          </span>
+          </Link>
           <span className="text-xs text-neutral-500 flex items-center gap-1">
             <Calendar className="h-3 w-3" />
             <time dateTime={post.datePublished}>{formatBlogDate(post.datePublished)}</time>

@@ -860,3 +860,39 @@ export function relatedToText(text: string, all: BlogPost[], n: number): BlogPos
     .slice(0, n)
     .map((x) => x.p);
 }
+
+// --- Archivo por tag (/blog/tema/[tag]) ---
+
+export function tagSlug(tag: string): string {
+  return tag
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+export interface TagInfo {
+  tag: string;
+  slug: string;
+  count: number;
+}
+
+export function getAllTags(posts: BlogPost[]): TagInfo[] {
+  const map = new Map<string, { tag: string; count: number }>();
+  for (const p of posts) {
+    if (!p.tag) continue;
+    const slug = tagSlug(p.tag);
+    if (!slug) continue;
+    const e = map.get(slug) ?? { tag: p.tag, count: 0 };
+    e.count++;
+    map.set(slug, e);
+  }
+  return [...map.entries()]
+    .map(([slug, v]) => ({ slug, tag: v.tag, count: v.count }))
+    .sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag));
+}
+
+export function getPostsByTagSlug(slug: string, posts: BlogPost[]): BlogPost[] {
+  return posts.filter((p) => p.tag && tagSlug(p.tag) === slug);
+}

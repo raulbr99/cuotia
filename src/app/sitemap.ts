@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { CCAA_NAMES, type CCAA } from "@/lib/irpf-ccaa";
 import { getAllPublishedPosts } from "@/lib/blog-all";
+import { getAllTags } from "@/lib/blog";
 import {
   CUOTA_INGRESOS_TARGETS,
   NETO_BRUTO_TARGETS,
@@ -50,6 +51,7 @@ const CCAA_ROUTES: { path: string; priority: number }[] = (Object.keys(CCAA_NAME
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
   const posts = await getAllPublishedPosts();
+  const tags = getAllTags(posts).filter((t) => t.count >= 2); // evita tag pages thin
   return [
     ...ROUTES.map((r) => ({
       url: `${BASE}${r.path}`,
@@ -62,6 +64,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: r.priority,
+    })),
+    ...tags.map((t) => ({
+      url: `${BASE}/blog/tema/${t.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.5,
     })),
     ...posts.map((p) => ({
       url: `${BASE}/blog/${p.slug}`,

@@ -2,6 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { HeroQuickCalc } from "@/components/HeroQuickCalc";
+import { formatBlogDate } from "@/lib/blog";
+import { getAllPublishedPosts } from "@/lib/blog-all";
+
+// ISR: refresca para mostrar los últimos posts del blog (incl. auto-generados).
+export const revalidate = 3600;
 
 const PRIMARY = [
   {
@@ -37,7 +42,8 @@ const TOOLS = [
   { href: "/guias", title: "Guías", desc: "Alta de autónomo, gastos deducibles, tarifa plana." },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const latestPosts = (await getAllPublishedPosts()).slice(0, 3);
   return (
     <>
       {/* WebSite + Organization se emiten globalmente en layout.tsx (@graph con @id) */}
@@ -217,6 +223,38 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* DEL BLOG */}
+      {latestPosts.length > 0 && (
+        <section className="border-b border-neutral-200 bg-white">
+          <div className="mx-auto max-w-5xl px-5 py-14">
+            <div className="mb-8 flex items-baseline justify-between">
+              <h3 className="font-serif text-2xl tracking-tight text-neutral-900">Del blog</h3>
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-1 text-[13px] text-neutral-600 hover:text-[#B91C1C]"
+              >
+                Ver todo <ArrowUpRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+            <div className="grid gap-px border border-neutral-200 bg-neutral-200 sm:grid-cols-3">
+              {latestPosts.map((p) => (
+                <Link
+                  key={p.slug}
+                  href={`/blog/${p.slug}`}
+                  className="group block bg-[#FAFAF7] p-6 transition-colors hover:bg-white"
+                >
+                  <p className="mb-2 text-[11px] uppercase tracking-wider text-[#B91C1C]">{p.tag}</p>
+                  <p className="font-serif text-lg leading-tight text-neutral-900 group-hover:text-[#B91C1C]">
+                    {p.title}
+                  </p>
+                  <p className="mt-2 text-[12px] text-neutral-500">{formatBlogDate(p.datePublished)}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* AVISO */}
       <section className="border-t border-neutral-200 bg-[#F5F5F0]">

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Newspaper, ArrowRight, Calendar } from "lucide-react";
-import { formatBlogDate } from "@/lib/blog";
+import { formatBlogDate, getAllTags } from "@/lib/blog";
 import { getAllPublishedPosts } from "@/lib/blog-all";
 
 // ISR: revalida cada hora para recoger los posts auto-generados (Supabase) sin redeploy.
@@ -29,6 +29,7 @@ const blogSchema = {
 
 export default async function Page() {
   const sorted = await getAllPublishedPosts();
+  const tags = getAllTags(sorted).slice(0, 14);
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
@@ -43,6 +44,20 @@ export default async function Page() {
           publicidad encubierta, sin recomendaciones de gestoría.
         </p>
       </header>
+
+      {tags.length > 0 && (
+        <div className="mb-8 flex flex-wrap gap-2">
+          {tags.map((t) => (
+            <Link
+              key={t.slug}
+              href={`/blog/tema/${t.slug}`}
+              className="rounded-full border border-neutral-300 px-3 py-1 text-xs text-neutral-700 hover:border-[#B91C1C] hover:text-[#B91C1C]"
+            >
+              {t.tag} <span className="text-neutral-400">{t.count}</span>
+            </Link>
+          ))}
+        </div>
+      )}
 
       <div className="space-y-4">
         {sorted.map((post) => (
