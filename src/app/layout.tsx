@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import { Inter, Fraunces } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -115,6 +114,9 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: "/" },
   robots: { index: true, follow: true },
+  // Verificación de propiedad de Google AdSense (método meta-etiqueta).
+  // Renderiza <meta name="google-adsense-account" content="ca-pub-..."> en el <head>.
+  other: { "google-adsense-account": ADSENSE_CLIENT },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -134,12 +136,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </section>
         <Footer />
         <ChatWidget />
-        <Script
-          id="adsbygoogle-init"
+        {/* Snippet de AdSense como <script> literal: React 19 lo iza al <head>,
+            que es donde el rastreador de verificación de AdSense lo busca. */}
+        <script
           async
-          strategy="beforeInteractive"
-          crossOrigin="anonymous"
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
+          crossOrigin="anonymous"
         />
         <Analytics />
         <SpeedInsights />
