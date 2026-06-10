@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Inter, Fraunces } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -7,6 +8,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Newsletter } from "@/components/Newsletter";
 import { ChatWidget } from "@/components/ChatWidget";
+import { ADSENSE_CLIENT } from "@/lib/adsense";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -132,6 +134,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </section>
         <Footer />
         <ChatWidget />
+        <Script
+          id="adsbygoogle-init"
+          async
+          strategy="afterInteractive"
+          crossOrigin="anonymous"
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
+        />
         <Analytics />
         <SpeedInsights />
       </body>
