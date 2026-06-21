@@ -7,6 +7,7 @@ import { dbSlugExists, insertDbPost } from "@/lib/blog-db";
 import { getNextTopic, markTopicUsed, pendingTopicCount } from "@/lib/generation/blog-topics-db";
 import { getPostBySlug, relatedToText } from "@/lib/blog";
 import { getAllPublishedPosts } from "@/lib/blog-all";
+import { submitToIndexNow, INDEXNOW_HOST } from "@/lib/indexnow";
 
 export interface PipelineResult {
   ok: boolean;
@@ -115,6 +116,20 @@ export async function runGenerationPipeline(
   // 6. Marcar el tema como usado para no repetirlo
   if (topic) await markTopicUsed(topic.id, slug);
   const remainingTopics = await pendingTopicCount();
+
+  // 7. Ping inmediato a IndexNow (Bing/Yandex/…) con la URL recién publicada,
+  //    sin esperar al cron diario de las 9:00. Best-effort: si falla no afecta
+  //    a la generación. (Google no usa IndexNow; ahí se confía en el sitemap.)
+  if (status === "published") {
+    try {
+      await submitToIndexNow([
+        `https://${INDEXNOW_HOST}/blog/${slug}`,
+        `https://${INDEXNOW_HOST}/blog`,
+      ]);
+    } catch {
+      // ignorar: la indexación no debe tumbar la publicación
+    }
+  }
 
   return {
     ok: true,

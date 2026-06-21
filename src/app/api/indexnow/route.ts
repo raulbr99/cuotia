@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server";
 import sitemap from "@/app/sitemap";
+import {
+  submitToIndexNow,
+  INDEXNOW_HOST,
+  INDEXNOW_KEY_LOCATION,
+} from "@/lib/indexnow";
 
-// IndexNow protocol: https://www.indexnow.org/documentation
-// Permite notificar a Bing, Yandex, Naver y otros search engines de cambios
-// en URLs para indexación inmediata. Gratis, sin cuota diaria.
-// Google NO usa IndexNow (de momento).
-
-const INDEXNOW_KEY = "f7594366468d434548a2e2c619ed903d";
-const INDEXNOW_ENDPOINT = "https://api.indexnow.org/indexnow";
-const HOST = "cuotia.es";
+// Cron diario (9:00): reenvía TODAS las URLs del sitemap a IndexNow
+// (Bing, Yandex, Naver…). El ping inmediato de cada post nuevo lo hace el
+// pipeline de generación; este cron es la red de seguridad periódica.
 
 function isAuthorized(req: Request): boolean {
   // Triggers automáticos (vercel cron) llevan Authorization: Bearer ${CRON_SECRET}.
@@ -28,24 +28,6 @@ async function getAllSitemapUrls(): Promise<string[]> {
   return entries.map((e) => (typeof e.url === "string" ? e.url : String(e.url)));
 }
 
-async function submitBatch(urls: string[]): Promise<{ ok: boolean; status: number; body?: string }> {
-  const res = await fetch(INDEXNOW_ENDPOINT, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "User-Agent": "cuotia.es IndexNow client",
-    },
-    body: JSON.stringify({
-      host: HOST,
-      key: INDEXNOW_KEY,
-      keyLocation: `https://${HOST}/${INDEXNOW_KEY}.txt`,
-      urlList: urls,
-    }),
-  });
-  const text = await res.text().catch(() => "");
-  return { ok: res.ok, status: res.status, body: text.slice(0, 200) };
-}
-
 export async function GET(req: Request) {
   if (!isAuthorized(req)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -62,28 +44,15 @@ export async function GET(req: Request) {
   }
   if (limit > 0) urls = urls.slice(0, limit);
 
-  // IndexNow acepta hasta 10.000 URLs por POST. Para Cuotia (~180 URLs) basta con 1 batch.
-  // Si crece, batches de 1.000.
-  const batches: string[][] = [];
-  for (let i = 0; i < urls.length; i += 1000) {
-    batches.push(urls.slice(i, i + 1000));
-  }
-
-  const results = await Promise.all(batches.map(submitBatch));
-  const successful = results.filter((r) => r.ok).length;
-
+  const result = await submitToIndexNow(urls);
   return NextResponse.json({
-    ok: results.every((r) => r.ok),
-    submitted: urls.length,
-    batches: results.length,
-    successfulBatches: successful,
-    results,
+    ...result,
     sample: urls.slice(0, 5),
-    keyLocation: `https://${HOST}/${INDEXNOW_KEY}.txt`,
+    keyLocation: INDEXNOW_KEY_LOCATION,
   });
 }
 
-// POST: para futuro uso desde la build (mandar solo URLs nuevas)
+// POST: enviar solo URLs concretas (p. ej. desde la build o un trigger puntual).
 export async function POST(req: Request) {
   if (!isAuthorized(req)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -94,15 +63,12 @@ export async function POST(req: Request) {
   } catch {
     return NextResponse.json({ error: "Body JSON inválido" }, { status: 400 });
   }
-  const urls = (body.urls ?? []).filter((u) => u.startsWith(`https://${HOST}/`));
+  const urls = (body.urls ?? []).filter((u) => u.startsWith(`https://${INDEXNOW_HOST}/`));
   if (urls.length === 0) {
     return NextResponse.json({ error: "Sin URLs válidas para cuotia.es" }, { status: 400 });
   }
-  const result = await submitBatch(urls);
-  return NextResponse.json({
-    ...result,
-    submitted: urls.length,
-  });
+  const result = await submitToIndexNow(urls);
+  return NextResponse.json(result);
 }
 
 export const dynamic = "force-dynamic";
